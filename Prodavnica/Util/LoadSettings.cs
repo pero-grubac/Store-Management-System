@@ -2,6 +2,7 @@
 using Org.BouncyCastle.Tls;
 using Prodavnica.Database.DTO;
 using Prodavnica.Database.Repository;
+using Prodavnica.Language;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,6 +22,9 @@ namespace Prodavnica.Util
             Color color = themeDAO.GetColor(theme);
             Font font = themeDAO.GetFont(theme);
 
+            LanguageDAOImpl languageDAO = new LanguageDAOImpl();
+            Database.DTO.Language language = languageDAO.GetLanguageById(user.idLangugae);
+            LanguageHelper.ChangeLanguage(language.name);
             ChangeColor(form.Controls, color);
             ChangeFont(form.Controls, font);
         }
@@ -35,6 +39,10 @@ namespace Prodavnica.Util
                 }
                 else if (control is TableLayoutPanel || control is GroupBox || control is Panel)
                 {
+                    if (control is TableLayoutPanel tbl)
+                    {
+                        tbl.BackColor = color;
+                    }
                     ChangeColor(control.Controls, color);
                 }
             }
@@ -47,11 +55,10 @@ namespace Prodavnica.Util
                 {
                     button.Font = font;
                 }
-                /*  else if (control is Label label)
-                  {
-                      label.Font = font;
-                  }
-                */
+                if (control is Label label)
+                {
+                    label.Font = font;
+                }
                 else if (control is TableLayoutPanel || control is GroupBox || control is Panel)
                 {
                     ChangeFont(control.Controls, font);

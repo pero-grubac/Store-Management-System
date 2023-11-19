@@ -46,7 +46,7 @@ namespace Prodavnica.Forms
             lblTitle = new Label();
             panelDesktop = new Panel();
             pictureBox1 = new PictureBox();
-            //panelMenu.SuspendLayout();
+            panelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             panelTitleBar.SuspendLayout();
             panelDesktop.SuspendLayout();
@@ -164,9 +164,10 @@ namespace Prodavnica.Forms
             lbl.ForeColor = Color.LightGray;
             lbl.Location = new Point(61, 30);
             lbl.Name = "lbl";
-            lbl.Size = new Size(74, 25);
+            lbl.Size = new Size(59, 25);
             lbl.TabIndex = 0;
-            lbl.Text = "   Shop";
+            lbl.Text = "Shop";
+            lbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panelTitleBar
             // 

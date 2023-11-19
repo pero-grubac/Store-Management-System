@@ -38,12 +38,12 @@ namespace Prodavnica.Language
         private static Dictionary<String, String> languageMap = new Dictionary<String, String>
         {
             {"English","en" },
-            {"Srpski(Latinica)","sr-lat" },
-            {"Српски(Ћирилица)","sr-cyr" }
+            {"Srpski(Latinica)","sr" },
+            {"Српски(Ћирилица)","sr-Cyrl-RS" }
         };
         private static string GetLangugaeCode(string language)
         {
-            if (languageMap.TryGetValue(language, out String languageCode))
+            if (languageMap.TryGetValue(language, out string languageCode))
             {
                 return languageCode;
             }

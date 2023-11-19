@@ -1,4 +1,4 @@
-using Prodavnica;
+﻿using Prodavnica;
 using Prodavnica.Database.DTO;
 using Prodavnica.Database.Repository;
 using Prodavnica.Forms;
@@ -30,7 +30,7 @@ namespace OnlineKupovinaGUI
             {
                 if (user.isAdmin)
                 {
-                    GUIUtil.ShowNextForm(this, new AdministratorForm(user));
+                    GUIUtil.ShowNextForm(this, new AdministratorForm(ref user));
                 }
             }
             else

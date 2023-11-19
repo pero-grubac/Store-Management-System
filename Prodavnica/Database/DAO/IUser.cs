@@ -9,9 +9,10 @@ namespace Prodavnica.Database.DAO
 {
     public interface IUser
     {
-        User GetUser(string username, string password);
-        void changePassword(User user,string newPassword);
+        DTO.User GetUser(string username, string password);
+        void ChangePassword(ref User user,string newPassword);
         User FindById(int id);
-
+        void ChangeLanguage(ref User user,int idLanguage);
+        void SaveUser(User user);
     }
 }

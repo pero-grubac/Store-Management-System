@@ -77,16 +77,18 @@ namespace Prodavnica.Database.Repository
 
         public Color GetColor(Theme theme)
         {
-            Color color = ColorTranslator.FromHtml("#ff80ffff");
-            try
+            string[] colorValues = theme.colorName.Split(',');
+            if (colorValues.Length == 4)
             {
-                color = ColorTranslator.FromHtml("#" + theme.colorName);
+                int alpha = int.Parse(colorValues[0]);
+                int red = int.Parse(colorValues[1]);
+                int green = int.Parse(colorValues[2]);
+                int blue = int.Parse(colorValues[3]);
+
+                return Color.FromArgb(alpha, red, green, blue);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return color;
+
+            return Color.Black;
         }
 
         public Font GetFont(Theme theme)

@@ -18,7 +18,7 @@ namespace Prodavnica.Forms
         private Form activeForm;
         private User user;
         private UserDAOImpl userDAO = new UserDAOImpl();
-        public AdministratorForm(User user)
+        public AdministratorForm(ref User user)
         {
             InitializeComponent();
             random = new Random();
@@ -28,16 +28,16 @@ namespace Prodavnica.Forms
             MaximizedBounds = Screen.FromHandle(Handle).WorkingArea;
             this.user = user;
             ChangeText();
-            LoadSettings.ApplySettins(user, this);
-            btnClose.BackColor = btnMax.BackColor = btnMin.BackColor = panelTitleBar.BackColor;
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-        private void ChangeText()
+        public void ChangeText()
         {
+            LoadSettings.ApplySettins(user, this);
+            panelTitleBar.BackColor = btnClose.BackColor;
             lblTitle.Text = LanguageHelper.GetString("lblTitle");
             lbl.Text = LanguageHelper.GetString("lbl");
             btnStore.Text = LanguageHelper.GetString("btnStore");
@@ -45,7 +45,7 @@ namespace Prodavnica.Forms
             btnLogOut.Text = LanguageHelper.GetString("btnLogOut");
             btnSettings.Text = LanguageHelper.GetString("btnSettings");
         }
-        private void OpenChildForm(System.Windows.Forms.Form childForm, object btnSender)
+        private void OpenChildForm(System.Windows.Forms.Form childForm, object btnSender, Button button)
         {
             if (activeForm != null)
             {
@@ -60,7 +60,7 @@ namespace Prodavnica.Forms
             panelDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-            lblTitle.Text = childForm.Text;
+            lblTitle.Text = button.Text;
         }
 
         private void Reset()
@@ -69,8 +69,8 @@ namespace Prodavnica.Forms
             currentButton = null;
             btnCloseChldForm.Visible = false;
             user = userDAO.FindById(user.id);
-            LoadSettings.ApplySettins(user, this);
-            btnClose.BackColor = btnMax.BackColor = btnMin.BackColor = panelTitleBar.BackColor;
+            ChangeText();
+            panelTitleBar.BackColor = btnClose.BackColor;
         }
         private void btnCloseChldForm_Click(object sender, EventArgs e)
         {
@@ -99,17 +99,18 @@ namespace Prodavnica.Forms
 
         private void btnStore_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.HelperForms.Admin.Store(), sender);
+            OpenChildForm(new Forms.HelperForms.Admin.Store(), sender, btnStore);
         }
 
         private void btnStaff_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.HelperForms.Admin.Employee(), sender);
+            OpenChildForm(new Forms.HelperForms.Admin.Employee(), sender, btnStaff);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.HelperForms.Settings(user), sender);
+            AdministratorForm parent = this;
+            OpenChildForm(new Forms.HelperForms.Settings(ref user, ref parent), sender, btnSettings);
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)

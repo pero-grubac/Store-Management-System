@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Language\string.sr-lat.Designer.cs">
-      <DependentUpon>string.sr-lat.resx</DependentUpon>
+    <Compile Update="Language\string.sr.Designer.cs">
+      <DependentUpon>string.sr.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
@@ -29,11 +29,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Language\string.sr-Cyrl-RS.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>string.sr-Cyrl-RS.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Language\string.sr-lat.resx">
-      <LastGenOutput>string.sr-lat.Designer.cs</LastGenOutput>
+    <EmbeddedResource Update="Language\string.sr.resx">
+      <LastGenOutput>string.sr.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Language\string.en.resx">
@@ -43,6 +48,10 @@
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Language\string.sr-Cyrl-RS.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>string.sr-Cyrl-RS.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

@@ -118,51 +118,75 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnChangePass" xml:space="preserve">
-    <value>Sačuvaj</value>
+    <value>Сачувај</value>
   </data>
   <data name="btnColor" xml:space="preserve">
-    <value>Boja</value>
+    <value>Боја</value>
   </data>
   <data name="btnFont" xml:space="preserve">
-    <value>Font</value>
+    <value>Фонт</value>
   </data>
   <data name="btnLogOut" xml:space="preserve">
-    <value>   Odjava</value>
+    <value>   Одјава</value>
+  </data>
+  <data name="btnSaveProfile" xml:space="preserve">
+    <value>Сачувај</value>
   </data>
   <data name="btnSaveTheme" xml:space="preserve">
-    <value>Sačuvaj</value>
+    <value>Сачувај</value>
   </data>
   <data name="btnSettings" xml:space="preserve">
-    <value>  Podešavanja</value>
+    <value>  Подешаванја</value>
   </data>
   <data name="btnStaff" xml:space="preserve">
-    <value>   Zaposleni</value>
+    <value>   Запослени</value>
   </data>
   <data name="btnStore" xml:space="preserve">
-    <value>   Prodavnica</value>
+    <value>  Продавница</value>
   </data>
   <data name="gbColor" xml:space="preserve">
-    <value>Boja</value>
+    <value>Боја</value>
+  </data>
+  <data name="gbLanguage" xml:space="preserve">
+    <value>Јазик</value>
   </data>
   <data name="gbPassword" xml:space="preserve">
-    <value>Lozinka</value>
+    <value>Лозинка</value>
+  </data>
+  <data name="gbProfile" xml:space="preserve">
+    <value>Профил</value>
   </data>
   <data name="lbl" xml:space="preserve">
-    <value>   Prodavnica</value>
+    <value>Продавница</value>
+  </data>
+  <data name="lblEmail" xml:space="preserve">
+    <value>Емаил</value>
+  </data>
+  <data name="lblLastName" xml:space="preserve">
+    <value>Презиме</value>
+  </data>
+  <data name="lblName" xml:space="preserve">
+    <value>Име</value>
   </data>
   <data name="lblNewPass" xml:space="preserve">
-    <value>Nova lozinka</value>
+    <value>Нова лозинка</value>
   </data>
   <data name="lblNewTheme" xml:space="preserve">
-    <value>Nova tema</value>
+    <value>Нова тема</value>
   </data>
   <data name="lblOldPass" xml:space="preserve">
-    <value>Stara lozinka</value>
+    <value>Стара лозинка</value>
   </data>
   <data name="lblOldTheme" xml:space="preserve">
-    <value>Trenutna tema</value>
+    <value>Тренутна тема</value>
+  </data>
+  <data name="lblPhone" xml:space="preserve">
+    <value>Број телефона</value>
   </data>
   <data name="lblTitle" xml:space="preserve">
-    <value>  POČETNA</value>
+    <value>  ПОЧЕТНА</value>
+  </data>
+  <data name="lblUsername" xml:space="preserve">
+    <value>Корисничко име</value>
   </data>
 </root>

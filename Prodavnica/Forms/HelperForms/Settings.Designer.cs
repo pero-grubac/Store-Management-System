@@ -48,9 +48,30 @@
             lblOldTheme = new Label();
             btnColor = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
+            gbLanguage = new GroupBox();
+            cbLanguage = new ComboBox();
+            gbProfile = new GroupBox();
+            pnlLastName = new Panel();
+            txtLastName = new TextBox();
+            lblLastName = new Label();
+            pnlName = new Panel();
+            txtName = new TextBox();
+            lblName = new Label();
+            btnSaveProfile = new Button();
+            pnlPhone = new Panel();
+            txtPhone = new TextBox();
+            lblPhone = new Label();
+            pblEmail = new Panel();
+            txtEmail = new TextBox();
+            lblEmail = new Label();
+            pnlUsername = new Panel();
+            txtUsername = new TextBox();
+            lblUsername = new Label();
             gbPassword.SuspendLayout();
             gbColor.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            gbLanguage.SuspendLayout();
+            gbProfile.SuspendLayout();
             SuspendLayout();
             // 
             // gbPassword
@@ -70,10 +91,10 @@
             gbPassword.Dock = DockStyle.Fill;
             gbPassword.Location = new Point(3, 3);
             gbPassword.Name = "gbPassword";
-            gbPassword.Size = new Size(394, 219);
+            gbPassword.Size = new Size(394, 264);
             gbPassword.TabIndex = 0;
             gbPassword.TabStop = false;
-            gbPassword.Text = "groupBox1";
+            gbPassword.Text = "gbPassword";
             // 
             // btnChangePass
             // 
@@ -81,7 +102,7 @@
             btnChangePass.AutoSize = true;
             btnChangePass.FlatAppearance.BorderSize = 0;
             btnChangePass.FlatStyle = FlatStyle.Flat;
-            btnChangePass.Location = new Point(280, 173);
+            btnChangePass.Location = new Point(280, 218);
             btnChangePass.Name = "btnChangePass";
             btnChangePass.Size = new Size(94, 30);
             btnChangePass.TabIndex = 16;
@@ -103,11 +124,11 @@
             txtNewPass.BorderStyle = BorderStyle.None;
             txtNewPass.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             txtNewPass.ForeColor = Color.FromArgb(0, 74, 173);
-            txtNewPass.Location = new Point(112, 106);
+            txtNewPass.Location = new Point(125, 106);
             txtNewPass.Multiline = true;
             txtNewPass.Name = "txtNewPass";
             txtNewPass.PasswordChar = '*';
-            txtNewPass.Size = new Size(262, 24);
+            txtNewPass.Size = new Size(252, 24);
             txtNewPass.TabIndex = 14;
             // 
             // pnlOldPass2
@@ -133,11 +154,11 @@
             txtOldPass2.BorderStyle = BorderStyle.None;
             txtOldPass2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             txtOldPass2.ForeColor = Color.FromArgb(0, 74, 173);
-            txtOldPass2.Location = new Point(112, 70);
+            txtOldPass2.Location = new Point(125, 64);
             txtOldPass2.Multiline = true;
             txtOldPass2.Name = "txtOldPass2";
             txtOldPass2.PasswordChar = '*';
-            txtOldPass2.Size = new Size(262, 24);
+            txtOldPass2.Size = new Size(249, 24);
             txtOldPass2.TabIndex = 12;
             // 
             // pnlOldPass1
@@ -154,11 +175,11 @@
             txtOldPass.BorderStyle = BorderStyle.None;
             txtOldPass.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             txtOldPass.ForeColor = Color.FromArgb(0, 74, 173);
-            txtOldPass.Location = new Point(112, 34);
+            txtOldPass.Location = new Point(125, 34);
             txtOldPass.Multiline = true;
             txtOldPass.Name = "txtOldPass";
             txtOldPass.PasswordChar = '*';
-            txtOldPass.Size = new Size(262, 24);
+            txtOldPass.Size = new Size(249, 24);
             txtOldPass.TabIndex = 10;
             // 
             // lblOldPass2
@@ -189,10 +210,10 @@
             gbColor.Controls.Add(lblOldTheme);
             gbColor.Controls.Add(btnColor);
             gbColor.Dock = DockStyle.Fill;
-            gbColor.Location = new Point(3, 228);
+            gbColor.Location = new Point(3, 273);
             gbColor.MinimumSize = new Size(306, 190);
             gbColor.Name = "gbColor";
-            gbColor.Size = new Size(394, 219);
+            gbColor.Size = new Size(394, 190);
             gbColor.TabIndex = 17;
             gbColor.TabStop = false;
             gbColor.Text = "gbColor";
@@ -203,7 +224,7 @@
             btnSaveTheme.AutoSize = true;
             btnSaveTheme.FlatAppearance.BorderSize = 0;
             btnSaveTheme.FlatStyle = FlatStyle.Flat;
-            btnSaveTheme.Location = new Point(280, 180);
+            btnSaveTheme.Location = new Point(280, 138);
             btnSaveTheme.Name = "btnSaveTheme";
             btnSaveTheme.Size = new Size(94, 30);
             btnSaveTheme.TabIndex = 4;
@@ -213,12 +234,12 @@
             // 
             // lblNewTheme
             // 
-            lblNewTheme.AutoSize = true;
-            lblNewTheme.Location = new Point(9, 154);
+            lblNewTheme.Location = new Point(9, 148);
             lblNewTheme.Name = "lblNewTheme";
-            lblNewTheme.Size = new Size(50, 20);
+            lblNewTheme.Size = new Size(115, 20);
             lblNewTheme.TabIndex = 3;
-            lblNewTheme.Text = "label1";
+            lblNewTheme.Text = "New password";
+            lblNewTheme.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnFont
             // 
@@ -237,19 +258,20 @@
             // lblOldTheme
             // 
             lblOldTheme.AutoSize = true;
-            lblOldTheme.Location = new Point(9, 97);
+            lblOldTheme.Location = new Point(6, 90);
             lblOldTheme.MinimumSize = new Size(77, 30);
             lblOldTheme.Name = "lblOldTheme";
             lblOldTheme.Size = new Size(77, 30);
             lblOldTheme.TabIndex = 1;
             lblOldTheme.Text = "label1";
+            lblOldTheme.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnColor
             // 
             btnColor.AutoSize = true;
             btnColor.FlatAppearance.BorderSize = 0;
             btnColor.FlatStyle = FlatStyle.Flat;
-            btnColor.Location = new Point(9, 41);
+            btnColor.Location = new Point(6, 41);
             btnColor.Name = "btnColor";
             btnColor.Size = new Size(94, 30);
             btnColor.TabIndex = 0;
@@ -264,14 +286,226 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(gbColor, 0, 1);
             tableLayoutPanel1.Controls.Add(gbPassword, 0, 0);
+            tableLayoutPanel1.Controls.Add(gbLanguage, 1, 1);
+            tableLayoutPanel1.Controls.Add(gbProfile, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
             tableLayoutPanel1.Size = new Size(800, 450);
             tableLayoutPanel1.TabIndex = 18;
+            // 
+            // gbLanguage
+            // 
+            gbLanguage.BackColor = Color.White;
+            gbLanguage.Controls.Add(cbLanguage);
+            gbLanguage.Dock = DockStyle.Fill;
+            gbLanguage.Location = new Point(403, 273);
+            gbLanguage.Name = "gbLanguage";
+            gbLanguage.Size = new Size(394, 174);
+            gbLanguage.TabIndex = 18;
+            gbLanguage.TabStop = false;
+            gbLanguage.Text = "gbLanguage";
+            // 
+            // cbLanguage
+            // 
+            cbLanguage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            cbLanguage.BackColor = Color.White;
+            cbLanguage.FormattingEnabled = true;
+            cbLanguage.Location = new Point(60, 54);
+            cbLanguage.Name = "cbLanguage";
+            cbLanguage.Size = new Size(271, 28);
+            cbLanguage.TabIndex = 0;
+            cbLanguage.SelectedIndexChanged += cbLanguage_SelectedIndexChanged;
+            // 
+            // gbProfile
+            // 
+            gbProfile.BackColor = Color.White;
+            gbProfile.Controls.Add(pnlLastName);
+            gbProfile.Controls.Add(txtLastName);
+            gbProfile.Controls.Add(lblLastName);
+            gbProfile.Controls.Add(pnlName);
+            gbProfile.Controls.Add(txtName);
+            gbProfile.Controls.Add(lblName);
+            gbProfile.Controls.Add(btnSaveProfile);
+            gbProfile.Controls.Add(pnlPhone);
+            gbProfile.Controls.Add(txtPhone);
+            gbProfile.Controls.Add(lblPhone);
+            gbProfile.Controls.Add(pblEmail);
+            gbProfile.Controls.Add(txtEmail);
+            gbProfile.Controls.Add(lblEmail);
+            gbProfile.Controls.Add(pnlUsername);
+            gbProfile.Controls.Add(txtUsername);
+            gbProfile.Controls.Add(lblUsername);
+            gbProfile.Dock = DockStyle.Fill;
+            gbProfile.ForeColor = Color.Black;
+            gbProfile.Location = new Point(403, 3);
+            gbProfile.Name = "gbProfile";
+            gbProfile.Size = new Size(394, 264);
+            gbProfile.TabIndex = 19;
+            gbProfile.TabStop = false;
+            gbProfile.Text = "gbProfile";
+            // 
+            // pnlLastName
+            // 
+            pnlLastName.BackColor = Color.FromArgb(0, 74, 173);
+            pnlLastName.ForeColor = Color.FromArgb(0, 74, 173);
+            pnlLastName.Location = new Point(6, 198);
+            pnlLastName.Name = "pnlLastName";
+            pnlLastName.Size = new Size(365, 1);
+            pnlLastName.TabIndex = 27;
+            // 
+            // txtLastName
+            // 
+            txtLastName.BorderStyle = BorderStyle.None;
+            txtLastName.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            txtLastName.ForeColor = Color.FromArgb(0, 74, 173);
+            txtLastName.Location = new Point(142, 173);
+            txtLastName.Multiline = true;
+            txtLastName.Name = "txtLastName";
+            txtLastName.Size = new Size(229, 24);
+            txtLastName.TabIndex = 26;
+            // 
+            // lblLastName
+            // 
+            lblLastName.AutoSize = true;
+            lblLastName.Location = new Point(3, 175);
+            lblLastName.Name = "lblLastName";
+            lblLastName.Size = new Size(76, 20);
+            lblLastName.TabIndex = 25;
+            lblLastName.Text = "Last name";
+            // 
+            // pnlName
+            // 
+            pnlName.BackColor = Color.FromArgb(0, 74, 173);
+            pnlName.ForeColor = Color.FromArgb(0, 74, 173);
+            pnlName.Location = new Point(6, 165);
+            pnlName.Name = "pnlName";
+            pnlName.Size = new Size(365, 1);
+            pnlName.TabIndex = 24;
+            // 
+            // txtName
+            // 
+            txtName.BorderStyle = BorderStyle.None;
+            txtName.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            txtName.ForeColor = Color.FromArgb(0, 74, 173);
+            txtName.Location = new Point(142, 140);
+            txtName.Multiline = true;
+            txtName.Name = "txtName";
+            txtName.Size = new Size(229, 24);
+            txtName.TabIndex = 23;
+            // 
+            // lblName
+            // 
+            lblName.AutoSize = true;
+            lblName.Location = new Point(3, 142);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(77, 20);
+            lblName.TabIndex = 22;
+            lblName.Text = "First name";
+            // 
+            // btnSaveProfile
+            // 
+            btnSaveProfile.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSaveProfile.AutoSize = true;
+            btnSaveProfile.FlatAppearance.BorderSize = 0;
+            btnSaveProfile.FlatStyle = FlatStyle.Flat;
+            btnSaveProfile.Location = new Point(274, 218);
+            btnSaveProfile.Name = "btnSaveProfile";
+            btnSaveProfile.Size = new Size(97, 30);
+            btnSaveProfile.TabIndex = 21;
+            btnSaveProfile.Text = "Save Profile";
+            btnSaveProfile.UseVisualStyleBackColor = true;
+            btnSaveProfile.Click += btnSaveProfile_Click;
+            // 
+            // pnlPhone
+            // 
+            pnlPhone.BackColor = Color.FromArgb(0, 74, 173);
+            pnlPhone.ForeColor = Color.FromArgb(0, 74, 173);
+            pnlPhone.Location = new Point(6, 127);
+            pnlPhone.Name = "pnlPhone";
+            pnlPhone.Size = new Size(365, 1);
+            pnlPhone.TabIndex = 20;
+            // 
+            // txtPhone
+            // 
+            txtPhone.BorderStyle = BorderStyle.None;
+            txtPhone.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            txtPhone.ForeColor = Color.FromArgb(0, 74, 173);
+            txtPhone.Location = new Point(142, 102);
+            txtPhone.Multiline = true;
+            txtPhone.Name = "txtPhone";
+            txtPhone.Size = new Size(229, 24);
+            txtPhone.TabIndex = 19;
+            // 
+            // lblPhone
+            // 
+            lblPhone.AutoSize = true;
+            lblPhone.Location = new Point(3, 104);
+            lblPhone.Name = "lblPhone";
+            lblPhone.Size = new Size(105, 20);
+            lblPhone.TabIndex = 18;
+            lblPhone.Text = "Phone number";
+            // 
+            // pblEmail
+            // 
+            pblEmail.BackColor = Color.FromArgb(0, 74, 173);
+            pblEmail.ForeColor = Color.FromArgb(0, 74, 173);
+            pblEmail.Location = new Point(6, 89);
+            pblEmail.Name = "pblEmail";
+            pblEmail.Size = new Size(365, 1);
+            pblEmail.TabIndex = 17;
+            // 
+            // txtEmail
+            // 
+            txtEmail.BorderStyle = BorderStyle.None;
+            txtEmail.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            txtEmail.ForeColor = Color.FromArgb(0, 74, 173);
+            txtEmail.Location = new Point(142, 64);
+            txtEmail.Multiline = true;
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(229, 24);
+            txtEmail.TabIndex = 16;
+            // 
+            // lblEmail
+            // 
+            lblEmail.AutoSize = true;
+            lblEmail.Location = new Point(3, 66);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(46, 20);
+            lblEmail.TabIndex = 15;
+            lblEmail.Text = "Email";
+            // 
+            // pnlUsername
+            // 
+            pnlUsername.BackColor = Color.FromArgb(0, 74, 173);
+            pnlUsername.ForeColor = Color.FromArgb(0, 74, 173);
+            pnlUsername.Location = new Point(6, 59);
+            pnlUsername.Name = "pnlUsername";
+            pnlUsername.Size = new Size(365, 1);
+            pnlUsername.TabIndex = 14;
+            // 
+            // txtUsername
+            // 
+            txtUsername.BorderStyle = BorderStyle.None;
+            txtUsername.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            txtUsername.ForeColor = Color.FromArgb(0, 74, 173);
+            txtUsername.Location = new Point(142, 34);
+            txtUsername.Multiline = true;
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(229, 24);
+            txtUsername.TabIndex = 13;
+            // 
+            // lblUsername
+            // 
+            lblUsername.AutoSize = true;
+            lblUsername.Location = new Point(3, 36);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(75, 20);
+            lblUsername.TabIndex = 12;
+            lblUsername.Text = "Username";
             // 
             // Settings
             // 
@@ -286,6 +520,9 @@
             gbColor.ResumeLayout(false);
             gbColor.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
+            gbLanguage.ResumeLayout(false);
+            gbProfile.ResumeLayout(false);
+            gbProfile.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -311,5 +548,24 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Label lblNewTheme;
         private Button btnSaveTheme;
+        private GroupBox gbLanguage;
+        private ComboBox cbLanguage;
+        private GroupBox gbProfile;
+        private Panel pnlUsername;
+        private TextBox txtUsername;
+        private Label lblUsername;
+        private Panel pnlPhone;
+        private TextBox txtPhone;
+        private Label lblPhone;
+        private Panel pblEmail;
+        private TextBox txtEmail;
+        private Label lblEmail;
+        private Button btnSaveProfile;
+        private Panel pnlName;
+        private TextBox txtName;
+        private Label lblName;
+        private Panel pnlLastName;
+        private TextBox txtLastName;
+        private Label lblLastName;
     }
 }
