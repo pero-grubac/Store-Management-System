@@ -28,6 +28,8 @@ namespace Prodavnica.Forms.HelperForms
         private List<string> languages;
         private string selectedLanguage;
         AdministratorForm form;
+        private bool isInitializing = true;
+
         public Settings(ref User user, ref AdministratorForm form)
         {
             InitializeComponent();
@@ -61,11 +63,13 @@ namespace Prodavnica.Forms.HelperForms
             languages = languageDAO.GetLanguages();
             cbLanguage.DataSource = languages;
             cbLanguage.SelectedItem = languageDAO.GetSelectedLanguageName(user.idLangugae);
+            isInitializing = false;
 
             lblNewTheme.Font = userFont;
 
             LoadSettings.ApplySettins(user, this);
             ChangeText();
+            
         }
         private void ChangeText()
         {
@@ -208,13 +212,16 @@ namespace Prodavnica.Forms.HelperForms
 
         private void cbLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string newLanguage = cbLanguage.SelectedItem.ToString();
-            List<Database.DTO.Language> list = languageDAO.GetAll();
-            int newId = list.FirstOrDefault(lang => lang.name == newLanguage)?.id ?? 1;
-            userDAO.ChangeLanguage(ref user, newId);
-            LoadSettings.ApplySettins(user, this);
-            ChangeText();
-            form.ChangeText();
+            if (!isInitializing)
+            {
+                string newLanguage = cbLanguage.SelectedItem.ToString();
+                List<Database.DTO.Language> list = languageDAO.GetAll();
+                int newId = list.FirstOrDefault(lang => lang.name == newLanguage)?.id ?? 1;
+                userDAO.ChangeLanguage(ref user, newId);
+                LoadSettings.ApplySettins(user, this);
+                ChangeText();
+                form.ChangeText();
+            }
         }
 
         private void btnSaveProfile_Click(object sender, EventArgs e)
