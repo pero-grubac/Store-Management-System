@@ -136,19 +136,19 @@
     <value>Сачувај</value>
   </data>
   <data name="btnSettings" xml:space="preserve">
-    <value>  Подешаванја</value>
+    <value>   Подешавања</value>
   </data>
   <data name="btnStaff" xml:space="preserve">
     <value>   Запослени</value>
   </data>
   <data name="btnStore" xml:space="preserve">
-    <value>  Продавница</value>
+    <value>   Продавница</value>
   </data>
   <data name="gbColor" xml:space="preserve">
     <value>Боја</value>
   </data>
   <data name="gbLanguage" xml:space="preserve">
-    <value>Јазик</value>
+    <value>Јeзик</value>
   </data>
   <data name="gbPassword" xml:space="preserve">
     <value>Лозинка</value>
@@ -169,13 +169,13 @@
     <value>Име</value>
   </data>
   <data name="lblNewPass" xml:space="preserve">
-    <value>Нова лозинка</value>
+    <value>Нова лозинка   </value>
   </data>
   <data name="lblNewTheme" xml:space="preserve">
     <value>Нова тема</value>
   </data>
   <data name="lblOldPass" xml:space="preserve">
-    <value>Стара лозинка</value>
+    <value>Стара лозинка   </value>
   </data>
   <data name="lblOldTheme" xml:space="preserve">
     <value>Тренутна тема</value>

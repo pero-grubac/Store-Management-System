@@ -30,7 +30,7 @@ namespace OnlineKupovinaGUI
             {
                 if (user.isAdmin)
                 {
-                    GUIUtil.ShowNextForm(this, new AdministratorForm(ref user));
+                    GUIUtil.ShowNextForm(this, new MainFOrm(ref user));
                 }
             }
             else

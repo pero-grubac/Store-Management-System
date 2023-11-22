@@ -136,7 +136,7 @@
     <value>Save Theme</value>
   </data>
   <data name="btnSettings" xml:space="preserve">
-    <value>  Settings</value>
+    <value>   Settings</value>
   </data>
   <data name="btnStaff" xml:space="preserve">
     <value>   Employee</value>
@@ -169,13 +169,13 @@
     <value>First name</value>
   </data>
   <data name="lblNewPass" xml:space="preserve">
-    <value>New password</value>
+    <value>New password   </value>
   </data>
   <data name="lblNewTheme" xml:space="preserve">
     <value>New theme</value>
   </data>
   <data name="lblOldPass" xml:space="preserve">
-    <value>Old password</value>
+    <value>Old password   </value>
   </data>
   <data name="lblOldTheme" xml:space="preserve">
     <value>Current theme</value>

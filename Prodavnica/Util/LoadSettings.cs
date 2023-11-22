@@ -37,13 +37,23 @@ namespace Prodavnica.Util
                 {
                     button.BackColor = color;
                 }
-                else if (control is TableLayoutPanel || control is GroupBox || control is Panel)
+                else if (control is TableLayoutPanel tbl)
                 {
-                    if (control is TableLayoutPanel tbl)
-                    {
-                        tbl.BackColor = color;
-                    }
+                    tbl.BackColor = color;
+                    ChangeColor(tbl.Controls, color);
+                }
+                else if (control is GroupBox || control is Panel)
+                {
                     ChangeColor(control.Controls, color);
+                }
+                else if (control is TabControl tabControl)
+                {
+                    tabControl.BackColor = color;
+                    foreach (TabPage tabPage in tabControl.TabPages)
+                    {
+                        tabPage.BackColor = color;
+                        ChangeColor(tabPage.Controls, color);
+                    }
                 }
             }
         }
@@ -59,7 +69,7 @@ namespace Prodavnica.Util
                 {
                     label.Font = font;
                 }
-                else if (control is TableLayoutPanel || control is GroupBox || control is Panel)
+                else if (control is TableLayoutPanel || control is GroupBox || control is Panel )
                 {
                     ChangeFont(control.Controls, font);
                 }

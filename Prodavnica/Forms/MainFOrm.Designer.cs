@@ -2,7 +2,7 @@
 
 namespace Prodavnica.Forms
 {
-    partial class AdministratorForm
+    partial class MainFOrm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Prodavnica.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdministratorForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFOrm));
             panelMenu = new Panel();
             btnSettings = new Button();
             btnLogOut = new Button();
@@ -159,10 +159,11 @@ namespace Prodavnica.Forms
             // 
             // lbl
             // 
+            lbl.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lbl.AutoSize = true;
             lbl.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl.ForeColor = Color.LightGray;
-            lbl.Location = new Point(61, 30);
+            lbl.Location = new Point(63, 28);
             lbl.Name = "lbl";
             lbl.Size = new Size(59, 25);
             lbl.TabIndex = 0;
@@ -182,6 +183,8 @@ namespace Prodavnica.Forms
             panelTitleBar.Name = "panelTitleBar";
             panelTitleBar.Size = new Size(872, 80);
             panelTitleBar.TabIndex = 2;
+            panelTitleBar.MouseDown += mouse_Down;
+            panelTitleBar.MouseMove += mouse_Move;
             // 
             // btnMin
             // 
@@ -276,7 +279,7 @@ namespace Prodavnica.Forms
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
-            // AdministratorForm
+            // MainFOrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -284,7 +287,8 @@ namespace Prodavnica.Forms
             Controls.Add(panelDesktop);
             Controls.Add(panelTitleBar);
             Controls.Add(panelMenu);
-            Name = "AdministratorForm";
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "MainFOrm";
             Text = "Administrator";
             panelMenu.ResumeLayout(false);
             panelLogo.ResumeLayout(false);

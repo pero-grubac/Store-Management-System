@@ -10,7 +10,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Prodavnica.Forms
 {
-    public partial class AdministratorForm : Form
+    public partial class MainFOrm : Form
     {
         private Button currentButton;
         private Random random;
@@ -18,7 +18,8 @@ namespace Prodavnica.Forms
         private Form activeForm;
         private User user;
         private UserDAOImpl userDAO = new UserDAOImpl();
-        public AdministratorForm(ref User user)
+        private Point mouseLocation;
+        public MainFOrm(ref User user)
         {
             InitializeComponent();
             random = new Random();
@@ -45,6 +46,7 @@ namespace Prodavnica.Forms
             btnLogOut.Text = LanguageHelper.GetString("btnLogOut");
             btnSettings.Text = LanguageHelper.GetString("btnSettings");
         }
+
         private void OpenChildForm(System.Windows.Forms.Form childForm, object btnSender, Button button)
         {
             if (activeForm != null)
@@ -99,7 +101,7 @@ namespace Prodavnica.Forms
 
         private void btnStore_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.HelperForms.Admin.Store(), sender, btnStore);
+            OpenChildForm(new Forms.HelperForms.Admin.Store(user), sender, btnStore);
         }
 
         private void btnStaff_Click(object sender, EventArgs e)
@@ -109,7 +111,7 @@ namespace Prodavnica.Forms
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            AdministratorForm parent = this;
+            MainFOrm parent = this;
             OpenChildForm(new Forms.HelperForms.Settings(ref user, ref parent), sender, btnSettings);
         }
 
@@ -123,6 +125,21 @@ namespace Prodavnica.Forms
             if (activeForm != null)
                 activeForm.Close();
             Reset();
+        }
+
+        private void mouse_Down(object sender, MouseEventArgs e)
+        {
+            mouseLocation = new Point(-e.X, -e.Y);
+        }
+
+        private void mouse_Move(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Point mousePosition = Control.MousePosition;
+                mousePosition.Offset(mouseLocation.X, mouseLocation.Y);
+                Location = mousePosition;
+            }
         }
     }
 }

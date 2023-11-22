@@ -34,18 +34,17 @@
             btnChangePass = new Button();
             pnlNewPass = new Panel();
             txtNewPass = new TextBox();
-            pnlOldPass2 = new Panel();
+            pnlNewPass2 = new Panel();
             lblNewPass = new Label();
-            txtOldPass2 = new TextBox();
+            txtNewPass2 = new TextBox();
             pnlOldPass1 = new Panel();
             txtOldPass = new TextBox();
-            lblOldPass2 = new Label();
+            lblNewPass2 = new Label();
             lblOldPass1 = new Label();
             gbColor = new GroupBox();
             btnSaveTheme = new Button();
             lblNewTheme = new Label();
             btnFont = new Button();
-            lblOldTheme = new Label();
             btnColor = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             gbLanguage = new GroupBox();
@@ -81,12 +80,12 @@
             gbPassword.Controls.Add(btnChangePass);
             gbPassword.Controls.Add(pnlNewPass);
             gbPassword.Controls.Add(txtNewPass);
-            gbPassword.Controls.Add(pnlOldPass2);
+            gbPassword.Controls.Add(pnlNewPass2);
             gbPassword.Controls.Add(lblNewPass);
-            gbPassword.Controls.Add(txtOldPass2);
+            gbPassword.Controls.Add(txtNewPass2);
             gbPassword.Controls.Add(pnlOldPass1);
             gbPassword.Controls.Add(txtOldPass);
-            gbPassword.Controls.Add(lblOldPass2);
+            gbPassword.Controls.Add(lblNewPass2);
             gbPassword.Controls.Add(lblOldPass1);
             gbPassword.Dock = DockStyle.Fill;
             gbPassword.Location = new Point(3, 3);
@@ -114,7 +113,7 @@
             // 
             pnlNewPass.BackColor = Color.FromArgb(0, 74, 173);
             pnlNewPass.ForeColor = Color.FromArgb(0, 74, 173);
-            pnlNewPass.Location = new Point(9, 134);
+            pnlNewPass.Location = new Point(9, 139);
             pnlNewPass.Name = "pnlNewPass";
             pnlNewPass.Size = new Size(365, 1);
             pnlNewPass.TabIndex = 15;
@@ -124,42 +123,42 @@
             txtNewPass.BorderStyle = BorderStyle.None;
             txtNewPass.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             txtNewPass.ForeColor = Color.FromArgb(0, 74, 173);
-            txtNewPass.Location = new Point(125, 106);
+            txtNewPass.Location = new Point(177, 114);
             txtNewPass.Multiline = true;
             txtNewPass.Name = "txtNewPass";
             txtNewPass.PasswordChar = '*';
-            txtNewPass.Size = new Size(252, 24);
+            txtNewPass.Size = new Size(200, 24);
             txtNewPass.TabIndex = 14;
             // 
-            // pnlOldPass2
+            // pnlNewPass2
             // 
-            pnlOldPass2.BackColor = Color.FromArgb(0, 74, 173);
-            pnlOldPass2.ForeColor = Color.FromArgb(0, 74, 173);
-            pnlOldPass2.Location = new Point(9, 89);
-            pnlOldPass2.Name = "pnlOldPass2";
-            pnlOldPass2.Size = new Size(365, 1);
-            pnlOldPass2.TabIndex = 12;
+            pnlNewPass2.BackColor = Color.FromArgb(0, 74, 173);
+            pnlNewPass2.ForeColor = Color.FromArgb(0, 74, 173);
+            pnlNewPass2.Location = new Point(9, 99);
+            pnlNewPass2.Name = "pnlNewPass2";
+            pnlNewPass2.Size = new Size(365, 1);
+            pnlNewPass2.TabIndex = 12;
             // 
             // lblNewPass
             // 
             lblNewPass.AutoSize = true;
-            lblNewPass.Location = new Point(6, 108);
+            lblNewPass.Location = new Point(9, 114);
             lblNewPass.Name = "lblNewPass";
             lblNewPass.Size = new Size(83, 20);
             lblNewPass.TabIndex = 13;
             lblNewPass.Text = "lblNewPass";
             // 
-            // txtOldPass2
+            // txtNewPass2
             // 
-            txtOldPass2.BorderStyle = BorderStyle.None;
-            txtOldPass2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            txtOldPass2.ForeColor = Color.FromArgb(0, 74, 173);
-            txtOldPass2.Location = new Point(125, 64);
-            txtOldPass2.Multiline = true;
-            txtOldPass2.Name = "txtOldPass2";
-            txtOldPass2.PasswordChar = '*';
-            txtOldPass2.Size = new Size(249, 24);
-            txtOldPass2.TabIndex = 12;
+            txtNewPass2.BorderStyle = BorderStyle.None;
+            txtNewPass2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            txtNewPass2.ForeColor = Color.FromArgb(0, 74, 173);
+            txtNewPass2.Location = new Point(177, 73);
+            txtNewPass2.Multiline = true;
+            txtNewPass2.Name = "txtNewPass2";
+            txtNewPass2.PasswordChar = '*';
+            txtNewPass2.Size = new Size(197, 24);
+            txtNewPass2.TabIndex = 12;
             // 
             // pnlOldPass1
             // 
@@ -175,26 +174,26 @@
             txtOldPass.BorderStyle = BorderStyle.None;
             txtOldPass.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             txtOldPass.ForeColor = Color.FromArgb(0, 74, 173);
-            txtOldPass.Location = new Point(125, 34);
+            txtOldPass.Location = new Point(177, 34);
             txtOldPass.Multiline = true;
             txtOldPass.Name = "txtOldPass";
             txtOldPass.PasswordChar = '*';
-            txtOldPass.Size = new Size(249, 24);
+            txtOldPass.Size = new Size(197, 24);
             txtOldPass.TabIndex = 10;
             // 
-            // lblOldPass2
+            // lblNewPass2
             // 
-            lblOldPass2.AutoSize = true;
-            lblOldPass2.Location = new Point(6, 70);
-            lblOldPass2.Name = "lblOldPass2";
-            lblOldPass2.Size = new Size(77, 20);
-            lblOldPass2.TabIndex = 2;
-            lblOldPass2.Text = "lblOldPass";
+            lblNewPass2.AutoSize = true;
+            lblNewPass2.Location = new Point(9, 77);
+            lblNewPass2.Name = "lblNewPass2";
+            lblNewPass2.Size = new Size(83, 20);
+            lblNewPass2.TabIndex = 2;
+            lblNewPass2.Text = "lblNewPass";
             // 
             // lblOldPass1
             // 
             lblOldPass1.AutoSize = true;
-            lblOldPass1.Location = new Point(6, 36);
+            lblOldPass1.Location = new Point(9, 36);
             lblOldPass1.Name = "lblOldPass1";
             lblOldPass1.Size = new Size(100, 20);
             lblOldPass1.TabIndex = 1;
@@ -207,7 +206,6 @@
             gbColor.Controls.Add(btnSaveTheme);
             gbColor.Controls.Add(lblNewTheme);
             gbColor.Controls.Add(btnFont);
-            gbColor.Controls.Add(lblOldTheme);
             gbColor.Controls.Add(btnColor);
             gbColor.Dock = DockStyle.Fill;
             gbColor.Location = new Point(3, 273);
@@ -234,11 +232,11 @@
             // 
             // lblNewTheme
             // 
-            lblNewTheme.Location = new Point(9, 148);
+            lblNewTheme.Location = new Point(129, 91);
             lblNewTheme.Name = "lblNewTheme";
             lblNewTheme.Size = new Size(115, 20);
             lblNewTheme.TabIndex = 3;
-            lblNewTheme.Text = "New password";
+            lblNewTheme.Text = "New theme";
             lblNewTheme.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnFont
@@ -254,17 +252,6 @@
             btnFont.Text = "button1";
             btnFont.UseVisualStyleBackColor = true;
             btnFont.Click += btnFont_Click;
-            // 
-            // lblOldTheme
-            // 
-            lblOldTheme.AutoSize = true;
-            lblOldTheme.Location = new Point(6, 90);
-            lblOldTheme.MinimumSize = new Size(77, 30);
-            lblOldTheme.Name = "lblOldTheme";
-            lblOldTheme.Size = new Size(77, 30);
-            lblOldTheme.TabIndex = 1;
-            lblOldTheme.Text = "label1";
-            lblOldTheme.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnColor
             // 
@@ -362,7 +349,7 @@
             txtLastName.BorderStyle = BorderStyle.None;
             txtLastName.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             txtLastName.ForeColor = Color.FromArgb(0, 74, 173);
-            txtLastName.Location = new Point(142, 173);
+            txtLastName.Location = new Point(160, 171);
             txtLastName.Multiline = true;
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(229, 24);
@@ -391,10 +378,10 @@
             txtName.BorderStyle = BorderStyle.None;
             txtName.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             txtName.ForeColor = Color.FromArgb(0, 74, 173);
-            txtName.Location = new Point(142, 140);
+            txtName.Location = new Point(160, 140);
             txtName.Multiline = true;
             txtName.Name = "txtName";
-            txtName.Size = new Size(229, 24);
+            txtName.Size = new Size(211, 24);
             txtName.TabIndex = 23;
             // 
             // lblName
@@ -434,10 +421,10 @@
             txtPhone.BorderStyle = BorderStyle.None;
             txtPhone.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             txtPhone.ForeColor = Color.FromArgb(0, 74, 173);
-            txtPhone.Location = new Point(142, 102);
+            txtPhone.Location = new Point(160, 102);
             txtPhone.Multiline = true;
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(229, 24);
+            txtPhone.Size = new Size(211, 24);
             txtPhone.TabIndex = 19;
             // 
             // lblPhone
@@ -463,10 +450,10 @@
             txtEmail.BorderStyle = BorderStyle.None;
             txtEmail.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             txtEmail.ForeColor = Color.FromArgb(0, 74, 173);
-            txtEmail.Location = new Point(142, 64);
+            txtEmail.Location = new Point(160, 64);
             txtEmail.Multiline = true;
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(229, 24);
+            txtEmail.Size = new Size(211, 24);
             txtEmail.TabIndex = 16;
             // 
             // lblEmail
@@ -492,10 +479,10 @@
             txtUsername.BorderStyle = BorderStyle.None;
             txtUsername.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             txtUsername.ForeColor = Color.FromArgb(0, 74, 173);
-            txtUsername.Location = new Point(142, 34);
+            txtUsername.Location = new Point(160, 34);
             txtUsername.Multiline = true;
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(229, 24);
+            txtUsername.Size = new Size(211, 24);
             txtUsername.TabIndex = 13;
             // 
             // lblUsername
@@ -532,18 +519,17 @@
         private FontDialog fontDialog;
         private GroupBox gbPassword;
         private Label lblOldPass1;
-        private Label lblOldPass2;
+        private Label lblNewPass2;
         private TextBox txtOldPass;
         private Panel pnlOldPass1;
-        private Panel pnlOldPass2;
-        private TextBox txtOldPass2;
+        private Panel pnlNewPass2;
+        private TextBox txtNewPass2;
         private Panel pnlNewPass;
         private TextBox txtNewPass;
         private Label lblNewPass;
         private Button btnChangePass;
         private GroupBox gbColor;
         private Button btnColor;
-        private Label lblOldTheme;
         private Button btnFont;
         private TableLayoutPanel tableLayoutPanel1;
         private Label lblNewTheme;

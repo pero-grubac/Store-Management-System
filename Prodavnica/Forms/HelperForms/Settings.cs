@@ -27,20 +27,20 @@ namespace Prodavnica.Forms.HelperForms
         private Font userFont;
         private List<string> languages;
         private string selectedLanguage;
-        AdministratorForm form;
+        MainFOrm form;
         private bool isInitializing = true;
 
-        public Settings(ref User user, ref AdministratorForm form)
+        public Settings(ref User user, ref MainFOrm form)
         {
             InitializeComponent();
             VisiblePassSettings(false);
             VisibleProfileSettings(false);
+            btnChangePass.Visible = false;
             this.form = form;
 
             txtOldPass.TextChanged += TextBox_TextChanged;
-            txtOldPass2.TextChanged += TextBox_TextChanged;
+            txtNewPass2.TextChanged += TextBox_TextChanged;
             gbPassword.Resize += gbPass_Resize;
-            gbColor.Resize += gbColor_Resize;
 
             txtUsername.Text = user.userName;
             txtUsername.TextChanged += TextBox_TextChanged;
@@ -54,12 +54,13 @@ namespace Prodavnica.Forms.HelperForms
             txtLastName.TextChanged += TextBox_TextChanged;
             gbProfile.Resize += gbProfile_Resize;
 
+            txtNewPass.TextChanged += TextBoxNewPass_TextChanged;
+            txtNewPass2.TextChanged += TextBoxNewPass_TextChanged;
+
             this.user = user;
             theme = themeDAO.FindById(user.idTheme);
             userColor = themeDAO.GetColor(theme);
             userFont = themeDAO.GetFont(theme);
-            lblOldTheme.BackColor = userColor;
-            lblOldTheme.Font = userFont;
             languages = languageDAO.GetLanguages();
             cbLanguage.DataSource = languages;
             cbLanguage.SelectedItem = languageDAO.GetSelectedLanguageName(user.idLangugae);
@@ -69,17 +70,26 @@ namespace Prodavnica.Forms.HelperForms
 
             LoadSettings.ApplySettins(user, this);
             ChangeText();
-            
+
         }
+
+        private void TextBoxNewPass_TextChanged(object? sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtNewPass.Text) && !string.IsNullOrWhiteSpace(txtNewPass2.Text) &&
+                txtNewPass.Text != txtOldPass.Text && txtNewPass2.Text == txtNewPass.Text)
+            {
+                btnChangePass.Visible = true;
+            }
+        }
+
         private void ChangeText()
         {
             gbColor.Text = LanguageHelper.GetString("gbColor");
             btnColor.Text = LanguageHelper.GetString("btnColor");
-            lblOldTheme.Text = LanguageHelper.GetString("lblOldTheme");
             gbPassword.Text = LanguageHelper.GetString("gbPassword");
             lblNewPass.Text = LanguageHelper.GetString("lblNewPass");
+            lblNewPass2.Text = LanguageHelper.GetString("lblNewPass");
             lblOldPass1.Text = LanguageHelper.GetString("lblOldPass");
-            lblOldPass2.Text = LanguageHelper.GetString("lblOldPass");
             btnChangePass.Text = LanguageHelper.GetString("btnChangePass");
             btnFont.Text = LanguageHelper.GetString("btnFont");
             lblNewTheme.Text = LanguageHelper.GetString("lblNewTheme");
@@ -95,11 +105,14 @@ namespace Prodavnica.Forms.HelperForms
         }
         private void VisiblePassSettings(bool hide)
         {
-            btnChangePass.Visible = hide;
+
             lblNewPass.Visible = hide;
             txtNewPass.Visible = hide;
+            lblNewPass2.Visible = hide;
             txtNewPass.Clear();
             pnlNewPass.Visible = hide;
+            pnlNewPass2.Visible = hide;
+            txtNewPass2.Visible = hide;
         }
         private void VisibleProfileSettings(bool hide)
         {
@@ -107,8 +120,7 @@ namespace Prodavnica.Forms.HelperForms
         }
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtOldPass.Text) && !string.IsNullOrWhiteSpace(txtOldPass2.Text)
-                && txtOldPass.Text == txtOldPass2.Text && Password.Verify(txtOldPass.Text, user.password))
+            if (!string.IsNullOrWhiteSpace(txtOldPass.Text) && Password.Verify(txtOldPass.Text, user.password))
             {
                 VisiblePassSettings(true);
             }
@@ -135,13 +147,19 @@ namespace Prodavnica.Forms.HelperForms
 
         private void btnChangePass_Click(object sender, EventArgs e)
         {
-            if (txtNewPass.Text != txtOldPass.Text)
+            if (!string.IsNullOrWhiteSpace(txtNewPass.Text) && !string.IsNullOrWhiteSpace(txtNewPass2.Text) &&
+              txtNewPass.Text != txtOldPass.Text && txtNewPass2.Text == txtNewPass.Text)
             {
                 userDAO.ChangePassword(ref user, txtNewPass.Text);
                 VisiblePassSettings(false);
                 txtOldPass.Clear();
-                txtOldPass2.Clear();
+                txtNewPass2.Clear();
                 txtNewPass.Clear();
+                btnChangePass.Visible = false;
+            }
+            else
+            {
+                btnChangePass.Visible = true;
             }
         }
 
@@ -168,12 +186,12 @@ namespace Prodavnica.Forms.HelperForms
         private void gbPass_Resize(object sender, EventArgs e)
         {
             txtOldPass.Width = gbPassword.ClientSize.Width - txtOldPass.Margin.Horizontal - lblOldPass1.Width - 32;
-            txtOldPass2.Width = gbPassword.ClientSize.Width - txtOldPass2.Margin.Horizontal - lblOldPass2.Width - 32;
+            txtNewPass2.Width = gbPassword.ClientSize.Width - txtNewPass2.Margin.Horizontal - lblNewPass2.Width - 32;
             txtNewPass.Width = gbPassword.ClientSize.Width - txtNewPass.Margin.Horizontal - lblNewPass.Width - 32;
 
             pnlOldPass1.Width = txtOldPass.Width + lblNewPass.Width;
             pnlNewPass.Width = txtOldPass.Width + lblNewPass.Width;
-            pnlOldPass2.Width = txtOldPass.Width + lblNewPass.Width;
+            pnlNewPass2.Width = txtOldPass.Width + lblNewPass.Width;
         }
         private void gbProfile_Resize(object sender, EventArgs e)
         {
@@ -190,10 +208,7 @@ namespace Prodavnica.Forms.HelperForms
             pnlName.Width = txtName.Width + lblName.Width;
 
         }
-        private void gbColor_Resize(object sender, EventArgs e)
-        {
-            lblOldTheme.Width = gbColor.ClientSize.Width;
-        }
+
 
         private void btnSaveTheme_Click(object sender, EventArgs e)
         {
@@ -234,11 +249,11 @@ namespace Prodavnica.Forms.HelperForms
             user.lastName = txtLastName.Text;
 
             userDAO.SaveUser(user);
-            txtUsername.Text= user.userName;
-            txtEmail.Text= user.email;
-            txtPhone.Text= user.phoneNumber;
-            txtName.Text= user.firstName;
-            txtLastName.Text= user.lastName;
+            txtUsername.Text = user.userName;
+            txtEmail.Text = user.email;
+            txtPhone.Text = user.phoneNumber;
+            txtName.Text = user.firstName;
+            txtLastName.Text = user.lastName;
             VisibleProfileSettings(false);
 
         }

@@ -136,13 +136,13 @@
     <value>Sačuvaj</value>
   </data>
   <data name="btnSettings" xml:space="preserve">
-    <value>  Podešavanja</value>
+    <value>   Podešavanja</value>
   </data>
   <data name="btnStaff" xml:space="preserve">
     <value>   Zaposleni</value>
   </data>
   <data name="btnStore" xml:space="preserve">
-    <value>  Prodavnica</value>
+    <value>   Prodavnica</value>
   </data>
   <data name="gbColor" xml:space="preserve">
     <value>Boja</value>
@@ -169,13 +169,13 @@
     <value>Ime</value>
   </data>
   <data name="lblNewPass" xml:space="preserve">
-    <value>Nova lozinka</value>
+    <value>Nova lozinka   </value>
   </data>
   <data name="lblNewTheme" xml:space="preserve">
     <value>Nova tema</value>
   </data>
   <data name="lblOldPass" xml:space="preserve">
-    <value>Stara lozinka</value>
+    <value>Stara lozinka   </value>
   </data>
   <data name="lblOldTheme" xml:space="preserve">
     <value>Trenutna tema</value>

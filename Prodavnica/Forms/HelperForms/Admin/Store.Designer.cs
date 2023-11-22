@@ -28,12 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Store";
+            tcShop = new TabControl();
+            tbManufacturer = new TabPage();
+            tpProcurement = new TabPage();
+            tcShop.SuspendLayout();
+            SuspendLayout();
+            // 
+            // tcShop
+            // 
+            tcShop.Controls.Add(tpProcurement);
+            tcShop.Controls.Add(tbManufacturer);
+            tcShop.Dock = DockStyle.Fill;
+            tcShop.Location = new Point(0, 0);
+            tcShop.Name = "tcShop";
+            tcShop.SelectedIndex = 0;
+            tcShop.Size = new Size(800, 450);
+            tcShop.TabIndex = 0;
+            // 
+            // tbManufacturer
+            // 
+            tbManufacturer.Location = new Point(4, 29);
+            tbManufacturer.Name = "tbManufacturer";
+            tbManufacturer.Padding = new Padding(3);
+            tbManufacturer.Size = new Size(792, 417);
+            tbManufacturer.TabIndex = 1;
+            tbManufacturer.Text = "Manufacturer";
+            tbManufacturer.UseVisualStyleBackColor = true;
+            // 
+            // tpProcurement
+            // 
+            tpProcurement.Location = new Point(4, 29);
+            tpProcurement.Name = "tpProcurement";
+            tpProcurement.Padding = new Padding(3);
+            tpProcurement.Size = new Size(792, 417);
+            tpProcurement.TabIndex = 2;
+            tpProcurement.Text = "Procurement";
+            tpProcurement.UseVisualStyleBackColor = true;
+            // 
+            // Store
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(tcShop);
+            Name = "Store";
+            Text = "Store";
+            tcShop.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private TabControl tcShop;
+        private TabPage tbManufacturer;
+        private TabPage tpProcurement;
     }
 }

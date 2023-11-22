@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Prodavnica.Database.DTO;
+using Prodavnica.Util;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,11 @@ namespace Prodavnica.Forms.HelperForms.Admin
 {
     public partial class Store : Form
     {
-        public Store()
+        private User user;
+        public Store(User user)
         {
             InitializeComponent();
+            LoadSettings.ApplySettins(user,this);
         }
     }
 }
