@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `prodavnica` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `prodavnica`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: localhost    Database: prodavnica
@@ -25,11 +23,20 @@ DROP TABLE IF EXISTS `dobavljac`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dobavljac` (
-  `idDobavljac` int NOT NULL,
+  `idDobavljac` int NOT NULL AUTO_INCREMENT,
   `Ime` varchar(45) NOT NULL,
   PRIMARY KEY (`idDobavljac`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dobavljac`
+--
+
+LOCK TABLES `dobavljac` WRITE;
+/*!40000 ALTER TABLE `dobavljac` DISABLE KEYS */;
+/*!40000 ALTER TABLE `dobavljac` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `jezik`
@@ -39,11 +46,21 @@ DROP TABLE IF EXISTS `jezik`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `jezik` (
-  `idJezik` int NOT NULL,
+  `idJezik` int NOT NULL AUTO_INCREMENT,
   `Naziv` varchar(45) NOT NULL,
   PRIMARY KEY (`idJezik`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jezik`
+--
+
+LOCK TABLES `jezik` WRITE;
+/*!40000 ALTER TABLE `jezik` DISABLE KEYS */;
+INSERT INTO `jezik` VALUES (1,'Srpski(Latinica)'),(2,'English'),(3,'Српски(Ћирилица)');
+/*!40000 ALTER TABLE `jezik` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `kategorija`
@@ -53,12 +70,22 @@ DROP TABLE IF EXISTS `kategorija`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kategorija` (
+  `idKategorija` int NOT NULL AUTO_INCREMENT,
   `Naziv` varchar(45) NOT NULL,
-  `idKategorija` int NOT NULL,
   PRIMARY KEY (`idKategorija`),
   UNIQUE KEY `Naziv_UNIQUE` (`Naziv`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kategorija`
+--
+
+LOCK TABLES `kategorija` WRITE;
+/*!40000 ALTER TABLE `kategorija` DISABLE KEYS */;
+INSERT INTO `kategorija` VALUES (1,'Meso');
+/*!40000 ALTER TABLE `kategorija` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `korisnik`
@@ -68,7 +95,7 @@ DROP TABLE IF EXISTS `korisnik`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `korisnik` (
-  `idKorisnik` int NOT NULL,
+  `idKorisnik` int NOT NULL AUTO_INCREMENT,
   `Ime` varchar(45) NOT NULL,
   `Prezime` varchar(45) NOT NULL,
   `KorisnickoIme` varchar(45) NOT NULL,
@@ -79,12 +106,23 @@ CREATE TABLE `korisnik` (
   `isAdmin` tinyint NOT NULL,
   `idTema` int NOT NULL,
   PRIMARY KEY (`idKorisnik`),
+  UNIQUE KEY `KorisnickoIme_UNIQUE` (`KorisnickoIme`),
   KEY `fk_Korisnik_Jezik1_idx` (`idJezik`),
   KEY `fk_Korisnik_Tema1_idx` (`idTema`),
   CONSTRAINT `fk_Korisnik_Jezik1` FOREIGN KEY (`idJezik`) REFERENCES `jezik` (`idJezik`),
   CONSTRAINT `fk_Korisnik_Tema1` FOREIGN KEY (`idTema`) REFERENCES `tema` (`idTema`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `korisnik`
+--
+
+LOCK TABLES `korisnik` WRITE;
+/*!40000 ALTER TABLE `korisnik` DISABLE KEYS */;
+INSERT INTO `korisnik` VALUES (1,'admin','adminovic','admin','$2a$11$.CE1.tVQlWfPlrK/pgWRBudp5S7gI2m.ActWIvGF2AJMGAx14dAm.',2,'1','admin@gmail.com',1,1);
+/*!40000 ALTER TABLE `korisnik` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `nabavka`
@@ -94,7 +132,7 @@ DROP TABLE IF EXISTS `nabavka`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `nabavka` (
-  `idNabavka` int NOT NULL,
+  `idNabavka` int NOT NULL AUTO_INCREMENT,
   `idDobavljač` int NOT NULL,
   `Kolicina` decimal(4,2) NOT NULL,
   `Cijena` decimal(4,2) NOT NULL,
@@ -103,6 +141,15 @@ CREATE TABLE `nabavka` (
   CONSTRAINT `fk_Dobavljač_has_PROIZVOD_Dobavljač1` FOREIGN KEY (`idDobavljač`) REFERENCES `dobavljac` (`idDobavljac`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `nabavka`
+--
+
+LOCK TABLES `nabavka` WRITE;
+/*!40000 ALTER TABLE `nabavka` DISABLE KEYS */;
+/*!40000 ALTER TABLE `nabavka` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `popust`
@@ -121,6 +168,15 @@ CREATE TABLE `popust` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `popust`
+--
+
+LOCK TABLES `popust` WRITE;
+/*!40000 ALTER TABLE `popust` DISABLE KEYS */;
+/*!40000 ALTER TABLE `popust` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `proizvod`
 --
 
@@ -128,23 +184,33 @@ DROP TABLE IF EXISTS `proizvod`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `proizvod` (
-  `idPROIZVOD` int NOT NULL AUTO_INCREMENT,
+  `idProizvod` int NOT NULL AUTO_INCREMENT,
   `Naziv` varchar(45) NOT NULL,
   `Cijena` decimal(4,2) NOT NULL,
   `Zalihe` int NOT NULL,
   `DatumIsteka` datetime NOT NULL,
   `BarKod` varchar(45) NOT NULL,
-  `idPROIZVODJAC` int NOT NULL,
+  `idProizvodjac` int NOT NULL,
   `Opis` varchar(255) DEFAULT NULL,
   `idKategorija` int NOT NULL,
-  PRIMARY KEY (`idPROIZVOD`),
+  PRIMARY KEY (`idProizvod`),
   UNIQUE KEY `BarKod_UNIQUE` (`BarKod`),
-  KEY `fk_PROIZVOD_PROIZVODJAC1_idx` (`idPROIZVODJAC`),
-  KEY `fk_PROIZVOD_KATEGORIJA1_idx` (`idKategorija`),
-  CONSTRAINT `fk_PROIZVOD_KATEGORIJA1` FOREIGN KEY (`idKategorija`) REFERENCES `kategorija` (`idKategorija`),
-  CONSTRAINT `fk_PROIZVOD_PROIZVODJAC1` FOREIGN KEY (`idPROIZVODJAC`) REFERENCES `proizvodjac` (`idPROIZVODJAC`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  KEY `fk_PROIZVOD_PROIZVODJAC1_idx` (`idProizvodjac`),
+  KEY `fk_PROIZVOD_KATEGORIJA_idx` (`idKategorija`),
+  CONSTRAINT `fk_PROIZVOD_KATEGORIJA` FOREIGN KEY (`idKategorija`) REFERENCES `kategorija` (`idKategorija`),
+  CONSTRAINT `fk_PROIZVOD_PROIZVODJAC1` FOREIGN KEY (`idProizvodjac`) REFERENCES `proizvodjac` (`idProizvodjac`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `proizvod`
+--
+
+LOCK TABLES `proizvod` WRITE;
+/*!40000 ALTER TABLE `proizvod` DISABLE KEYS */;
+INSERT INTO `proizvod` VALUES (1,'Pršut',50.00,50,'2026-06-21 00:00:00','1111',1,'Svinjski pršut',1);
+/*!40000 ALTER TABLE `proizvod` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `proizvod_has_popust`
@@ -154,15 +220,24 @@ DROP TABLE IF EXISTS `proizvod_has_popust`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `proizvod_has_popust` (
-  `idPROIZVOD` int NOT NULL,
+  `idProizvod` int NOT NULL,
   `idPopust` int NOT NULL,
-  PRIMARY KEY (`idPROIZVOD`,`idPopust`),
+  PRIMARY KEY (`idProizvod`,`idPopust`),
   KEY `fk_PROIZVOD_has_Popust_Popust1_idx` (`idPopust`),
-  KEY `fk_PROIZVOD_has_Popust_PROIZVOD1_idx` (`idPROIZVOD`),
+  KEY `fk_PROIZVOD_has_Popust_PROIZVOD1_idx` (`idProizvod`),
   CONSTRAINT `fk_PROIZVOD_has_Popust_Popust1` FOREIGN KEY (`idPopust`) REFERENCES `popust` (`idPopust`),
-  CONSTRAINT `fk_PROIZVOD_has_Popust_PROIZVOD1` FOREIGN KEY (`idPROIZVOD`) REFERENCES `proizvod` (`idPROIZVOD`)
+  CONSTRAINT `fk_PROIZVOD_has_Popust_PROIZVOD1` FOREIGN KEY (`idProizvod`) REFERENCES `proizvod` (`idProizvod`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `proizvod_has_popust`
+--
+
+LOCK TABLES `proizvod_has_popust` WRITE;
+/*!40000 ALTER TABLE `proizvod_has_popust` DISABLE KEYS */;
+/*!40000 ALTER TABLE `proizvod_has_popust` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `proizvodjac`
@@ -172,12 +247,22 @@ DROP TABLE IF EXISTS `proizvodjac`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `proizvodjac` (
-  `idPROIZVODJAC` int NOT NULL AUTO_INCREMENT,
+  `idProizvodjac` int NOT NULL AUTO_INCREMENT,
   `Ime` varchar(45) NOT NULL,
   `Email` varchar(45) NOT NULL,
-  PRIMARY KEY (`idPROIZVODJAC`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  PRIMARY KEY (`idProizvodjac`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `proizvodjac`
+--
+
+LOCK TABLES `proizvodjac` WRITE;
+/*!40000 ALTER TABLE `proizvodjac` DISABLE KEYS */;
+INSERT INTO `proizvodjac` VALUES (1,'Mesnica Tarana','tarana@gmail.com');
+/*!40000 ALTER TABLE `proizvodjac` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `racun`
@@ -187,11 +272,23 @@ DROP TABLE IF EXISTS `racun`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `racun` (
-  `idRacun` int NOT NULL,
+  `idRacun` int NOT NULL AUTO_INCREMENT,
   `DatumKupovine` datetime NOT NULL,
-  PRIMARY KEY (`idRacun`)
+  `idKorisnik` int NOT NULL,
+  PRIMARY KEY (`idRacun`),
+  KEY `fk_Racun_Korisnik1_idx` (`idKorisnik`),
+  CONSTRAINT `fk_Racun_Korisnik1` FOREIGN KEY (`idKorisnik`) REFERENCES `korisnik` (`idKorisnik`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `racun`
+--
+
+LOCK TABLES `racun` WRITE;
+/*!40000 ALTER TABLE `racun` DISABLE KEYS */;
+/*!40000 ALTER TABLE `racun` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `stavka`
@@ -202,16 +299,25 @@ DROP TABLE IF EXISTS `stavka`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `stavka` (
   `idRacun` int NOT NULL,
-  `idPROIZVOD` int NOT NULL,
+  `idProizvod` int NOT NULL,
   `Kolicina` decimal(4,2) NOT NULL,
   `Cijena` decimal(4,2) NOT NULL,
-  PRIMARY KEY (`idRacun`,`idPROIZVOD`),
-  KEY `fk_Racun_has_PROIZVOD_PROIZVOD1_idx` (`idPROIZVOD`),
+  PRIMARY KEY (`idRacun`,`idProizvod`),
+  KEY `fk_Racun_has_PROIZVOD_PROIZVOD1_idx` (`idProizvod`),
   KEY `fk_Racun_has_PROIZVOD_Racun1_idx` (`idRacun`),
-  CONSTRAINT `fk_Racun_has_PROIZVOD_PROIZVOD1` FOREIGN KEY (`idPROIZVOD`) REFERENCES `proizvod` (`idPROIZVOD`),
+  CONSTRAINT `fk_Racun_has_PROIZVOD_PROIZVOD1` FOREIGN KEY (`idProizvod`) REFERENCES `proizvod` (`idProizvod`),
   CONSTRAINT `fk_Racun_has_PROIZVOD_Racun1` FOREIGN KEY (`idRacun`) REFERENCES `racun` (`idRacun`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stavka`
+--
+
+LOCK TABLES `stavka` WRITE;
+/*!40000 ALTER TABLE `stavka` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stavka` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `stavka_nabvke`
@@ -223,14 +329,23 @@ DROP TABLE IF EXISTS `stavka_nabvke`;
 CREATE TABLE `stavka_nabvke` (
   `Nabavka_idNabavka` int NOT NULL,
   `Nabavka_idDobavljač` int NOT NULL,
-  `PROIZVOD_idPROIZVOD` int NOT NULL,
-  PRIMARY KEY (`Nabavka_idNabavka`,`Nabavka_idDobavljač`,`PROIZVOD_idPROIZVOD`),
-  KEY `fk_Nabavka_has_PROIZVOD_PROIZVOD1_idx` (`PROIZVOD_idPROIZVOD`),
+  `idProizvod` int NOT NULL,
+  PRIMARY KEY (`Nabavka_idNabavka`,`Nabavka_idDobavljač`,`idProizvod`),
+  KEY `fk_Nabavka_has_PROIZVOD_PROIZVOD1_idx` (`idProizvod`),
   KEY `fk_Nabavka_has_PROIZVOD_Nabavka1_idx` (`Nabavka_idNabavka`,`Nabavka_idDobavljač`),
   CONSTRAINT `fk_Nabavka_has_PROIZVOD_Nabavka1` FOREIGN KEY (`Nabavka_idNabavka`, `Nabavka_idDobavljač`) REFERENCES `nabavka` (`idNabavka`, `idDobavljač`),
-  CONSTRAINT `fk_Nabavka_has_PROIZVOD_PROIZVOD1` FOREIGN KEY (`PROIZVOD_idPROIZVOD`) REFERENCES `proizvod` (`idPROIZVOD`)
+  CONSTRAINT `fk_Nabavka_has_PROIZVOD_PROIZVOD1` FOREIGN KEY (`idProizvod`) REFERENCES `proizvod` (`idProizvod`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stavka_nabvke`
+--
+
+LOCK TABLES `stavka_nabvke` WRITE;
+/*!40000 ALTER TABLE `stavka_nabvke` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stavka_nabvke` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tema`
@@ -240,10 +355,26 @@ DROP TABLE IF EXISTS `tema`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tema` (
-  `idTema` int NOT NULL,
+  `idTema` int NOT NULL AUTO_INCREMENT,
+  `boja` varchar(45) NOT NULL,
+  `font` varchar(45) NOT NULL,
+  `veličina` varchar(45) NOT NULL,
+  `fontStil` varchar(45) DEFAULT NULL,
+  `strikeout` tinyint DEFAULT NULL,
+  `underline` tinyint DEFAULT NULL,
   PRIMARY KEY (`idTema`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tema`
+--
+
+LOCK TABLES `tema` WRITE;
+/*!40000 ALTER TABLE `tema` DISABLE KEYS */;
+INSERT INTO `tema` VALUES (1,'255,0,128,255','Segoe UI','11','Regular',0,0);
+/*!40000 ALTER TABLE `tema` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -254,4 +385,4 @@ CREATE TABLE `tema` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-18  8:14:06
+-- Dump completed on 2023-11-23 12:57:15
