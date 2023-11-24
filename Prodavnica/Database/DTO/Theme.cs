@@ -8,13 +8,13 @@ namespace Prodavnica.Database.DTO
 {
     public class Theme
     {
-        public int id {  get; set; }
-        public string colorName { get; set; }
-        public string fontName { get; set; }
-        public int size { get; set; }
-        public string fontStyle { get; set; }
-        public bool isStrikeout { get; set; }
-        public bool isUnderline { get; set; }
+        public int Id {  get; set; }
+        public string ColorName { get; set; }
+        public string FontName { get; set; }
+        public int Size { get; set; }
+        public string FontStyle { get; set; }
+        public bool IsStrikeout { get; set; }
+        public bool IsUnderline { get; set; }
 
     }
 }

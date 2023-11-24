@@ -25,7 +25,6 @@ namespace Prodavnica.Forms
             random = new Random();
             btnCloseChldForm.Visible = false;
             this.Text = string.Empty;
-            this.ControlBox = false;
             MaximizedBounds = Screen.FromHandle(Handle).WorkingArea;
             this.user = user;
             ChangeText();
@@ -70,7 +69,7 @@ namespace Prodavnica.Forms
             lblTitle.Text = LanguageHelper.GetString("lblTitle");
             currentButton = null;
             btnCloseChldForm.Visible = false;
-            user = userDAO.FindById(user.id);
+            user = userDAO.FindById(user.Id);
             ChangeText();
             panelTitleBar.BackColor = btnClose.BackColor;
         }

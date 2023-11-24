@@ -9,16 +9,16 @@ namespace Prodavnica.Database.DTO
 {
     public class User
     {
-        public int id { get; set; }
-        public String firstName { get; set; }
-        public String lastName { get; set; }
-        public String email { get; set; }
-        public String password { get; set; }
-        public String userName { get; set; }
-        public String phoneNumber { get; set; }
-        public Boolean isAdmin { get; set; }
-        public int idTheme { get; set; }
-        public int idLangugae { get; set; }
+        public int Id { get; set; }
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
+        public String Email { get; set; }
+        public String Password { get; set; }
+        public String UserName { get; set; }
+        public String PhoneNumber { get; set; }
+        public Boolean IsAdmin { get; set; }
+        public int IdTheme { get; set; }
+        public int IdLangugae { get; set; }
 
     }
 }

@@ -22,13 +22,13 @@ namespace Prodavnica.Database.Repository
                     string query = "UPDATE tema SET boja = @colorName, font = @fontName, veličina = @size, fontStil = @fontStyle, strikeout = @isStrikeout, underline = @isUnderline WHERE idTema = @themeId";
 
                     MySqlCommand cmd = new MySqlCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@colorName", newTheme.colorName);
-                    cmd.Parameters.AddWithValue("@fontName", newTheme.fontName);
-                    cmd.Parameters.AddWithValue("@size", newTheme.size);
-                    cmd.Parameters.AddWithValue("@fontStyle", newTheme.fontStyle);
-                    cmd.Parameters.AddWithValue("@isStrikeout", newTheme.isStrikeout);
-                    cmd.Parameters.AddWithValue("@isUnderline", newTheme.isUnderline);
-                    cmd.Parameters.AddWithValue("@themeId", newTheme.id);
+                    cmd.Parameters.AddWithValue("@colorName", newTheme.ColorName);
+                    cmd.Parameters.AddWithValue("@fontName", newTheme.FontName);
+                    cmd.Parameters.AddWithValue("@size", newTheme.Size);
+                    cmd.Parameters.AddWithValue("@fontStyle", newTheme.FontStyle);
+                    cmd.Parameters.AddWithValue("@isStrikeout", newTheme.IsStrikeout);
+                    cmd.Parameters.AddWithValue("@isUnderline", newTheme.IsUnderline);
+                    cmd.Parameters.AddWithValue("@themeId", newTheme.Id);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -56,13 +56,13 @@ namespace Prodavnica.Database.Repository
                         {
                             theme = new Theme
                             {
-                                id = Convert.ToInt32(reader["idTema"]),
-                                colorName = reader["boja"].ToString(),
-                                fontName = reader["font"].ToString(),
-                                size = Convert.ToInt32(reader["veličina"]),
-                                fontStyle = reader["fontStil"].ToString(),
-                                isStrikeout = Convert.ToBoolean(reader["strikeout"]),
-                                isUnderline = Convert.ToBoolean(reader["underline"])
+                                Id = Convert.ToInt32(reader["idTema"]),
+                                ColorName = reader["boja"].ToString(),
+                                FontName = reader["font"].ToString(),
+                                Size = Convert.ToInt32(reader["veličina"]),
+                                FontStyle = reader["fontStil"].ToString(),
+                                IsStrikeout = Convert.ToBoolean(reader["strikeout"]),
+                                IsUnderline = Convert.ToBoolean(reader["underline"])
                             };
                         }
                     }
@@ -77,7 +77,7 @@ namespace Prodavnica.Database.Repository
 
         public Color GetColor(Theme theme)
         {
-            string[] colorValues = theme.colorName.Split(',');
+            string[] colorValues = theme.ColorName.Split(',');
             if (colorValues.Length == 4)
             {
                 int alpha = int.Parse(colorValues[0]);
@@ -97,19 +97,19 @@ namespace Prodavnica.Database.Repository
             try
             {
                 FontStyle fs = FontStyle.Regular;
-                if (Enum.TryParse(theme.fontStyle, true, out FontStyle style))
+                if (Enum.TryParse(theme.FontStyle, true, out FontStyle style))
                 {
                     fs = style;
                 }
-                if (theme.isStrikeout)
+                if (theme.IsStrikeout)
                 {
                     fs |= FontStyle.Strikeout;
                 }
-                if (theme.isUnderline)
+                if (theme.IsUnderline)
                 {
                     fs |= FontStyle.Underline;
                 }
-                font = new Font(theme.fontName, theme.size, fs, GraphicsUnit.Point, 0, false);
+                font = new Font(theme.FontName, theme.Size, fs, GraphicsUnit.Point, 0, false);
 
             }
             catch (Exception ex)

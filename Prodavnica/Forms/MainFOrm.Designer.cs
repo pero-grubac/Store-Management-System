@@ -64,7 +64,7 @@ namespace Prodavnica.Forms
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(220, 575);
+            panelMenu.Size = new Size(220, 675);
             panelMenu.TabIndex = 1;
             // 
             // btnSettings
@@ -96,7 +96,7 @@ namespace Prodavnica.Forms
             btnLogOut.ForeColor = Color.Gainsboro;
             btnLogOut.Image = (Image)resources.GetObject("btnLogOut.Image");
             btnLogOut.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogOut.Location = new Point(0, 515);
+            btnLogOut.Location = new Point(0, 615);
             btnLogOut.Name = "btnLogOut";
             btnLogOut.Padding = new Padding(12, 0, 0, 0);
             btnLogOut.Size = new Size(220, 60);
@@ -181,7 +181,7 @@ namespace Prodavnica.Forms
             panelTitleBar.Dock = DockStyle.Top;
             panelTitleBar.Location = new Point(220, 0);
             panelTitleBar.Name = "panelTitleBar";
-            panelTitleBar.Size = new Size(872, 80);
+            panelTitleBar.Size = new Size(972, 80);
             panelTitleBar.TabIndex = 2;
             panelTitleBar.MouseDown += mouse_Down;
             panelTitleBar.MouseMove += mouse_Move;
@@ -195,7 +195,7 @@ namespace Prodavnica.Forms
             btnMin.FlatStyle = FlatStyle.Flat;
             btnMin.Font = new Font("Bookman Old Style", 15F, FontStyle.Regular, GraphicsUnit.Point);
             btnMin.ForeColor = Color.White;
-            btnMin.Location = new Point(767, 0);
+            btnMin.Location = new Point(867, 0);
             btnMin.Name = "btnMin";
             btnMin.Size = new Size(30, 37);
             btnMin.TabIndex = 7;
@@ -211,7 +211,7 @@ namespace Prodavnica.Forms
             btnMax.FlatStyle = FlatStyle.Flat;
             btnMax.Font = new Font("Book Antiqua", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnMax.ForeColor = Color.White;
-            btnMax.Location = new Point(803, 0);
+            btnMax.Location = new Point(903, 0);
             btnMax.Name = "btnMax";
             btnMax.Size = new Size(30, 37);
             btnMax.TabIndex = 6;
@@ -227,7 +227,7 @@ namespace Prodavnica.Forms
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Book Antiqua", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClose.ForeColor = Color.White;
-            btnClose.Location = new Point(839, 0);
+            btnClose.Location = new Point(939, 0);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(30, 37);
             btnClose.TabIndex = 5;
@@ -253,7 +253,7 @@ namespace Prodavnica.Forms
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Modern No. 20", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(370, 23);
+            lblTitle.Location = new Point(420, 23);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(111, 30);
             lblTitle.TabIndex = 0;
@@ -265,14 +265,14 @@ namespace Prodavnica.Forms
             panelDesktop.Dock = DockStyle.Fill;
             panelDesktop.Location = new Point(220, 80);
             panelDesktop.Name = "panelDesktop";
-            panelDesktop.Size = new Size(872, 495);
+            panelDesktop.Size = new Size(972, 595);
             panelDesktop.TabIndex = 3;
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources.laptop;
-            pictureBox1.Location = new Point(126, 6);
+            pictureBox1.Location = new Point(176, 56);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(512, 512);
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -283,11 +283,11 @@ namespace Prodavnica.Forms
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1092, 575);
+            ClientSize = new Size(1192, 675);
+            ControlBox = false;
             Controls.Add(panelDesktop);
             Controls.Add(panelTitleBar);
             Controls.Add(panelMenu);
-            FormBorderStyle = FormBorderStyle.None;
             Name = "MainFOrm";
             Text = "Administrator";
             panelMenu.ResumeLayout(false);

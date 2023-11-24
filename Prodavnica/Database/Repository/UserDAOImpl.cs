@@ -26,11 +26,11 @@ namespace Prodavnica.Database.Repository
                     string query = "UPDATE korisnik SET idJezik = @idLanguage WHERE idKorisnik = @id";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
                     cmd.Parameters.AddWithValue("@idLanguage", idLanguage);
-                    cmd.Parameters.AddWithValue("@id", user.id);
+                    cmd.Parameters.AddWithValue("@id", user.Id);
                     int rows = cmd.ExecuteNonQuery();
                     if (rows > 0)
                     {
-                        user.idLangugae = idLanguage;
+                        user.IdLangugae = idLanguage;
                     }
                 }
                 catch (Exception ex)
@@ -49,13 +49,13 @@ namespace Prodavnica.Database.Repository
                     connection.Open();
                     string query = "UPDATE korisnik SET Lozinka = @newPassword WHERE KorisnickoIme = @username";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@username", user.userName);
+                    cmd.Parameters.AddWithValue("@username", user.UserName);
                     string hash = Password.HashValue(newPassword);
                     cmd.Parameters.AddWithValue("@newPassword", hash);
                     int rows = cmd.ExecuteNonQuery();
                     if (rows > 0)
                     {
-                        user.password = hash;
+                        user.Password = hash;
                     }
                 }
                 catch (Exception ex)
@@ -83,16 +83,16 @@ namespace Prodavnica.Database.Repository
                         {
                             DTO.User user = new DTO.User
                             {
-                                id = reader.GetInt32("idKorisnik"),
-                                firstName = reader.GetString("Ime"),
-                                lastName = reader.GetString("Prezime"),
-                                email = reader.GetString("Email"),
-                                password = reader.GetString("Lozinka"),
-                                userName = reader.GetString("KorisnickoIme"),
-                                phoneNumber = reader.GetString("BrojTelefona"),
-                                isAdmin = reader.GetBoolean("isAdmin"),
-                                idTheme = reader.GetInt32("idTema"),
-                                idLangugae = reader.GetInt32("idJezik")
+                                Id = reader.GetInt32("idKorisnik"),
+                                FirstName = reader.GetString("Ime"),
+                                LastName = reader.GetString("Prezime"),
+                                Email = reader.GetString("Email"),
+                                Password = reader.GetString("Lozinka"),
+                                UserName = reader.GetString("KorisnickoIme"),
+                                PhoneNumber = reader.GetString("BrojTelefona"),
+                                IsAdmin = reader.GetBoolean("isAdmin"),
+                                IdTheme = reader.GetInt32("idTema"),
+                                IdLangugae = reader.GetInt32("idJezik")
                             };
                             return user;
                         }
@@ -124,20 +124,20 @@ namespace Prodavnica.Database.Repository
                         {
                             DTO.User user = new DTO.User
                             {
-                                id = reader.GetInt32("idKorisnik"),
-                                firstName = reader.GetString("Ime"),
-                                lastName = reader.GetString("Prezime"),
-                                email = reader.GetString("Email"),
-                                password = reader.GetString("Lozinka"),
-                                userName = reader.GetString("KorisnickoIme"),
-                                phoneNumber = reader.GetString("BrojTelefona"),
-                                isAdmin = reader.GetBoolean("isAdmin"),
-                                idTheme = reader.GetInt32("idTema"),
-                                idLangugae = reader.GetInt32("idJezik")
+                                Id = reader.GetInt32("idKorisnik"),
+                                FirstName = reader.GetString("Ime"),
+                                LastName = reader.GetString("Prezime"),
+                                Email = reader.GetString("Email"),
+                                Password = reader.GetString("Lozinka"),
+                                UserName = reader.GetString("KorisnickoIme"),
+                                PhoneNumber = reader.GetString("BrojTelefona"),
+                                IsAdmin = reader.GetBoolean("isAdmin"),
+                                IdTheme = reader.GetInt32("idTema"),
+                                IdLangugae = reader.GetInt32("idJezik")
                             };
 
 
-                            string storedPassword = user.password;
+                            string storedPassword = user.Password;
                             string hashedInputPassword = Password.HashValue(password);
 
                             if (Password.Verify(password, storedPassword))
@@ -167,12 +167,12 @@ namespace Prodavnica.Database.Repository
                     string query = "UPDATE korisnik SET KorisnickoIme = @newUsername, Ime = @newFirstName, Prezime = @newLastName, BrojTelefona = @newPhoneNumber, Email = @newEmail WHERE idKorisnik = @userId";
 
                     MySqlCommand command = new MySqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@newUsername", user.userName);
-                    command.Parameters.AddWithValue("@newFirstName", user.firstName);
-                    command.Parameters.AddWithValue("@newLastName", user.lastName);
-                    command.Parameters.AddWithValue("@newPhoneNumber", user.phoneNumber);
-                    command.Parameters.AddWithValue("@newEmail", user.email);
-                    command.Parameters.AddWithValue("@userId", user.id);
+                    command.Parameters.AddWithValue("@newUsername", user.UserName);
+                    command.Parameters.AddWithValue("@newFirstName", user.FirstName);
+                    command.Parameters.AddWithValue("@newLastName", user.LastName);
+                    command.Parameters.AddWithValue("@newPhoneNumber", user.PhoneNumber);
+                    command.Parameters.AddWithValue("@newEmail", user.Email);
+                    command.Parameters.AddWithValue("@userId", user.Id);
 
                     int rowsAffected = command.ExecuteNonQuery();   
                 }

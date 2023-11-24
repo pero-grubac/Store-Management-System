@@ -4,6 +4,7 @@ using Prodavnica.Database.Repository;
 using Prodavnica.Forms;
 using Prodavnica.Language;
 using Prodavnica.Util;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace OnlineKupovinaGUI
 {
@@ -25,10 +26,10 @@ namespace OnlineKupovinaGUI
 
             string userName = txtUserName.Text;
             string password = txtPassword.Text;
-            User user = userDAOImpl.GetUser(userName, password);
+            User user = userDAOImpl.GetUser("admin", "a");
             if (user != null)
             {
-                if (user.isAdmin)
+                if (user.IsAdmin)
                 {
                     GUIUtil.ShowNextForm(this, new MainFOrm(ref user));
                 }

@@ -42,15 +42,15 @@ namespace Prodavnica.Forms.HelperForms
             txtNewPass2.TextChanged += TextBox_TextChanged;
             gbPassword.Resize += gbPass_Resize;
 
-            txtUsername.Text = user.userName;
+            txtUsername.Text = user.UserName;
             txtUsername.TextChanged += TextBox_TextChanged;
-            txtEmail.Text = user.email;
+            txtEmail.Text = user.Email;
             txtEmail.TextChanged += TextBox_TextChanged;
-            txtPhone.Text = user.phoneNumber;
+            txtPhone.Text = user.PhoneNumber;
             txtPhone.TextChanged += TextBox_TextChanged;
-            txtName.Text = user.firstName;
+            txtName.Text = user.FirstName;
             txtName.TextChanged += TextBox_TextChanged;
-            txtLastName.Text = user.lastName;
+            txtLastName.Text = user.LastName;
             txtLastName.TextChanged += TextBox_TextChanged;
             gbProfile.Resize += gbProfile_Resize;
 
@@ -58,12 +58,12 @@ namespace Prodavnica.Forms.HelperForms
             txtNewPass2.TextChanged += TextBoxNewPass_TextChanged;
 
             this.user = user;
-            theme = themeDAO.FindById(user.idTheme);
+            theme = themeDAO.FindById(user.IdTheme);
             userColor = themeDAO.GetColor(theme);
             userFont = themeDAO.GetFont(theme);
             languages = languageDAO.GetLanguages();
             cbLanguage.DataSource = languages;
-            cbLanguage.SelectedItem = languageDAO.GetSelectedLanguageName(user.idLangugae);
+            cbLanguage.SelectedItem = languageDAO.GetSelectedLanguageName(user.IdLangugae);
             isInitializing = false;
 
             lblNewTheme.Font = userFont;
@@ -120,7 +120,7 @@ namespace Prodavnica.Forms.HelperForms
         }
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtOldPass.Text) && Password.Verify(txtOldPass.Text, user.password))
+            if (!string.IsNullOrWhiteSpace(txtOldPass.Text) && Password.Verify(txtOldPass.Text, user.Password))
             {
                 VisiblePassSettings(true);
             }
@@ -129,8 +129,8 @@ namespace Prodavnica.Forms.HelperForms
                 VisiblePassSettings(false);
             }
 
-            if (txtUsername.Text != user.userName || txtEmail.Text != user.email || txtPhone.Text != user.phoneNumber
-                || txtName.Text != user.firstName || txtLastName.Text != user.lastName)
+            if (txtUsername.Text != user.UserName || txtEmail.Text != user.Email || txtPhone.Text != user.PhoneNumber
+                || txtName.Text != user.FirstName || txtLastName.Text != user.LastName)
             {
                 if (!string.IsNullOrWhiteSpace(txtUsername.Text) && !string.IsNullOrWhiteSpace(txtEmail.Text)
                     && !string.IsNullOrWhiteSpace(txtPhone.Text) && !string.IsNullOrWhiteSpace(txtName.Text)
@@ -212,14 +212,14 @@ namespace Prodavnica.Forms.HelperForms
 
         private void btnSaveTheme_Click(object sender, EventArgs e)
         {
-            theme.colorName = $"{userColor.A},{userColor.R},{userColor.G},{userColor.B}";
+            theme.ColorName = $"{userColor.A},{userColor.R},{userColor.G},{userColor.B}";
 
-            theme.fontStyle = userFont.Style.ToString();
-            theme.isUnderline = userFont.Underline;
-            theme.isStrikeout = userFont.Strikeout;
-            theme.fontName = userFont.Name;
+            theme.FontStyle = userFont.Style.ToString();
+            theme.IsUnderline = userFont.Underline;
+            theme.IsStrikeout = userFont.Strikeout;
+            theme.FontName = userFont.Name;
             lblNewTheme.Font = userFont;
-            theme.size = (int)userFont.Size + 1;
+            theme.Size = (int)userFont.Size + 1;
             themeDAO.ChangeTheme(theme);
             LoadSettings.ApplySettins(user, this);
             form.ChangeText();
@@ -231,7 +231,7 @@ namespace Prodavnica.Forms.HelperForms
             {
                 string newLanguage = cbLanguage.SelectedItem.ToString();
                 List<Database.DTO.Language> list = languageDAO.GetAll();
-                int newId = list.FirstOrDefault(lang => lang.name == newLanguage)?.id ?? 1;
+                int newId = list.FirstOrDefault(lang => lang.Name == newLanguage)?.Id ?? 1;
                 userDAO.ChangeLanguage(ref user, newId);
                 LoadSettings.ApplySettins(user, this);
                 ChangeText();
@@ -242,18 +242,18 @@ namespace Prodavnica.Forms.HelperForms
         private void btnSaveProfile_Click(object sender, EventArgs e)
         {
 
-            user.userName = txtUsername.Text;
-            user.email = txtEmail.Text;
-            user.phoneNumber = txtPhone.Text;
-            user.firstName = txtName.Text;
-            user.lastName = txtLastName.Text;
+            user.UserName = txtUsername.Text;
+            user.Email = txtEmail.Text;
+            user.PhoneNumber = txtPhone.Text;
+            user.FirstName = txtName.Text;
+            user.LastName = txtLastName.Text;
 
             userDAO.SaveUser(user);
-            txtUsername.Text = user.userName;
-            txtEmail.Text = user.email;
-            txtPhone.Text = user.phoneNumber;
-            txtName.Text = user.firstName;
-            txtLastName.Text = user.lastName;
+            txtUsername.Text = user.UserName;
+            txtEmail.Text = user.Email;
+            txtPhone.Text = user.PhoneNumber;
+            txtName.Text = user.FirstName;
+            txtLastName.Text = user.LastName;
             VisibleProfileSettings(false);
 
         }

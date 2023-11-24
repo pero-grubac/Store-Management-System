@@ -28,8 +28,8 @@ namespace Prodavnica.Database.Repository
                         while (reader.Read())
                         {
                             DTO.Language language = new DTO.Language();
-                            language.id = Convert.ToInt32(reader["idJezik"]);
-                            language.name = reader["Naziv"].ToString();
+                            language.Id = Convert.ToInt32(reader["idJezik"]);
+                            language.Name = reader["Naziv"].ToString();
 
                             languages.Add(language);
                         }
@@ -62,8 +62,8 @@ namespace Prodavnica.Database.Repository
                     {
                         if (reader.Read())
                         {
-                            language.id = Convert.ToInt32(reader["idJezik"]);
-                            language.name = reader["Naziv"].ToString();
+                            language.Id = Convert.ToInt32(reader["idJezik"]);
+                            language.Name = reader["Naziv"].ToString();
                         }
                     }
                 }
@@ -78,7 +78,7 @@ namespace Prodavnica.Database.Repository
         public List<string> GetLanguages()
         {
             List<DTO.Language> languages = GetAll();
-            List<string> list = languages.Select(lang => lang.name).ToList();
+            List<string> list = languages.Select(lang => lang.Name).ToList();
             return list;
         }
 

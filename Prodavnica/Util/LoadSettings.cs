@@ -18,13 +18,13 @@ namespace Prodavnica.Util
         public static void ApplySettins(User user, Form form)
         {
             ThemeDAOImpl themeDAO = new ThemeDAOImpl();
-            Theme theme = themeDAO.FindById(user.id);
+            Theme theme = themeDAO.FindById(user.Id);
             Color color = themeDAO.GetColor(theme);
             Font font = themeDAO.GetFont(theme);
 
             LanguageDAOImpl languageDAO = new LanguageDAOImpl();
-            Database.DTO.Language language = languageDAO.GetLanguageById(user.idLangugae);
-            LanguageHelper.ChangeLanguage(language.name);
+            Database.DTO.Language language = languageDAO.GetLanguageById(user.IdLangugae);
+            LanguageHelper.ChangeLanguage(language.Name);
             ChangeColor(form.Controls, color);
             ChangeFont(form.Controls, font);
         }
@@ -55,6 +55,11 @@ namespace Prodavnica.Util
                         ChangeColor(tabPage.Controls, color);
                     }
                 }
+                else if(control is DataGridView dgv)
+                {
+                    dgv.DefaultCellStyle.SelectionBackColor = color;
+                    dgv.Refresh();
+                }
             }
         }
         private static void ChangeFont(Control.ControlCollection controls, Font font)
@@ -65,13 +70,23 @@ namespace Prodavnica.Util
                 {
                     button.Font = font;
                 }
-                if (control is Label label)
+                else if (control is TableLayoutPanel tbl)
                 {
-                    label.Font = font;
+                    tbl.Font = font;
+                    ChangeFont(tbl.Controls, font);
                 }
-                else if (control is TableLayoutPanel || control is GroupBox || control is Panel )
+                else if (control is GroupBox || control is Panel)
                 {
                     ChangeFont(control.Controls, font);
+                }
+                else if (control is TabControl tabControl)
+                {
+                    tabControl.Font = font;
+                    foreach (TabPage tabPage in tabControl.TabPages)
+                    {
+                        tabPage.Font = font;
+                        ChangeFont(tabPage.Controls, font);
+                    }
                 }
             }
         }

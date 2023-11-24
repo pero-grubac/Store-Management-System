@@ -15,7 +15,9 @@ namespace Prodavnica.Database.DTO
         public DateTime ExpirationDate { get; set; }
         public  string BarCode { get; set; }
         public int IdManufacturer { get; set; }
+        public string ManufacturerName { get; set; }
         public int IdCategory { get; set; }
+        public string CategoryName {  get; set; }
         public string Description { get; set; }
 
     }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Prodavnica.Database.DTO
 {
-    public class Language
+    public class Supplier
     {
+        public string Name { get; set; }
         public int Id { get; set; }
-        public string Name { get; set; }    
     }
 }
