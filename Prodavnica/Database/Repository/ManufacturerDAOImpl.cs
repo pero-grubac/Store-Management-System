@@ -13,6 +13,30 @@ namespace Prodavnica.Database.Repository
 {
     public class ManufacturerDAOImpl : IManufacturer
     {
+        public void AddManufactuer(Manufacturer manufacturer)
+        {
+            using (var connection = DBUtil.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "INSERT INTO proizvodjac (Ime, Email) VALUES (@Ime, @Email)";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Ime", manufacturer.Name);
+                    command.Parameters.AddWithValue("@Email", manufacturer.Email); 
+                    command.ExecuteNonQuery();
+                }
+                catch (DBException e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
         public List<Manufacturer> GetAll()
         {
             List<Manufacturer> manufacturers = new List<Manufacturer>();

@@ -16,7 +16,7 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup
     public partial class NewSupplier : Form
     {
         private User user;
-        private List<Supplier> suppliers;
+        private List<Database.DTO.Supplier> suppliers;
         private SupplierDAOImpl supplierDAO = new SupplierDAOImpl();
         public string name;
 
@@ -33,7 +33,7 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup
             if (!string.IsNullOrEmpty(txtName.Text) && !suppliers.Any(sup => sup.Name == txtName.Text))
             {
                 name = txtName.Text;
-                supplierDAO.AddSupplier(new Supplier()
+                supplierDAO.AddSupplier(new Database.DTO.Supplier()
                 {
                     Name = name
                 });

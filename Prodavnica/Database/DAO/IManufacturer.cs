@@ -10,5 +10,6 @@ namespace Prodavnica.Database.DAO
     public interface IManufacturer
     {
         public List<Manufacturer> GetAll();
+        public void AddManufactuer(Manufacturer manufacturer);
     }
 }

@@ -55,20 +55,26 @@
             btnAddBasket = new Button();
             gbCategoryName = new GroupBox();
             txtCategoryName = new TextBox();
+            btnOldCategory = new Button();
+            btnNewCategory = new Button();
             gbExpirationDate = new GroupBox();
             dateTimePicker1 = new DateTimePicker();
             gbDescription = new GroupBox();
             txtDescription = new TextBox();
-            gbSupplies = new GroupBox();
-            txtSupplies = new TextBox();
+            gbAmount = new GroupBox();
+            txtAmount = new TextBox();
             gbPurchasePrice = new GroupBox();
             txtPurchasePrice = new TextBox();
             gbPrice = new GroupBox();
             txtPrice = new TextBox();
             gbBarcode = new GroupBox();
             txtBarCode = new TextBox();
+            btnOldBarCode = new Button();
+            btnNewBarCode = new Button();
             gbProductName = new GroupBox();
             txtName = new TextBox();
+            btnOldName = new Button();
+            btnNewName = new Button();
             gbManufactuer = new GroupBox();
             txtManufactuer = new TextBox();
             btnOldMan = new Button();
@@ -95,7 +101,7 @@
             gbCategoryName.SuspendLayout();
             gbExpirationDate.SuspendLayout();
             gbDescription.SuspendLayout();
-            gbSupplies.SuspendLayout();
+            gbAmount.SuspendLayout();
             gbPurchasePrice.SuspendLayout();
             gbPrice.SuspendLayout();
             gbBarcode.SuspendLayout();
@@ -351,7 +357,7 @@
             tlpProcurement.Controls.Add(gbCategoryName, 0, 9);
             tlpProcurement.Controls.Add(gbExpirationDate, 0, 8);
             tlpProcurement.Controls.Add(gbDescription, 0, 7);
-            tlpProcurement.Controls.Add(gbSupplies, 0, 6);
+            tlpProcurement.Controls.Add(gbAmount, 0, 6);
             tlpProcurement.Controls.Add(gbPurchasePrice, 0, 5);
             tlpProcurement.Controls.Add(gbPrice, 0, 4);
             tlpProcurement.Controls.Add(gbBarcode, 0, 3);
@@ -403,6 +409,8 @@
             // 
             gbCategoryName.BackColor = Color.White;
             gbCategoryName.Controls.Add(txtCategoryName);
+            gbCategoryName.Controls.Add(btnOldCategory);
+            gbCategoryName.Controls.Add(btnNewCategory);
             gbCategoryName.Dock = DockStyle.Fill;
             gbCategoryName.Location = new Point(3, 696);
             gbCategoryName.Name = "gbCategoryName";
@@ -414,10 +422,29 @@
             // txtCategoryName
             // 
             txtCategoryName.BorderStyle = BorderStyle.FixedSingle;
-            txtCategoryName.Location = new Point(6, 31);
+            txtCategoryName.Location = new Point(206, 26);
             txtCategoryName.Name = "txtCategoryName";
-            txtCategoryName.Size = new Size(125, 27);
-            txtCategoryName.TabIndex = 3;
+            txtCategoryName.ReadOnly = true;
+            txtCategoryName.Size = new Size(416, 27);
+            txtCategoryName.TabIndex = 14;
+            // 
+            // btnOldCategory
+            // 
+            btnOldCategory.Location = new Point(106, 25);
+            btnOldCategory.Name = "btnOldCategory";
+            btnOldCategory.Size = new Size(94, 32);
+            btnOldCategory.TabIndex = 13;
+            btnOldCategory.Text = "Old";
+            btnOldCategory.UseVisualStyleBackColor = true;
+            // 
+            // btnNewCategory
+            // 
+            btnNewCategory.Location = new Point(6, 25);
+            btnNewCategory.Name = "btnNewCategory";
+            btnNewCategory.Size = new Size(94, 32);
+            btnNewCategory.TabIndex = 12;
+            btnNewCategory.Text = "New";
+            btnNewCategory.UseVisualStyleBackColor = true;
             // 
             // gbExpirationDate
             // 
@@ -455,28 +482,28 @@
             txtDescription.BorderStyle = BorderStyle.FixedSingle;
             txtDescription.Location = new Point(6, 26);
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(125, 27);
+            txtDescription.Size = new Size(616, 27);
             txtDescription.TabIndex = 2;
             // 
-            // gbSupplies
+            // gbAmount
             // 
-            gbSupplies.BackColor = Color.White;
-            gbSupplies.Controls.Add(txtSupplies);
-            gbSupplies.Dock = DockStyle.Fill;
-            gbSupplies.Location = new Point(3, 465);
-            gbSupplies.Name = "gbSupplies";
-            gbSupplies.Size = new Size(644, 71);
-            gbSupplies.TabIndex = 6;
-            gbSupplies.TabStop = false;
-            gbSupplies.Text = "Supplies";
+            gbAmount.BackColor = Color.White;
+            gbAmount.Controls.Add(txtAmount);
+            gbAmount.Dock = DockStyle.Fill;
+            gbAmount.Location = new Point(3, 465);
+            gbAmount.Name = "gbAmount";
+            gbAmount.Size = new Size(644, 71);
+            gbAmount.TabIndex = 6;
+            gbAmount.TabStop = false;
+            gbAmount.Text = "Amount";
             // 
-            // txtSupplies
+            // txtAmount
             // 
-            txtSupplies.BorderStyle = BorderStyle.FixedSingle;
-            txtSupplies.Location = new Point(6, 26);
-            txtSupplies.Name = "txtSupplies";
-            txtSupplies.Size = new Size(125, 27);
-            txtSupplies.TabIndex = 2;
+            txtAmount.BorderStyle = BorderStyle.FixedSingle;
+            txtAmount.Location = new Point(6, 26);
+            txtAmount.Name = "txtAmount";
+            txtAmount.Size = new Size(616, 27);
+            txtAmount.TabIndex = 2;
             // 
             // gbPurchasePrice
             // 
@@ -495,7 +522,7 @@
             txtPurchasePrice.BorderStyle = BorderStyle.FixedSingle;
             txtPurchasePrice.Location = new Point(6, 31);
             txtPurchasePrice.Name = "txtPurchasePrice";
-            txtPurchasePrice.Size = new Size(125, 27);
+            txtPurchasePrice.Size = new Size(616, 27);
             txtPurchasePrice.TabIndex = 2;
             // 
             // gbPrice
@@ -515,13 +542,15 @@
             txtPrice.BorderStyle = BorderStyle.FixedSingle;
             txtPrice.Location = new Point(6, 26);
             txtPrice.Name = "txtPrice";
-            txtPrice.Size = new Size(125, 27);
+            txtPrice.Size = new Size(616, 27);
             txtPrice.TabIndex = 2;
             // 
             // gbBarcode
             // 
             gbBarcode.BackColor = Color.White;
             gbBarcode.Controls.Add(txtBarCode);
+            gbBarcode.Controls.Add(btnOldBarCode);
+            gbBarcode.Controls.Add(btnNewBarCode);
             gbBarcode.Dock = DockStyle.Fill;
             gbBarcode.Location = new Point(3, 234);
             gbBarcode.Name = "gbBarcode";
@@ -533,15 +562,36 @@
             // txtBarCode
             // 
             txtBarCode.BorderStyle = BorderStyle.FixedSingle;
-            txtBarCode.Location = new Point(6, 26);
+            txtBarCode.Location = new Point(206, 27);
             txtBarCode.Name = "txtBarCode";
-            txtBarCode.Size = new Size(125, 27);
-            txtBarCode.TabIndex = 2;
+            txtBarCode.ReadOnly = true;
+            txtBarCode.Size = new Size(416, 27);
+            txtBarCode.TabIndex = 11;
+            // 
+            // btnOldBarCode
+            // 
+            btnOldBarCode.Location = new Point(106, 26);
+            btnOldBarCode.Name = "btnOldBarCode";
+            btnOldBarCode.Size = new Size(94, 32);
+            btnOldBarCode.TabIndex = 10;
+            btnOldBarCode.Text = "Old";
+            btnOldBarCode.UseVisualStyleBackColor = true;
+            // 
+            // btnNewBarCode
+            // 
+            btnNewBarCode.Location = new Point(6, 26);
+            btnNewBarCode.Name = "btnNewBarCode";
+            btnNewBarCode.Size = new Size(94, 32);
+            btnNewBarCode.TabIndex = 9;
+            btnNewBarCode.Text = "New";
+            btnNewBarCode.UseVisualStyleBackColor = true;
             // 
             // gbProductName
             // 
             gbProductName.BackColor = Color.White;
             gbProductName.Controls.Add(txtName);
+            gbProductName.Controls.Add(btnOldName);
+            gbProductName.Controls.Add(btnNewName);
             gbProductName.Dock = DockStyle.Fill;
             gbProductName.Location = new Point(3, 157);
             gbProductName.Name = "gbProductName";
@@ -553,10 +603,29 @@
             // txtName
             // 
             txtName.BorderStyle = BorderStyle.FixedSingle;
-            txtName.Location = new Point(6, 26);
+            txtName.Location = new Point(206, 27);
             txtName.Name = "txtName";
-            txtName.Size = new Size(125, 27);
-            txtName.TabIndex = 1;
+            txtName.ReadOnly = true;
+            txtName.Size = new Size(416, 27);
+            txtName.TabIndex = 8;
+            // 
+            // btnOldName
+            // 
+            btnOldName.Location = new Point(106, 26);
+            btnOldName.Name = "btnOldName";
+            btnOldName.Size = new Size(94, 32);
+            btnOldName.TabIndex = 7;
+            btnOldName.Text = "Old";
+            btnOldName.UseVisualStyleBackColor = true;
+            // 
+            // btnNewName
+            // 
+            btnNewName.Location = new Point(6, 26);
+            btnNewName.Name = "btnNewName";
+            btnNewName.Size = new Size(94, 32);
+            btnNewName.TabIndex = 6;
+            btnNewName.Text = "New";
+            btnNewName.UseVisualStyleBackColor = true;
             // 
             // gbManufactuer
             // 
@@ -578,7 +647,7 @@
             txtManufactuer.Location = new Point(206, 27);
             txtManufactuer.Name = "txtManufactuer";
             txtManufactuer.ReadOnly = true;
-            txtManufactuer.Size = new Size(153, 27);
+            txtManufactuer.Size = new Size(416, 27);
             txtManufactuer.TabIndex = 5;
             // 
             // btnOldMan
@@ -589,6 +658,7 @@
             btnOldMan.TabIndex = 4;
             btnOldMan.Text = "Old";
             btnOldMan.UseVisualStyleBackColor = true;
+            btnOldMan.Click += btnOldMan_Click;
             // 
             // btnNewMan
             // 
@@ -598,6 +668,7 @@
             btnNewMan.TabIndex = 3;
             btnNewMan.Text = "New";
             btnNewMan.UseVisualStyleBackColor = true;
+            btnNewMan.Click += btnNewMan_Click;
             // 
             // gbSupplier
             // 
@@ -731,8 +802,8 @@
             gbExpirationDate.ResumeLayout(false);
             gbDescription.ResumeLayout(false);
             gbDescription.PerformLayout();
-            gbSupplies.ResumeLayout(false);
-            gbSupplies.PerformLayout();
+            gbAmount.ResumeLayout(false);
+            gbAmount.PerformLayout();
             gbPurchasePrice.ResumeLayout(false);
             gbPurchasePrice.PerformLayout();
             gbPrice.ResumeLayout(false);
@@ -778,7 +849,7 @@
         private GroupBox gbCategoryName;
         private GroupBox gbExpirationDate;
         private GroupBox gbDescription;
-        private GroupBox gbSupplies;
+        private GroupBox gbAmount;
         private GroupBox gbPurchasePrice;
         private GroupBox gbPrice;
         private GroupBox gbBarcode;
@@ -789,12 +860,9 @@
         private Button btnOldSup;
         private Button btnNewSup;
         private TextBox txtDescription;
-        private TextBox txtSupplies;
+        private TextBox txtAmount;
         private TextBox txtPurchasePrice;
         private TextBox txtPrice;
-        private TextBox txtBarCode;
-        private TextBox txtName;
-        private TextBox txtCategoryName;
         private TextBox txtManufactuer;
         private Button btnOldMan;
         private Button btnNewMan;
@@ -806,5 +874,14 @@
         private TableLayoutPanel tlpBasket;
         private GroupBox gbRemove;
         private TextBox txt;
+        private TextBox txtName;
+        private Button btnOldName;
+        private Button btnNewName;
+        private TextBox txtBarCode;
+        private Button btnOldBarCode;
+        private Button btnNewBarCode;
+        private TextBox txtCategoryName;
+        private Button btnOldCategory;
+        private Button btnNewCategory;
     }
 }

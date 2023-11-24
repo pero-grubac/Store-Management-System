@@ -2,6 +2,7 @@
 using Prodavnica.Database.DTO;
 using Prodavnica.Database.Repository;
 using Prodavnica.Forms.HelperForms.Admin.Popup;
+using Prodavnica.Forms.HelperForms.Admin.Popup.Manufactuer;
 using Prodavnica.Util;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace Prodavnica.Forms.HelperForms.Admin
 
 
         private string selectedSupplier;
+        private string selectedManufactuer;
         public Store(User user)
         {
             InitializeComponent();
@@ -48,7 +50,7 @@ namespace Prodavnica.Forms.HelperForms.Admin
             gbPrice.Resize += gbPrice_Resize;
             gbProductName.Resize += gbProductName_Resize;
             gbPurchasePrice.Resize += gbPurchasePrice_Resize;
-            gbSupplies.Resize += gbSupplies_Resize;
+            gbAmount.Resize += gbSupplies_Resize;
 
             btnAddBasket.Enabled = false;
             btnAddBasket.Visible = false;
@@ -62,7 +64,7 @@ namespace Prodavnica.Forms.HelperForms.Admin
 
         private void gbSupplies_Resize(object? sender, EventArgs e)
         {
-            txtSupplies.Width = gbSupplies.ClientSize.Width - SystemInformation.VerticalScrollBarWidth;
+            txtAmount.Width = gbAmount.ClientSize.Width - SystemInformation.VerticalScrollBarWidth;
         }
 
         private void gbPurchasePrice_Resize(object? sender, EventArgs e)
@@ -72,7 +74,8 @@ namespace Prodavnica.Forms.HelperForms.Admin
 
         private void gbProductName_Resize(object? sender, EventArgs e)
         {
-            txtName.Width = gbProductName.ClientSize.Width - SystemInformation.VerticalScrollBarWidth;
+            int totalButtonWidth = btnNewName.Width + btnOldName.Width + btnNewName.Margin.Horizontal + btnOldName.Margin.Horizontal;
+            txtName.Width = gbProductName.ClientSize.Width - totalButtonWidth - SystemInformation.VerticalScrollBarWidth;
         }
 
         private void gbPrice_Resize(object? sender, EventArgs e)
@@ -87,12 +90,14 @@ namespace Prodavnica.Forms.HelperForms.Admin
 
         private void gbBarcode_Resize(object? sender, EventArgs e)
         {
-            txtBarCode.Width = gbBarcode.ClientSize.Width - SystemInformation.VerticalScrollBarWidth;
+            int totalButtonWidth = btnNewBarCode.Width + btnOldBarCode.Width + btnNewBarCode.Margin.Horizontal + btnOldBarCode.Margin.Horizontal;
+            txtBarCode.Width = gbBarcode.ClientSize.Width - totalButtonWidth - SystemInformation.VerticalScrollBarWidth;
         }
 
         private void gbCategoryName_Resize(object? sender, EventArgs e)
         {
-            txtCategoryName.Width = gbCategoryName.ClientSize.Width - SystemInformation.VerticalScrollBarWidth;
+            int totalButtonWidth = btnNewCategory.Width + btnOldCategory.Width + btnNewCategory.Margin.Horizontal + btnOldCategory.Margin.Horizontal;
+            txtCategoryName.Width = gbCategoryName.ClientSize.Width - totalButtonWidth - SystemInformation.VerticalScrollBarWidth;
         }
 
         private void gbManufactuer_Resize(object? sender, EventArgs e)
@@ -339,8 +344,46 @@ namespace Prodavnica.Forms.HelperForms.Admin
         private void txtSupplier_TextChanged(object sender, EventArgs e)
         {
             btnAddBasket.Visible = true;
-            btnAddBasket.Enabled=true;
+            btnAddBasket.Enabled = true;
+        }
 
+        private void btnNewMan_Click(object sender, EventArgs e)
+        {
+            using (NewManufactuer newManufactuer = new NewManufactuer(user))
+            {
+                if (newManufactuer.ShowDialog() == DialogResult.OK)
+                {
+                    selectedManufactuer = newManufactuer.name;
+                    if (selectedManufactuer != null)
+                    {
+                        txtManufactuer.Text = selectedManufactuer;
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Operation canceled.");
+                }
+            }
+        }
+
+        private void btnOldMan_Click(object sender, EventArgs e)
+        {
+            using (SelectManufactuer selectManufactuer = new SelectManufactuer(user))
+            {
+                if (selectManufactuer.ShowDialog() == DialogResult.OK)
+                {
+                    selectedManufactuer = selectManufactuer.selectManufactuer   ;
+                    if (selectManufactuer != null)
+                    {
+                        txtManufactuer.Text = selectedManufactuer;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Operation canceled.");
+                }
+            }
         }
     }
 }

@@ -12,23 +12,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Prodavnica.Forms.HelperForms.Admin.Popup
+namespace Prodavnica.Forms.HelperForms.Admin.Popup.Manufactuer
 {
-    public partial class SelectSupplier : Form
+    public partial class SelectManufactuer : Form
     {
         private User user;
-        private List<Supplier> suppliers;
-        private SupplierDAOImpl supplierDAO = new SupplierDAOImpl();
-        public string selectSupplier;
-        public SelectSupplier(User user)
+        private List<Database.DTO.Manufacturer> manufacturers;
+        private ManufacturerDAOImpl manufacturerDAO = new ManufacturerDAOImpl();
+        public string selectManufactuer;
+        public SelectManufactuer(User user)
         {
             InitializeComponent();
             this.user = user;
             LoadSettings.ApplySettins(user, this);
-            suppliers = supplierDAO.GetAll();
-            foreach (Supplier supplier in suppliers)
+            manufacturers = manufacturerDAO.GetAll();
+            foreach (Database.DTO.Manufacturer manufacturer in manufacturers)
             {
-                cbSupplier.Items.Add(supplier.Name);
+                cbSupplier.Items.Add(manufacturer.Name);
             }
         }
 
@@ -36,18 +36,18 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup
         {
             if (cbSupplier.SelectedItem != null)
             {
-                selectSupplier = cbSupplier.SelectedItem?.ToString();
+                selectManufactuer = cbSupplier.SelectedItem?.ToString();
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Please select a supplier.");
+                MessageBox.Show("Please select a manufacturer.");
             }
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            selectSupplier = null;
+            selectManufactuer = null;
             this.Close();
         }
     }
