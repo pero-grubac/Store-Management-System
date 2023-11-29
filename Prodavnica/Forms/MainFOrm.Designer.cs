@@ -33,9 +33,11 @@ namespace Prodavnica.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFOrm));
             panelMenu = new Panel();
             btnSettings = new Button();
+            btnSupplier = new Button();
+            btnProducer = new Button();
             btnLogOut = new Button();
-            btnStaff = new Button();
             btnStore = new Button();
+            btnStaff = new Button();
             panelLogo = new Panel();
             lbl = new Label();
             panelTitleBar = new Panel();
@@ -57,9 +59,11 @@ namespace Prodavnica.Forms
             // 
             panelMenu.BackColor = Color.FromArgb(51, 51, 76);
             panelMenu.Controls.Add(btnSettings);
+            panelMenu.Controls.Add(btnSupplier);
+            panelMenu.Controls.Add(btnProducer);
             panelMenu.Controls.Add(btnLogOut);
-            panelMenu.Controls.Add(btnStaff);
             panelMenu.Controls.Add(btnStore);
+            panelMenu.Controls.Add(btnStaff);
             panelMenu.Controls.Add(panelLogo);
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 0);
@@ -74,18 +78,58 @@ namespace Prodavnica.Forms
             btnSettings.FlatStyle = FlatStyle.Flat;
             btnSettings.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnSettings.ForeColor = Color.Gainsboro;
-            btnSettings.Image = (Image)resources.GetObject("btnSettings.Image");
+            btnSettings.Image = Properties.Resources.setting;
             btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSettings.Location = new Point(0, 200);
+            btnSettings.Location = new Point(0, 320);
             btnSettings.Name = "btnSettings";
             btnSettings.Padding = new Padding(12, 0, 0, 0);
             btnSettings.Size = new Size(220, 60);
-            btnSettings.TabIndex = 7;
-            btnSettings.Text = "  Settings";
+            btnSettings.TabIndex = 9;
+            btnSettings.Text = "   Settings";
             btnSettings.TextAlign = ContentAlignment.MiddleLeft;
             btnSettings.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSettings.UseVisualStyleBackColor = true;
             btnSettings.Click += btnSettings_Click;
+            // 
+            // btnSupplier
+            // 
+            btnSupplier.Dock = DockStyle.Top;
+            btnSupplier.FlatAppearance.BorderSize = 0;
+            btnSupplier.FlatStyle = FlatStyle.Flat;
+            btnSupplier.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSupplier.ForeColor = Color.Gainsboro;
+            btnSupplier.Image = Properties.Resources.fast_delivery2;
+            btnSupplier.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSupplier.Location = new Point(0, 260);
+            btnSupplier.Name = "btnSupplier";
+            btnSupplier.Padding = new Padding(12, 0, 0, 0);
+            btnSupplier.Size = new Size(220, 60);
+            btnSupplier.TabIndex = 8;
+            btnSupplier.Text = "   Procurement";
+            btnSupplier.TextAlign = ContentAlignment.MiddleLeft;
+            btnSupplier.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnSupplier.UseVisualStyleBackColor = true;
+            btnSupplier.Click += btnProcurement_Click;
+            // 
+            // btnProducer
+            // 
+            btnProducer.Dock = DockStyle.Top;
+            btnProducer.FlatAppearance.BorderSize = 0;
+            btnProducer.FlatStyle = FlatStyle.Flat;
+            btnProducer.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnProducer.ForeColor = Color.Gainsboro;
+            btnProducer.Image = Properties.Resources.product_management;
+            btnProducer.ImageAlign = ContentAlignment.MiddleLeft;
+            btnProducer.Location = new Point(0, 200);
+            btnProducer.Name = "btnProducer";
+            btnProducer.Padding = new Padding(12, 0, 0, 0);
+            btnProducer.Size = new Size(220, 60);
+            btnProducer.TabIndex = 7;
+            btnProducer.Text = "  Producer";
+            btnProducer.TextAlign = ContentAlignment.MiddleLeft;
+            btnProducer.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnProducer.UseVisualStyleBackColor = true;
+            btnProducer.Click += btnProducer_Click;
             // 
             // btnLogOut
             // 
@@ -107,26 +151,6 @@ namespace Prodavnica.Forms
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
             // 
-            // btnStaff
-            // 
-            btnStaff.Dock = DockStyle.Top;
-            btnStaff.FlatAppearance.BorderSize = 0;
-            btnStaff.FlatStyle = FlatStyle.Flat;
-            btnStaff.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnStaff.ForeColor = Color.Gainsboro;
-            btnStaff.Image = (Image)resources.GetObject("btnStaff.Image");
-            btnStaff.ImageAlign = ContentAlignment.MiddleLeft;
-            btnStaff.Location = new Point(0, 140);
-            btnStaff.Name = "btnStaff";
-            btnStaff.Padding = new Padding(12, 0, 0, 0);
-            btnStaff.Size = new Size(220, 60);
-            btnStaff.TabIndex = 2;
-            btnStaff.Text = "   Emlpyee";
-            btnStaff.TextAlign = ContentAlignment.MiddleLeft;
-            btnStaff.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnStaff.UseVisualStyleBackColor = true;
-            btnStaff.Click += btnStaff_Click;
-            // 
             // btnStore
             // 
             btnStore.Dock = DockStyle.Top;
@@ -134,18 +158,38 @@ namespace Prodavnica.Forms
             btnStore.FlatStyle = FlatStyle.Flat;
             btnStore.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnStore.ForeColor = Color.Gainsboro;
-            btnStore.Image = (Image)resources.GetObject("btnStore.Image");
+            btnStore.Image = Properties.Resources.store;
             btnStore.ImageAlign = ContentAlignment.MiddleLeft;
-            btnStore.Location = new Point(0, 80);
+            btnStore.Location = new Point(0, 140);
             btnStore.Name = "btnStore";
             btnStore.Padding = new Padding(12, 0, 0, 0);
             btnStore.Size = new Size(220, 60);
-            btnStore.TabIndex = 1;
-            btnStore.Text = "   Shop";
+            btnStore.TabIndex = 2;
+            btnStore.Text = "   Store";
             btnStore.TextAlign = ContentAlignment.MiddleLeft;
             btnStore.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnStore.UseVisualStyleBackColor = true;
             btnStore.Click += btnStore_Click;
+            // 
+            // btnStaff
+            // 
+            btnStaff.Dock = DockStyle.Top;
+            btnStaff.FlatAppearance.BorderSize = 0;
+            btnStaff.FlatStyle = FlatStyle.Flat;
+            btnStaff.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnStaff.ForeColor = Color.Gainsboro;
+            btnStaff.Image = Properties.Resources.user;
+            btnStaff.ImageAlign = ContentAlignment.MiddleLeft;
+            btnStaff.Location = new Point(0, 80);
+            btnStaff.Name = "btnStaff";
+            btnStaff.Padding = new Padding(12, 0, 0, 0);
+            btnStaff.Size = new Size(220, 60);
+            btnStaff.TabIndex = 1;
+            btnStaff.Text = "   Employee";
+            btnStaff.TextAlign = ContentAlignment.MiddleLeft;
+            btnStaff.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnStaff.UseVisualStyleBackColor = true;
+            btnStaff.Click += btnStaff_Click;
             // 
             // panelLogo
             // 
@@ -305,8 +349,8 @@ namespace Prodavnica.Forms
 
         private Panel panelMenu;
         private Button btnLogOut;
-        private Button btnStaff;
         private Button btnStore;
+        private Button btnStaff;
         private Panel panelLogo;
         private Label lbl;
         private Panel panelTitleBar;
@@ -317,6 +361,8 @@ namespace Prodavnica.Forms
         private Button btnMax;
         private Button btnClose;
         private PictureBox pictureBox1;
+        private Button btnProducer;
         private Button btnSettings;
+        private Button btnSupplier;
     }
 }

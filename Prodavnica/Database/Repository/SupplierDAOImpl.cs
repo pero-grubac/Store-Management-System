@@ -52,6 +52,7 @@ namespace Prodavnica.Database.Repository
                         {
                             Supplier supplier = new Supplier();
                             supplier.Name = reader.GetString("Ime");
+                            supplier.Email = reader.GetString("Email");
                             supplier.Id = reader.GetInt32("idDobavljac");
                             suppliers.Add(supplier);
                         }

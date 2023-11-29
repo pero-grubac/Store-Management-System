@@ -117,17 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="amount" xml:space="preserve">
+    <value>Количина</value>
+  </data>
+  <data name="barcode" xml:space="preserve">
+    <value>Бар код</value>
+  </data>
+  <data name="btnAdd" xml:space="preserve">
+    <value>Додај</value>
+  </data>
+  <data name="btnBuy" xml:space="preserve">
+    <value>Купи</value>
+  </data>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
   <data name="btnChangePass" xml:space="preserve">
     <value>Сачувај</value>
   </data>
   <data name="btnColor" xml:space="preserve">
     <value>Боја</value>
   </data>
+  <data name="btnDelete" xml:space="preserve">
+    <value>Обриши</value>
+  </data>
+  <data name="btnDeleteItem" xml:space="preserve">
+    <value>Обриши ставку</value>
+  </data>
   <data name="btnFont" xml:space="preserve">
     <value>Фонт</value>
   </data>
   <data name="btnLogOut" xml:space="preserve">
     <value>   Одјава</value>
+  </data>
+  <data name="btnProducer" xml:space="preserve">
+    <value>   Произвођач</value>
+  </data>
+  <data name="btnSave" xml:space="preserve">
+    <value>Сачувај</value>
   </data>
   <data name="btnSaveProfile" xml:space="preserve">
     <value>Сачувај</value>
@@ -144,6 +171,30 @@
   <data name="btnStore" xml:space="preserve">
     <value>   Продавница</value>
   </data>
+  <data name="btnSupplier" xml:space="preserve">
+    <value>   Добављач</value>
+  </data>
+  <data name="btnUpdate" xml:space="preserve">
+    <value>Ажурирај</value>
+  </data>
+  <data name="category" xml:space="preserve">
+    <value>Категорија</value>
+  </data>
+  <data name="confirmation" xml:space="preserve">
+    <value>Потврда</value>
+  </data>
+  <data name="create" xml:space="preserve">
+    <value>Креирај</value>
+  </data>
+  <data name="deleteConfirmation" xml:space="preserve">
+    <value>Да ли сте сигурни да желите да обришете ово?</value>
+  </data>
+  <data name="description" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="expirationDate" xml:space="preserve">
+    <value>Рок трајања</value>
+  </data>
   <data name="gbColor" xml:space="preserve">
     <value>Боја</value>
   </data>
@@ -158,6 +209,9 @@
   </data>
   <data name="lbl" xml:space="preserve">
     <value>Продавница</value>
+  </data>
+  <data name="lblAmount" xml:space="preserve">
+    <value>Количина</value>
   </data>
   <data name="lblEmail" xml:space="preserve">
     <value>Емаил</value>
@@ -183,10 +237,25 @@
   <data name="lblPhone" xml:space="preserve">
     <value>Број телефона</value>
   </data>
+  <data name="lblSearch" xml:space="preserve">
+    <value>Претрага</value>
+  </data>
   <data name="lblTitle" xml:space="preserve">
     <value>  ПОЧЕТНА</value>
   </data>
   <data name="lblUsername" xml:space="preserve">
     <value>Корисничко име</value>
+  </data>
+  <data name="manufacturer" xml:space="preserve">
+    <value>Произвођач</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Име</value>
+  </data>
+  <data name="price" xml:space="preserve">
+    <value>Цијена</value>
+  </data>
+  <data name="supplies" xml:space="preserve">
+    <value>Залихе</value>
   </data>
 </root>

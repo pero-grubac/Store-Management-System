@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Prodavnica.Database.DTO
+namespace Prodavnica.Forms.HelperForms.Admin
 {
-    public class Supplier
+    public class ProductBIll
     {
         public string Name { get; set; }
-        public string Email { get; set; }
-        public int Id { get; set; }
+        public decimal Amount { get; set; }
+        public decimal Price { get; set; }
     }
 }

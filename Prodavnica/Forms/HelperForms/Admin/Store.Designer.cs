@@ -1,7 +1,9 @@
 ﻿namespace Prodavnica.Forms.HelperForms.Admin
 {
-    partial class Store
+    partial class StoreTable
     {
+        
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -33,12 +35,12 @@
             tpProducts = new TabPage();
             tlpProducts = new TableLayoutPanel();
             dgvProducts = new DataGridView();
-            barCodeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            priceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            suppliesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            expirationDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            BarCode = new DataGridViewTextBoxColumn();
+            NameColumn = new DataGridViewTextBoxColumn();
+            Price = new DataGridViewTextBoxColumn();
+            Supplies = new DataGridViewTextBoxColumn();
+            ExpirationDate = new DataGridViewTextBoxColumn();
+            Description = new DataGridViewTextBoxColumn();
             CategoryName = new DataGridViewTextBoxColumn();
             ManufacturerName = new DataGridViewTextBoxColumn();
             productsBindingSource = new BindingSource(components);
@@ -49,45 +51,32 @@
             btnUpdate = new Button();
             btnAdd = new Button();
             tbProcurement = new TabPage();
-            tlpBasketAndProc = new TableLayoutPanel();
             tlpProcurement = new TableLayoutPanel();
-            gbOptions = new GroupBox();
-            btnAddBasket = new Button();
-            gbCategoryName = new GroupBox();
-            txtCategoryName = new TextBox();
-            btnOldCategory = new Button();
-            btnNewCategory = new Button();
-            gbExpirationDate = new GroupBox();
-            dateTimePicker1 = new DateTimePicker();
-            gbDescription = new GroupBox();
-            txtDescription = new TextBox();
-            gbAmount = new GroupBox();
-            txtAmount = new TextBox();
-            gbPurchasePrice = new GroupBox();
-            txtPurchasePrice = new TextBox();
-            gbPrice = new GroupBox();
-            txtPrice = new TextBox();
-            gbBarcode = new GroupBox();
-            txtBarCode = new TextBox();
-            btnOldBarCode = new Button();
-            btnNewBarCode = new Button();
-            gbProductName = new GroupBox();
-            txtName = new TextBox();
-            btnOldName = new Button();
-            btnNewName = new Button();
-            gbManufactuer = new GroupBox();
-            txtManufactuer = new TextBox();
-            btnOldMan = new Button();
-            btnNewMan = new Button();
-            gbSupplier = new GroupBox();
-            txtSupplier = new TextBox();
-            btnOldSup = new Button();
-            btnNewSup = new Button();
-            tlpBasket = new TableLayoutPanel();
-            gbRemove = new GroupBox();
+            tlpBill = new TableLayoutPanel();
+            gbBuy = new GroupBox();
+            txtTotal = new TextBox();
+            lblTotal = new Label();
             btnBuy = new Button();
-            btnBskRemove = new Button();
-            txt = new TextBox();
+            dgvBill = new DataGridView();
+            productBIllBindingSource = new BindingSource(components);
+            btnDeleteItem = new Button();
+            tlypSelect = new TableLayoutPanel();
+            gbSearch = new GroupBox();
+            txtSearchBarCode = new TextBox();
+            lblSearchProduct = new Label();
+            gbAdd = new GroupBox();
+            txtAmount = new TextBox();
+            lblAmount = new Label();
+            txtPrice = new TextBox();
+            btnAddToCart = new Button();
+            lblPrice = new Label();
+            dgvProductsBill = new DataGridView();
+            barCodeColumn = new DataGridViewTextBoxColumn();
+            nameColumnBill = new DataGridViewTextBoxColumn();
+            tbBills = new TabPage();
+            nameColumBill = new DataGridViewTextBoxColumn();
+            amountColumnBill = new DataGridViewTextBoxColumn();
+            priceColumnBill = new DataGridViewTextBoxColumn();
             tcShop.SuspendLayout();
             tpProducts.SuspendLayout();
             tlpProducts.SuspendLayout();
@@ -95,32 +84,27 @@
             ((System.ComponentModel.ISupportInitialize)productsBindingSource).BeginInit();
             gbProducts.SuspendLayout();
             tbProcurement.SuspendLayout();
-            tlpBasketAndProc.SuspendLayout();
             tlpProcurement.SuspendLayout();
-            gbOptions.SuspendLayout();
-            gbCategoryName.SuspendLayout();
-            gbExpirationDate.SuspendLayout();
-            gbDescription.SuspendLayout();
-            gbAmount.SuspendLayout();
-            gbPurchasePrice.SuspendLayout();
-            gbPrice.SuspendLayout();
-            gbBarcode.SuspendLayout();
-            gbProductName.SuspendLayout();
-            gbManufactuer.SuspendLayout();
-            gbSupplier.SuspendLayout();
-            tlpBasket.SuspendLayout();
-            gbRemove.SuspendLayout();
+            tlpBill.SuspendLayout();
+            gbBuy.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvBill).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)productBIllBindingSource).BeginInit();
+            tlypSelect.SuspendLayout();
+            gbSearch.SuspendLayout();
+            gbAdd.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProductsBill).BeginInit();
             SuspendLayout();
             // 
             // tcShop
             // 
             tcShop.Controls.Add(tpProducts);
             tcShop.Controls.Add(tbProcurement);
+            tcShop.Controls.Add(tbBills);
             tcShop.Dock = DockStyle.Fill;
             tcShop.Location = new Point(0, 0);
             tcShop.Name = "tcShop";
             tcShop.SelectedIndex = 0;
-            tcShop.Size = new Size(952, 800);
+            tcShop.Size = new Size(952, 509);
             tcShop.TabIndex = 0;
             tcShop.SelectedIndexChanged += tcShop_SelectedIndexChanged;
             // 
@@ -130,7 +114,7 @@
             tpProducts.Location = new Point(4, 29);
             tpProducts.Name = "tpProducts";
             tpProducts.Padding = new Padding(3);
-            tpProducts.Size = new Size(944, 767);
+            tpProducts.Size = new Size(944, 476);
             tpProducts.TabIndex = 2;
             tpProducts.Text = "Products";
             tpProducts.UseVisualStyleBackColor = true;
@@ -147,18 +131,19 @@
             tlpProducts.RowCount = 2;
             tlpProducts.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
             tlpProducts.RowStyles.Add(new RowStyle());
-            tlpProducts.Size = new Size(938, 761);
+            tlpProducts.Size = new Size(938, 470);
             tlpProducts.TabIndex = 1;
             // 
             // dgvProducts
             // 
             dgvProducts.AllowUserToAddRows = false;
             dgvProducts.AllowUserToDeleteRows = false;
+            dgvProducts.AllowUserToResizeRows = false;
             dgvProducts.AutoGenerateColumns = false;
             dgvProducts.BackgroundColor = Color.White;
             dgvProducts.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProducts.Columns.AddRange(new DataGridViewColumn[] { barCodeDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, priceDataGridViewTextBoxColumn, suppliesDataGridViewTextBoxColumn, expirationDateDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, CategoryName, ManufacturerName });
+            dgvProducts.Columns.AddRange(new DataGridViewColumn[] { BarCode, NameColumn, Price, Supplies, ExpirationDate, Description, CategoryName, ManufacturerName });
             dgvProducts.DataSource = productsBindingSource;
             dgvProducts.Dock = DockStyle.Fill;
             dgvProducts.Location = new Point(3, 78);
@@ -172,79 +157,80 @@
             dgvProducts.TabIndex = 0;
             dgvProducts.RowHeaderMouseClick += dgvProducts_RowHeaderMouseClick;
             // 
-            // barCodeDataGridViewTextBoxColumn
+            // BarCode
             // 
-            barCodeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            barCodeDataGridViewTextBoxColumn.DataPropertyName = "BarCode";
-            barCodeDataGridViewTextBoxColumn.HeaderText = "BarCode";
-            barCodeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            barCodeDataGridViewTextBoxColumn.Name = "barCodeDataGridViewTextBoxColumn";
-            barCodeDataGridViewTextBoxColumn.ReadOnly = true;
-            barCodeDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.False;
-            barCodeDataGridViewTextBoxColumn.Width = 125;
+            BarCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            BarCode.DataPropertyName = "BarCode";
+            BarCode.HeaderText = "BarCode";
+            BarCode.MinimumWidth = 6;
+            BarCode.Name = "BarCode";
+            BarCode.ReadOnly = true;
+            BarCode.Width = 125;
             // 
-            // nameDataGridViewTextBoxColumn
+            // NameColumn
             // 
-            nameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            nameDataGridViewTextBoxColumn.ReadOnly = true;
-            nameDataGridViewTextBoxColumn.Width = 78;
+            NameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            NameColumn.DataPropertyName = "Name";
+            NameColumn.HeaderText = "Name";
+            NameColumn.MinimumWidth = 6;
+            NameColumn.Name = "NameColumn";
+            NameColumn.ReadOnly = true;
+            NameColumn.Width = 125;
             // 
-            // priceDataGridViewTextBoxColumn
+            // Price
             // 
-            priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            priceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            priceDataGridViewTextBoxColumn.ReadOnly = true;
-            priceDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.False;
-            priceDataGridViewTextBoxColumn.Width = 70;
+            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Price.DataPropertyName = "Price";
+            Price.HeaderText = "Price";
+            Price.MinimumWidth = 6;
+            Price.Name = "Price";
+            Price.ReadOnly = true;
+            Price.Width = 70;
             // 
-            // suppliesDataGridViewTextBoxColumn
+            // Supplies
             // 
-            suppliesDataGridViewTextBoxColumn.DataPropertyName = "Supplies";
-            suppliesDataGridViewTextBoxColumn.HeaderText = "Supplies";
-            suppliesDataGridViewTextBoxColumn.MinimumWidth = 6;
-            suppliesDataGridViewTextBoxColumn.Name = "suppliesDataGridViewTextBoxColumn";
-            suppliesDataGridViewTextBoxColumn.ReadOnly = true;
-            suppliesDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.False;
-            suppliesDataGridViewTextBoxColumn.Width = 94;
+            Supplies.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Supplies.DataPropertyName = "Supplies";
+            Supplies.HeaderText = "Supplies";
+            Supplies.MinimumWidth = 6;
+            Supplies.Name = "Supplies";
+            Supplies.ReadOnly = true;
+            Supplies.Resizable = DataGridViewTriState.True;
+            Supplies.Width = 94;
             // 
-            // expirationDateDataGridViewTextBoxColumn
+            // ExpirationDate
             // 
-            expirationDateDataGridViewTextBoxColumn.DataPropertyName = "ExpirationDate";
-            expirationDateDataGridViewTextBoxColumn.HeaderText = "ExpirationDate";
-            expirationDateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            expirationDateDataGridViewTextBoxColumn.Name = "expirationDateDataGridViewTextBoxColumn";
-            expirationDateDataGridViewTextBoxColumn.ReadOnly = true;
-            expirationDateDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.False;
-            expirationDateDataGridViewTextBoxColumn.Width = 137;
+            ExpirationDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            ExpirationDate.DataPropertyName = "ExpirationDate";
+            ExpirationDate.HeaderText = "ExpirationDate";
+            ExpirationDate.MinimumWidth = 6;
+            ExpirationDate.Name = "ExpirationDate";
+            ExpirationDate.ReadOnly = true;
+            ExpirationDate.Width = 175;
             // 
-            // descriptionDataGridViewTextBoxColumn
+            // Description
             // 
-            descriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            descriptionDataGridViewTextBoxColumn.Width = 114;
+            Description.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Description.DataPropertyName = "Description";
+            Description.HeaderText = "Description";
+            Description.MinimumWidth = 6;
+            Description.Name = "Description";
+            Description.ReadOnly = true;
+            Description.Width = 114;
             // 
             // CategoryName
             // 
+            CategoryName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             CategoryName.DataPropertyName = "CategoryName";
             CategoryName.HeaderText = "Category";
             CategoryName.MinimumWidth = 6;
             CategoryName.Name = "CategoryName";
             CategoryName.ReadOnly = true;
-            CategoryName.Resizable = DataGridViewTriState.False;
             CategoryName.Width = 125;
             // 
             // ManufacturerName
             // 
+            ManufacturerName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             ManufacturerName.DataPropertyName = "ManufacturerName";
             ManufacturerName.HeaderText = "Manufacturer";
             ManufacturerName.MinimumWidth = 6;
@@ -300,6 +286,7 @@
             btnDelete.TabIndex = 2;
             btnDelete.Text = "DELETE";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
@@ -310,6 +297,7 @@
             btnUpdate.TabIndex = 1;
             btnUpdate.Text = "UPDATE";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnAdd
             // 
@@ -320,470 +308,321 @@
             btnAdd.TabIndex = 0;
             btnAdd.Text = "ADD";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // tbProcurement
             // 
-            tbProcurement.Controls.Add(tlpBasketAndProc);
+            tbProcurement.Controls.Add(tlpProcurement);
             tbProcurement.Location = new Point(4, 29);
             tbProcurement.Name = "tbProcurement";
             tbProcurement.Padding = new Padding(3);
-            tbProcurement.Size = new Size(944, 767);
+            tbProcurement.Size = new Size(944, 476);
             tbProcurement.TabIndex = 1;
             tbProcurement.Text = "Procurement";
             tbProcurement.UseVisualStyleBackColor = true;
             // 
-            // tlpBasketAndProc
-            // 
-            tlpBasketAndProc.AutoScroll = true;
-            tlpBasketAndProc.ColumnCount = 2;
-            tlpBasketAndProc.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            tlpBasketAndProc.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tlpBasketAndProc.Controls.Add(tlpProcurement, 0, 0);
-            tlpBasketAndProc.Controls.Add(tlpBasket, 1, 0);
-            tlpBasketAndProc.Dock = DockStyle.Fill;
-            tlpBasketAndProc.Location = new Point(3, 3);
-            tlpBasketAndProc.Name = "tlpBasketAndProc";
-            tlpBasketAndProc.RowCount = 1;
-            tlpBasketAndProc.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpBasketAndProc.Size = new Size(938, 761);
-            tlpBasketAndProc.TabIndex = 1;
-            // 
             // tlpProcurement
             // 
-            tlpProcurement.AutoScroll = true;
-            tlpProcurement.ColumnCount = 1;
-            tlpProcurement.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tlpProcurement.Controls.Add(gbOptions, 0, 10);
-            tlpProcurement.Controls.Add(gbCategoryName, 0, 9);
-            tlpProcurement.Controls.Add(gbExpirationDate, 0, 8);
-            tlpProcurement.Controls.Add(gbDescription, 0, 7);
-            tlpProcurement.Controls.Add(gbAmount, 0, 6);
-            tlpProcurement.Controls.Add(gbPurchasePrice, 0, 5);
-            tlpProcurement.Controls.Add(gbPrice, 0, 4);
-            tlpProcurement.Controls.Add(gbBarcode, 0, 3);
-            tlpProcurement.Controls.Add(gbProductName, 0, 2);
-            tlpProcurement.Controls.Add(gbManufactuer, 0, 1);
-            tlpProcurement.Controls.Add(gbSupplier, 0, 0);
+            tlpProcurement.ColumnCount = 2;
+            tlpProcurement.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpProcurement.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpProcurement.Controls.Add(tlpBill, 1, 0);
+            tlpProcurement.Controls.Add(tlypSelect, 0, 0);
             tlpProcurement.Dock = DockStyle.Fill;
             tlpProcurement.Location = new Point(3, 3);
             tlpProcurement.Name = "tlpProcurement";
-            tlpProcurement.RowCount = 11;
-            tlpProcurement.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
-            tlpProcurement.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
-            tlpProcurement.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
-            tlpProcurement.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
-            tlpProcurement.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
-            tlpProcurement.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
-            tlpProcurement.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
-            tlpProcurement.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
-            tlpProcurement.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
-            tlpProcurement.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
-            tlpProcurement.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
-            tlpProcurement.Size = new Size(650, 755);
+            tlpProcurement.RowCount = 1;
+            tlpProcurement.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpProcurement.Size = new Size(938, 470);
             tlpProcurement.TabIndex = 0;
             // 
-            // gbOptions
+            // tlpBill
             // 
-            gbOptions.BackColor = Color.White;
-            gbOptions.Controls.Add(btnAddBasket);
-            gbOptions.Dock = DockStyle.Fill;
-            gbOptions.Location = new Point(3, 773);
-            gbOptions.Name = "gbOptions";
-            gbOptions.Size = new Size(644, 71);
-            gbOptions.TabIndex = 10;
-            gbOptions.TabStop = false;
-            gbOptions.Text = "Options";
+            tlpBill.ColumnCount = 1;
+            tlpBill.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpBill.Controls.Add(gbBuy, 0, 2);
+            tlpBill.Controls.Add(dgvBill, 0, 0);
+            tlpBill.Controls.Add(btnDeleteItem, 0, 1);
+            tlpBill.Dock = DockStyle.Fill;
+            tlpBill.Location = new Point(472, 3);
+            tlpBill.Name = "tlpBill";
+            tlpBill.RowCount = 3;
+            tlpBill.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpBill.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
+            tlpBill.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
+            tlpBill.Size = new Size(463, 464);
+            tlpBill.TabIndex = 0;
             // 
-            // btnAddBasket
+            // gbBuy
             // 
-            btnAddBasket.Anchor = AnchorStyles.Right;
-            btnAddBasket.Location = new Point(496, 36);
-            btnAddBasket.Name = "btnAddBasket";
-            btnAddBasket.Size = new Size(126, 29);
-            btnAddBasket.TabIndex = 3;
-            btnAddBasket.Text = "Add to basket";
-            btnAddBasket.UseVisualStyleBackColor = true;
-            btnAddBasket.Click += btnAddBasket_Click;
+            gbBuy.BackColor = Color.White;
+            gbBuy.Controls.Add(txtTotal);
+            gbBuy.Controls.Add(lblTotal);
+            gbBuy.Controls.Add(btnBuy);
+            gbBuy.Dock = DockStyle.Fill;
+            gbBuy.Location = new Point(3, 317);
+            gbBuy.Name = "gbBuy";
+            gbBuy.Size = new Size(457, 144);
+            gbBuy.TabIndex = 0;
+            gbBuy.TabStop = false;
             // 
-            // gbCategoryName
+            // txtTotal
             // 
-            gbCategoryName.BackColor = Color.White;
-            gbCategoryName.Controls.Add(txtCategoryName);
-            gbCategoryName.Controls.Add(btnOldCategory);
-            gbCategoryName.Controls.Add(btnNewCategory);
-            gbCategoryName.Dock = DockStyle.Fill;
-            gbCategoryName.Location = new Point(3, 696);
-            gbCategoryName.Name = "gbCategoryName";
-            gbCategoryName.Size = new Size(644, 71);
-            gbCategoryName.TabIndex = 9;
-            gbCategoryName.TabStop = false;
-            gbCategoryName.Text = "Category";
+            txtTotal.BorderStyle = BorderStyle.FixedSingle;
+            txtTotal.Location = new Point(102, 59);
+            txtTotal.Name = "txtTotal";
+            txtTotal.Size = new Size(340, 27);
+            txtTotal.TabIndex = 7;
             // 
-            // txtCategoryName
+            // lblTotal
             // 
-            txtCategoryName.BorderStyle = BorderStyle.FixedSingle;
-            txtCategoryName.Location = new Point(206, 26);
-            txtCategoryName.Name = "txtCategoryName";
-            txtCategoryName.ReadOnly = true;
-            txtCategoryName.Size = new Size(416, 27);
-            txtCategoryName.TabIndex = 14;
+            lblTotal.AutoSize = true;
+            lblTotal.Location = new Point(6, 62);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(42, 20);
+            lblTotal.TabIndex = 6;
+            lblTotal.Text = "Total";
             // 
-            // btnOldCategory
+            // btnBuy
             // 
-            btnOldCategory.Location = new Point(106, 25);
-            btnOldCategory.Name = "btnOldCategory";
-            btnOldCategory.Size = new Size(94, 32);
-            btnOldCategory.TabIndex = 13;
-            btnOldCategory.Text = "Old";
-            btnOldCategory.UseVisualStyleBackColor = true;
+            btnBuy.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnBuy.Location = new Point(357, 106);
+            btnBuy.Name = "btnBuy";
+            btnBuy.Size = new Size(94, 32);
+            btnBuy.TabIndex = 4;
+            btnBuy.Text = "Buy";
+            btnBuy.UseVisualStyleBackColor = true;
             // 
-            // btnNewCategory
+            // dgvBill
             // 
-            btnNewCategory.Location = new Point(6, 25);
-            btnNewCategory.Name = "btnNewCategory";
-            btnNewCategory.Size = new Size(94, 32);
-            btnNewCategory.TabIndex = 12;
-            btnNewCategory.Text = "New";
-            btnNewCategory.UseVisualStyleBackColor = true;
+            dgvBill.AllowUserToAddRows = false;
+            dgvBill.AllowUserToDeleteRows = false;
+            dgvBill.AllowUserToResizeRows = false;
+            dgvBill.AutoGenerateColumns = false;
+            dgvBill.BackgroundColor = Color.White;
+            dgvBill.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBill.Columns.AddRange(new DataGridViewColumn[] { nameColumBill, amountColumnBill, priceColumnBill });
+            dgvBill.DataSource = productBIllBindingSource;
+            dgvBill.Dock = DockStyle.Fill;
+            dgvBill.Location = new Point(3, 3);
+            dgvBill.Name = "dgvBill";
+            dgvBill.ReadOnly = true;
+            dgvBill.RowHeadersVisible = false;
+            dgvBill.RowHeadersWidth = 51;
+            dgvBill.RowTemplate.Height = 29;
+            dgvBill.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvBill.Size = new Size(457, 233);
+            dgvBill.TabIndex = 1;
             // 
-            // gbExpirationDate
+            // productBIllBindingSource
             // 
-            gbExpirationDate.BackColor = Color.White;
-            gbExpirationDate.Controls.Add(dateTimePicker1);
-            gbExpirationDate.Dock = DockStyle.Fill;
-            gbExpirationDate.Location = new Point(3, 619);
-            gbExpirationDate.Name = "gbExpirationDate";
-            gbExpirationDate.Size = new Size(644, 71);
-            gbExpirationDate.TabIndex = 8;
-            gbExpirationDate.TabStop = false;
-            gbExpirationDate.Text = "ExpirationDate";
+            productBIllBindingSource.DataSource = typeof(ProductBIll);
             // 
-            // dateTimePicker1
+            // btnDeleteItem
             // 
-            dateTimePicker1.Location = new Point(6, 26);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(289, 27);
-            dateTimePicker1.TabIndex = 0;
+            btnDeleteItem.BackColor = Color.White;
+            btnDeleteItem.Dock = DockStyle.Fill;
+            btnDeleteItem.Location = new Point(3, 242);
+            btnDeleteItem.Name = "btnDeleteItem";
+            btnDeleteItem.Size = new Size(457, 69);
+            btnDeleteItem.TabIndex = 2;
+            btnDeleteItem.Text = "Delete item";
+            btnDeleteItem.UseVisualStyleBackColor = false;
             // 
-            // gbDescription
+            // tlypSelect
             // 
-            gbDescription.BackColor = Color.White;
-            gbDescription.Controls.Add(txtDescription);
-            gbDescription.Dock = DockStyle.Fill;
-            gbDescription.Location = new Point(3, 542);
-            gbDescription.Name = "gbDescription";
-            gbDescription.Size = new Size(644, 71);
-            gbDescription.TabIndex = 7;
-            gbDescription.TabStop = false;
-            gbDescription.Text = "Description";
+            tlypSelect.ColumnCount = 1;
+            tlypSelect.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlypSelect.Controls.Add(gbSearch, 0, 0);
+            tlypSelect.Controls.Add(gbAdd, 0, 2);
+            tlypSelect.Controls.Add(dgvProductsBill, 0, 1);
+            tlypSelect.Dock = DockStyle.Fill;
+            tlypSelect.Location = new Point(3, 3);
+            tlypSelect.Name = "tlypSelect";
+            tlypSelect.RowCount = 3;
+            tlypSelect.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
+            tlypSelect.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlypSelect.RowStyles.Add(new RowStyle(SizeType.Absolute, 225F));
+            tlypSelect.Size = new Size(463, 464);
+            tlypSelect.TabIndex = 1;
             // 
-            // txtDescription
+            // gbSearch
             // 
-            txtDescription.BorderStyle = BorderStyle.FixedSingle;
-            txtDescription.Location = new Point(6, 26);
-            txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(616, 27);
-            txtDescription.TabIndex = 2;
+            gbSearch.BackColor = Color.White;
+            gbSearch.Controls.Add(txtSearchBarCode);
+            gbSearch.Controls.Add(lblSearchProduct);
+            gbSearch.Dock = DockStyle.Fill;
+            gbSearch.Location = new Point(3, 3);
+            gbSearch.Name = "gbSearch";
+            gbSearch.Size = new Size(457, 69);
+            gbSearch.TabIndex = 0;
+            gbSearch.TabStop = false;
             // 
-            // gbAmount
+            // txtSearchBarCode
             // 
-            gbAmount.BackColor = Color.White;
-            gbAmount.Controls.Add(txtAmount);
-            gbAmount.Dock = DockStyle.Fill;
-            gbAmount.Location = new Point(3, 465);
-            gbAmount.Name = "gbAmount";
-            gbAmount.Size = new Size(644, 71);
-            gbAmount.TabIndex = 6;
-            gbAmount.TabStop = false;
-            gbAmount.Text = "Amount";
+            txtSearchBarCode.BorderStyle = BorderStyle.FixedSingle;
+            txtSearchBarCode.Location = new Point(102, 26);
+            txtSearchBarCode.Name = "txtSearchBarCode";
+            txtSearchBarCode.Size = new Size(340, 27);
+            txtSearchBarCode.TabIndex = 1;
+            // 
+            // lblSearchProduct
+            // 
+            lblSearchProduct.AutoSize = true;
+            lblSearchProduct.Location = new Point(6, 29);
+            lblSearchProduct.Name = "lblSearchProduct";
+            lblSearchProduct.Size = new Size(53, 20);
+            lblSearchProduct.TabIndex = 0;
+            lblSearchProduct.Text = "Search";
+            // 
+            // gbAdd
+            // 
+            gbAdd.BackColor = Color.White;
+            gbAdd.Controls.Add(txtAmount);
+            gbAdd.Controls.Add(lblAmount);
+            gbAdd.Controls.Add(txtPrice);
+            gbAdd.Controls.Add(btnAddToCart);
+            gbAdd.Controls.Add(lblPrice);
+            gbAdd.Dock = DockStyle.Fill;
+            gbAdd.Location = new Point(3, 242);
+            gbAdd.Name = "gbAdd";
+            gbAdd.Size = new Size(457, 219);
+            gbAdd.TabIndex = 1;
+            gbAdd.TabStop = false;
             // 
             // txtAmount
             // 
             txtAmount.BorderStyle = BorderStyle.FixedSingle;
-            txtAmount.Location = new Point(6, 26);
+            txtAmount.Location = new Point(102, 115);
             txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(616, 27);
-            txtAmount.TabIndex = 2;
+            txtAmount.Size = new Size(340, 27);
+            txtAmount.TabIndex = 5;
             // 
-            // gbPurchasePrice
+            // lblAmount
             // 
-            gbPurchasePrice.BackColor = Color.White;
-            gbPurchasePrice.Controls.Add(txtPurchasePrice);
-            gbPurchasePrice.Dock = DockStyle.Fill;
-            gbPurchasePrice.Location = new Point(3, 388);
-            gbPurchasePrice.Name = "gbPurchasePrice";
-            gbPurchasePrice.Size = new Size(644, 71);
-            gbPurchasePrice.TabIndex = 5;
-            gbPurchasePrice.TabStop = false;
-            gbPurchasePrice.Text = "Purchase price";
-            // 
-            // txtPurchasePrice
-            // 
-            txtPurchasePrice.BorderStyle = BorderStyle.FixedSingle;
-            txtPurchasePrice.Location = new Point(6, 31);
-            txtPurchasePrice.Name = "txtPurchasePrice";
-            txtPurchasePrice.Size = new Size(616, 27);
-            txtPurchasePrice.TabIndex = 2;
-            // 
-            // gbPrice
-            // 
-            gbPrice.BackColor = Color.White;
-            gbPrice.Controls.Add(txtPrice);
-            gbPrice.Dock = DockStyle.Fill;
-            gbPrice.Location = new Point(3, 311);
-            gbPrice.Name = "gbPrice";
-            gbPrice.Size = new Size(644, 71);
-            gbPrice.TabIndex = 4;
-            gbPrice.TabStop = false;
-            gbPrice.Text = "Price";
+            lblAmount.AutoSize = true;
+            lblAmount.Location = new Point(6, 118);
+            lblAmount.Name = "lblAmount";
+            lblAmount.Size = new Size(62, 20);
+            lblAmount.TabIndex = 4;
+            lblAmount.Text = "Amount";
             // 
             // txtPrice
             // 
             txtPrice.BorderStyle = BorderStyle.FixedSingle;
-            txtPrice.Location = new Point(6, 26);
+            txtPrice.Location = new Point(102, 55);
             txtPrice.Name = "txtPrice";
-            txtPrice.Size = new Size(616, 27);
-            txtPrice.TabIndex = 2;
+            txtPrice.Size = new Size(340, 27);
+            txtPrice.TabIndex = 3;
             // 
-            // gbBarcode
+            // btnAddToCart
             // 
-            gbBarcode.BackColor = Color.White;
-            gbBarcode.Controls.Add(txtBarCode);
-            gbBarcode.Controls.Add(btnOldBarCode);
-            gbBarcode.Controls.Add(btnNewBarCode);
-            gbBarcode.Dock = DockStyle.Fill;
-            gbBarcode.Location = new Point(3, 234);
-            gbBarcode.Name = "gbBarcode";
-            gbBarcode.Size = new Size(644, 71);
-            gbBarcode.TabIndex = 3;
-            gbBarcode.TabStop = false;
-            gbBarcode.Text = "Bar code";
+            btnAddToCart.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnAddToCart.Location = new Point(348, 181);
+            btnAddToCart.Name = "btnAddToCart";
+            btnAddToCart.Size = new Size(94, 32);
+            btnAddToCart.TabIndex = 0;
+            btnAddToCart.Text = "Add";
+            btnAddToCart.UseVisualStyleBackColor = true;
             // 
-            // txtBarCode
+            // lblPrice
             // 
-            txtBarCode.BorderStyle = BorderStyle.FixedSingle;
-            txtBarCode.Location = new Point(206, 27);
-            txtBarCode.Name = "txtBarCode";
-            txtBarCode.ReadOnly = true;
-            txtBarCode.Size = new Size(416, 27);
-            txtBarCode.TabIndex = 11;
+            lblPrice.AutoSize = true;
+            lblPrice.Location = new Point(6, 58);
+            lblPrice.Name = "lblPrice";
+            lblPrice.Size = new Size(41, 20);
+            lblPrice.TabIndex = 2;
+            lblPrice.Text = "Price";
             // 
-            // btnOldBarCode
+            // dgvProductsBill
             // 
-            btnOldBarCode.Location = new Point(106, 26);
-            btnOldBarCode.Name = "btnOldBarCode";
-            btnOldBarCode.Size = new Size(94, 32);
-            btnOldBarCode.TabIndex = 10;
-            btnOldBarCode.Text = "Old";
-            btnOldBarCode.UseVisualStyleBackColor = true;
+            dgvProductsBill.AllowUserToAddRows = false;
+            dgvProductsBill.AllowUserToDeleteRows = false;
+            dgvProductsBill.AllowUserToResizeRows = false;
+            dgvProductsBill.AutoGenerateColumns = false;
+            dgvProductsBill.BackgroundColor = Color.White;
+            dgvProductsBill.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProductsBill.Columns.AddRange(new DataGridViewColumn[] { barCodeColumn, nameColumnBill });
+            dgvProductsBill.DataSource = productsBindingSource;
+            dgvProductsBill.Dock = DockStyle.Fill;
+            dgvProductsBill.Location = new Point(3, 78);
+            dgvProductsBill.Name = "dgvProductsBill";
+            dgvProductsBill.ReadOnly = true;
+            dgvProductsBill.RowHeadersVisible = false;
+            dgvProductsBill.RowHeadersWidth = 51;
+            dgvProductsBill.RowTemplate.Height = 29;
+            dgvProductsBill.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProductsBill.Size = new Size(457, 158);
+            dgvProductsBill.TabIndex = 2;
             // 
-            // btnNewBarCode
+            // barCodeColumn
             // 
-            btnNewBarCode.Location = new Point(6, 26);
-            btnNewBarCode.Name = "btnNewBarCode";
-            btnNewBarCode.Size = new Size(94, 32);
-            btnNewBarCode.TabIndex = 9;
-            btnNewBarCode.Text = "New";
-            btnNewBarCode.UseVisualStyleBackColor = true;
+            barCodeColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            barCodeColumn.DataPropertyName = "BarCode";
+            barCodeColumn.HeaderText = "BarCode";
+            barCodeColumn.MinimumWidth = 6;
+            barCodeColumn.Name = "barCodeColumn";
+            barCodeColumn.ReadOnly = true;
+            barCodeColumn.Width = 150;
             // 
-            // gbProductName
+            // nameColumnBill
             // 
-            gbProductName.BackColor = Color.White;
-            gbProductName.Controls.Add(txtName);
-            gbProductName.Controls.Add(btnOldName);
-            gbProductName.Controls.Add(btnNewName);
-            gbProductName.Dock = DockStyle.Fill;
-            gbProductName.Location = new Point(3, 157);
-            gbProductName.Name = "gbProductName";
-            gbProductName.Size = new Size(644, 71);
-            gbProductName.TabIndex = 2;
-            gbProductName.TabStop = false;
-            gbProductName.Text = "Name";
+            nameColumnBill.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nameColumnBill.DataPropertyName = "Name";
+            nameColumnBill.HeaderText = "Name";
+            nameColumnBill.MinimumWidth = 6;
+            nameColumnBill.Name = "nameColumnBill";
+            nameColumnBill.ReadOnly = true;
             // 
-            // txtName
+            // tbBills
             // 
-            txtName.BorderStyle = BorderStyle.FixedSingle;
-            txtName.Location = new Point(206, 27);
-            txtName.Name = "txtName";
-            txtName.ReadOnly = true;
-            txtName.Size = new Size(416, 27);
-            txtName.TabIndex = 8;
+            tbBills.Location = new Point(4, 29);
+            tbBills.Name = "tbBills";
+            tbBills.Padding = new Padding(3);
+            tbBills.Size = new Size(944, 476);
+            tbBills.TabIndex = 3;
+            tbBills.Text = "Bills";
+            tbBills.UseVisualStyleBackColor = true;
             // 
-            // btnOldName
+            // nameColumBill
             // 
-            btnOldName.Location = new Point(106, 26);
-            btnOldName.Name = "btnOldName";
-            btnOldName.Size = new Size(94, 32);
-            btnOldName.TabIndex = 7;
-            btnOldName.Text = "Old";
-            btnOldName.UseVisualStyleBackColor = true;
+            nameColumBill.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nameColumBill.DataPropertyName = "Name";
+            nameColumBill.FillWeight = 32.4324341F;
+            nameColumBill.HeaderText = "Name";
+            nameColumBill.MinimumWidth = 6;
+            nameColumBill.Name = "nameColumBill";
+            nameColumBill.ReadOnly = true;
             // 
-            // btnNewName
+            // amountColumnBill
             // 
-            btnNewName.Location = new Point(6, 26);
-            btnNewName.Name = "btnNewName";
-            btnNewName.Size = new Size(94, 32);
-            btnNewName.TabIndex = 6;
-            btnNewName.Text = "New";
-            btnNewName.UseVisualStyleBackColor = true;
+            amountColumnBill.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            amountColumnBill.DataPropertyName = "Amount";
+            amountColumnBill.HeaderText = "Amount";
+            amountColumnBill.MinimumWidth = 6;
+            amountColumnBill.Name = "amountColumnBill";
+            amountColumnBill.ReadOnly = true;
+            amountColumnBill.Width = 150;
             // 
-            // gbManufactuer
+            // priceColumnBill
             // 
-            gbManufactuer.BackColor = Color.White;
-            gbManufactuer.Controls.Add(txtManufactuer);
-            gbManufactuer.Controls.Add(btnOldMan);
-            gbManufactuer.Controls.Add(btnNewMan);
-            gbManufactuer.Dock = DockStyle.Fill;
-            gbManufactuer.Location = new Point(3, 80);
-            gbManufactuer.Name = "gbManufactuer";
-            gbManufactuer.Size = new Size(644, 71);
-            gbManufactuer.TabIndex = 1;
-            gbManufactuer.TabStop = false;
-            gbManufactuer.Text = "Manufactuer";
+            priceColumnBill.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            priceColumnBill.DataPropertyName = "Price";
+            priceColumnBill.FillWeight = 167.567566F;
+            priceColumnBill.HeaderText = "Price";
+            priceColumnBill.MinimumWidth = 6;
+            priceColumnBill.Name = "priceColumnBill";
+            priceColumnBill.ReadOnly = true;
+            priceColumnBill.Width = 150;
             // 
-            // txtManufactuer
-            // 
-            txtManufactuer.BorderStyle = BorderStyle.FixedSingle;
-            txtManufactuer.Location = new Point(206, 27);
-            txtManufactuer.Name = "txtManufactuer";
-            txtManufactuer.ReadOnly = true;
-            txtManufactuer.Size = new Size(416, 27);
-            txtManufactuer.TabIndex = 5;
-            // 
-            // btnOldMan
-            // 
-            btnOldMan.Location = new Point(106, 26);
-            btnOldMan.Name = "btnOldMan";
-            btnOldMan.Size = new Size(94, 32);
-            btnOldMan.TabIndex = 4;
-            btnOldMan.Text = "Old";
-            btnOldMan.UseVisualStyleBackColor = true;
-            btnOldMan.Click += btnOldMan_Click;
-            // 
-            // btnNewMan
-            // 
-            btnNewMan.Location = new Point(6, 26);
-            btnNewMan.Name = "btnNewMan";
-            btnNewMan.Size = new Size(94, 32);
-            btnNewMan.TabIndex = 3;
-            btnNewMan.Text = "New";
-            btnNewMan.UseVisualStyleBackColor = true;
-            btnNewMan.Click += btnNewMan_Click;
-            // 
-            // gbSupplier
-            // 
-            gbSupplier.BackColor = Color.White;
-            gbSupplier.Controls.Add(txtSupplier);
-            gbSupplier.Controls.Add(btnOldSup);
-            gbSupplier.Controls.Add(btnNewSup);
-            gbSupplier.Dock = DockStyle.Fill;
-            gbSupplier.Location = new Point(3, 3);
-            gbSupplier.Name = "gbSupplier";
-            gbSupplier.Size = new Size(644, 71);
-            gbSupplier.TabIndex = 0;
-            gbSupplier.TabStop = false;
-            gbSupplier.Text = "Supplier";
-            // 
-            // txtSupplier
-            // 
-            txtSupplier.BorderStyle = BorderStyle.FixedSingle;
-            txtSupplier.Location = new Point(206, 24);
-            txtSupplier.Name = "txtSupplier";
-            txtSupplier.ReadOnly = true;
-            txtSupplier.Size = new Size(416, 27);
-            txtSupplier.TabIndex = 2;
-            txtSupplier.TextChanged += txtSupplier_TextChanged;
-            // 
-            // btnOldSup
-            // 
-            btnOldSup.Location = new Point(106, 23);
-            btnOldSup.Name = "btnOldSup";
-            btnOldSup.Size = new Size(94, 32);
-            btnOldSup.TabIndex = 1;
-            btnOldSup.Text = "Old";
-            btnOldSup.UseVisualStyleBackColor = true;
-            btnOldSup.Click += btnSuppliers_Click;
-            // 
-            // btnNewSup
-            // 
-            btnNewSup.Location = new Point(6, 23);
-            btnNewSup.Name = "btnNewSup";
-            btnNewSup.Size = new Size(94, 32);
-            btnNewSup.TabIndex = 0;
-            btnNewSup.Text = "New";
-            btnNewSup.UseVisualStyleBackColor = true;
-            btnNewSup.Click += btnNew_Click;
-            // 
-            // tlpBasket
-            // 
-            tlpBasket.AutoScroll = true;
-            tlpBasket.ColumnCount = 1;
-            tlpBasket.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tlpBasket.Controls.Add(gbRemove, 0, 2);
-            tlpBasket.Controls.Add(txt, 0, 0);
-            tlpBasket.Dock = DockStyle.Fill;
-            tlpBasket.Location = new Point(659, 3);
-            tlpBasket.Name = "tlpBasket";
-            tlpBasket.RowCount = 3;
-            tlpBasket.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tlpBasket.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpBasket.RowStyles.Add(new RowStyle());
-            tlpBasket.Size = new Size(276, 755);
-            tlpBasket.TabIndex = 1;
-            // 
-            // gbRemove
-            // 
-            gbRemove.BackColor = Color.White;
-            gbRemove.Controls.Add(btnBuy);
-            gbRemove.Controls.Add(btnBskRemove);
-            gbRemove.Dock = DockStyle.Fill;
-            gbRemove.Location = new Point(3, 542);
-            gbRemove.Name = "gbRemove";
-            gbRemove.Size = new Size(270, 210);
-            gbRemove.TabIndex = 1;
-            gbRemove.TabStop = false;
-            gbRemove.Text = "Remove";
-            // 
-            // btnBuy
-            // 
-            btnBuy.Anchor = AnchorStyles.Right;
-            btnBuy.Location = new Point(170, 154);
-            btnBuy.Name = "btnBuy";
-            btnBuy.Size = new Size(94, 29);
-            btnBuy.TabIndex = 5;
-            btnBuy.Text = "Buy";
-            btnBuy.UseVisualStyleBackColor = true;
-            // 
-            // btnBskRemove
-            // 
-            btnBskRemove.Anchor = AnchorStyles.Right;
-            btnBskRemove.Location = new Point(50, 154);
-            btnBskRemove.Name = "btnBskRemove";
-            btnBskRemove.Size = new Size(94, 29);
-            btnBskRemove.TabIndex = 4;
-            btnBskRemove.Text = "Remove";
-            btnBskRemove.UseVisualStyleBackColor = true;
-            // 
-            // txt
-            // 
-            txt.BackColor = Color.White;
-            txt.BorderStyle = BorderStyle.None;
-            txt.Dock = DockStyle.Fill;
-            txt.Location = new Point(3, 3);
-            txt.Name = "txt";
-            txt.ReadOnly = true;
-            txt.Size = new Size(270, 20);
-            txt.TabIndex = 2;
-            txt.Text = "Procurement";
-            txt.TextAlign = HorizontalAlignment.Center;
-            // 
-            // Store
+            // StoreTable
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(952, 800);
+            ClientSize = new Size(952, 509);
             Controls.Add(tcShop);
-            Name = "Store";
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "StoreTable";
             Text = "Store";
             tcShop.ResumeLayout(false);
             tpProducts.ResumeLayout(false);
@@ -794,31 +633,18 @@
             gbProducts.ResumeLayout(false);
             gbProducts.PerformLayout();
             tbProcurement.ResumeLayout(false);
-            tlpBasketAndProc.ResumeLayout(false);
             tlpProcurement.ResumeLayout(false);
-            gbOptions.ResumeLayout(false);
-            gbCategoryName.ResumeLayout(false);
-            gbCategoryName.PerformLayout();
-            gbExpirationDate.ResumeLayout(false);
-            gbDescription.ResumeLayout(false);
-            gbDescription.PerformLayout();
-            gbAmount.ResumeLayout(false);
-            gbAmount.PerformLayout();
-            gbPurchasePrice.ResumeLayout(false);
-            gbPurchasePrice.PerformLayout();
-            gbPrice.ResumeLayout(false);
-            gbPrice.PerformLayout();
-            gbBarcode.ResumeLayout(false);
-            gbBarcode.PerformLayout();
-            gbProductName.ResumeLayout(false);
-            gbProductName.PerformLayout();
-            gbManufactuer.ResumeLayout(false);
-            gbManufactuer.PerformLayout();
-            gbSupplier.ResumeLayout(false);
-            gbSupplier.PerformLayout();
-            tlpBasket.ResumeLayout(false);
-            tlpBasket.PerformLayout();
-            gbRemove.ResumeLayout(false);
+            tlpBill.ResumeLayout(false);
+            gbBuy.ResumeLayout(false);
+            gbBuy.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvBill).EndInit();
+            ((System.ComponentModel.ISupportInitialize)productBIllBindingSource).EndInit();
+            tlypSelect.ResumeLayout(false);
+            gbSearch.ResumeLayout(false);
+            gbSearch.PerformLayout();
+            gbAdd.ResumeLayout(false);
+            gbAdd.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProductsBill).EndInit();
             ResumeLayout(false);
         }
 
@@ -836,52 +662,40 @@
         private Button btnUpdate;
         private TextBox txtSearch;
         private Label lblSearch;
-        private DataGridViewTextBoxColumn barCodeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn suppliesDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn expirationDateDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn NameCol;
+        private DataGridViewTextBoxColumn BarCode;
+        private DataGridViewTextBoxColumn NameColumn;
+        private DataGridViewTextBoxColumn Price;
+        private DataGridViewTextBoxColumn Supplies;
+        private DataGridViewTextBoxColumn ExpirationDate;
+        private DataGridViewTextBoxColumn Description;
         private DataGridViewTextBoxColumn CategoryName;
         private DataGridViewTextBoxColumn ManufacturerName;
+        private TabPage tbBills;
         private TableLayoutPanel tlpProcurement;
-        private GroupBox gbOptions;
-        private GroupBox gbCategoryName;
-        private GroupBox gbExpirationDate;
-        private GroupBox gbDescription;
-        private GroupBox gbAmount;
-        private GroupBox gbPurchasePrice;
-        private GroupBox gbPrice;
-        private GroupBox gbBarcode;
-        private GroupBox gbProductName;
-        private GroupBox gbManufactuer;
-        private GroupBox gbSupplier;
-        private TextBox txtSupplier;
-        private Button btnOldSup;
-        private Button btnNewSup;
-        private TextBox txtDescription;
-        private TextBox txtAmount;
-        private TextBox txtPurchasePrice;
-        private TextBox txtPrice;
-        private TextBox txtManufactuer;
-        private Button btnOldMan;
-        private Button btnNewMan;
-        private DateTimePicker dateTimePicker1;
+        private TableLayoutPanel tlpBill;
+        private TableLayoutPanel tlypSelect;
+        private GroupBox gbBuy;
+        private GroupBox gbSearch;
+        private GroupBox gbAdd;
+        private TextBox txtSearchBarCode;
+        private Label lblSearchProduct;
+        private Button btnAddToCart;
         private Button btnBuy;
-        private Button btnBskRemove;
-        private Button btnAddBasket;
-        private TableLayoutPanel tlpBasketAndProc;
-        private TableLayoutPanel tlpBasket;
-        private GroupBox gbRemove;
-        private TextBox txt;
-        private TextBox txtName;
-        private Button btnOldName;
-        private Button btnNewName;
-        private TextBox txtBarCode;
-        private Button btnOldBarCode;
-        private Button btnNewBarCode;
-        private TextBox txtCategoryName;
-        private Button btnOldCategory;
-        private Button btnNewCategory;
+        private TextBox txtAmount;
+        private Label lblAmount;
+        private TextBox txtPrice;
+        private Label lblPrice;
+        private TextBox txtTotal;
+        private Label lblTotal;
+        private DataGridView dgvProductsBill;
+        private DataGridView dgvBill;
+        private BindingSource productBIllBindingSource;
+        private Button btnDeleteItem;
+        private DataGridViewTextBoxColumn barCodeColumn;
+        private DataGridViewTextBoxColumn nameColumnBill;
+        private DataGridViewTextBoxColumn nameColumBill;
+        private DataGridViewTextBoxColumn amountColumnBill;
+        private DataGridViewTextBoxColumn priceColumnBill;
     }
 }

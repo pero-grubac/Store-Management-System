@@ -25,8 +25,10 @@ DROP TABLE IF EXISTS `dobavljac`;
 CREATE TABLE `dobavljac` (
   `idDobavljac` int NOT NULL AUTO_INCREMENT,
   `Ime` varchar(45) NOT NULL,
-  PRIMARY KEY (`idDobavljac`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `Email` varchar(45) NOT NULL,
+  PRIMARY KEY (`idDobavljac`),
+  UNIQUE KEY `Ime_UNIQUE` (`Ime`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +37,7 @@ CREATE TABLE `dobavljac` (
 
 LOCK TABLES `dobavljac` WRITE;
 /*!40000 ALTER TABLE `dobavljac` DISABLE KEYS */;
+INSERT INTO `dobavljac` VALUES (1,'DobavljačiSrbija','dobavljacisrbija@gmail.com'),(2,'DobavljačiHercegovina','hercegovci@gmail.com'),(3,'DobavljačiCrnaGora','crnogorci@gmail.com'),(4,'DobavljačiBiH','dobavljacbih@gmail.com'),(5,'DobavljačiEvropa','dobavljaceu@gmail.com'),(6,'DobavljačiBanjaLuka','dobavljacibl@gmail.com');
 /*!40000 ALTER TABLE `dobavljac` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,7 +77,7 @@ CREATE TABLE `kategorija` (
   `Naziv` varchar(45) NOT NULL,
   PRIMARY KEY (`idKategorija`),
   UNIQUE KEY `Naziv_UNIQUE` (`Naziv`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,7 +86,7 @@ CREATE TABLE `kategorija` (
 
 LOCK TABLES `kategorija` WRITE;
 /*!40000 ALTER TABLE `kategorija` DISABLE KEYS */;
-INSERT INTO `kategorija` VALUES (1,'Meso');
+INSERT INTO `kategorija` VALUES (1,'Meso'),(2,'Mlijeko');
 /*!40000 ALTER TABLE `kategorija` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -188,7 +191,7 @@ CREATE TABLE `proizvod` (
   `Naziv` varchar(45) NOT NULL,
   `Cijena` decimal(4,2) NOT NULL,
   `Zalihe` int NOT NULL,
-  `DatumIsteka` datetime NOT NULL,
+  `DatumIsteka` date NOT NULL,
   `BarKod` varchar(45) NOT NULL,
   `idProizvodjac` int NOT NULL,
   `Opis` varchar(255) DEFAULT NULL,
@@ -199,7 +202,7 @@ CREATE TABLE `proizvod` (
   KEY `fk_PROIZVOD_KATEGORIJA_idx` (`idKategorija`),
   CONSTRAINT `fk_PROIZVOD_KATEGORIJA` FOREIGN KEY (`idKategorija`) REFERENCES `kategorija` (`idKategorija`),
   CONSTRAINT `fk_PROIZVOD_PROIZVODJAC1` FOREIGN KEY (`idProizvodjac`) REFERENCES `proizvodjac` (`idProizvodjac`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +211,7 @@ CREATE TABLE `proizvod` (
 
 LOCK TABLES `proizvod` WRITE;
 /*!40000 ALTER TABLE `proizvod` DISABLE KEYS */;
-INSERT INTO `proizvod` VALUES (1,'Pršut',50.00,50,'2026-06-21 00:00:00','1111',1,'Svinjski pršut',1);
+INSERT INTO `proizvod` VALUES (1,'Pršut',50.00,50,'2026-06-21','1111',1,'Svinjski pršut',1),(2,'Mlijeko 1l',2.00,50,'2026-06-21','1112',2,'Mlijeko',2),(6,'Šunka',9.88,0,'2024-11-24','1113',1,'Pica šunka',1),(7,'Slanina',15.00,0,'2024-11-29','1114',1,'Svinjska slanina',1),(8,'Čvarci',10.00,0,'2025-11-29','1115',1,'čvarci',1),(9,'Sir',8.00,0,'2025-11-29','1116',2,'sir',1),(10,'Milka oreo',4.00,0,'2023-11-29','1117',3,'milka oreo',1),(11,'Cokolada sa keksom',2.00,0,'2025-11-29','1118',4,'čokolada sa keksom',1);
 /*!40000 ALTER TABLE `proizvod` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -250,8 +253,9 @@ CREATE TABLE `proizvodjac` (
   `idProizvodjac` int NOT NULL AUTO_INCREMENT,
   `Ime` varchar(45) NOT NULL,
   `Email` varchar(45) NOT NULL,
-  PRIMARY KEY (`idProizvodjac`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+  PRIMARY KEY (`idProizvodjac`),
+  UNIQUE KEY `Ime_UNIQUE` (`Ime`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -260,7 +264,7 @@ CREATE TABLE `proizvodjac` (
 
 LOCK TABLES `proizvodjac` WRITE;
 /*!40000 ALTER TABLE `proizvodjac` DISABLE KEYS */;
-INSERT INTO `proizvodjac` VALUES (1,'Mesnica Tarana','tarana@gmail.com');
+INSERT INTO `proizvodjac` VALUES (1,'Mesnica Tarana','tarana@gmail.com'),(2,'Pađani','pađani@gmai.com'),(3,'Milka','milka@gmail.com'),(4,'Štark','stark@gmail.com');
 /*!40000 ALTER TABLE `proizvodjac` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -372,9 +376,13 @@ CREATE TABLE `tema` (
 
 LOCK TABLES `tema` WRITE;
 /*!40000 ALTER TABLE `tema` DISABLE KEYS */;
-INSERT INTO `tema` VALUES (1,'255,0,128,255','Segoe UI','11','Regular',0,0);
+INSERT INTO `tema` VALUES (1,'255,0,128,128','Segoe UI','11','Regular',0,0);
 /*!40000 ALTER TABLE `tema` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'prodavnica'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -385,4 +393,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-23 12:57:15
+-- Dump completed on 2023-11-30  0:00:08

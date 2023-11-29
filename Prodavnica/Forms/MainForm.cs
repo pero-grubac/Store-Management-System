@@ -28,6 +28,10 @@ namespace Prodavnica.Forms
             MaximizedBounds = Screen.FromHandle(Handle).WorkingArea;
             this.user = user;
             ChangeText();
+         /*   btnProducer.Enabled = false;
+            btnProducer.Visible = false;
+            AKO NISI ADMIN
+          */
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -44,6 +48,9 @@ namespace Prodavnica.Forms
             btnStaff.Text = LanguageHelper.GetString("btnStaff");
             btnLogOut.Text = LanguageHelper.GetString("btnLogOut");
             btnSettings.Text = LanguageHelper.GetString("btnSettings");
+            btnSupplier.Text = LanguageHelper.GetString("btnSupplier");
+            btnProducer.Text = LanguageHelper.GetString("btnProducer");
+
         }
 
         private void OpenChildForm(System.Windows.Forms.Form childForm, object btnSender, Button button)
@@ -100,12 +107,12 @@ namespace Prodavnica.Forms
 
         private void btnStore_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.HelperForms.Admin.Store(user), sender, btnStore);
+            OpenChildForm(new Forms.HelperForms.Admin.StoreTable(user), sender, btnStore);
         }
 
         private void btnStaff_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.HelperForms.Admin.Employee(), sender, btnStaff);
+            OpenChildForm(new Forms.HelperForms.Admin.Employee(user), sender, btnStaff);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -139,6 +146,16 @@ namespace Prodavnica.Forms
                 mousePosition.Offset(mouseLocation.X, mouseLocation.Y);
                 Location = mousePosition;
             }
+        }
+
+        private void btnProducer_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.HelperForms.Admin.Producer(user,true), sender, btnProducer);
+        }
+
+        private void btnProcurement_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.HelperForms.Admin.Producer(user, false), sender, btnProducer);
         }
     }
 }

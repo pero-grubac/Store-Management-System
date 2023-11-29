@@ -1,6 +1,4 @@
-﻿using Prodavnica.Database.DTO;
-using Prodavnica.Util;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,15 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Prodavnica.Forms.HelperForms.Admin
+namespace Prodavnica.Forms.HelperForms.Admin.Popup.Staff
 {
-    public partial class Employee : Form
+    public partial class EmployeeDetails : Form
     {
-        public Employee(User user)
+        public EmployeeDetails()
         {
             InitializeComponent();
-
-            LoadSettings.ApplySettins(user, this);
         }
     }
 }

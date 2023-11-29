@@ -14,18 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Forms\HelperForms\Admin\Popup\A - Copy.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\HelperForms\Admin\Popup\Manufacturer\NewManufactuer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\HelperForms\Admin\Popup\B - Copy.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\HelperForms\Admin\Popup\Manufacturer\SelectManufactuer.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Language\string.sr.Designer.cs">
       <DependentUpon>string.sr.resx</DependentUpon>
       <DesignTime>True</DesignTime>

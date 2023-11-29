@@ -19,6 +19,19 @@ namespace Prodavnica.Database.DTO
         public int IdCategory { get; set; }
         public string CategoryName {  get; set; }
         public string Description { get; set; }
-
+        public bool IsEquivalent(Product otherProduct)
+        {
+            
+            return Name == otherProduct.Name &&
+                   Price == otherProduct.Price &&
+                   Supplies == otherProduct.Supplies &&
+                   ExpirationDate == otherProduct.ExpirationDate &&
+                   BarCode == otherProduct.BarCode &&
+                   IdManufacturer == otherProduct.IdManufacturer &&
+                   ManufacturerName == otherProduct.ManufacturerName &&
+                   IdCategory == otherProduct.IdCategory &&
+                   CategoryName == otherProduct.CategoryName &&
+                   Description == otherProduct.Description;
+        }
     }
 }

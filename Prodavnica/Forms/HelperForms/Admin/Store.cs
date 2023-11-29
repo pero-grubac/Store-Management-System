@@ -2,7 +2,8 @@
 using Prodavnica.Database.DTO;
 using Prodavnica.Database.Repository;
 using Prodavnica.Forms.HelperForms.Admin.Popup;
-using Prodavnica.Forms.HelperForms.Admin.Popup.Manufactuer;
+using Prodavnica.Forms.HelperForms.Admin.Popup.Products;
+using Prodavnica.Language;
 using Prodavnica.Util;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Prodavnica.Forms.HelperForms.Admin
 {
-    public partial class Store : Form
+    public partial class StoreTable : Form
     {
         private User user;
         private List<Product> products;
@@ -26,91 +29,71 @@ namespace Prodavnica.Forms.HelperForms.Admin
         private CategoryDAOImpl categoryDAO = new CategoryDAOImpl();
         private List<Manufacturer> manufacturers;
         private ManufacturerDAOImpl manufacturerDAO = new ManufacturerDAOImpl();
-
-
+        private string deleteConfirmation;
+        private string confirmation;
         private string selectedSupplier;
         private string selectedManufactuer;
-        public Store(User user)
+        public StoreTable(User user)
         {
             InitializeComponent();
             this.user = user;
             LoadSettings.ApplySettins(user, this);
             this.Resize += Store_Resize;
-            GetProduts();
+
             SetProdutsToDGV();
 
             ProductsMenuResize();
             gbProducts.Resize += gbProduct_Resize;
-
-            gbSupplier.Resize += gbSupplier_Resize;
-            gbManufactuer.Resize += gbManufactuer_Resize;
-            gbCategoryName.Resize += gbCategoryName_Resize;
-            gbBarcode.Resize += gbBarcode_Resize;
-            gbDescription.Resize += gbDescription_Resize;
-            gbPrice.Resize += gbPrice_Resize;
-            gbProductName.Resize += gbProductName_Resize;
-            gbPurchasePrice.Resize += gbPurchasePrice_Resize;
-            gbAmount.Resize += gbSupplies_Resize;
-
-            btnAddBasket.Enabled = false;
-            btnAddBasket.Visible = false;
-
-            btnBuy.Enabled = false;
-            btnBuy.Visible = false;
-
-            btnBskRemove.Enabled = false;
-            btnBskRemove.Visible = false;
+            gbAdd.Resize += gbAdd_Resize; ;
+            ChangeText();
+            btnDeleteItem.BackColor = Color.White;
+            /*     btnAdd.Enabled = false;
+                 btnAdd.Visible = false;
+            AKO NISI ADMIN 
+            jos u gbProduct_Resize
+            jedna if isAdmin prije  foreach (System.Windows.Forms.Button btn in buttons)
+            i u changetext napraviti da pise 
+             */
         }
 
-        private void gbSupplies_Resize(object? sender, EventArgs e)
+        private void gbAdd_Resize(object? sender, EventArgs e)
         {
-            txtAmount.Width = gbAmount.ClientSize.Width - SystemInformation.VerticalScrollBarWidth;
+            txtPrice.Width = gbAdd.ClientSize.Width - txtPrice.Margin.Horizontal - lblPrice.Width - 70;
+            txtAmount.Width = txtPrice.Width;
+            txtTotal.Width = txtPrice.Width;
+            txtSearchBarCode.Width = txtPrice.Width;
         }
 
-        private void gbPurchasePrice_Resize(object? sender, EventArgs e)
+        public void ChangeText()
         {
-            txtPurchasePrice.Width = gbPurchasePrice.ClientSize.Width - SystemInformation.VerticalScrollBarWidth;
+            LoadSettings.ApplySettins(user, this);
+            btnAdd.Text = LanguageHelper.GetString("btnAdd");
+            btnAddToCart.Text = LanguageHelper.GetString("btnAdd");
+            btnDelete.Text = LanguageHelper.GetString("btnDelete");
+            btnUpdate.Text = LanguageHelper.GetString("btnUpdate");
+            btnBuy.Text = LanguageHelper.GetString("btnBuy");
+            dgvProducts.Columns[0].HeaderText = LanguageHelper.GetString("barcode");
+            dgvProductsBill.Columns[0].HeaderText = LanguageHelper.GetString("barcode");
+            dgvProducts.Columns[1].HeaderText = LanguageHelper.GetString("name");
+            dgvProductsBill.Columns[1].HeaderText = LanguageHelper.GetString("name");
+            dgvBill.Columns[0].HeaderText = LanguageHelper.GetString("name");
+            dgvProducts.Columns[2].HeaderText = LanguageHelper.GetString("price");
+            dgvBill.Columns[2].HeaderText = LanguageHelper.GetString("price");
+            lblPrice.Text = LanguageHelper.GetString("price");
+            dgvProducts.Columns[3].HeaderText = LanguageHelper.GetString("supplies");
+            dgvProducts.Columns[4].HeaderText = LanguageHelper.GetString("expirationDate");
+            dgvProducts.Columns[5].HeaderText = LanguageHelper.GetString("description");
+            dgvProducts.Columns[6].HeaderText = LanguageHelper.GetString("category");
+            dgvProducts.Columns[7].HeaderText = LanguageHelper.GetString("manufacturer");
+            lblSearch.Text = LanguageHelper.GetString("lblSearch");
+            lblSearchProduct.Text = LanguageHelper.GetString("lblSearch");
+            deleteConfirmation = LanguageHelper.GetString("deleteConfirmation");
+            lblAmount.Text = LanguageHelper.GetString("lblAmount");
+            confirmation = LanguageHelper.GetString("confirmation");
+            dgvBill.Columns[1].HeaderText = LanguageHelper.GetString("amount");
+            btnDeleteItem.Text = LanguageHelper.GetString("btnDeleteItem");
         }
 
-        private void gbProductName_Resize(object? sender, EventArgs e)
-        {
-            int totalButtonWidth = btnNewName.Width + btnOldName.Width + btnNewName.Margin.Horizontal + btnOldName.Margin.Horizontal;
-            txtName.Width = gbProductName.ClientSize.Width - totalButtonWidth - SystemInformation.VerticalScrollBarWidth;
-        }
-
-        private void gbPrice_Resize(object? sender, EventArgs e)
-        {
-            txtPrice.Width = gbPrice.ClientSize.Width - SystemInformation.VerticalScrollBarWidth;
-        }
-
-        private void gbDescription_Resize(object? sender, EventArgs e)
-        {
-            txtDescription.Width = gbDescription.ClientSize.Width - SystemInformation.VerticalScrollBarWidth;
-        }
-
-        private void gbBarcode_Resize(object? sender, EventArgs e)
-        {
-            int totalButtonWidth = btnNewBarCode.Width + btnOldBarCode.Width + btnNewBarCode.Margin.Horizontal + btnOldBarCode.Margin.Horizontal;
-            txtBarCode.Width = gbBarcode.ClientSize.Width - totalButtonWidth - SystemInformation.VerticalScrollBarWidth;
-        }
-
-        private void gbCategoryName_Resize(object? sender, EventArgs e)
-        {
-            int totalButtonWidth = btnNewCategory.Width + btnOldCategory.Width + btnNewCategory.Margin.Horizontal + btnOldCategory.Margin.Horizontal;
-            txtCategoryName.Width = gbCategoryName.ClientSize.Width - totalButtonWidth - SystemInformation.VerticalScrollBarWidth;
-        }
-
-        private void gbManufactuer_Resize(object? sender, EventArgs e)
-        {
-            int totalButtonWidth = btnNewMan.Width + btnOldMan.Width + btnNewMan.Margin.Horizontal + btnOldMan.Margin.Horizontal;
-            txtManufactuer.Width = gbManufactuer.ClientSize.Width - totalButtonWidth - SystemInformation.VerticalScrollBarWidth;
-        }
-
-        private void gbSupplier_Resize(object sender, EventArgs e)
-        {
-            int totalButtonWidth = btnNewSup.Width + btnOldSup.Width + btnNewSup.Margin.Horizontal + btnOldSup.Margin.Horizontal;
-            txtSupplier.Width = gbSupplier.ClientSize.Width - totalButtonWidth - SystemInformation.VerticalScrollBarWidth;
-        }
         private void GetProduts()
         {
             products = productsDAO.GetAll();
@@ -132,9 +115,12 @@ namespace Prodavnica.Forms.HelperForms.Admin
         }
         private void SetProdutsToDGV()
         {
-
+            GetProduts();
+            dgvProducts.DataSource = null;
             dgvProducts.DataSource = products;
+            dgvProducts.Refresh();
 
+            dgvProductsBill.DataSource = products;
         }
         private void Store_Resize(object? sender, EventArgs e)
         {
@@ -177,7 +163,7 @@ namespace Prodavnica.Forms.HelperForms.Admin
             int xPos = padding;
 
             var sortedControls = gbProducts.Controls.Cast<Control>()
-                                   .Where(ctrl => ctrl is Button || ctrl is Label || ctrl is TextBox)
+                                   .Where(ctrl => ctrl is System.Windows.Forms.Button || ctrl is Label || ctrl is System.Windows.Forms.TextBox)
                                    .OrderBy(ctrl => ctrl.Location.X)
                                    .ToList();
 
@@ -185,13 +171,13 @@ namespace Prodavnica.Forms.HelperForms.Admin
 
             foreach (Control ctrl in sortedControls)
             {
-                if (ctrl is Button || ctrl is Label || ctrl is TextBox)
+                if (ctrl is System.Windows.Forms.Button || ctrl is Label || ctrl is System.Windows.Forms.TextBox)
                 {
                     ctrl.Location = new Point(xPos, ctrl.Location.Y);
 
                     Size textSize = TextRenderer.MeasureText(ctrl.Text, ctrl.Font);
 
-                    if (ctrl is Label || ctrl is TextBox)
+                    if (ctrl is Label || ctrl is System.Windows.Forms.TextBox)
                     {
                         ctrl.Size = new Size(textSize.Width, textSize.Height);
                     }
@@ -211,23 +197,33 @@ namespace Prodavnica.Forms.HelperForms.Admin
             int padding = 5;
             int margin = 10;
             int totalWidth = gbProducts.ClientSize.Width;
-            int usedWidth = 0;
+            int usedWidth = margin;
 
-            foreach (Control ctrl in gbProducts.Controls)
+            List<System.Windows.Forms.Button> buttons = gbProducts.Controls.OfType<System.Windows.Forms.Button>().OrderBy(b => b.Location.X).ToList();
+            Label labelControl = gbProducts.Controls.OfType<Label>().FirstOrDefault();
+            System.Windows.Forms.TextBox textBox = gbProducts.Controls.OfType<System.Windows.Forms.TextBox>().FirstOrDefault();
+
+            foreach (System.Windows.Forms.Button btn in buttons)
             {
-                if (ctrl is Button || ctrl is Label)
-                {
-                    usedWidth += ctrl.Width + padding;
-                }
+                int btnWidth = TextRenderer.MeasureText(btn.Text, btn.Font).Width + padding * 2;
+                btn.Width = btnWidth;
+                btn.Location = new Point(usedWidth, btn.Location.Y);
+                usedWidth += btnWidth + padding;
             }
 
-            int textBoxWidth = totalWidth - usedWidth - padding - margin;
-
-            TextBox textBox = gbProducts.Controls.OfType<TextBox>().FirstOrDefault();
+            if (labelControl != null)
+            {
+                int labelWidth = TextRenderer.MeasureText(labelControl.Text, labelControl.Font).Width + padding * 2;
+                labelControl.Width = labelWidth;
+                labelControl.Location = new Point(usedWidth, labelControl.Location.Y);
+                usedWidth += labelWidth + padding;
+            }
 
             if (textBox != null)
             {
+                int textBoxWidth = totalWidth - usedWidth - margin;
                 textBox.Width = textBoxWidth >= 0 ? textBoxWidth : 0;
+                textBox.Location = new Point(usedWidth, textBox.Location.Y);
             }
         }
 
@@ -266,37 +262,6 @@ namespace Prodavnica.Forms.HelperForms.Admin
                 dgvProducts.Rows[e.RowIndex].Selected = true;
             }
         }
-
-        private void btnSuppliers_Click(object sender, EventArgs e)
-        {
-            using (SelectSupplier selectSupplier = new SelectSupplier(user))
-            {
-                if (selectSupplier.ShowDialog() == DialogResult.OK)
-                {
-                    selectedSupplier = selectSupplier.selectSupplier;
-                    if (selectedSupplier != null)
-                    {
-                        txtSupplier.Text = selectedSupplier;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Operation canceled.");
-                }
-            }
-        }
-        private void ResizeProcurement(object sender, EventArgs e)
-        {
-            gbSupplier_Resize(sender, e);
-            gbManufactuer_Resize(sender, e);
-            gbCategoryName_Resize(sender, e);
-            gbBarcode_Resize(sender, e);
-            gbDescription_Resize(sender, e);
-            gbPrice_Resize(sender, e);
-            gbProductName_Resize(sender, e);
-            gbPurchasePrice_Resize(sender, e);
-            gbSupplies_Resize(sender, e);
-        }
         private void tcShop_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tcShop.SelectedTab?.Name == "tpProducts")
@@ -305,84 +270,67 @@ namespace Prodavnica.Forms.HelperForms.Admin
             }
             if (tcShop.SelectedTab?.Name == "tbProcurement")
             {
-                ResizeProcurement(sender, e);
+
             }
         }
-
-        private void btnNew_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-            using (NewSupplier newSupplier = new NewSupplier(user))
+            if (dgvProducts.SelectedRows.Count > 0)
             {
-                if (newSupplier.ShowDialog() == DialogResult.OK)
+                DataGridViewRow row = dgvProducts.SelectedRows[0];
+
+                decimal.TryParse(row.Cells["Price"].Value?.ToString(), out decimal price);
+                DateTime.TryParse(row.Cells["ExpirationDate"].Value?.ToString(), out DateTime date);
+                int.TryParse(row.Cells["Supplies"].Value?.ToString(), out int supplies);
+
+                Product product = new Product
                 {
-                    selectedSupplier = newSupplier.name;
-                    if (selectedSupplier != null)
+                    Name = row.Cells["NameColumn"].Value?.ToString(),
+                    BarCode = row.Cells["BarCode"].Value?.ToString(),
+                    Price = price,
+                    ExpirationDate = date,
+                    Supplies = supplies,
+                    Description = row.Cells["Description"].Value?.ToString(),
+                    ManufacturerName = row.Cells["ManufacturerName"].Value?.ToString(),
+                    CategoryName = row.Cells["CategoryName"].Value?.ToString(),
+                };
+                product.Id = products.FirstOrDefault(p => p.BarCode == product.BarCode).Id;
+                using (ProductsDetails productsDetails = new ProductsDetails(user, product, true))
+                {
+                    if (productsDetails.ShowDialog() == DialogResult.OK)
                     {
-                        txtSupplier.Text = selectedSupplier;
+                        SetProdutsToDGV();
                     }
-
-                }
-                else
-                {
-                    MessageBox.Show("Operation canceled.");
-                }
-            }
-        }
-
-        private void btnAddBasket_Click(object sender, EventArgs e)
-        {
-            btnNewSup.Enabled = false;
-            btnOldSup.Enabled = false;
-
-            btnBuy.Enabled = true;
-            btnBuy.Visible = true;
-
-            btnBskRemove.Enabled = true;
-            btnBskRemove.Visible = true;
-        }
-
-        private void txtSupplier_TextChanged(object sender, EventArgs e)
-        {
-            btnAddBasket.Visible = true;
-            btnAddBasket.Enabled = true;
-        }
-
-        private void btnNewMan_Click(object sender, EventArgs e)
-        {
-            using (NewManufactuer newManufactuer = new NewManufactuer(user))
-            {
-                if (newManufactuer.ShowDialog() == DialogResult.OK)
-                {
-                    selectedManufactuer = newManufactuer.name;
-                    if (selectedManufactuer != null)
-                    {
-                        txtManufactuer.Text = selectedManufactuer;
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Operation canceled.");
                 }
             }
         }
 
-        private void btnOldMan_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            using (SelectManufactuer selectManufactuer = new SelectManufactuer(user))
+            Product product = new Product();
+            using (ProductsDetails productsDetails = new ProductsDetails(user, product, false))
             {
-                if (selectManufactuer.ShowDialog() == DialogResult.OK)
+                if (productsDetails.ShowDialog() == DialogResult.OK)
                 {
-                    selectedManufactuer = selectManufactuer.selectManufactuer   ;
-                    if (selectManufactuer != null)
-                    {
-                        txtManufactuer.Text = selectedManufactuer;
-                    }
+                    SetProdutsToDGV();
                 }
-                else
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvProducts.SelectedRows[0];
+                string barcode = row.Cells["BarCode"].Value?.ToString();
+                int id = products.FirstOrDefault(p => p.BarCode == barcode).Id;
+                DialogResult result = MessageBox.Show(deleteConfirmation, confirmation, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Operation canceled.");
+                    productsDAO.DeleteProduct(id);
+                    SetProdutsToDGV();
                 }
+
             }
         }
     }
