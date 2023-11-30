@@ -2,15 +2,6 @@
 using Prodavnica.Database.Repository;
 using Prodavnica.Language;
 using Prodavnica.Util;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Prodavnica.Forms.HelperForms.Admin.Popup.Products
 {
@@ -21,8 +12,8 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Products
         private List<Product> products;
         private List<Category> categories;
         private List<Manufacturer> manufacturers;
-        private static string invalidNumber = "Please select a valid number!";
-        private static string invalidBarcode = "Barcode already exists. Please change it";
+        private string invalidNumber;
+        private string invalidBarcode;
 
         private ProductsDAOImpl productsDAO = new ProductsDAOImpl();
         private CategoryDAOImpl categoryDAO = new CategoryDAOImpl();
@@ -47,7 +38,6 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Products
                 setComboBoxes();
             }
             rtbMessage.SelectionAlignment = HorizontalAlignment.Center;
-            ChangeText();
         }
         public void ChangeText()
         {
@@ -55,14 +45,15 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Products
             lblName.Text = LanguageHelper.GetString("name");
             lblManufacturer.Text = LanguageHelper.GetString("manufacturer");
             lblCategory.Text = LanguageHelper.GetString("category");
-            lblBarCode.Text = LanguageHelper.GetString("barcode"); 
+            lblBarCode.Text = LanguageHelper.GetString("barcode");
             lblDate.Text = LanguageHelper.GetString("expirationDate");
             lblDescription.Text = LanguageHelper.GetString("description");
             lblPrice.Text = LanguageHelper.GetString("price");
             lblSupplies.Text = LanguageHelper.GetString("supplies");
             btnSave.Text = LanguageHelper.GetString("btnSave");
             btnCancel.Text = LanguageHelper.GetString("btnCancel");
-
+            invalidBarcode = LanguageHelper.GetString("invalidBarcode");
+            invalidNumber = LanguageHelper.GetString("invalidNumber");
         }
         private void setProduct()
         {

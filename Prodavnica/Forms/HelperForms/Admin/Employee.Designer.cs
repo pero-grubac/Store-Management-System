@@ -29,76 +29,83 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            tcShop = new TabControl();
-            tpProducts = new TabPage();
             tlpProducts = new TableLayoutPanel();
-            gbProducts = new GroupBox();
+            dgvUsers = new DataGridView();
+            userBindingSource = new BindingSource(components);
+            gbUsers = new GroupBox();
             txtSearch = new TextBox();
             lblSearch = new Label();
             btnDelete = new Button();
             btnUpdate = new Button();
             btnAdd = new Button();
-            tbProcurement = new TabPage();
-            productsBindingSource = new BindingSource(components);
-            tcShop.SuspendLayout();
-            tpProducts.SuspendLayout();
+            userNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            firstNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            lastNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            phoneNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tlpProducts.SuspendLayout();
-            gbProducts.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)productsBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)userBindingSource).BeginInit();
+            gbUsers.SuspendLayout();
             SuspendLayout();
-            // 
-            // tcShop
-            // 
-            tcShop.Controls.Add(tpProducts);
-            tcShop.Controls.Add(tbProcurement);
-            tcShop.Dock = DockStyle.Fill;
-            tcShop.Location = new Point(0, 0);
-            tcShop.Name = "tcShop";
-            tcShop.SelectedIndex = 0;
-            tcShop.Size = new Size(952, 509);
-            tcShop.TabIndex = 0;
-            // 
-            // tpProducts
-            // 
-            tpProducts.Controls.Add(tlpProducts);
-            tpProducts.Location = new Point(4, 29);
-            tpProducts.Name = "tpProducts";
-            tpProducts.Padding = new Padding(3);
-            tpProducts.Size = new Size(944, 476);
-            tpProducts.TabIndex = 2;
-            tpProducts.Text = "Products";
-            tpProducts.UseVisualStyleBackColor = true;
             // 
             // tlpProducts
             // 
             tlpProducts.ColumnCount = 1;
             tlpProducts.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tlpProducts.Controls.Add(gbProducts, 0, 0);
+            tlpProducts.Controls.Add(dgvUsers, 0, 1);
+            tlpProducts.Controls.Add(gbUsers, 0, 0);
             tlpProducts.Dock = DockStyle.Fill;
-            tlpProducts.Location = new Point(3, 3);
+            tlpProducts.Location = new Point(0, 0);
             tlpProducts.Name = "tlpProducts";
             tlpProducts.RowCount = 2;
             tlpProducts.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
             tlpProducts.RowStyles.Add(new RowStyle());
-            tlpProducts.Size = new Size(938, 470);
-            tlpProducts.TabIndex = 1;
+            tlpProducts.Size = new Size(963, 430);
+            tlpProducts.TabIndex = 2;
             // 
-            // gbProducts
+            // dgvUsers
             // 
-            gbProducts.AutoSize = true;
-            gbProducts.BackColor = Color.White;
-            gbProducts.Controls.Add(txtSearch);
-            gbProducts.Controls.Add(lblSearch);
-            gbProducts.Controls.Add(btnDelete);
-            gbProducts.Controls.Add(btnUpdate);
-            gbProducts.Controls.Add(btnAdd);
-            gbProducts.Dock = DockStyle.Fill;
-            gbProducts.ForeColor = Color.Black;
-            gbProducts.Location = new Point(3, 3);
-            gbProducts.Name = "gbProducts";
-            gbProducts.Size = new Size(932, 69);
-            gbProducts.TabIndex = 1;
-            gbProducts.TabStop = false;
+            dgvUsers.AllowUserToAddRows = false;
+            dgvUsers.AllowUserToDeleteRows = false;
+            dgvUsers.AllowUserToResizeRows = false;
+            dgvUsers.AutoGenerateColumns = false;
+            dgvUsers.BackgroundColor = Color.White;
+            dgvUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsers.Columns.AddRange(new DataGridViewColumn[] { userNameDataGridViewTextBoxColumn, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, phoneNumberDataGridViewTextBoxColumn });
+            dgvUsers.DataSource = userBindingSource;
+            dgvUsers.Dock = DockStyle.Fill;
+            dgvUsers.Location = new Point(3, 78);
+            dgvUsers.Name = "dgvUsers";
+            dgvUsers.ReadOnly = true;
+            dgvUsers.RowHeadersVisible = false;
+            dgvUsers.RowHeadersWidth = 51;
+            dgvUsers.RowTemplate.Height = 29;
+            dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUsers.Size = new Size(957, 885);
+            dgvUsers.TabIndex = 0;
+            // 
+            // userBindingSource
+            // 
+            userBindingSource.DataSource = typeof(Database.DTO.User);
+            // 
+            // gbUsers
+            // 
+            gbUsers.AutoSize = true;
+            gbUsers.BackColor = Color.White;
+            gbUsers.Controls.Add(txtSearch);
+            gbUsers.Controls.Add(lblSearch);
+            gbUsers.Controls.Add(btnDelete);
+            gbUsers.Controls.Add(btnUpdate);
+            gbUsers.Controls.Add(btnAdd);
+            gbUsers.Dock = DockStyle.Fill;
+            gbUsers.ForeColor = Color.Black;
+            gbUsers.Location = new Point(3, 3);
+            gbUsers.Name = "gbUsers";
+            gbUsers.Size = new Size(957, 69);
+            gbUsers.TabIndex = 1;
+            gbUsers.TabStop = false;
             // 
             // txtSearch
             // 
@@ -126,6 +133,7 @@
             btnDelete.TabIndex = 2;
             btnDelete.Text = "DELETE";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
@@ -136,6 +144,7 @@
             btnUpdate.TabIndex = 1;
             btnUpdate.Text = "UPDATE";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnAdd
             // 
@@ -146,53 +155,84 @@
             btnAdd.TabIndex = 0;
             btnAdd.Text = "ADD";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
-            // tbProcurement
+            // userNameDataGridViewTextBoxColumn
             // 
-            tbProcurement.Location = new Point(4, 29);
-            tbProcurement.Name = "tbProcurement";
-            tbProcurement.Padding = new Padding(3);
-            tbProcurement.Size = new Size(944, 476);
-            tbProcurement.TabIndex = 1;
-            tbProcurement.Text = "Procurement";
-            tbProcurement.UseVisualStyleBackColor = true;
+            userNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
+            userNameDataGridViewTextBoxColumn.HeaderText = "Username";
+            userNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
+            userNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // productsBindingSource
+            // firstNameDataGridViewTextBoxColumn
             // 
-            productsBindingSource.DataSource = typeof(Database.DTO.Product);
+            firstNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            firstNameDataGridViewTextBoxColumn.HeaderText = "First name";
+            firstNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            lastNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            lastNameDataGridViewTextBoxColumn.HeaderText = "Last name";
+            lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            emailDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            emailDataGridViewTextBoxColumn.MinimumWidth = 6;
+            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phoneNumberDataGridViewTextBoxColumn
+            // 
+            phoneNumberDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
+            phoneNumberDataGridViewTextBoxColumn.HeaderText = "Phone number";
+            phoneNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
+            phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
+            phoneNumberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Employee
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(952, 509);
-            Controls.Add(tcShop);
+            ClientSize = new Size(963, 430);
+            ControlBox = false;
+            Controls.Add(tlpProducts);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Employee";
-            Text = "Store";
-            tcShop.ResumeLayout(false);
-            tpProducts.ResumeLayout(false);
             tlpProducts.ResumeLayout(false);
             tlpProducts.PerformLayout();
-            gbProducts.ResumeLayout(false);
-            gbProducts.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)productsBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)userBindingSource).EndInit();
+            gbUsers.ResumeLayout(false);
+            gbUsers.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl tcShop;
-        private TabPage tbProcurement;
-        private TabPage tpProducts;
-        private BindingSource productsBindingSource;
         private TableLayoutPanel tlpProducts;
-        private GroupBox gbProducts;
-        private Button btnAdd;
-        private Button btnDelete;
-        private Button btnUpdate;
+        private DataGridView dgvUsers;
+        private GroupBox gbUsers;
         private TextBox txtSearch;
         private Label lblSearch;
-        private DataGridViewTextBoxColumn NameCol;
+        private Button btnDelete;
+        private Button btnUpdate;
+        private Button btnAdd;
+        private BindingSource userBindingSource;
+        private DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
     }
 }

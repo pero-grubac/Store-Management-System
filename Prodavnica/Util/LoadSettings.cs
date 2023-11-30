@@ -1,14 +1,6 @@
-﻿using Org.BouncyCastle.Asn1.Crmf;
-using Org.BouncyCastle.Tls;
-using Prodavnica.Database.DTO;
+﻿using Prodavnica.Database.DTO;
 using Prodavnica.Database.Repository;
 using Prodavnica.Language;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Prodavnica.Util
 {
@@ -23,7 +15,7 @@ namespace Prodavnica.Util
             Font font = themeDAO.GetFont(theme);
 
             LanguageDAOImpl languageDAO = new LanguageDAOImpl();
-            Database.DTO.Language language = languageDAO.GetLanguageById(user.IdLangugae);
+            Database.DTO.Language language = languageDAO.GetLanguageById(user.IdLanguage);
             LanguageHelper.ChangeLanguage(language.Name);
             ChangeColor(form.Controls, color);
             ChangeFont(form.Controls, font);
@@ -55,7 +47,7 @@ namespace Prodavnica.Util
                         ChangeColor(tabPage.Controls, color);
                     }
                 }
-                else if(control is DataGridView dgv)
+                else if (control is DataGridView dgv)
                 {
                     dgv.DefaultCellStyle.SelectionBackColor = color;
                     dgv.Refresh();
@@ -69,6 +61,10 @@ namespace Prodavnica.Util
                 if (control is Button button)
                 {
                     button.Font = font;
+                }
+                else if (control is TextBox txt)
+                {
+                    txt.Font = font;
                 }
                 else if (control is TableLayoutPanel tbl)
                 {

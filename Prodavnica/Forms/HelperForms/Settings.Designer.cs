@@ -347,8 +347,8 @@
             // txtLastName
             // 
             txtLastName.BorderStyle = BorderStyle.None;
-            txtLastName.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            txtLastName.ForeColor = Color.FromArgb(0, 74, 173);
+            txtLastName.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtLastName.ForeColor = SystemColors.WindowText;
             txtLastName.Location = new Point(160, 171);
             txtLastName.Multiline = true;
             txtLastName.Name = "txtLastName";
@@ -376,8 +376,8 @@
             // txtName
             // 
             txtName.BorderStyle = BorderStyle.None;
-            txtName.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            txtName.ForeColor = Color.FromArgb(0, 74, 173);
+            txtName.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtName.ForeColor = SystemColors.WindowText;
             txtName.Location = new Point(160, 140);
             txtName.Multiline = true;
             txtName.Name = "txtName";
@@ -419,8 +419,8 @@
             // txtPhone
             // 
             txtPhone.BorderStyle = BorderStyle.None;
-            txtPhone.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            txtPhone.ForeColor = Color.FromArgb(0, 74, 173);
+            txtPhone.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPhone.ForeColor = SystemColors.WindowText;
             txtPhone.Location = new Point(160, 102);
             txtPhone.Multiline = true;
             txtPhone.Name = "txtPhone";
@@ -448,8 +448,8 @@
             // txtEmail
             // 
             txtEmail.BorderStyle = BorderStyle.None;
-            txtEmail.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            txtEmail.ForeColor = Color.FromArgb(0, 74, 173);
+            txtEmail.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEmail.ForeColor = SystemColors.WindowText;
             txtEmail.Location = new Point(160, 64);
             txtEmail.Multiline = true;
             txtEmail.Name = "txtEmail";
@@ -477,8 +477,8 @@
             // txtUsername
             // 
             txtUsername.BorderStyle = BorderStyle.None;
-            txtUsername.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            txtUsername.ForeColor = Color.FromArgb(0, 74, 173);
+            txtUsername.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsername.ForeColor = SystemColors.WindowText;
             txtUsername.Location = new Point(160, 34);
             txtUsername.Multiline = true;
             txtUsername.Name = "txtUsername";

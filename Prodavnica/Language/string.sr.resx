@@ -207,6 +207,12 @@
   <data name="gbProfile" xml:space="preserve">
     <value>Profil</value>
   </data>
+  <data name="invalidBarcode" xml:space="preserve">
+    <value>Barkod već postoji. Izmenite ga.</value>
+  </data>
+  <data name="invalidNumber" xml:space="preserve">
+    <value>Selektujte ispravan broj.</value>
+  </data>
   <data name="lbl" xml:space="preserve">
     <value>Prodavnica</value>
   </data>
@@ -239,6 +245,9 @@
   </data>
   <data name="lblSearch" xml:space="preserve">
     <value>Pretraga</value>
+  </data>
+  <data name="lblSupplier" xml:space="preserve">
+    <value>Dobavljač</value>
   </data>
   <data name="lblTitle" xml:space="preserve">
     <value>  POČETNA</value>

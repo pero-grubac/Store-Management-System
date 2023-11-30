@@ -207,6 +207,12 @@
   <data name="gbProfile" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="invalidBarcode" xml:space="preserve">
+    <value>Barcode already exists. Please change it.</value>
+  </data>
+  <data name="invalidNumber" xml:space="preserve">
+    <value>Please select a valid number!</value>
+  </data>
   <data name="lbl" xml:space="preserve">
     <value>Shop</value>
   </data>
@@ -239,6 +245,9 @@
   </data>
   <data name="lblSearch" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="lblSupplier" xml:space="preserve">
+    <value>Supplier</value>
   </data>
   <data name="lblTitle" xml:space="preserve">
     <value>  HOME</value>

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms.VisualStyles;
-
-namespace Prodavnica.Database.DTO
+﻿namespace Prodavnica.Database.DTO
 {
     public class User
     {
@@ -18,7 +11,7 @@ namespace Prodavnica.Database.DTO
         public String PhoneNumber { get; set; }
         public Boolean IsAdmin { get; set; }
         public int IdTheme { get; set; }
-        public int IdLangugae { get; set; }
+        public int IdLanguage { get; set; }
 
     }
 }

@@ -2,17 +2,6 @@
 using Prodavnica.Database.Repository;
 using Prodavnica.Language;
 using Prodavnica.Util;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Prodavnica.Forms.HelperForms
 {
@@ -63,7 +52,7 @@ namespace Prodavnica.Forms.HelperForms
             userFont = themeDAO.GetFont(theme);
             languages = languageDAO.GetLanguages();
             cbLanguage.DataSource = languages;
-            cbLanguage.SelectedItem = languageDAO.GetSelectedLanguageName(user.IdLangugae);
+            cbLanguage.SelectedItem = languageDAO.GetSelectedLanguageName(user.IdLanguage);
             isInitializing = false;
 
             lblNewTheme.Font = userFont;

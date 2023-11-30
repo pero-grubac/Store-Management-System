@@ -2,11 +2,6 @@
 using OnlineKupovinaGUI;
 using Prodavnica.Database.DAO;
 using Prodavnica.Database.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Prodavnica.Database.Repository
 {
@@ -31,6 +26,33 @@ namespace Prodavnica.Database.Repository
                     cmd.Parameters.AddWithValue("@themeId", newTheme.Id);
 
                     cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        public void CreateTheme(ref Theme theme)
+        {
+            using (var connection = DBUtil.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = @"INSERT INTO tema (boja, font, veličina, fontStil, strikeout, underline) 
+                                     VALUES (@ColorName, @FontName, @Size, @FontStyle, @IsStrikeout, @IsUnderline);
+                                     SELECT LAST_INSERT_ID();";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@ColorName", theme.ColorName);
+                    command.Parameters.AddWithValue("@FontName", theme.FontName);
+                    command.Parameters.AddWithValue("@FontStyle", theme.FontStyle);
+                    command.Parameters.AddWithValue("@Size", theme.Size);
+                    command.Parameters.AddWithValue("@IsStrikeout", theme.IsStrikeout);
+                    command.Parameters.AddWithValue("@IsUnderline", theme.IsUnderline);
+                    theme.Id = Convert.ToInt32(command.ExecuteScalar());
                 }
                 catch (Exception ex)
                 {

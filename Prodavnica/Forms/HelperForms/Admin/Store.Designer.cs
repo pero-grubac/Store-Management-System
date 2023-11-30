@@ -58,6 +58,9 @@
             lblTotal = new Label();
             btnBuy = new Button();
             dgvBill = new DataGridView();
+            nameColumBill = new DataGridViewTextBoxColumn();
+            amountColumnBill = new DataGridViewTextBoxColumn();
+            priceColumnBill = new DataGridViewTextBoxColumn();
             productBIllBindingSource = new BindingSource(components);
             btnDeleteItem = new Button();
             tlypSelect = new TableLayoutPanel();
@@ -73,10 +76,22 @@
             dgvProductsBill = new DataGridView();
             barCodeColumn = new DataGridViewTextBoxColumn();
             nameColumnBill = new DataGridViewTextBoxColumn();
+            gbSupplier = new GroupBox();
+            cbSupplier = new ComboBox();
+            lblSupplier = new Label();
             tbBills = new TabPage();
-            nameColumBill = new DataGridViewTextBoxColumn();
-            amountColumnBill = new DataGridViewTextBoxColumn();
-            priceColumnBill = new DataGridViewTextBoxColumn();
+            tlpBills = new TableLayoutPanel();
+            tlpDate = new TableLayoutPanel();
+            gbDateTo = new GroupBox();
+            dtpTo = new DateTimePicker();
+            lblTo = new Label();
+            gbDateFrom = new GroupBox();
+            dtpFrom = new DateTimePicker();
+            lblFrom = new Label();
+            dgvBills = new DataGridView();
+            dateColumnBill = new DataGridViewTextBoxColumn();
+            nameColumnBills = new DataGridViewTextBoxColumn();
+            procurementBindingSource = new BindingSource(components);
             tcShop.SuspendLayout();
             tpProducts.SuspendLayout();
             tlpProducts.SuspendLayout();
@@ -93,6 +108,14 @@
             gbSearch.SuspendLayout();
             gbAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProductsBill).BeginInit();
+            gbSupplier.SuspendLayout();
+            tbBills.SuspendLayout();
+            tlpBills.SuspendLayout();
+            tlpDate.SuspendLayout();
+            gbDateTo.SuspendLayout();
+            gbDateFrom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvBills).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)procurementBindingSource).BeginInit();
             SuspendLayout();
             // 
             // tcShop
@@ -262,6 +285,7 @@
             // txtSearch
             // 
             txtSearch.BorderStyle = BorderStyle.FixedSingle;
+            txtSearch.ForeColor = SystemColors.WindowText;
             txtSearch.Location = new Point(356, 26);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(308, 27);
@@ -386,7 +410,7 @@
             // btnBuy
             // 
             btnBuy.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnBuy.Location = new Point(357, 106);
+            btnBuy.Location = new Point(338, 106);
             btnBuy.Name = "btnBuy";
             btnBuy.Size = new Size(94, 32);
             btnBuy.TabIndex = 4;
@@ -413,176 +437,6 @@
             dgvBill.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvBill.Size = new Size(457, 233);
             dgvBill.TabIndex = 1;
-            // 
-            // productBIllBindingSource
-            // 
-            productBIllBindingSource.DataSource = typeof(ProductBIll);
-            // 
-            // btnDeleteItem
-            // 
-            btnDeleteItem.BackColor = Color.White;
-            btnDeleteItem.Dock = DockStyle.Fill;
-            btnDeleteItem.Location = new Point(3, 242);
-            btnDeleteItem.Name = "btnDeleteItem";
-            btnDeleteItem.Size = new Size(457, 69);
-            btnDeleteItem.TabIndex = 2;
-            btnDeleteItem.Text = "Delete item";
-            btnDeleteItem.UseVisualStyleBackColor = false;
-            // 
-            // tlypSelect
-            // 
-            tlypSelect.ColumnCount = 1;
-            tlypSelect.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tlypSelect.Controls.Add(gbSearch, 0, 0);
-            tlypSelect.Controls.Add(gbAdd, 0, 2);
-            tlypSelect.Controls.Add(dgvProductsBill, 0, 1);
-            tlypSelect.Dock = DockStyle.Fill;
-            tlypSelect.Location = new Point(3, 3);
-            tlypSelect.Name = "tlypSelect";
-            tlypSelect.RowCount = 3;
-            tlypSelect.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
-            tlypSelect.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlypSelect.RowStyles.Add(new RowStyle(SizeType.Absolute, 225F));
-            tlypSelect.Size = new Size(463, 464);
-            tlypSelect.TabIndex = 1;
-            // 
-            // gbSearch
-            // 
-            gbSearch.BackColor = Color.White;
-            gbSearch.Controls.Add(txtSearchBarCode);
-            gbSearch.Controls.Add(lblSearchProduct);
-            gbSearch.Dock = DockStyle.Fill;
-            gbSearch.Location = new Point(3, 3);
-            gbSearch.Name = "gbSearch";
-            gbSearch.Size = new Size(457, 69);
-            gbSearch.TabIndex = 0;
-            gbSearch.TabStop = false;
-            // 
-            // txtSearchBarCode
-            // 
-            txtSearchBarCode.BorderStyle = BorderStyle.FixedSingle;
-            txtSearchBarCode.Location = new Point(102, 26);
-            txtSearchBarCode.Name = "txtSearchBarCode";
-            txtSearchBarCode.Size = new Size(340, 27);
-            txtSearchBarCode.TabIndex = 1;
-            // 
-            // lblSearchProduct
-            // 
-            lblSearchProduct.AutoSize = true;
-            lblSearchProduct.Location = new Point(6, 29);
-            lblSearchProduct.Name = "lblSearchProduct";
-            lblSearchProduct.Size = new Size(53, 20);
-            lblSearchProduct.TabIndex = 0;
-            lblSearchProduct.Text = "Search";
-            // 
-            // gbAdd
-            // 
-            gbAdd.BackColor = Color.White;
-            gbAdd.Controls.Add(txtAmount);
-            gbAdd.Controls.Add(lblAmount);
-            gbAdd.Controls.Add(txtPrice);
-            gbAdd.Controls.Add(btnAddToCart);
-            gbAdd.Controls.Add(lblPrice);
-            gbAdd.Dock = DockStyle.Fill;
-            gbAdd.Location = new Point(3, 242);
-            gbAdd.Name = "gbAdd";
-            gbAdd.Size = new Size(457, 219);
-            gbAdd.TabIndex = 1;
-            gbAdd.TabStop = false;
-            // 
-            // txtAmount
-            // 
-            txtAmount.BorderStyle = BorderStyle.FixedSingle;
-            txtAmount.Location = new Point(102, 115);
-            txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(340, 27);
-            txtAmount.TabIndex = 5;
-            // 
-            // lblAmount
-            // 
-            lblAmount.AutoSize = true;
-            lblAmount.Location = new Point(6, 118);
-            lblAmount.Name = "lblAmount";
-            lblAmount.Size = new Size(62, 20);
-            lblAmount.TabIndex = 4;
-            lblAmount.Text = "Amount";
-            // 
-            // txtPrice
-            // 
-            txtPrice.BorderStyle = BorderStyle.FixedSingle;
-            txtPrice.Location = new Point(102, 55);
-            txtPrice.Name = "txtPrice";
-            txtPrice.Size = new Size(340, 27);
-            txtPrice.TabIndex = 3;
-            // 
-            // btnAddToCart
-            // 
-            btnAddToCart.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnAddToCart.Location = new Point(348, 181);
-            btnAddToCart.Name = "btnAddToCart";
-            btnAddToCart.Size = new Size(94, 32);
-            btnAddToCart.TabIndex = 0;
-            btnAddToCart.Text = "Add";
-            btnAddToCart.UseVisualStyleBackColor = true;
-            // 
-            // lblPrice
-            // 
-            lblPrice.AutoSize = true;
-            lblPrice.Location = new Point(6, 58);
-            lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(41, 20);
-            lblPrice.TabIndex = 2;
-            lblPrice.Text = "Price";
-            // 
-            // dgvProductsBill
-            // 
-            dgvProductsBill.AllowUserToAddRows = false;
-            dgvProductsBill.AllowUserToDeleteRows = false;
-            dgvProductsBill.AllowUserToResizeRows = false;
-            dgvProductsBill.AutoGenerateColumns = false;
-            dgvProductsBill.BackgroundColor = Color.White;
-            dgvProductsBill.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProductsBill.Columns.AddRange(new DataGridViewColumn[] { barCodeColumn, nameColumnBill });
-            dgvProductsBill.DataSource = productsBindingSource;
-            dgvProductsBill.Dock = DockStyle.Fill;
-            dgvProductsBill.Location = new Point(3, 78);
-            dgvProductsBill.Name = "dgvProductsBill";
-            dgvProductsBill.ReadOnly = true;
-            dgvProductsBill.RowHeadersVisible = false;
-            dgvProductsBill.RowHeadersWidth = 51;
-            dgvProductsBill.RowTemplate.Height = 29;
-            dgvProductsBill.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProductsBill.Size = new Size(457, 158);
-            dgvProductsBill.TabIndex = 2;
-            // 
-            // barCodeColumn
-            // 
-            barCodeColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            barCodeColumn.DataPropertyName = "BarCode";
-            barCodeColumn.HeaderText = "BarCode";
-            barCodeColumn.MinimumWidth = 6;
-            barCodeColumn.Name = "barCodeColumn";
-            barCodeColumn.ReadOnly = true;
-            barCodeColumn.Width = 150;
-            // 
-            // nameColumnBill
-            // 
-            nameColumnBill.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nameColumnBill.DataPropertyName = "Name";
-            nameColumnBill.HeaderText = "Name";
-            nameColumnBill.MinimumWidth = 6;
-            nameColumnBill.Name = "nameColumnBill";
-            nameColumnBill.ReadOnly = true;
-            // 
-            // tbBills
-            // 
-            tbBills.Location = new Point(4, 29);
-            tbBills.Name = "tbBills";
-            tbBills.Padding = new Padding(3);
-            tbBills.Size = new Size(944, 476);
-            tbBills.TabIndex = 3;
-            tbBills.Text = "Bills";
-            tbBills.UseVisualStyleBackColor = true;
             // 
             // nameColumBill
             // 
@@ -615,6 +469,333 @@
             priceColumnBill.ReadOnly = true;
             priceColumnBill.Width = 150;
             // 
+            // productBIllBindingSource
+            // 
+            productBIllBindingSource.DataSource = typeof(ProductBIll);
+            // 
+            // btnDeleteItem
+            // 
+            btnDeleteItem.BackColor = Color.White;
+            btnDeleteItem.Dock = DockStyle.Fill;
+            btnDeleteItem.Location = new Point(3, 242);
+            btnDeleteItem.Name = "btnDeleteItem";
+            btnDeleteItem.Size = new Size(457, 69);
+            btnDeleteItem.TabIndex = 2;
+            btnDeleteItem.Text = "Delete item";
+            btnDeleteItem.UseVisualStyleBackColor = false;
+            // 
+            // tlypSelect
+            // 
+            tlypSelect.ColumnCount = 1;
+            tlypSelect.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlypSelect.Controls.Add(gbSearch, 0, 1);
+            tlypSelect.Controls.Add(gbAdd, 0, 3);
+            tlypSelect.Controls.Add(dgvProductsBill, 0, 2);
+            tlypSelect.Controls.Add(gbSupplier, 0, 0);
+            tlypSelect.Dock = DockStyle.Fill;
+            tlypSelect.Location = new Point(3, 3);
+            tlypSelect.Name = "tlypSelect";
+            tlypSelect.RowCount = 4;
+            tlypSelect.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
+            tlypSelect.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
+            tlypSelect.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlypSelect.RowStyles.Add(new RowStyle(SizeType.Absolute, 175F));
+            tlypSelect.Size = new Size(463, 464);
+            tlypSelect.TabIndex = 1;
+            // 
+            // gbSearch
+            // 
+            gbSearch.BackColor = Color.White;
+            gbSearch.Controls.Add(txtSearchBarCode);
+            gbSearch.Controls.Add(lblSearchProduct);
+            gbSearch.Dock = DockStyle.Fill;
+            gbSearch.Location = new Point(3, 78);
+            gbSearch.Name = "gbSearch";
+            gbSearch.Size = new Size(457, 69);
+            gbSearch.TabIndex = 0;
+            gbSearch.TabStop = false;
+            // 
+            // txtSearchBarCode
+            // 
+            txtSearchBarCode.BorderStyle = BorderStyle.FixedSingle;
+            txtSearchBarCode.Location = new Point(102, 26);
+            txtSearchBarCode.Name = "txtSearchBarCode";
+            txtSearchBarCode.Size = new Size(340, 27);
+            txtSearchBarCode.TabIndex = 1;
+            // 
+            // lblSearchProduct
+            // 
+            lblSearchProduct.AutoSize = true;
+            lblSearchProduct.Location = new Point(6, 29);
+            lblSearchProduct.Name = "lblSearchProduct";
+            lblSearchProduct.Size = new Size(53, 20);
+            lblSearchProduct.TabIndex = 0;
+            lblSearchProduct.Text = "Search";
+            // 
+            // gbAdd
+            // 
+            gbAdd.BackColor = Color.White;
+            gbAdd.Controls.Add(txtAmount);
+            gbAdd.Controls.Add(lblAmount);
+            gbAdd.Controls.Add(txtPrice);
+            gbAdd.Controls.Add(btnAddToCart);
+            gbAdd.Controls.Add(lblPrice);
+            gbAdd.Dock = DockStyle.Fill;
+            gbAdd.Location = new Point(3, 292);
+            gbAdd.Name = "gbAdd";
+            gbAdd.Size = new Size(457, 169);
+            gbAdd.TabIndex = 1;
+            gbAdd.TabStop = false;
+            // 
+            // txtAmount
+            // 
+            txtAmount.BorderStyle = BorderStyle.FixedSingle;
+            txtAmount.Location = new Point(102, 90);
+            txtAmount.Name = "txtAmount";
+            txtAmount.Size = new Size(340, 27);
+            txtAmount.TabIndex = 5;
+            // 
+            // lblAmount
+            // 
+            lblAmount.AutoSize = true;
+            lblAmount.Location = new Point(6, 93);
+            lblAmount.Name = "lblAmount";
+            lblAmount.Size = new Size(62, 20);
+            lblAmount.TabIndex = 4;
+            lblAmount.Text = "Amount";
+            // 
+            // txtPrice
+            // 
+            txtPrice.BorderStyle = BorderStyle.FixedSingle;
+            txtPrice.Location = new Point(102, 35);
+            txtPrice.Name = "txtPrice";
+            txtPrice.Size = new Size(340, 27);
+            txtPrice.TabIndex = 3;
+            // 
+            // btnAddToCart
+            // 
+            btnAddToCart.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnAddToCart.Location = new Point(339, 131);
+            btnAddToCart.Name = "btnAddToCart";
+            btnAddToCart.Size = new Size(94, 32);
+            btnAddToCart.TabIndex = 0;
+            btnAddToCart.Text = "Add";
+            btnAddToCart.UseVisualStyleBackColor = true;
+            // 
+            // lblPrice
+            // 
+            lblPrice.AutoSize = true;
+            lblPrice.Location = new Point(6, 38);
+            lblPrice.Name = "lblPrice";
+            lblPrice.Size = new Size(41, 20);
+            lblPrice.TabIndex = 2;
+            lblPrice.Text = "Price";
+            // 
+            // dgvProductsBill
+            // 
+            dgvProductsBill.AllowUserToAddRows = false;
+            dgvProductsBill.AllowUserToDeleteRows = false;
+            dgvProductsBill.AllowUserToResizeRows = false;
+            dgvProductsBill.AutoGenerateColumns = false;
+            dgvProductsBill.BackgroundColor = Color.White;
+            dgvProductsBill.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProductsBill.Columns.AddRange(new DataGridViewColumn[] { barCodeColumn, nameColumnBill });
+            dgvProductsBill.DataSource = productsBindingSource;
+            dgvProductsBill.Dock = DockStyle.Fill;
+            dgvProductsBill.Location = new Point(3, 153);
+            dgvProductsBill.Name = "dgvProductsBill";
+            dgvProductsBill.ReadOnly = true;
+            dgvProductsBill.RowHeadersVisible = false;
+            dgvProductsBill.RowHeadersWidth = 51;
+            dgvProductsBill.RowTemplate.Height = 29;
+            dgvProductsBill.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProductsBill.Size = new Size(457, 133);
+            dgvProductsBill.TabIndex = 2;
+            // 
+            // barCodeColumn
+            // 
+            barCodeColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            barCodeColumn.DataPropertyName = "BarCode";
+            barCodeColumn.HeaderText = "BarCode";
+            barCodeColumn.MinimumWidth = 6;
+            barCodeColumn.Name = "barCodeColumn";
+            barCodeColumn.ReadOnly = true;
+            barCodeColumn.Width = 150;
+            // 
+            // nameColumnBill
+            // 
+            nameColumnBill.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nameColumnBill.DataPropertyName = "Name";
+            nameColumnBill.HeaderText = "Name";
+            nameColumnBill.MinimumWidth = 6;
+            nameColumnBill.Name = "nameColumnBill";
+            nameColumnBill.ReadOnly = true;
+            // 
+            // gbSupplier
+            // 
+            gbSupplier.BackColor = Color.White;
+            gbSupplier.Controls.Add(cbSupplier);
+            gbSupplier.Controls.Add(lblSupplier);
+            gbSupplier.Dock = DockStyle.Fill;
+            gbSupplier.Location = new Point(3, 3);
+            gbSupplier.Name = "gbSupplier";
+            gbSupplier.Size = new Size(457, 69);
+            gbSupplier.TabIndex = 3;
+            gbSupplier.TabStop = false;
+            // 
+            // cbSupplier
+            // 
+            cbSupplier.FormattingEnabled = true;
+            cbSupplier.Location = new Point(102, 21);
+            cbSupplier.Name = "cbSupplier";
+            cbSupplier.Size = new Size(340, 28);
+            cbSupplier.TabIndex = 5;
+            // 
+            // lblSupplier
+            // 
+            lblSupplier.AutoSize = true;
+            lblSupplier.Location = new Point(6, 29);
+            lblSupplier.Name = "lblSupplier";
+            lblSupplier.Size = new Size(64, 20);
+            lblSupplier.TabIndex = 4;
+            lblSupplier.Text = "Supplier";
+            // 
+            // tbBills
+            // 
+            tbBills.Controls.Add(tlpBills);
+            tbBills.Location = new Point(4, 29);
+            tbBills.Name = "tbBills";
+            tbBills.Padding = new Padding(3);
+            tbBills.Size = new Size(944, 476);
+            tbBills.TabIndex = 3;
+            tbBills.Text = "Bills";
+            tbBills.UseVisualStyleBackColor = true;
+            // 
+            // tlpBills
+            // 
+            tlpBills.ColumnCount = 1;
+            tlpBills.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpBills.Controls.Add(tlpDate, 0, 0);
+            tlpBills.Controls.Add(dgvBills, 0, 1);
+            tlpBills.Dock = DockStyle.Fill;
+            tlpBills.Location = new Point(3, 3);
+            tlpBills.Name = "tlpBills";
+            tlpBills.RowCount = 2;
+            tlpBills.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
+            tlpBills.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpBills.Size = new Size(938, 470);
+            tlpBills.TabIndex = 0;
+            // 
+            // tlpDate
+            // 
+            tlpDate.ColumnCount = 2;
+            tlpDate.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpDate.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpDate.Controls.Add(gbDateTo, 1, 0);
+            tlpDate.Controls.Add(gbDateFrom, 0, 0);
+            tlpDate.Dock = DockStyle.Fill;
+            tlpDate.Location = new Point(3, 3);
+            tlpDate.Name = "tlpDate";
+            tlpDate.RowCount = 1;
+            tlpDate.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpDate.Size = new Size(932, 69);
+            tlpDate.TabIndex = 1;
+            // 
+            // gbDateTo
+            // 
+            gbDateTo.BackColor = Color.White;
+            gbDateTo.Controls.Add(dtpTo);
+            gbDateTo.Controls.Add(lblTo);
+            gbDateTo.Dock = DockStyle.Fill;
+            gbDateTo.Location = new Point(469, 3);
+            gbDateTo.Name = "gbDateTo";
+            gbDateTo.Size = new Size(460, 63);
+            gbDateTo.TabIndex = 1;
+            gbDateTo.TabStop = false;
+            // 
+            // dtpTo
+            // 
+            dtpTo.Location = new Point(85, 18);
+            dtpTo.Name = "dtpTo";
+            dtpTo.Size = new Size(369, 27);
+            dtpTo.TabIndex = 3;
+            // 
+            // lblTo
+            // 
+            lblTo.AutoSize = true;
+            lblTo.Location = new Point(6, 23);
+            lblTo.Name = "lblTo";
+            lblTo.Size = new Size(25, 20);
+            lblTo.TabIndex = 2;
+            lblTo.Text = "To";
+            // 
+            // gbDateFrom
+            // 
+            gbDateFrom.BackColor = Color.White;
+            gbDateFrom.Controls.Add(dtpFrom);
+            gbDateFrom.Controls.Add(lblFrom);
+            gbDateFrom.Dock = DockStyle.Fill;
+            gbDateFrom.Location = new Point(3, 3);
+            gbDateFrom.Name = "gbDateFrom";
+            gbDateFrom.Size = new Size(460, 63);
+            gbDateFrom.TabIndex = 0;
+            gbDateFrom.TabStop = false;
+            // 
+            // dtpFrom
+            // 
+            dtpFrom.Location = new Point(85, 18);
+            dtpFrom.Name = "dtpFrom";
+            dtpFrom.Size = new Size(369, 27);
+            dtpFrom.TabIndex = 1;
+            // 
+            // lblFrom
+            // 
+            lblFrom.AutoSize = true;
+            lblFrom.Location = new Point(6, 23);
+            lblFrom.Name = "lblFrom";
+            lblFrom.Size = new Size(43, 20);
+            lblFrom.TabIndex = 0;
+            lblFrom.Text = "From";
+            // 
+            // dgvBills
+            // 
+            dgvBills.AllowUserToAddRows = false;
+            dgvBills.AllowUserToDeleteRows = false;
+            dgvBills.AllowUserToResizeRows = false;
+            dgvBills.BackgroundColor = Color.White;
+            dgvBills.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBills.Columns.AddRange(new DataGridViewColumn[] { dateColumnBill, nameColumnBills });
+            dgvBills.Dock = DockStyle.Fill;
+            dgvBills.Location = new Point(3, 78);
+            dgvBills.Name = "dgvBills";
+            dgvBills.ReadOnly = true;
+            dgvBills.RowHeadersVisible = false;
+            dgvBills.RowHeadersWidth = 51;
+            dgvBills.RowTemplate.Height = 29;
+            dgvBills.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvBills.Size = new Size(932, 389);
+            dgvBills.TabIndex = 2;
+            // 
+            // dateColumnBill
+            // 
+            dateColumnBill.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dateColumnBill.HeaderText = "Date";
+            dateColumnBill.MinimumWidth = 6;
+            dateColumnBill.Name = "dateColumnBill";
+            dateColumnBill.ReadOnly = true;
+            // 
+            // nameColumnBills
+            // 
+            nameColumnBills.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nameColumnBills.HeaderText = "Name";
+            nameColumnBills.MinimumWidth = 6;
+            nameColumnBills.Name = "nameColumnBills";
+            nameColumnBills.ReadOnly = true;
+            // 
+            // procurementBindingSource
+            // 
+            procurementBindingSource.DataSource = typeof(Database.DTO.Procurement);
+            // 
             // StoreTable
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -645,6 +826,17 @@
             gbAdd.ResumeLayout(false);
             gbAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProductsBill).EndInit();
+            gbSupplier.ResumeLayout(false);
+            gbSupplier.PerformLayout();
+            tbBills.ResumeLayout(false);
+            tlpBills.ResumeLayout(false);
+            tlpDate.ResumeLayout(false);
+            gbDateTo.ResumeLayout(false);
+            gbDateTo.PerformLayout();
+            gbDateFrom.ResumeLayout(false);
+            gbDateFrom.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvBills).EndInit();
+            ((System.ComponentModel.ISupportInitialize)procurementBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -697,5 +889,20 @@
         private DataGridViewTextBoxColumn nameColumBill;
         private DataGridViewTextBoxColumn amountColumnBill;
         private DataGridViewTextBoxColumn priceColumnBill;
+        private GroupBox gbSupplier;
+        private ComboBox cbSupplier;
+        private Label lblSupplier;
+        private TableLayoutPanel tlpBills;
+        private TableLayoutPanel tlpDate;
+        private GroupBox gbDateFrom;
+        private GroupBox gbDateTo;
+        private DateTimePicker dtpTo;
+        private Label lblTo;
+        private DateTimePicker dtpFrom;
+        private Label lblFrom;
+        private DataGridView dgvBills;
+        private BindingSource procurementBindingSource;
+        private DataGridViewTextBoxColumn dateColumnBill;
+        private DataGridViewTextBoxColumn nameColumnBills;
     }
 }

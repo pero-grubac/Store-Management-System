@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: localhost    Database: prodavnica
+-- Host: 127.0.0.1    Database: prodavnica
 -- ------------------------------------------------------
--- Server version	8.0.34
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -114,7 +114,7 @@ CREATE TABLE `korisnik` (
   KEY `fk_Korisnik_Tema1_idx` (`idTema`),
   CONSTRAINT `fk_Korisnik_Jezik1` FOREIGN KEY (`idJezik`) REFERENCES `jezik` (`idJezik`),
   CONSTRAINT `fk_Korisnik_Tema1` FOREIGN KEY (`idTema`) REFERENCES `tema` (`idTema`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +123,7 @@ CREATE TABLE `korisnik` (
 
 LOCK TABLES `korisnik` WRITE;
 /*!40000 ALTER TABLE `korisnik` DISABLE KEYS */;
-INSERT INTO `korisnik` VALUES (1,'admin','adminovic','admin','$2a$11$.CE1.tVQlWfPlrK/pgWRBudp5S7gI2m.ActWIvGF2AJMGAx14dAm.',2,'1','admin@gmail.com',1,1);
+INSERT INTO `korisnik` VALUES (1,'admin','adminovic','admin','$2a$11$.CE1.tVQlWfPlrK/pgWRBudp5S7gI2m.ActWIvGF2AJMGAx14dAm.',2,'1','admin@gmail.com',1,1),(2,'Marko','Markovic','marko','$2a$11$QfUOc5ZGif75v.UwHQzLxuvWuDmIrkq801AXi.1pLFgFyKp5A6Edi',2,'1212121','marko@gmail.com',0,2),(3,'Mihajlo','Mihajlovic','miha','$2a$11$sORgq4TwhouPKQYCzxMxhO4o0e9Pk2y69HTOR6Hz0Kuohf/QSNFlS',2,'232323','miha@gmail.com',0,3),(4,'Vesna','Proljeće','vesna','$2a$11$7zIgKX.IapIz/rkcKcIFCehJP.fCLktiOaQ9hj0sixhGOKSmpacPC',2,'3434343','vesna@gmail.com',0,4),(5,'Pero','Perović','pero','$2a$11$nn.P3uP8wF3BKslvhNLEhORNSr3H4CGc6xUihMjHGAJRm/quE5Oxy',2,'4444','pero@gmail.com',0,5);
 /*!40000 ALTER TABLE `korisnik` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -367,7 +367,7 @@ CREATE TABLE `tema` (
   `strikeout` tinyint DEFAULT NULL,
   `underline` tinyint DEFAULT NULL,
   PRIMARY KEY (`idTema`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -376,7 +376,7 @@ CREATE TABLE `tema` (
 
 LOCK TABLES `tema` WRITE;
 /*!40000 ALTER TABLE `tema` DISABLE KEYS */;
-INSERT INTO `tema` VALUES (1,'255,0,128,128','Segoe UI','11','Regular',0,0);
+INSERT INTO `tema` VALUES (1,'255,0,128,128','Segoe UI','11','Regular',0,0),(2,'255,0,128,128','Segoe UI','11','Regular',0,0),(3,'255,0,128,128','Segoe UI','11','Regular',0,0),(4,'255,0,128,128','Segoe UI','11','Regular',0,0),(5,'255,0,128,128','Segoe UI','11','Regular',0,0);
 /*!40000 ALTER TABLE `tema` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -393,4 +393,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-30  0:00:08
+-- Dump completed on 2023-11-30 13:21:04

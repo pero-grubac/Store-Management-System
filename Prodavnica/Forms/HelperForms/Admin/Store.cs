@@ -1,22 +1,9 @@
-﻿using Org.BouncyCastle.Asn1.X509;
-using Prodavnica.Database.DTO;
+﻿using Prodavnica.Database.DTO;
 using Prodavnica.Database.Repository;
-using Prodavnica.Forms.HelperForms.Admin.Popup;
 using Prodavnica.Forms.HelperForms.Admin.Popup.Products;
 using Prodavnica.Language;
 using Prodavnica.Util;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Prodavnica.Forms.HelperForms.Admin
 {
@@ -25,10 +12,16 @@ namespace Prodavnica.Forms.HelperForms.Admin
         private User user;
         private List<Product> products;
         private ProductsDAOImpl productsDAO = new ProductsDAOImpl();
+
         private List<Category> categories;
         private CategoryDAOImpl categoryDAO = new CategoryDAOImpl();
+
         private List<Manufacturer> manufacturers;
         private ManufacturerDAOImpl manufacturerDAO = new ManufacturerDAOImpl();
+
+        private List<Supplier> suppliers;
+        private SupplierDAOImpl SupplierDAO = new SupplierDAOImpl();
+
         private string deleteConfirmation;
         private string confirmation;
         private string selectedSupplier;
@@ -47,13 +40,26 @@ namespace Prodavnica.Forms.HelperForms.Admin
             gbAdd.Resize += gbAdd_Resize; ;
             ChangeText();
             btnDeleteItem.BackColor = Color.White;
+            gbDateFrom.Resize += gbDateFrom_Resize;
+            suppliers = SupplierDAO.GetAll();
+            cbSupplier.DataSource = suppliers.Select(sup => sup.Name).ToList();
+            cbSupplier.SelectedItem = null;
             /*     btnAdd.Enabled = false;
                  btnAdd.Visible = false;
             AKO NISI ADMIN 
             jos u gbProduct_Resize
             jedna if isAdmin prije  foreach (System.Windows.Forms.Button btn in buttons)
             i u changetext napraviti da pise 
+
+
+            treba za tabelu bill napraviti da bude ime dobavljaca i ime radnika
              */
+        }
+
+        private void gbDateFrom_Resize(object? sender, EventArgs e)
+        {
+            dtpFrom.Width = gbDateFrom.ClientSize.Width - dtpFrom.Margin.Horizontal - lblFrom.Width - 32;
+            dtpTo.Width = dtpFrom.Width;
         }
 
         private void gbAdd_Resize(object? sender, EventArgs e)
@@ -62,6 +68,7 @@ namespace Prodavnica.Forms.HelperForms.Admin
             txtAmount.Width = txtPrice.Width;
             txtTotal.Width = txtPrice.Width;
             txtSearchBarCode.Width = txtPrice.Width;
+            cbSupplier.Width = txtPrice.Width;
         }
 
         public void ChangeText()
@@ -92,6 +99,7 @@ namespace Prodavnica.Forms.HelperForms.Admin
             confirmation = LanguageHelper.GetString("confirmation");
             dgvBill.Columns[1].HeaderText = LanguageHelper.GetString("amount");
             btnDeleteItem.Text = LanguageHelper.GetString("btnDeleteItem");
+            lblSupplier.Text = LanguageHelper.GetString("lblSupplier");
         }
 
         private void GetProduts()

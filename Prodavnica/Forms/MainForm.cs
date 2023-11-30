@@ -3,10 +3,7 @@ using Prodavnica.Database.DTO;
 using Prodavnica.Database.Repository;
 using Prodavnica.Language;
 using Prodavnica.Util;
-using System.Reflection;
-using System.Resources;
 using System.Runtime.InteropServices;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Prodavnica.Forms
 {
@@ -28,10 +25,10 @@ namespace Prodavnica.Forms
             MaximizedBounds = Screen.FromHandle(Handle).WorkingArea;
             this.user = user;
             ChangeText();
-         /*   btnProducer.Enabled = false;
-            btnProducer.Visible = false;
-            AKO NISI ADMIN
-          */
+            /*   btnProducer.Enabled = false;
+               btnProducer.Visible = false;
+               AKO NISI ADMIN
+             */
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -150,12 +147,12 @@ namespace Prodavnica.Forms
 
         private void btnProducer_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.HelperForms.Admin.Producer(user,true), sender, btnProducer);
+            OpenChildForm(new Forms.HelperForms.Admin.Producer(user, true), sender, btnProducer);
         }
 
         private void btnProcurement_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.HelperForms.Admin.Producer(user, false), sender, btnProducer);
+            OpenChildForm(new Forms.HelperForms.Admin.Producer(user, false), sender, btnSupplier);
         }
     }
 }

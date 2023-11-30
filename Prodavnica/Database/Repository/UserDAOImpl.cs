@@ -1,16 +1,7 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using OnlineKupovinaGUI;
 using Prodavnica.Database.DAO;
-using Prodavnica.Database.DTO;
 using Prodavnica.Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Prodavnica.Database.Repository
 {
@@ -30,7 +21,7 @@ namespace Prodavnica.Database.Repository
                     int rows = cmd.ExecuteNonQuery();
                     if (rows > 0)
                     {
-                        user.IdLangugae = idLanguage;
+                        user.IdLanguage = idLanguage;
                     }
                 }
                 catch (Exception ex)
@@ -65,6 +56,35 @@ namespace Prodavnica.Database.Repository
             }
         }
 
+        public void CreateUser(DTO.User user)
+        {
+            using (var connection = DBUtil.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    string query = @"INSERT INTO korisnik (Ime, Prezime, Email, Lozinka, KorisnickoIme, BrojTelefona, isAdmin, idTema, idJezik) 
+                                    VALUES (@firstName, @lastName, @email, @password,@userName, @phoneNumber, @isAdmin, @idTheme, @idLanguage);";
+
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@firstName", user.FirstName);
+                    command.Parameters.AddWithValue("@lastName", user.LastName);
+                    command.Parameters.AddWithValue("@email", user.Email);
+                    string hash = Password.HashValue(user.Password);
+                    command.Parameters.AddWithValue("@password", hash);
+                    command.Parameters.AddWithValue("@userName", user.UserName);
+                    command.Parameters.AddWithValue("@phoneNumber", user.PhoneNumber);
+                    command.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
+                    command.Parameters.AddWithValue("@idTheme", user.IdTheme);
+                    command.Parameters.AddWithValue("@idLanguage", user.IdLanguage);
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
 
         public DTO.User FindById(int id)
         {
@@ -92,7 +112,7 @@ namespace Prodavnica.Database.Repository
                                 PhoneNumber = reader.GetString("BrojTelefona"),
                                 IsAdmin = reader.GetBoolean("isAdmin"),
                                 IdTheme = reader.GetInt32("idTema"),
-                                IdLangugae = reader.GetInt32("idJezik")
+                                IdLanguage = reader.GetInt32("idJezik")
                             };
                             return user;
                         }
@@ -105,6 +125,48 @@ namespace Prodavnica.Database.Repository
             }
 
             return null;
+        }
+
+        public List<DTO.User> GetAll(int id)
+        {
+            List<DTO.User> users = new List<DTO.User>();
+            using (var connection = DBUtil.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM korisnik WHERE idKorisnik != @userIdToExclude";
+
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@userIdToExclude", id);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            DTO.User user = new DTO.User
+                            {
+                                Id = reader.GetInt32("idKorisnik"),
+                                FirstName = reader.GetString("Ime"),
+                                LastName = reader.GetString("Prezime"),
+                                Email = reader.GetString("Email"),
+                                Password = reader.GetString("Lozinka"),
+                                UserName = reader.GetString("KorisnickoIme"),
+                                PhoneNumber = reader.GetString("BrojTelefona"),
+                                IsAdmin = reader.GetBoolean("isAdmin"),
+                                IdTheme = reader.GetInt32("idTema"),
+                                IdLanguage = reader.GetInt32("idJezik")
+                            };
+                            users.Add(user);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+            return users;
         }
 
         public DTO.User GetUser(string username, string password)
@@ -133,7 +195,7 @@ namespace Prodavnica.Database.Repository
                                 PhoneNumber = reader.GetString("BrojTelefona"),
                                 IsAdmin = reader.GetBoolean("isAdmin"),
                                 IdTheme = reader.GetInt32("idTema"),
-                                IdLangugae = reader.GetInt32("idJezik")
+                                IdLanguage = reader.GetInt32("idJezik")
                             };
 
 
@@ -174,11 +236,11 @@ namespace Prodavnica.Database.Repository
                     command.Parameters.AddWithValue("@newEmail", user.Email);
                     command.Parameters.AddWithValue("@userId", user.Id);
 
-                    int rowsAffected = command.ExecuteNonQuery();   
+                    int rowsAffected = command.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);    
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
         }
