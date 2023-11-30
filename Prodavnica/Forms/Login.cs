@@ -26,16 +26,17 @@ namespace OnlineKupovinaGUI
 
             string userName = txtUserName.Text;
             string password = txtPassword.Text;
-            User user = userDAOImpl.GetUser("admin", "a");
+            User user = userDAOImpl.GetUser(userName, password);
             if (user != null)
-            {
-                if (user.IsAdmin)
-                {
+            {            
                     GUIUtil.ShowNextForm(this, new MainFOrm(ref user));
-                }
             }
             else
-                MessageBox.Show("fy");
+            {
+                txtPassword.Clear();
+                txtUserName.Clear();
+                txtUserName.Focus();
+            }
         }
 
         private void lblClearFields_Click(object sender, EventArgs e)

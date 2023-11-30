@@ -25,10 +25,7 @@ namespace Prodavnica.Forms
             MaximizedBounds = Screen.FromHandle(Handle).WorkingArea;
             this.user = user;
             ChangeText();
-            /*   btnProducer.Enabled = false;
-               btnProducer.Visible = false;
-               AKO NISI ADMIN
-             */
+            isAdmin(user.IsAdmin);
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -49,7 +46,17 @@ namespace Prodavnica.Forms
             btnProducer.Text = LanguageHelper.GetString("btnProducer");
 
         }
+        private void isAdmin(bool isAdmin)
+        {
+            btnProducer.Enabled = isAdmin;
+            btnProducer.Visible = isAdmin;
 
+            btnSupplier.Enabled = isAdmin;
+            btnSupplier.Visible = isAdmin;
+
+            btnStaff.Enabled = isAdmin;
+            btnStaff.Visible = isAdmin;
+        }
         private void OpenChildForm(System.Windows.Forms.Form childForm, object btnSender, Button button)
         {
             if (activeForm != null)

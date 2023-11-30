@@ -4,6 +4,7 @@ using Prodavnica.Forms.HelperForms.Admin.Popup.Products;
 using Prodavnica.Language;
 using Prodavnica.Util;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Prodavnica.Forms.HelperForms.Admin
 {
@@ -44,6 +45,7 @@ namespace Prodavnica.Forms.HelperForms.Admin
             suppliers = SupplierDAO.GetAll();
             cbSupplier.DataSource = suppliers.Select(sup => sup.Name).ToList();
             cbSupplier.SelectedItem = null;
+            isAdmin(user.IsAdmin);
             /*     btnAdd.Enabled = false;
                  btnAdd.Visible = false;
             AKO NISI ADMIN 
@@ -55,7 +57,49 @@ namespace Prodavnica.Forms.HelperForms.Admin
             treba za tabelu bill napraviti da bude ime dobavljaca i ime radnika
              */
         }
+        private void isAdmin(bool isAdmin)
+        {
+            if (!isAdmin)
+            {
+                btnAdd.Enabled = isAdmin;
+                btnAdd.Visible = isAdmin;
 
+                btnUpdate.Enabled = isAdmin;
+                btnUpdate.Visible = isAdmin;
+
+                btnDelete.Enabled = isAdmin;
+                btnDelete.Visible = isAdmin;
+
+                lblPrice.Enabled = isAdmin;
+                lblPrice.Visible = isAdmin;
+                txtPrice.Enabled = isAdmin;
+                txtPrice.Visible = isAdmin;
+
+                int rowIndexToDelete = 0;
+                foreach (Control control in tlypSelect.Controls)
+                {
+                    if (tlypSelect.GetRow(control) == rowIndexToDelete)
+                    {
+                        tlypSelect.Controls.Remove(control);
+                        control.Dispose();
+                    }
+                }
+                tlypSelect.RowStyles.RemoveAt(rowIndexToDelete);
+                foreach (Control control in tlypSelect.Controls)
+                {
+                    int row = tlypSelect.GetRow(control);
+                    if (row > rowIndexToDelete)
+                    {
+                        tlypSelect.SetRow(control, row - 1);
+                    }
+                }
+                tlypSelect.RowStyles[2].Height = 150;
+                lblAmount.Location = new Point(6, 62);
+                txtAmount.Location = new Point(102, 59);
+
+                tlypSelect.PerformLayout();
+            }
+        }
         private void gbDateFrom_Resize(object? sender, EventArgs e)
         {
             dtpFrom.Width = gbDateFrom.ClientSize.Width - dtpFrom.Margin.Horizontal - lblFrom.Width - 32;
@@ -210,15 +254,16 @@ namespace Prodavnica.Forms.HelperForms.Admin
             List<System.Windows.Forms.Button> buttons = gbProducts.Controls.OfType<System.Windows.Forms.Button>().OrderBy(b => b.Location.X).ToList();
             Label labelControl = gbProducts.Controls.OfType<Label>().FirstOrDefault();
             System.Windows.Forms.TextBox textBox = gbProducts.Controls.OfType<System.Windows.Forms.TextBox>().FirstOrDefault();
-
-            foreach (System.Windows.Forms.Button btn in buttons)
+            if (user.IsAdmin)
             {
-                int btnWidth = TextRenderer.MeasureText(btn.Text, btn.Font).Width + padding * 2;
-                btn.Width = btnWidth;
-                btn.Location = new Point(usedWidth, btn.Location.Y);
-                usedWidth += btnWidth + padding;
+                foreach (System.Windows.Forms.Button btn in buttons)
+                {
+                    int btnWidth = TextRenderer.MeasureText(btn.Text, btn.Font).Width + padding * 2;
+                    btn.Width = btnWidth;
+                    btn.Location = new Point(usedWidth, btn.Location.Y);
+                    usedWidth += btnWidth + padding;
+                }
             }
-
             if (labelControl != null)
             {
                 int labelWidth = TextRenderer.MeasureText(labelControl.Text, labelControl.Font).Width + padding * 2;
