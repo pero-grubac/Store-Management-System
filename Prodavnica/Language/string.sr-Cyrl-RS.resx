@@ -180,6 +180,9 @@
   <data name="btnUpdate" xml:space="preserve">
     <value>Ажурирај</value>
   </data>
+  <data name="buying" xml:space="preserve">
+    <value>Куповина</value>
+  </data>
   <data name="category" xml:space="preserve">
     <value>Категорија</value>
   </data>

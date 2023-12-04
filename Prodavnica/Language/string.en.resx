@@ -180,6 +180,9 @@
   <data name="btnUpdate" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="buying" xml:space="preserve">
+    <value>Kupovina</value>
+  </data>
   <data name="category" xml:space="preserve">
     <value>Category</value>
   </data>

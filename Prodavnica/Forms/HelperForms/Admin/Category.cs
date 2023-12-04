@@ -82,6 +82,7 @@ namespace Prodavnica.Forms.HelperForms.Admin
             lblSearch.Text = LanguageHelper.GetString("lblSearch");
             deleteConfirmation = LanguageHelper.GetString("deleteConfirmation");
             confirmation = LanguageHelper.GetString("confirmation");
+            name.HeaderText = LanguageHelper.GetString("name");
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {

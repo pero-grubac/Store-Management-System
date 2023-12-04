@@ -60,6 +60,9 @@ namespace Prodavnica.Forms
 
             btnStaff.Enabled = isAdmin;
             btnStaff.Visible = isAdmin;
+
+            btnCategory.Enabled = isAdmin;
+            btnCategory.Visible = isAdmin;
         }
         private void OpenChildForm(System.Windows.Forms.Form childForm, object btnSender, Button button)
         {

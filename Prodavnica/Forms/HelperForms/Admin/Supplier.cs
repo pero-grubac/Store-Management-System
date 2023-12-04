@@ -46,7 +46,8 @@ namespace Prodavnica.Forms.HelperForms.Admin
             lblSearch.Text = LanguageHelper.GetString("lblSearch");
             deleteConfirmation = LanguageHelper.GetString("deleteConfirmation");
             confirmation = LanguageHelper.GetString("confirmation");
-
+            nameColumn.HeaderText = LanguageHelper.GetString("name");
+            emailColumn.HeaderText= LanguageHelper.GetString("lblEmail");
         }
 
         private void SetDataToDGV()

@@ -46,7 +46,7 @@
             // 
             // txtName
             // 
-            txtName.BackColor = SystemColors.Control;
+            txtName.BackColor = Color.White;
             txtName.BorderStyle = BorderStyle.FixedSingle;
             txtName.Location = new Point(119, 48);
             txtName.Name = "txtName";

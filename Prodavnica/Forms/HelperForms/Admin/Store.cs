@@ -104,7 +104,7 @@ namespace Prodavnica.Forms.HelperForms.Admin
                     column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
-            if(dgvBills.Columns["total"] is DataGridViewColumn priceColumn)
+            if (dgvBills.Columns["total"] is DataGridViewColumn priceColumn)
             {
                 priceColumn.DefaultCellStyle.Format = "N2";
             }
@@ -214,7 +214,15 @@ namespace Prodavnica.Forms.HelperForms.Admin
             noSupplier = LanguageHelper.GetString("noSupplier");
             noMoreSupplies = LanguageHelper.GetString("noMoreSupplies");
             tpProducts.Text = LanguageHelper.GetString("tpProducts");
-            tbProcurement.Text = LanguageHelper.GetString("tbProcurement");
+            if (user.IsAdmin)
+            {
+                tbProcurement.Text = LanguageHelper.GetString("tbProcurement");
+            }
+            else
+            {
+                tbProcurement.Text = LanguageHelper.GetString("buying");
+            }
+
             tbBills.Text = LanguageHelper.GetString("tbBills");
         }
 
@@ -302,8 +310,14 @@ namespace Prodavnica.Forms.HelperForms.Admin
             dgvProducts.DataSource = null;
             dgvProducts.DataSource = products;
             dgvProducts.Refresh();
-
-            dgvProductsBill.DataSource = products.Where(pi => pi.Supplies > 0).ToList();
+            if (user.IsAdmin)
+            {
+                dgvProductsBill.DataSource = products;
+            }
+            else
+            {
+                dgvProductsBill.DataSource = products.Where(pi => pi.Supplies > 0).ToList();
+            }
             if (user.IsAdmin)
             {
                 foreach (Procurement procurement in procurements)
@@ -688,7 +702,8 @@ namespace Prodavnica.Forms.HelperForms.Admin
                 }
                 else
                 {
-                    dgvProducts.DataSource = products;
+                    dgvProductsBill.DataSource = null;
+                    dgvProductsBill.DataSource = products;
                 }
                 dgvProductsBill.Refresh();
             }
