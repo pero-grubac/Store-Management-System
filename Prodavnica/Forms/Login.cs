@@ -15,6 +15,7 @@ namespace OnlineKupovinaGUI
         public Login()
         {
             InitializeComponent();
+            lblExit.Height = lblClearFields.Height;
         }
         private void label3_Click(object sender, EventArgs e)
         {
@@ -24,18 +25,21 @@ namespace OnlineKupovinaGUI
         private void btnLogIn_Click(object sender, EventArgs e)
         {
 
-            string userName = txtUserName.Text;
-            string password = txtPassword.Text;
-            User user = userDAOImpl.GetUser(userName, password);
-            if (user != null)
-            {            
-                    GUIUtil.ShowNextForm(this, new MainFOrm(ref user));
-            }
-            else
+            if (!string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtUserName.Text))
             {
-                txtPassword.Clear();
-                txtUserName.Clear();
-                txtUserName.Focus();
+                string userName = txtUserName.Text;
+                string password = txtPassword.Text;
+                User user = userDAOImpl.GetUser(userName, password);
+                if (user != null)
+                {
+                    GUIUtil.ShowNextForm(this, new MainFOrm(ref user));
+                }
+                else
+                {
+                    txtPassword.Clear();
+                    txtUserName.Clear();
+                    txtUserName.Focus();
+                }
             }
         }
 

@@ -41,9 +41,13 @@ namespace Prodavnica.Forms
             btnStore.Text = LanguageHelper.GetString("btnStore");
             btnStaff.Text = LanguageHelper.GetString("btnStaff");
             btnLogOut.Text = LanguageHelper.GetString("btnLogOut");
-            btnSettings.Text = LanguageHelper.GetString("btnSettings");
+
+            btnCategory.Text = LanguageHelper.GetString("btnCategory");
+
             btnSupplier.Text = LanguageHelper.GetString("btnSupplier");
             btnProducer.Text = LanguageHelper.GetString("btnProducer");
+
+            btnSettings.Text = LanguageHelper.GetString("btnSettings");
 
         }
         private void isAdmin(bool isAdmin)
@@ -154,12 +158,17 @@ namespace Prodavnica.Forms
 
         private void btnProducer_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.HelperForms.Admin.Producer(user, true), sender, btnProducer);
+            OpenChildForm(new Forms.HelperForms.Admin.Supplier(user, false), sender, btnProducer);
         }
 
         private void btnProcurement_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.HelperForms.Admin.Producer(user, false), sender, btnSupplier);
+            OpenChildForm(new Forms.HelperForms.Admin.Supplier(user, true), sender, btnSupplier);
+        }
+
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.HelperForms.Admin.Category(user), sender, btnCategory);
         }
     }
 }

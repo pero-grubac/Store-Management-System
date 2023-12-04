@@ -20,9 +20,10 @@ namespace Prodavnica.Database.Repository
                 try
                 {
                     connection.Open();
-                    string query = "INSERT INTO dobavljac (Ime) VALUES (@Name)";
+                    string query = "INSERT INTO dobavljac (Ime,Email) VALUES (@Name,@Email)";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@Name", supplier.Name);
+                    command.Parameters.AddWithValue("@Email", supplier.Email);
                     command.ExecuteNonQuery();
                 }
                 catch (DBException e)
@@ -36,6 +37,28 @@ namespace Prodavnica.Database.Repository
             }
         }
 
+        public void DeleteSupplier(Supplier supplier)
+        {
+            using (var connection = DBUtil.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "DELETE FROM dobavljac WHERE idDobavljac = @Id";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Id", supplier.Id);
+                    command.ExecuteNonQuery();
+                }
+                catch (DBException e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
         public List<Supplier> GetAll()
         {
             List<Supplier> suppliers = new List<Supplier>();
@@ -68,6 +91,31 @@ namespace Prodavnica.Database.Repository
                 }
             }
             return suppliers;
+        }
+
+        public void UpdateSupplier(Supplier supplier)
+        {
+            using (var connection = DBUtil.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "UPDATE dobavljac SET Ime = @Ime, Email = @Email WHERE idDobavljac = @Id";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Ime", supplier.Name);
+                    command.Parameters.AddWithValue("@Email", supplier.Email);
+                    command.Parameters.AddWithValue("@Id", supplier.Id);
+                    command.ExecuteNonQuery();
+                }
+                catch (DBException e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

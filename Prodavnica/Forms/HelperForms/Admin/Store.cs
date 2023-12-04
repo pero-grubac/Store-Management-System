@@ -1,10 +1,17 @@
-﻿using Prodavnica.Database.DTO;
+﻿using MySqlX.XDevAPI.Relational;
+using Newtonsoft.Json;
+using Prodavnica.Database.DAO;
+using Prodavnica.Database.DTO;
 using Prodavnica.Database.Repository;
+using Prodavnica.Forms.HelperForms.Admin.Popup.BillPopup;
+using Prodavnica.Forms.HelperForms.Admin.Popup.ProcurementPopup;
 using Prodavnica.Forms.HelperForms.Admin.Popup.Products;
 using Prodavnica.Language;
 using Prodavnica.Util;
 using System.Data;
+using System.Security.AccessControl;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Prodavnica.Forms.HelperForms.Admin
 {
@@ -14,19 +21,35 @@ namespace Prodavnica.Forms.HelperForms.Admin
         private List<Product> products;
         private ProductsDAOImpl productsDAO = new ProductsDAOImpl();
 
-        private List<Category> categories;
+        private List<Database.DTO.Category> categories;
         private CategoryDAOImpl categoryDAO = new CategoryDAOImpl();
 
         private List<Manufacturer> manufacturers;
         private ManufacturerDAOImpl manufacturerDAO = new ManufacturerDAOImpl();
 
-        private List<Supplier> suppliers;
+        private List<Database.DTO.Supplier> suppliers;
         private SupplierDAOImpl SupplierDAO = new SupplierDAOImpl();
 
         private string deleteConfirmation;
         private string confirmation;
         private string selectedSupplier;
         private string selectedManufactuer;
+
+        private List<ProcurementItem> procurementItems = new List<ProcurementItem>();
+        private ProcurementDAOImpl procurementDAO = new ProcurementDAOImpl();
+
+        private List<BillItem> billItems = new List<BillItem>();
+        private BillDAOImpl billDAO = new BillDAOImpl();
+
+        private List<Bill> bills;
+        private List<BillItem> billsItems;
+
+        private List<Procurement> procurements;
+        private List<ProcurementItem> procurementsItems;
+
+        private decimal amount = 1;
+        private string noSupplier;
+        private string noMoreSupplies;
         public StoreTable(User user)
         {
             InitializeComponent();
@@ -42,20 +65,51 @@ namespace Prodavnica.Forms.HelperForms.Admin
             ChangeText();
             btnDeleteItem.BackColor = Color.White;
             gbDateFrom.Resize += gbDateFrom_Resize;
-            suppliers = SupplierDAO.GetAll();
             cbSupplier.DataSource = suppliers.Select(sup => sup.Name).ToList();
             cbSupplier.SelectedItem = null;
             isAdmin(user.IsAdmin);
-            /*     btnAdd.Enabled = false;
-                 btnAdd.Visible = false;
-            AKO NISI ADMIN 
-            jos u gbProduct_Resize
-            jedna if isAdmin prije  foreach (System.Windows.Forms.Button btn in buttons)
-            i u changetext napraviti da pise 
+            txtAmount.Text = amount.ToString();
+            dtpFrom.ValueChanged += DTP_ValueChanged;
+            dtpTo.ValueChanged += DTP_ValueChanged;
+        }
 
+        private void DTP_ValueChanged(object? sender, EventArgs e)
+        {
+            FilterBills();
+        }
+        private void FilterBills()
+        {
+            dgvBills.DataSource = null;
+            DateTime startDate = dtpFrom.Value.Date;
+            DateTime endDate = dtpTo.Value.Date.AddDays(1).AddTicks(-1);
+            if (user.IsAdmin)
+            {
+                List<Procurement> filteredBills = procurements
+                                        .Where(proc => proc.Date >= startDate && proc.Date <= endDate)
+                                        .ToList();
+                dgvBills.DataSource = filteredBills;
+            }
+            else
+            {
+                List<Bill> filteredBills = bills
+                                        .Where(bill => bill.Date >= startDate && bill.Date <= endDate)
+                                        .ToList();
+                dgvBills.DataSource = filteredBills;
+                dgvBills.AutoGenerateColumns = true;
 
-            treba za tabelu bill napraviti da bude ime dobavljaca i ime radnika
-             */
+                dgvBills.Columns[0].Visible = false;
+                dgvBills.Columns[1].Visible = false;
+                foreach (DataGridViewColumn column in dgvBills.Columns)
+                {
+                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+            }
+            if(dgvBills.Columns["total"] is DataGridViewColumn priceColumn)
+            {
+                priceColumn.DefaultCellStyle.Format = "N2";
+            }
+
+            dgvBills.Refresh();
         }
         private void isAdmin(bool isAdmin)
         {
@@ -98,7 +152,20 @@ namespace Prodavnica.Forms.HelperForms.Admin
                 txtAmount.Location = new Point(102, 59);
 
                 tlypSelect.PerformLayout();
+                dgvBills.AutoGenerateColumns = true;
+
+                dgvBills.Columns[0].Visible = isAdmin;
+                dgvBills.Columns[1].Visible = isAdmin;
+                foreach (DataGridViewColumn column in dgvBills.Columns)
+                {
+                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+                if (dgvBills.Columns["total"] is DataGridViewColumn priceColumn)
+                {
+                    priceColumn.DefaultCellStyle.Format = "N2";
+                }
             }
+
         }
         private void gbDateFrom_Resize(object? sender, EventArgs e)
         {
@@ -144,16 +211,32 @@ namespace Prodavnica.Forms.HelperForms.Admin
             dgvBill.Columns[1].HeaderText = LanguageHelper.GetString("amount");
             btnDeleteItem.Text = LanguageHelper.GetString("btnDeleteItem");
             lblSupplier.Text = LanguageHelper.GetString("lblSupplier");
+            noSupplier = LanguageHelper.GetString("noSupplier");
+            noMoreSupplies = LanguageHelper.GetString("noMoreSupplies");
+            tpProducts.Text = LanguageHelper.GetString("tpProducts");
+            tbProcurement.Text = LanguageHelper.GetString("tbProcurement");
+            tbBills.Text = LanguageHelper.GetString("tbBills");
         }
 
         private void GetProduts()
         {
+            suppliers = SupplierDAO.GetAll();
             products = productsDAO.GetAll();
             categories = categoryDAO.GetAll();
             manufacturers = manufacturerDAO.GetAll();
+            if (user.IsAdmin)
+            {
+                procurements = procurementDAO.GetAll();
+                procurementsItems = procurementDAO.GetItems();
+            }
+            else
+            {
+                bills = billDAO.GetAllBill();
+                billsItems = billDAO.GetAllBillItem();
+            }
             foreach (Product product in products)
             {
-                Category matchingCategory = categories.FirstOrDefault(cat => cat.Id == product.IdCategory);
+                Database.DTO.Category matchingCategory = categories.FirstOrDefault(cat => cat.Id == product.IdCategory);
                 if (matchingCategory != null)
                 {
                     product.CategoryName = matchingCategory.Name;
@@ -162,6 +245,54 @@ namespace Prodavnica.Forms.HelperForms.Admin
                 if (manufacturer != null)
                 {
                     product.ManufacturerName = manufacturer.Name;
+                }
+                if (user.IsAdmin)
+                {
+                    var list = procurementsItems.Where(pi => pi.IdProduct == product.Id).ToList();
+                    if (list.Count() > 0)
+                    {
+                        foreach (var item in list)
+                        {
+                            item.Name = product.Name;
+                        }
+                    }
+                }
+                else
+                {
+                    var list = billsItems.Where(bill => bill.IdProduct == product.Id).ToList();
+
+                    if (list.Count() > 0)
+                    {
+                        foreach (var item in list)
+                        {
+                            item.Name = product.Name;
+                        }
+                    }
+                }
+            }
+            if (user.IsAdmin)
+            {
+                foreach (Database.DTO.Supplier supplier in suppliers)
+                {
+                    var list = procurements.Where(p => p.IdSupplier == supplier.Id).ToList();
+                    if (list.Count() > 0)
+                    {
+                        foreach (var item in list)
+                        {
+                            item.SupplierName = supplier.Name;
+                        }
+                    }
+                }
+                foreach (Manufacturer man in manufacturers)
+                {
+                    var list = procurementsItems.Where(pi => pi.IdManufacturer == man.id).ToList();
+                    if (list.Count() > 0)
+                    {
+                        foreach (var item in list)
+                        {
+                            item.ManufacturerName = man.Name;
+                        }
+                    }
                 }
             }
         }
@@ -172,7 +303,27 @@ namespace Prodavnica.Forms.HelperForms.Admin
             dgvProducts.DataSource = products;
             dgvProducts.Refresh();
 
-            dgvProductsBill.DataSource = products;
+            dgvProductsBill.DataSource = products.Where(pi => pi.Supplies > 0).ToList();
+            if (user.IsAdmin)
+            {
+                foreach (Procurement procurement in procurements)
+                {
+                    procurement.Total = procurementsItems
+                                            .Where(item => item.IdProcurement == procurement.Id)
+                                            .Sum(item => item.Amount * item.Price);
+                }
+            }
+            else
+            {
+                decimal total = 0;
+                foreach (Bill bill in bills)
+                {
+                    bill.Total = billsItems
+                        .Where(item => item.IdBill == bill.Id)
+                        .Sum(item => item.Amount * item.Price);
+                }
+            }
+            FilterBills();
         }
         private void Store_Resize(object? sender, EventArgs e)
         {
@@ -320,10 +471,17 @@ namespace Prodavnica.Forms.HelperForms.Admin
             if (tcShop.SelectedTab?.Name == "tpProducts")
             {
                 Store_Resize(sender, e);
+                SetProdutsToDGV();
             }
-            if (tcShop.SelectedTab?.Name == "tbProcurement")
+            else if (tcShop.SelectedTab?.Name == "tbProcurement")
             {
-
+                Store_Resize(sender, e);
+                SetProdutsToDGV();
+            }
+            else
+            {
+                Store_Resize(sender, e);
+                SetProdutsToDGV();
             }
         }
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -384,6 +542,216 @@ namespace Prodavnica.Forms.HelperForms.Admin
                     SetProdutsToDGV();
                 }
 
+            }
+        }
+
+        private void btnAddToCart_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtAmount.Text))
+            {
+                decimal amountRead = decimal.Parse(txtAmount.Text);
+                if (amountRead > 0)
+                {
+                    if (dgvProductsBill.SelectedRows.Count > 0)
+                    {
+                        DataGridViewRow row = dgvProductsBill.SelectedRows[0];
+                        string barcode = row.Cells["barCodeColumn"].Value?.ToString();
+                        Product selectedProduct = products.FirstOrDefault(pr => pr.BarCode == barcode);
+                        if (user.IsAdmin)
+                        {
+                            if (!string.IsNullOrEmpty(txtPrice.Text))
+                            {
+                                decimal price = decimal.Parse(txtPrice.Text);
+                                if (price > 0)
+                                {
+                                    ProcurementItem procurement = new ProcurementItem
+                                    {
+                                        IdProduct = selectedProduct.Id,
+                                        Amount = amountRead,
+                                        Price = price,
+                                        IdManufacturer = selectedProduct.IdManufacturer,
+                                        Name = selectedProduct.Name,
+                                    };
+                                    if (procurementItems.Any(pi => pi.IdProduct == procurement.IdProduct))
+                                    {
+                                        procurementItems.RemoveAll(pi => pi.IdProduct == procurement.IdProduct);
+                                    }
+                                    procurementItems.Add(procurement); ;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (amountRead <= selectedProduct.Supplies)
+                            {
+                                BillItem billItem = new BillItem
+                                {
+                                    IdProduct = selectedProduct.Id,
+                                    Amount = amountRead,
+                                    Price = selectedProduct.Price,
+                                    Name = selectedProduct.Name,
+                                };
+                                if (billItems.Any(bi => bi.IdProduct == billItem.IdProduct))
+                                {
+                                    billItems.RemoveAll(bi => bi.IdProduct == billItem.IdProduct);
+                                }
+
+                                billItems.Add(billItem);
+
+                            }
+                            else
+                            {
+                                MessageBox.Show(noMoreSupplies);
+                            }
+                        }
+                        SetDataToDgvBill();
+                        txtAmount.Text = amount.ToString();
+                        txtPrice.Clear();
+                        CalculateTotal();
+                    }
+                }
+            }
+        }
+        private void SetDataToDgvBill()
+        {
+            dgvBill.DataSource = null;
+
+            if (user.IsAdmin)
+            {
+                dgvBill.DataSource = procurementItems;
+            }
+            else
+            {
+                dgvBill.DataSource = billItems;
+            }
+            dgvBill.Refresh();
+        }
+        private void CalculateTotal()
+        {
+            decimal total = 0;
+            if (user.IsAdmin)
+            {
+                foreach (ProcurementItem item in procurementItems)
+                {
+                    total = total + item.Amount * item.Price;
+                }
+            }
+            else
+            {
+                foreach (BillItem item in billItems)
+                {
+                    total = total + item.Amount * item.Price;
+                }
+            }
+            txtTotal.Text = total.ToString();
+        }
+
+        private void btnDeleteItem_Click(object sender, EventArgs e)
+        {
+            if (dgvProductsBill.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvBill.SelectedRows[0];
+                int.TryParse(row.Cells["IdProduct"].Value?.ToString(), out int id);
+                if (user.IsAdmin)
+                {
+                    procurementItems.RemoveAll(pr => pr.IdProduct == id);
+                }
+                else
+                {
+                    billItems.RemoveAll(bi => bi.IdProduct == id);
+                }
+                SetDataToDgvBill();
+                CalculateTotal();
+            }
+        }
+
+        private void txtSearchBarCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                string searchText = txtSearchBarCode.Text.Trim().ToLower();
+
+                if (!string.IsNullOrEmpty(searchText))
+                {
+                    List<Product> productList = products;
+
+                    if (productList != null)
+                    {
+                        List<Product> filteredList = productList
+                            .Where(p => p.BarCode.ToLower().Contains(searchText))
+                            .ToList();
+
+                        dgvProductsBill.DataSource = null;
+                        dgvProductsBill.DataSource = filteredList;
+                    }
+                }
+                else
+                {
+                    dgvProducts.DataSource = products;
+                }
+                dgvProductsBill.Refresh();
+            }
+        }
+
+        private void btnBuy_Click(object sender, EventArgs e)
+        {
+            if (user.IsAdmin)
+            {
+                if (procurementItems.Count > 0)
+                {
+                    if (cbSupplier.SelectedIndex != -1)
+                    {
+                        Procurement procurement = new Procurement
+                        {
+                            IdSupplier = suppliers.FirstOrDefault(s => s.Name == cbSupplier.SelectedItem.ToString()).Id,
+                            Date = DateTime.Now
+                        };
+                        procurementDAO.Create(procurement, procurementItems);
+                        procurementItems.Clear();
+                        cbSupplier.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        MessageBox.Show(noSupplier);
+                    }
+                }
+            }
+            else
+            {
+                if (billItems.Count > 0)
+                {
+                    Bill bill = new Bill
+                    {
+                        Date = DateTime.Now
+                    };
+                    billDAO.Create(bill, billItems);
+                    billItems.Clear();
+                }
+            }
+            txtTotal.Clear();
+            SetDataToDgvBill();
+        }
+
+        private void dgvBills_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvBills.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvBills.SelectedRows[0];
+                if (row.Cells.Count > 0)
+                {
+                    int.TryParse(row.Cells[1].Value?.ToString(), out int id);
+                    if (user.IsAdmin)
+                    {
+                        ProcurementDetails procurementDetails = new ProcurementDetails(user, procurementsItems.Where(pi => pi.IdProcurement == id).ToList());
+                        procurementDetails.ShowDialog();
+                    }
+                    else
+                    {
+                        BillDetails billDetails = new BillDetails(user, billsItems.Where(bi => bi.IdBill == id).ToList());
+                        billDetails.ShowDialog();
+                    }
+                }
             }
         }
     }

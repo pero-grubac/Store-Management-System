@@ -1,4 +1,5 @@
-﻿using Prodavnica.Database.DTO;
+﻿using Google.Protobuf.WellKnownTypes;
+using Prodavnica.Database.DTO;
 using Prodavnica.Database.Repository;
 using Prodavnica.Language;
 using Prodavnica.Util;
@@ -10,6 +11,8 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Staff
         private User user;
         private User selectedUser;
         private bool update;
+        private List<User> users;
+
         private ThemeDAOImpl themeDAO = new ThemeDAOImpl();
         private UserDAOImpl userDAO = new UserDAOImpl();
         public EmployeeDetails(User user, User selectedUser, bool update)
@@ -18,16 +21,14 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Staff
             this.user = user;
             this.selectedUser = selectedUser;
             this.update = update;
+            LoadSettings.ApplySettins(user, this);
+            ChangeText();
             if (update)
             {
-                // upisi u txt product
-                EnableSaveButton(false);
+                SetData();
             }
-            else
-            {
-                EnableSaveButton(true);
-            }
-            ChangeText();
+            lblWarrning.Visible = false;
+            users = userDAO.GetAll(user.Id);
         }
         private void ChangeText()
         {
@@ -37,8 +38,11 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Staff
             lblLastName.Text = LanguageHelper.GetString("lblLastName");
             lblNumber.Text = LanguageHelper.GetString("lblPhone");
             lblEmail.Text = LanguageHelper.GetString("lblEmail");
-            lblPassword.Text = LanguageHelper.GetString("gbPassword");
-
+            lblPassword.Text = LanguageHelper.GetString("password");
+            btnSave.Text = LanguageHelper.GetString("btnSave");
+            btnCancel.Text = LanguageHelper.GetString("btnCancel");
+            lblWarrning.Text = LanguageHelper.GetString("userExists");
+            lblWarrning.ForeColor = Color.Red;
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -62,36 +66,86 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Staff
                 };
                 if (update)
                 {
+                    if (txtUsername.Text != selectedUser.UserName ||
+                        txtFirstName.Text != selectedUser.FirstName ||
+                        txtLastName.Text != selectedUser.LastName ||
+                        txtEmail.Text != selectedUser.Email ||
+                        txtNumber.Text != selectedUser.PhoneNumber ||
+                        txtPassword.Text != "*" )
+                    {
+                        if (users.Any(u => u.UserName == newUser.UserName) && newUser.UserName != selectedUser.UserName)
+                        {
+                            lblWarrning.Visible = true;
+                        }
+                        else
+                        {
 
+                            lblWarrning.Visible = false;
+                            string storedPassword = selectedUser.Password;
+                            User updatedUser = new User
+                            {
+                                UserName = txtUsername.Text,
+                                FirstName = txtFirstName.Text,
+                                LastName = txtLastName.Text,
+                                Email = txtEmail.Text,
+                                Password = txtPassword.Text,
+                                PhoneNumber = txtNumber.Text,
+                                Id = selectedUser.Id
+                            };
+                            userDAO.SaveUser(updatedUser);
+                            bool newPassword = Password.Verify(updatedUser.Password, storedPassword);
+                            if (!newPassword)
+                            {
+                                userDAO.ChangePassword(ref updatedUser, updatedUser.Password);
+                            }
+                        }
+
+                    }
                 }
                 else
                 {
-                    Theme theme = new Theme
+                    if (users.Any(u => u.UserName == newUser.UserName))
                     {
-                        ColorName = "255,0,128,128",
-                        FontName = "Segoe UI",
-                        IsStrikeout = false,
-                        IsUnderline = false,
-                        Size = 11,
-                        FontStyle = "Regular"
-                    };
-                    themeDAO.CreateTheme(ref theme);
-                    newUser.IdLanguage = 2;
-                    newUser.IdTheme = theme.Id;
-                    userDAO.CreateUser(newUser);
+                        lblWarrning.Visible = true;
+                    }
+                    else
+                    {
+                        lblWarrning.Visible = false;
+
+                        Theme theme = new Theme
+                        {
+                            ColorName = "255,0,128,128",
+                            FontName = "Segoe UI",
+                            IsStrikeout = false,
+                            IsUnderline = false,
+                            Size = 11,
+                            FontStyle = "Regular"
+                        };
+                        themeDAO.CreateTheme(ref theme);
+                        newUser.IdLanguage = 2;
+                        newUser.IdTheme = theme.Id;
+                        userDAO.CreateUser(newUser);
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    
+
                 }
-                this.DialogResult = DialogResult.OK;
-                this.Close();
             }
         }
-        private void EnableSaveButton(bool enable)
-        {
-            btnSave.Enabled = enable;
-            btnSave.Visible = enable;
-        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void SetData()
+        {
+            txtEmail.Text = selectedUser.Email;
+            txtFirstName.Text = selectedUser.FirstName;
+            txtLastName.Text = selectedUser.LastName;
+            txtNumber.Text = selectedUser.PhoneNumber;
+            txtUsername.Text = selectedUser.UserName;
+            txtPassword.Text = "*";
         }
     }
 }

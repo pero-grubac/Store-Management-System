@@ -1,4 +1,5 @@
-﻿using Prodavnica.Database.DTO;
+﻿using Prodavnica.Database.DAO;
+using Prodavnica.Database.DTO;
 using Prodavnica.Database.Repository;
 using Prodavnica.Language;
 using Prodavnica.Util;
@@ -10,6 +11,8 @@ namespace Prodavnica.Forms.HelperForms.Admin
         private User user;
         private List<User> users;
         private UserDAOImpl userDAO = new UserDAOImpl();
+        private string deleteConfirmation;
+        private string confirmation;
         public Employee(User user)
         {
             InitializeComponent();
@@ -68,7 +71,8 @@ namespace Prodavnica.Forms.HelperForms.Admin
             btnDelete.Text = LanguageHelper.GetString("btnDelete");
             btnUpdate.Text = LanguageHelper.GetString("btnUpdate");
             lblSearch.Text = LanguageHelper.GetString("lblSearch");
-
+            deleteConfirmation = LanguageHelper.GetString("deleteConfirmation");
+            confirmation = LanguageHelper.GetString("confirmation");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -86,12 +90,70 @@ namespace Prodavnica.Forms.HelperForms.Admin
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (dgvUsers.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvUsers.SelectedRows[0];
 
+                User selectedUser = new User
+                {
+                    FirstName = row.Cells["FirstName"].Value?.ToString(),
+                    LastName = row.Cells["LastName"].Value?.ToString(),
+                    Email = row.Cells["Email"].Value?.ToString(),
+                    PhoneNumber = row.Cells["PhoneNumber"].Value?.ToString(),
+                    UserName = row.Cells["UserName"].Value?.ToString()
+                };
+                selectedUser.Id = users.FirstOrDefault(u => u.UserName == selectedUser.UserName).Id;
+                using (Popup.Staff.EmployeeDetails employeeDetails = new Popup.Staff.EmployeeDetails(user, selectedUser, true))
+                {
+                    if (employeeDetails.ShowDialog() == DialogResult.OK)
+                    {
+                        SetDataToDGV();
+                    }
+                }
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dgvUsers.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvUsers.SelectedRows[0];
+                string userName = row.Cells["UserName"].Value?.ToString();
 
+                int id = users.FirstOrDefault(u => u.UserName == userName).Id;
+                if (id != -1)
+                {
+                    DialogResult result = MessageBox.Show(deleteConfirmation, confirmation, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        userDAO.DeleteUser(id);
+                        SetDataToDGV();
+                    }
+                }
+            }
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                string searchText = txtSearch.Text.Trim().ToLower();
+
+                if (!string.IsNullOrEmpty(searchText))
+                {
+                    List<User> userList = users;
+                    List<User> filteredListUsername = userList
+                        .Where(u => u.UserName.ToLower().Contains(searchText))
+                        .ToList();
+                    dgvUsers.DataSource = null;
+                    dgvUsers.DataSource = filteredListUsername;
+                    dgvUsers.Refresh();
+                }
+                else
+                {
+                    SetDataToDGV();
+                }
+            }
         }
     }
 }

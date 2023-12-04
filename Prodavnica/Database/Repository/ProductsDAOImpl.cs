@@ -89,7 +89,7 @@ namespace Prodavnica.Database.Repository
                             product.Id = reader.GetInt32("idProizvod");
                             product.Name = reader.GetString("Naziv");
                             product.Price = reader.GetDecimal("Cijena");
-                            product.Supplies = reader.GetInt32("Zalihe");
+                            product.Supplies = reader.GetDecimal("Zalihe");
                             product.ExpirationDate = reader.GetDateTime("DatumIsteka");
                             product.BarCode = reader.GetString("BarKod");
                             product.IdManufacturer = reader.GetInt32("idProizvodjac");

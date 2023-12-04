@@ -11,5 +11,6 @@ namespace Prodavnica.Database.DAO
         void SaveUser(User user);
         void CreateUser(User user);
         List<User> GetAll(int id);
+        void DeleteUser(int id);
     }
 }

@@ -10,7 +10,7 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Products
         private User user;
         private Product product;
         private List<Product> products;
-        private List<Category> categories;
+        private List<Database.DTO.Category> categories;
         private List<Manufacturer> manufacturers;
         private string invalidNumber;
         private string invalidBarcode;
@@ -20,6 +20,7 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Products
         private ManufacturerDAOImpl manufacturerDAO = new ManufacturerDAOImpl();
         private int indicator = 0;
         private bool update;
+        private string barcodeExists;
         public ProductsDetails(User user, Product product, bool update)
         {
             InitializeComponent();
@@ -38,6 +39,7 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Products
                 setComboBoxes();
             }
             rtbMessage.SelectionAlignment = HorizontalAlignment.Center;
+            ChangeText();
         }
         public void ChangeText()
         {
@@ -73,7 +75,7 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Products
             }
             cbManufacturer.SelectedItem = !string.IsNullOrEmpty(product.ManufacturerName) ?
                 product.ManufacturerName : manufacturers.FirstOrDefault()?.Name;
-            foreach (Category category in categories)
+            foreach (Database.DTO.Category category in categories)
             {
                 cbCategory.Items.Add(category.Name);
             }
@@ -94,7 +96,7 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Products
 
         private void txtSupplies_TextChanged(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtSupplies.Text, out _))
+            if (!decimal.TryParse(txtSupplies.Text, out _))
             {
                 txtSupplies.ForeColor = Color.Red;
                 rtbMessage.Text = invalidNumber;
@@ -190,8 +192,8 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Products
             {
                 decimal price;
                 decimal.TryParse(txtPrice.Text, out price);
-                int supplies;
-                int.TryParse(txtSupplies.Text, out supplies);
+                decimal supplies;
+                decimal.TryParse(txtSupplies.Text, out supplies);
                 Product newProduct = new Product()
                 {
                     BarCode = txtBarcode.Text,
@@ -208,9 +210,18 @@ namespace Prodavnica.Forms.HelperForms.Admin.Popup.Products
 
                 if (update)
                 {
-                    newProduct.Id = product.Id;
-                    if (!newProduct.IsEquivalent(product))
-                        productsDAO.UpdateProduct(newProduct);
+                    if (products.Any(p => p.BarCode == newProduct.BarCode) && newProduct.BarCode != product.BarCode)
+                    {
+                        rtbMessage.Text = invalidNumber;
+
+                    }
+                    else
+                    {
+                        rtbMessage.Clear();
+                        newProduct.Id = product.Id;
+                        if (!newProduct.IsEquivalent(product))
+                            productsDAO.UpdateProduct(newProduct);
+                    }
                 }
                 else
                 {

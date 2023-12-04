@@ -31,6 +31,11 @@
             components = new System.ComponentModel.Container();
             tlpProducts = new TableLayoutPanel();
             dgvUsers = new DataGridView();
+            UserName = new DataGridViewTextBoxColumn();
+            FirstName = new DataGridViewTextBoxColumn();
+            LastName = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            PhoneNumber = new DataGridViewTextBoxColumn();
             userBindingSource = new BindingSource(components);
             gbUsers = new GroupBox();
             txtSearch = new TextBox();
@@ -38,11 +43,6 @@
             btnDelete = new Button();
             btnUpdate = new Button();
             btnAdd = new Button();
-            userNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            firstNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            lastNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            phoneNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tlpProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)userBindingSource).BeginInit();
@@ -73,7 +73,7 @@
             dgvUsers.BackgroundColor = Color.White;
             dgvUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsers.Columns.AddRange(new DataGridViewColumn[] { userNameDataGridViewTextBoxColumn, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, phoneNumberDataGridViewTextBoxColumn });
+            dgvUsers.Columns.AddRange(new DataGridViewColumn[] { UserName, FirstName, LastName, Email, PhoneNumber });
             dgvUsers.DataSource = userBindingSource;
             dgvUsers.Dock = DockStyle.Fill;
             dgvUsers.Location = new Point(3, 78);
@@ -85,6 +85,51 @@
             dgvUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsers.Size = new Size(957, 885);
             dgvUsers.TabIndex = 0;
+            // 
+            // UserName
+            // 
+            UserName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            UserName.DataPropertyName = "UserName";
+            UserName.HeaderText = "Username";
+            UserName.MinimumWidth = 6;
+            UserName.Name = "UserName";
+            UserName.ReadOnly = true;
+            // 
+            // FirstName
+            // 
+            FirstName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            FirstName.DataPropertyName = "FirstName";
+            FirstName.HeaderText = "First name";
+            FirstName.MinimumWidth = 6;
+            FirstName.Name = "FirstName";
+            FirstName.ReadOnly = true;
+            // 
+            // LastName
+            // 
+            LastName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            LastName.DataPropertyName = "LastName";
+            LastName.HeaderText = "Last name";
+            LastName.MinimumWidth = 6;
+            LastName.Name = "LastName";
+            LastName.ReadOnly = true;
+            // 
+            // Email
+            // 
+            Email.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Email.DataPropertyName = "Email";
+            Email.HeaderText = "Email";
+            Email.MinimumWidth = 6;
+            Email.Name = "Email";
+            Email.ReadOnly = true;
+            // 
+            // PhoneNumber
+            // 
+            PhoneNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            PhoneNumber.DataPropertyName = "PhoneNumber";
+            PhoneNumber.HeaderText = "Phone number";
+            PhoneNumber.MinimumWidth = 6;
+            PhoneNumber.Name = "PhoneNumber";
+            PhoneNumber.ReadOnly = true;
             // 
             // userBindingSource
             // 
@@ -114,6 +159,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(308, 27);
             txtSearch.TabIndex = 4;
+            txtSearch.KeyPress += txtSearch_KeyPress;
             // 
             // lblSearch
             // 
@@ -157,51 +203,6 @@
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
-            // userNameDataGridViewTextBoxColumn
-            // 
-            userNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
-            userNameDataGridViewTextBoxColumn.HeaderText = "Username";
-            userNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
-            userNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            firstNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            firstNameDataGridViewTextBoxColumn.HeaderText = "First name";
-            firstNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            lastNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            lastNameDataGridViewTextBoxColumn.HeaderText = "Last name";
-            lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            emailDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            emailDataGridViewTextBoxColumn.MinimumWidth = 6;
-            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            emailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // phoneNumberDataGridViewTextBoxColumn
-            // 
-            phoneNumberDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
-            phoneNumberDataGridViewTextBoxColumn.HeaderText = "Phone number";
-            phoneNumberDataGridViewTextBoxColumn.MinimumWidth = 6;
-            phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
-            phoneNumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // Employee
             // 
             ClientSize = new Size(963, 430);
@@ -229,10 +230,10 @@
         private Button btnUpdate;
         private Button btnAdd;
         private BindingSource userBindingSource;
-        private DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn UserName;
+        private DataGridViewTextBoxColumn FirstName;
+        private DataGridViewTextBoxColumn LastName;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn PhoneNumber;
     }
 }

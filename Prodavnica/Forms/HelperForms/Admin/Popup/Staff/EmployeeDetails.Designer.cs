@@ -42,6 +42,7 @@
             lblPassword = new Label();
             btnSave = new Button();
             btnCancel = new Button();
+            lblWarrning = new Label();
             SuspendLayout();
             // 
             // lblUsername
@@ -143,7 +144,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(27, 374);
+            btnSave.Location = new Point(212, 374);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(94, 29);
             btnSave.TabIndex = 12;
@@ -161,12 +162,22 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // lblWarrning
+            // 
+            lblWarrning.AutoSize = true;
+            lblWarrning.Location = new Point(82, 341);
+            lblWarrning.Name = "lblWarrning";
+            lblWarrning.Size = new Size(50, 20);
+            lblWarrning.TabIndex = 14;
+            lblWarrning.Text = "label1";
+            // 
             // EmployeeDetails
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(466, 430);
             ControlBox = false;
+            Controls.Add(lblWarrning);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(txtPassword);
@@ -205,5 +216,6 @@
         private Label lblPassword;
         private Button btnSave;
         private Button btnCancel;
+        private Label lblWarrning;
     }
 }

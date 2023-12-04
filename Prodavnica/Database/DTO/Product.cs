@@ -11,7 +11,7 @@ namespace Prodavnica.Database.DTO
         public int Id {  get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public int Supplies { get; set; }
+        public decimal Supplies { get; set; }
         public DateTime ExpirationDate { get; set; }
         public  string BarCode { get; set; }
         public int IdManufacturer { get; set; }

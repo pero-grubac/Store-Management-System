@@ -33,6 +33,7 @@ namespace Prodavnica.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFOrm));
             panelMenu = new Panel();
             btnSettings = new Button();
+            btnCategory = new Button();
             btnSupplier = new Button();
             btnProducer = new Button();
             btnLogOut = new Button();
@@ -59,6 +60,7 @@ namespace Prodavnica.Forms
             // 
             panelMenu.BackColor = Color.FromArgb(51, 51, 76);
             panelMenu.Controls.Add(btnSettings);
+            panelMenu.Controls.Add(btnCategory);
             panelMenu.Controls.Add(btnSupplier);
             panelMenu.Controls.Add(btnProducer);
             panelMenu.Controls.Add(btnLogOut);
@@ -80,16 +82,36 @@ namespace Prodavnica.Forms
             btnSettings.ForeColor = Color.Gainsboro;
             btnSettings.Image = Properties.Resources.setting;
             btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSettings.Location = new Point(0, 320);
+            btnSettings.Location = new Point(0, 380);
             btnSettings.Name = "btnSettings";
             btnSettings.Padding = new Padding(12, 0, 0, 0);
             btnSettings.Size = new Size(220, 60);
-            btnSettings.TabIndex = 9;
+            btnSettings.TabIndex = 10;
             btnSettings.Text = "   Settings";
             btnSettings.TextAlign = ContentAlignment.MiddleLeft;
             btnSettings.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSettings.UseVisualStyleBackColor = true;
             btnSettings.Click += btnSettings_Click;
+            // 
+            // btnCategory
+            // 
+            btnCategory.Dock = DockStyle.Top;
+            btnCategory.FlatAppearance.BorderSize = 0;
+            btnCategory.FlatStyle = FlatStyle.Flat;
+            btnCategory.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCategory.ForeColor = Color.Gainsboro;
+            btnCategory.Image = Properties.Resources.categorization1;
+            btnCategory.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCategory.Location = new Point(0, 320);
+            btnCategory.Name = "btnCategory";
+            btnCategory.Padding = new Padding(12, 0, 0, 0);
+            btnCategory.Size = new Size(220, 60);
+            btnCategory.TabIndex = 9;
+            btnCategory.Text = "   Category";
+            btnCategory.TextAlign = ContentAlignment.MiddleLeft;
+            btnCategory.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCategory.UseVisualStyleBackColor = true;
+            btnCategory.Click += btnCategory_Click;
             // 
             // btnSupplier
             // 
@@ -333,6 +355,7 @@ namespace Prodavnica.Forms
             Controls.Add(panelTitleBar);
             Controls.Add(panelMenu);
             Name = "MainFOrm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Administrator";
             panelMenu.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
@@ -362,7 +385,8 @@ namespace Prodavnica.Forms
         private Button btnClose;
         private PictureBox pictureBox1;
         private Button btnProducer;
-        private Button btnSettings;
+        private Button btnCategory;
         private Button btnSupplier;
+        private Button btnSettings;
     }
 }

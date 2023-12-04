@@ -19,7 +19,7 @@ namespace Prodavnica.Forms.HelperForms.Admin
         private List<Manufacturer> manufacturers;
         private ManufacturerDAOImpl manufacturerDAO = new ManufacturerDAOImpl();
         private bool isProducer;
-        private List<Supplier> suppliers;
+        private List<Database.DTO.Supplier> suppliers;
         private SupplierDAOImpl supplierDAO = new SupplierDAOImpl();
         public Producer(User user, bool isProducer)
         {

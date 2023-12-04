@@ -7,5 +7,7 @@
         public int IdProduct { get; set; }
         public int IdProcurement { get; set; }
         public int IdManufacturer { get; set; }
+        public string ManufacturerName { get; set; }
+        public string Name { get; set; }
     }
 }

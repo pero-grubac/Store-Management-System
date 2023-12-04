@@ -31,6 +31,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             tcShop = new TabControl();
             tpProducts = new TabPage();
             tlpProducts = new TableLayoutPanel();
@@ -58,10 +59,11 @@
             lblTotal = new Label();
             btnBuy = new Button();
             dgvBill = new DataGridView();
-            nameColumBill = new DataGridViewTextBoxColumn();
-            amountColumnBill = new DataGridViewTextBoxColumn();
-            priceColumnBill = new DataGridViewTextBoxColumn();
-            productBIllBindingSource = new BindingSource(components);
+            productNameColumn = new DataGridViewTextBoxColumn();
+            amountColumn = new DataGridViewTextBoxColumn();
+            priceColumn = new DataGridViewTextBoxColumn();
+            IdProduct = new DataGridViewTextBoxColumn();
+            procurementItemBindingSource = new BindingSource(components);
             btnDeleteItem = new Button();
             tlypSelect = new TableLayoutPanel();
             gbSearch = new GroupBox();
@@ -89,9 +91,16 @@
             dtpFrom = new DateTimePicker();
             lblFrom = new Label();
             dgvBills = new DataGridView();
-            dateColumnBill = new DataGridViewTextBoxColumn();
-            nameColumnBills = new DataGridViewTextBoxColumn();
+            procurementBindingSource1 = new BindingSource(components);
             procurementBindingSource = new BindingSource(components);
+            billBindingSource = new BindingSource(components);
+            IdBill = new DataGridViewTextBoxColumn();
+            productBIllBindingSource = new BindingSource(components);
+            billItemBindingSource = new BindingSource(components);
+            supplierNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            Id = new DataGridViewTextBoxColumn();
+            date = new DataGridViewTextBoxColumn();
+            total = new DataGridViewTextBoxColumn();
             tcShop.SuspendLayout();
             tpProducts.SuspendLayout();
             tlpProducts.SuspendLayout();
@@ -103,7 +112,7 @@
             tlpBill.SuspendLayout();
             gbBuy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvBill).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)productBIllBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)procurementItemBindingSource).BeginInit();
             tlypSelect.SuspendLayout();
             gbSearch.SuspendLayout();
             gbAdd.SuspendLayout();
@@ -115,7 +124,11 @@
             gbDateTo.SuspendLayout();
             gbDateFrom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvBills).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)procurementBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)procurementBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)billBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)productBIllBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)billItemBindingSource).BeginInit();
             SuspendLayout();
             // 
             // tcShop
@@ -392,11 +405,14 @@
             // 
             // txtTotal
             // 
+            txtTotal.BackColor = Color.White;
             txtTotal.BorderStyle = BorderStyle.FixedSingle;
             txtTotal.Location = new Point(102, 59);
             txtTotal.Name = "txtTotal";
+            txtTotal.ReadOnly = true;
             txtTotal.Size = new Size(340, 27);
             txtTotal.TabIndex = 7;
+            txtTotal.TextAlign = HorizontalAlignment.Right;
             // 
             // lblTotal
             // 
@@ -416,6 +432,7 @@
             btnBuy.TabIndex = 4;
             btnBuy.Text = "Buy";
             btnBuy.UseVisualStyleBackColor = true;
+            btnBuy.Click += btnBuy_Click;
             // 
             // dgvBill
             // 
@@ -425,8 +442,8 @@
             dgvBill.AutoGenerateColumns = false;
             dgvBill.BackgroundColor = Color.White;
             dgvBill.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBill.Columns.AddRange(new DataGridViewColumn[] { nameColumBill, amountColumnBill, priceColumnBill });
-            dgvBill.DataSource = productBIllBindingSource;
+            dgvBill.Columns.AddRange(new DataGridViewColumn[] { productNameColumn, amountColumn, priceColumn, IdProduct });
+            dgvBill.DataSource = procurementItemBindingSource;
             dgvBill.Dock = DockStyle.Fill;
             dgvBill.Location = new Point(3, 3);
             dgvBill.Name = "dgvBill";
@@ -438,40 +455,46 @@
             dgvBill.Size = new Size(457, 233);
             dgvBill.TabIndex = 1;
             // 
-            // nameColumBill
+            // productNameColumn
             // 
-            nameColumBill.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nameColumBill.DataPropertyName = "Name";
-            nameColumBill.FillWeight = 32.4324341F;
-            nameColumBill.HeaderText = "Name";
-            nameColumBill.MinimumWidth = 6;
-            nameColumBill.Name = "nameColumBill";
-            nameColumBill.ReadOnly = true;
+            productNameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            productNameColumn.DataPropertyName = "Name";
+            productNameColumn.HeaderText = "Name";
+            productNameColumn.MinimumWidth = 6;
+            productNameColumn.Name = "productNameColumn";
+            productNameColumn.ReadOnly = true;
             // 
-            // amountColumnBill
+            // amountColumn
             // 
-            amountColumnBill.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            amountColumnBill.DataPropertyName = "Amount";
-            amountColumnBill.HeaderText = "Amount";
-            amountColumnBill.MinimumWidth = 6;
-            amountColumnBill.Name = "amountColumnBill";
-            amountColumnBill.ReadOnly = true;
-            amountColumnBill.Width = 150;
+            amountColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            amountColumn.DataPropertyName = "Amount";
+            amountColumn.HeaderText = "Amount";
+            amountColumn.MinimumWidth = 6;
+            amountColumn.Name = "amountColumn";
+            amountColumn.ReadOnly = true;
             // 
-            // priceColumnBill
+            // priceColumn
             // 
-            priceColumnBill.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            priceColumnBill.DataPropertyName = "Price";
-            priceColumnBill.FillWeight = 167.567566F;
-            priceColumnBill.HeaderText = "Price";
-            priceColumnBill.MinimumWidth = 6;
-            priceColumnBill.Name = "priceColumnBill";
-            priceColumnBill.ReadOnly = true;
-            priceColumnBill.Width = 150;
+            priceColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            priceColumn.DataPropertyName = "Price";
+            priceColumn.HeaderText = "Price";
+            priceColumn.MinimumWidth = 6;
+            priceColumn.Name = "priceColumn";
+            priceColumn.ReadOnly = true;
             // 
-            // productBIllBindingSource
+            // IdProduct
             // 
-            productBIllBindingSource.DataSource = typeof(ProductBIll);
+            IdProduct.DataPropertyName = "IdProduct";
+            IdProduct.HeaderText = "IdProduct";
+            IdProduct.MinimumWidth = 6;
+            IdProduct.Name = "IdProduct";
+            IdProduct.ReadOnly = true;
+            IdProduct.Visible = false;
+            IdProduct.Width = 125;
+            // 
+            // procurementItemBindingSource
+            // 
+            procurementItemBindingSource.DataSource = typeof(Database.DTO.ProcurementItem);
             // 
             // btnDeleteItem
             // 
@@ -483,6 +506,7 @@
             btnDeleteItem.TabIndex = 2;
             btnDeleteItem.Text = "Delete item";
             btnDeleteItem.UseVisualStyleBackColor = false;
+            btnDeleteItem.Click += btnDeleteItem_Click;
             // 
             // tlypSelect
             // 
@@ -522,6 +546,7 @@
             txtSearchBarCode.Name = "txtSearchBarCode";
             txtSearchBarCode.Size = new Size(340, 27);
             txtSearchBarCode.TabIndex = 1;
+            txtSearchBarCode.KeyPress += txtSearchBarCode_KeyPress;
             // 
             // lblSearchProduct
             // 
@@ -581,6 +606,7 @@
             btnAddToCart.TabIndex = 0;
             btnAddToCart.Text = "Add";
             btnAddToCart.UseVisualStyleBackColor = true;
+            btnAddToCart.Click += btnAddToCart_Click;
             // 
             // lblPrice
             // 
@@ -762,9 +788,20 @@
             dgvBills.AllowUserToAddRows = false;
             dgvBills.AllowUserToDeleteRows = false;
             dgvBills.AllowUserToResizeRows = false;
+            dgvBills.AutoGenerateColumns = false;
             dgvBills.BackgroundColor = Color.White;
             dgvBills.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBills.Columns.AddRange(new DataGridViewColumn[] { dateColumnBill, nameColumnBills });
+            dgvBills.Columns.AddRange(new DataGridViewColumn[] { supplierNameDataGridViewTextBoxColumn, Id, date, total });
+            dgvBills.DataSource = procurementBindingSource1;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvBills.DefaultCellStyle = dataGridViewCellStyle1;
             dgvBills.Dock = DockStyle.Fill;
             dgvBills.Location = new Point(3, 78);
             dgvBills.Name = "dgvBills";
@@ -775,26 +812,70 @@
             dgvBills.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvBills.Size = new Size(932, 389);
             dgvBills.TabIndex = 2;
+            dgvBills.CellDoubleClick += dgvBills_CellDoubleClick;
             // 
-            // dateColumnBill
+            // procurementBindingSource1
             // 
-            dateColumnBill.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dateColumnBill.HeaderText = "Date";
-            dateColumnBill.MinimumWidth = 6;
-            dateColumnBill.Name = "dateColumnBill";
-            dateColumnBill.ReadOnly = true;
-            // 
-            // nameColumnBills
-            // 
-            nameColumnBills.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nameColumnBills.HeaderText = "Name";
-            nameColumnBills.MinimumWidth = 6;
-            nameColumnBills.Name = "nameColumnBills";
-            nameColumnBills.ReadOnly = true;
+            procurementBindingSource1.DataSource = typeof(Database.DTO.Procurement);
             // 
             // procurementBindingSource
             // 
             procurementBindingSource.DataSource = typeof(Database.DTO.Procurement);
+            // 
+            // billBindingSource
+            // 
+            billBindingSource.DataSource = typeof(Database.DTO.Bill);
+            // 
+            // IdBill
+            // 
+            IdBill.DataPropertyName = "IdBill";
+            IdBill.HeaderText = "IdProduct";
+            IdBill.MinimumWidth = 6;
+            IdBill.Name = "IdBill";
+            IdBill.ReadOnly = true;
+            IdBill.Visible = false;
+            IdBill.Width = 125;
+            // 
+            // billItemBindingSource
+            // 
+            billItemBindingSource.DataSource = typeof(Database.DTO.BillItem);
+            // 
+            // supplierNameDataGridViewTextBoxColumn
+            // 
+            supplierNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            supplierNameDataGridViewTextBoxColumn.DataPropertyName = "SupplierName";
+            supplierNameDataGridViewTextBoxColumn.HeaderText = "SupplierName";
+            supplierNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            supplierNameDataGridViewTextBoxColumn.Name = "supplierNameDataGridViewTextBoxColumn";
+            supplierNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
+            Id.Width = 125;
+            // 
+            // date
+            // 
+            date.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            date.DataPropertyName = "Date";
+            date.HeaderText = "Date";
+            date.MinimumWidth = 6;
+            date.Name = "date";
+            date.ReadOnly = true;
+            // 
+            // total
+            // 
+            total.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            total.DataPropertyName = "Total";
+            total.HeaderText = "Total";
+            total.MinimumWidth = 6;
+            total.Name = "total";
+            total.ReadOnly = true;
             // 
             // StoreTable
             // 
@@ -819,7 +900,7 @@
             gbBuy.ResumeLayout(false);
             gbBuy.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvBill).EndInit();
-            ((System.ComponentModel.ISupportInitialize)productBIllBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)procurementItemBindingSource).EndInit();
             tlypSelect.ResumeLayout(false);
             gbSearch.ResumeLayout(false);
             gbSearch.PerformLayout();
@@ -836,7 +917,11 @@
             gbDateFrom.ResumeLayout(false);
             gbDateFrom.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvBills).EndInit();
+            ((System.ComponentModel.ISupportInitialize)procurementBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)procurementBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)billBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)productBIllBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)billItemBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -886,9 +971,6 @@
         private Button btnDeleteItem;
         private DataGridViewTextBoxColumn barCodeColumn;
         private DataGridViewTextBoxColumn nameColumnBill;
-        private DataGridViewTextBoxColumn nameColumBill;
-        private DataGridViewTextBoxColumn amountColumnBill;
-        private DataGridViewTextBoxColumn priceColumnBill;
         private GroupBox gbSupplier;
         private ComboBox cbSupplier;
         private Label lblSupplier;
@@ -902,7 +984,18 @@
         private Label lblFrom;
         private DataGridView dgvBills;
         private BindingSource procurementBindingSource;
-        private DataGridViewTextBoxColumn dateColumnBill;
-        private DataGridViewTextBoxColumn nameColumnBills;
+        private BindingSource procurementItemBindingSource;
+        private DataGridViewTextBoxColumn IdBill;
+        private BindingSource billItemBindingSource;
+        private DataGridViewTextBoxColumn productNameColumn;
+        private DataGridViewTextBoxColumn amountColumn;
+        private DataGridViewTextBoxColumn priceColumn;
+        private DataGridViewTextBoxColumn IdProduct;
+        private BindingSource billBindingSource;
+        private BindingSource procurementBindingSource1;
+        private DataGridViewTextBoxColumn supplierNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn date;
+        private DataGridViewTextBoxColumn total;
     }
 }

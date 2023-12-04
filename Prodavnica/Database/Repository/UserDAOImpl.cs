@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using OnlineKupovinaGUI;
 using Prodavnica.Database.DAO;
+using Prodavnica.Database.DTO;
 using Prodavnica.Util;
 
 namespace Prodavnica.Database.Repository
@@ -82,6 +83,25 @@ namespace Prodavnica.Database.Repository
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+        public void DeleteUser(int id)
+        {
+            using (var connection = DBUtil.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "DELETE FROM korisnik WHERE idKorisnik = @Id";
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
         }

@@ -37,6 +37,29 @@ namespace Prodavnica.Database.Repository
             }
         }
 
+        public void Delete(Manufacturer manufacturer)
+        {
+            using (var connection = DBUtil.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "DELETE FROM proizvodjac WHERE idProizvodjac = @Id";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Id", manufacturer.id);
+                    command.ExecuteNonQuery();
+                }
+                catch (DBException e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
         public List<Manufacturer> GetAll()
         {
             List<Manufacturer> manufacturers = new List<Manufacturer>();
@@ -69,6 +92,31 @@ namespace Prodavnica.Database.Repository
                 }
             }
             return manufacturers;
+        }
+
+        public void Update(Manufacturer manufacturer)
+        {
+            using (var connection = DBUtil.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "UPDATE proizvodjac SET Ime = @Ime, Email = @Email WHERE idProizvodjac = @Id";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Ime", manufacturer.Name);
+                    command.Parameters.AddWithValue("@Email", manufacturer.Email);
+                    command.Parameters.AddWithValue("@Id", manufacturer.id);
+                    command.ExecuteNonQuery();
+                }
+                catch (DBException e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

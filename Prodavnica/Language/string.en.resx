@@ -132,6 +132,9 @@
   <data name="btnCancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="btnCategory" xml:space="preserve">
+    <value>   Category</value>
+  </data>
   <data name="btnChangePass" xml:space="preserve">
     <value>Change password</value>
   </data>
@@ -180,6 +183,9 @@
   <data name="category" xml:space="preserve">
     <value>Category</value>
   </data>
+  <data name="categoryExists" xml:space="preserve">
+    <value>Category with that name ecists.</value>
+  </data>
   <data name="confirmation" xml:space="preserve">
     <value>Confirmation</value>
   </data>
@@ -202,10 +208,10 @@
     <value>Language</value>
   </data>
   <data name="gbPassword" xml:space="preserve">
-    <value>Password</value>
+    <value>Change password</value>
   </data>
   <data name="gbProfile" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profile info</value>
   </data>
   <data name="invalidBarcode" xml:space="preserve">
     <value>Barcode already exists. Please change it.</value>
@@ -258,13 +264,40 @@
   <data name="manufacturer" xml:space="preserve">
     <value>Manufacturer</value>
   </data>
+  <data name="manufacturerExists" xml:space="preserve">
+    <value>Manufacturer exists.</value>
+  </data>
   <data name="name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="noMoreSupplies" xml:space="preserve">
+    <value>No more supplies.</value>
+  </data>
+  <data name="noSupplier" xml:space="preserve">
+    <value>Please selecte supplier.</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="price" xml:space="preserve">
     <value>Price</value>
   </data>
+  <data name="supplierExists" xml:space="preserve">
+    <value>Supplier exists.</value>
+  </data>
   <data name="supplies" xml:space="preserve">
     <value>Supplies</value>
+  </data>
+  <data name="tbBills" xml:space="preserve">
+    <value>Bills</value>
+  </data>
+  <data name="tbProcurement" xml:space="preserve">
+    <value>Procurement</value>
+  </data>
+  <data name="tpProducts" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="userExists" xml:space="preserve">
+    <value>User with that username already exists !</value>
   </data>
 </root>

@@ -22,25 +22,17 @@ namespace Prodavnica.Forms.HelperForms
         public Settings(ref User user, ref MainFOrm form)
         {
             InitializeComponent();
-            VisiblePassSettings(false);
-            VisibleProfileSettings(false);
-            btnChangePass.Visible = false;
+
             this.form = form;
 
-            txtOldPass.TextChanged += TextBox_TextChanged;
-            txtNewPass2.TextChanged += TextBox_TextChanged;
+
             gbPassword.Resize += gbPass_Resize;
 
             txtUsername.Text = user.UserName;
-            txtUsername.TextChanged += TextBox_TextChanged;
             txtEmail.Text = user.Email;
-            txtEmail.TextChanged += TextBox_TextChanged;
             txtPhone.Text = user.PhoneNumber;
-            txtPhone.TextChanged += TextBox_TextChanged;
             txtName.Text = user.FirstName;
-            txtName.TextChanged += TextBox_TextChanged;
             txtLastName.Text = user.LastName;
-            txtLastName.TextChanged += TextBox_TextChanged;
             gbProfile.Resize += gbProfile_Resize;
 
             txtNewPass.TextChanged += TextBoxNewPass_TextChanged;
@@ -91,56 +83,16 @@ namespace Prodavnica.Forms.HelperForms
             btnSaveProfile.Text = LanguageHelper.GetString("btnSaveProfile");
             lblLastName.Text = LanguageHelper.GetString("lblLastName");
             lblName.Text = LanguageHelper.GetString("lblName");
-        }
-        private void VisiblePassSettings(bool hide)
-        {
-
-            lblNewPass.Visible = hide;
-            txtNewPass.Visible = hide;
-            lblNewPass2.Visible = hide;
-            txtNewPass.Clear();
-            pnlNewPass.Visible = hide;
-            pnlNewPass2.Visible = hide;
-            txtNewPass2.Visible = hide;
-        }
-        private void VisibleProfileSettings(bool hide)
-        {
-            btnSaveProfile.Visible = hide;
-        }
-        private void TextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(txtOldPass.Text) && Password.Verify(txtOldPass.Text, user.Password))
-            {
-                VisiblePassSettings(true);
-            }
-            else
-            {
-                VisiblePassSettings(false);
-            }
-
-            if (txtUsername.Text != user.UserName || txtEmail.Text != user.Email || txtPhone.Text != user.PhoneNumber
-                || txtName.Text != user.FirstName || txtLastName.Text != user.LastName)
-            {
-                if (!string.IsNullOrWhiteSpace(txtUsername.Text) && !string.IsNullOrWhiteSpace(txtEmail.Text)
-                    && !string.IsNullOrWhiteSpace(txtPhone.Text) && !string.IsNullOrWhiteSpace(txtName.Text)
-                    && !string.IsNullOrWhiteSpace(txtLastName.Text))
-                {
-                    VisibleProfileSettings(true);
-                }
-            }
-            else
-            {
-                VisibleProfileSettings(false);
-            }
+            btnFont.Width=btnColor.Width;
         }
 
         private void btnChangePass_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtNewPass.Text) && !string.IsNullOrWhiteSpace(txtNewPass2.Text) &&
+            if (!string.IsNullOrWhiteSpace(txtOldPass.Text) && Password.Verify(txtOldPass.Text, user.Password) &&
+                !string.IsNullOrWhiteSpace(txtNewPass.Text) && !string.IsNullOrWhiteSpace(txtNewPass2.Text) &&
               txtNewPass.Text != txtOldPass.Text && txtNewPass2.Text == txtNewPass.Text)
             {
                 userDAO.ChangePassword(ref user, txtNewPass.Text);
-                VisiblePassSettings(false);
                 txtOldPass.Clear();
                 txtNewPass2.Clear();
                 txtNewPass.Clear();
@@ -230,21 +182,27 @@ namespace Prodavnica.Forms.HelperForms
 
         private void btnSaveProfile_Click(object sender, EventArgs e)
         {
+            if (txtUsername.Text != user.UserName || txtEmail.Text != user.Email || txtPhone.Text != user.PhoneNumber
+               || txtName.Text != user.FirstName || txtLastName.Text != user.LastName)
+            {
+                if (!string.IsNullOrWhiteSpace(txtUsername.Text) && !string.IsNullOrWhiteSpace(txtEmail.Text)
+                    && !string.IsNullOrWhiteSpace(txtPhone.Text) && !string.IsNullOrWhiteSpace(txtName.Text)
+                    && !string.IsNullOrWhiteSpace(txtLastName.Text))
+                {
+                    user.UserName = txtUsername.Text;
+                    user.Email = txtEmail.Text;
+                    user.PhoneNumber = txtPhone.Text;
+                    user.FirstName = txtName.Text;
+                    user.LastName = txtLastName.Text;
 
-            user.UserName = txtUsername.Text;
-            user.Email = txtEmail.Text;
-            user.PhoneNumber = txtPhone.Text;
-            user.FirstName = txtName.Text;
-            user.LastName = txtLastName.Text;
-
-            userDAO.SaveUser(user);
-            txtUsername.Text = user.UserName;
-            txtEmail.Text = user.Email;
-            txtPhone.Text = user.PhoneNumber;
-            txtName.Text = user.FirstName;
-            txtLastName.Text = user.LastName;
-            VisibleProfileSettings(false);
-
+                    userDAO.SaveUser(user);
+                    txtUsername.Text = user.UserName;
+                    txtEmail.Text = user.Email;
+                    txtPhone.Text = user.PhoneNumber;
+                    txtName.Text = user.FirstName;
+                    txtLastName.Text = user.LastName;
+                }
+            }
         }
     }
 }

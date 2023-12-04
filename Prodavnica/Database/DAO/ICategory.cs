@@ -10,5 +10,8 @@ namespace Prodavnica.Database.DAO
     public interface ICategory
     {
         public List<Category> GetAll();
+        void Create(Category category);
+        void Update(Category category);
+        void Delete(Category category);
     }
 }

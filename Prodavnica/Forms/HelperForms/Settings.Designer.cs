@@ -232,7 +232,8 @@
             // 
             // lblNewTheme
             // 
-            lblNewTheme.Location = new Point(129, 91);
+            lblNewTheme.BackColor = Color.Silver;
+            lblNewTheme.Location = new Point(15, 129);
             lblNewTheme.Name = "lblNewTheme";
             lblNewTheme.Size = new Size(115, 20);
             lblNewTheme.TabIndex = 3;
@@ -241,29 +242,30 @@
             // 
             // btnFont
             // 
-            btnFont.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnFont.AutoSize = true;
+            btnFont.BackColor = Color.DimGray;
             btnFont.FlatAppearance.BorderSize = 0;
             btnFont.FlatStyle = FlatStyle.Flat;
-            btnFont.Location = new Point(280, 41);
+            btnFont.Location = new Point(15, 83);
             btnFont.Name = "btnFont";
             btnFont.Size = new Size(94, 30);
             btnFont.TabIndex = 2;
-            btnFont.Text = "button1";
-            btnFont.UseVisualStyleBackColor = true;
+            btnFont.Text = "font";
+            btnFont.UseVisualStyleBackColor = false;
             btnFont.Click += btnFont_Click;
             // 
             // btnColor
             // 
             btnColor.AutoSize = true;
+            btnColor.BackColor = Color.Gray;
             btnColor.FlatAppearance.BorderSize = 0;
             btnColor.FlatStyle = FlatStyle.Flat;
-            btnColor.Location = new Point(6, 41);
+            btnColor.Location = new Point(15, 37);
             btnColor.Name = "btnColor";
             btnColor.Size = new Size(94, 30);
             btnColor.TabIndex = 0;
             btnColor.Text = "btnColor";
-            btnColor.UseVisualStyleBackColor = true;
+            btnColor.UseVisualStyleBackColor = false;
             btnColor.Click += btnColor_Click;
             // 
             // tableLayoutPanel1

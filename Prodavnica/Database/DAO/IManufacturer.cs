@@ -11,5 +11,7 @@ namespace Prodavnica.Database.DAO
     {
         public List<Manufacturer> GetAll();
         public void AddManufactuer(Manufacturer manufacturer);
+        void Update(Manufacturer manufacturer);
+        void Delete(Manufacturer manufacturer); 
     }
 }

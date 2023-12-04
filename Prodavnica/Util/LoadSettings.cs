@@ -62,10 +62,6 @@ namespace Prodavnica.Util
                 {
                     button.Font = font;
                 }
-                else if (control is TextBox txt)
-                {
-                    txt.Font = font;
-                }
                 else if (control is TableLayoutPanel tbl)
                 {
                     tbl.Font = font;
