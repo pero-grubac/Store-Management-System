@@ -181,13 +181,13 @@
     <value>Update</value>
   </data>
   <data name="buying" xml:space="preserve">
-    <value>Kupovina</value>
+    <value>Buying</value>
   </data>
   <data name="category" xml:space="preserve">
     <value>Category</value>
   </data>
   <data name="categoryExists" xml:space="preserve">
-    <value>Category with that name ecists.</value>
+    <value>Category with that name exists.</value>
   </data>
   <data name="confirmation" xml:space="preserve">
     <value>Confirmation</value>

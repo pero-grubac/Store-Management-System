@@ -31,12 +31,12 @@
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dgvProcurement = new DataGridView();
-            manufacturerNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            amountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            priceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             procurementItemBindingSource = new BindingSource(components);
             billItemBindingSource = new BindingSource(components);
+            manufacturer = new DataGridViewTextBoxColumn();
+            name = new DataGridViewTextBoxColumn();
+            amount = new DataGridViewTextBoxColumn();
+            price = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProcurement).BeginInit();
             ((System.ComponentModel.ISupportInitialize)procurementItemBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)billItemBindingSource).BeginInit();
@@ -50,7 +50,7 @@
             dgvProcurement.BackgroundColor = Color.White;
             dgvProcurement.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dgvProcurement.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProcurement.Columns.AddRange(new DataGridViewColumn[] { manufacturerNameDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, amountDataGridViewTextBoxColumn, priceDataGridViewTextBoxColumn });
+            dgvProcurement.Columns.AddRange(new DataGridViewColumn[] { manufacturer, name, amount, price });
             dgvProcurement.DataSource = procurementItemBindingSource;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
@@ -73,42 +73,6 @@
             dgvProcurement.Size = new Size(600, 450);
             dgvProcurement.TabIndex = 0;
             // 
-            // manufacturerNameDataGridViewTextBoxColumn
-            // 
-            manufacturerNameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            manufacturerNameDataGridViewTextBoxColumn.DataPropertyName = "ManufacturerName";
-            manufacturerNameDataGridViewTextBoxColumn.HeaderText = "ManufacturerName";
-            manufacturerNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            manufacturerNameDataGridViewTextBoxColumn.Name = "manufacturerNameDataGridViewTextBoxColumn";
-            manufacturerNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            nameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // amountDataGridViewTextBoxColumn
-            // 
-            amountDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-            amountDataGridViewTextBoxColumn.HeaderText = "Amount";
-            amountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            amountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            priceDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            priceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            priceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // procurementItemBindingSource
             // 
             procurementItemBindingSource.DataSource = typeof(Database.DTO.ProcurementItem);
@@ -116,6 +80,42 @@
             // billItemBindingSource
             // 
             billItemBindingSource.DataSource = typeof(Database.DTO.BillItem);
+            // 
+            // manufacturer
+            // 
+            manufacturer.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            manufacturer.DataPropertyName = "ManufacturerName";
+            manufacturer.HeaderText = "ManufacturerName";
+            manufacturer.MinimumWidth = 6;
+            manufacturer.Name = "manufacturer";
+            manufacturer.ReadOnly = true;
+            // 
+            // name
+            // 
+            name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            name.DataPropertyName = "Name";
+            name.HeaderText = "Name";
+            name.MinimumWidth = 6;
+            name.Name = "name";
+            name.ReadOnly = true;
+            // 
+            // amount
+            // 
+            amount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            amount.DataPropertyName = "Amount";
+            amount.HeaderText = "Amount";
+            amount.MinimumWidth = 6;
+            amount.Name = "amount";
+            amount.ReadOnly = true;
+            // 
+            // price
+            // 
+            price.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            price.DataPropertyName = "Price";
+            price.HeaderText = "Price";
+            price.MinimumWidth = 6;
+            price.Name = "price";
+            price.ReadOnly = true;
             // 
             // ProcurementDetails
             // 
@@ -138,12 +138,10 @@
 
         private DataGridView dgvProcurement;
         private BindingSource billItemBindingSource;
-        private DataGridViewTextBoxColumn manufacturerNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private BindingSource procurementItemBindingSource;
-
-
+        private DataGridViewTextBoxColumn manufacturer;
+        private DataGridViewTextBoxColumn name;
+        private DataGridViewTextBoxColumn amount;
+        private DataGridViewTextBoxColumn price;
     }
 }

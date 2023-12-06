@@ -84,6 +84,7 @@ namespace Prodavnica.Forms.HelperForms
             lblLastName.Text = LanguageHelper.GetString("lblLastName");
             lblName.Text = LanguageHelper.GetString("lblName");
             btnFont.Width=btnColor.Width;
+            lblNewTheme.Width=btnColor.Width;
         }
 
         private void btnChangePass_Click(object sender, EventArgs e)
