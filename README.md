@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <h1>🖥️ Retail Store Management System</h1>
+    <h1>🖥️ Store Management System</h1>
     <p>
         A desktop application designed to streamline retail store operations for administrators and cashiers. 
         The system provides functionalities for managing users and inventory with intuitive CRUD (Create, Read, Update, Delete) operations.
