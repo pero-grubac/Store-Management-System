@@ -1,56 +1,111 @@
-<!DOCTYPE html>
-<html>
-<body>
-    <h1>🖥️ Store Management System</h1>
-    <p>
-        A desktop application designed to streamline retail store operations for administrators and cashiers. 
-        The system provides functionalities for managing users and inventory with intuitive CRUD (Create, Read, Update, Delete) operations.
-    </p>
-    <h2>✨ Features</h2>
-    <ul>
-        <li><strong>Administrator Panel:</strong> Comprehensive tools for managing store users and products.</li>
-        <li><strong>Cashier Panel:</strong> Simplified interface for managing sales and handling products during checkout.</li>
-        <li><strong>CRUD Operations:</strong> Full control over user accounts and inventory items.</li>
-    </ul>
-    <h2>👤 User Management (Administrator)</h2>
-    <ul>
-        <li><strong>Create:</strong> Add new users with roles (e.g., cashier, administrator) and access privileges.</li>
-        <li><strong>Read:</strong> View detailed lists of all users in a tabular format.</li>
-        <li><strong>Update:</strong> Modify user details, including roles and permissions.</li>
-        <li><strong>Delete:</strong> Remove inactive or unauthorized users from the system.</li>
-    </ul>
-    <h2>🛒 Product Management (Administrator and Cashier)</h2>
-    <ul>
-        <li><strong>Create:</strong> Add new products to the inventory with details such as name, price, quantity, and category.</li>
-        <li><strong>Read:</strong> Browse or search the inventory with filters for category, price, and stock availability.</li>
-        <li><strong>Update:</strong> Edit product information, adjust stock quantities, or update pricing.</li>
-        <li><strong>Delete:</strong> Remove discontinued or outdated products from the inventory.</li>
-    </ul>
-    <h2>📂 Technical Details</h2>
-    <ul>
-        <li><strong>Technologies:</strong> Desktop GUI framework, MySQL local database for storing users and products.</li>
-        <li><strong>Roles:</strong> Role-based access control for administrators and cashiers.</li>
-        <li><strong>Logging:</strong> Maintain logs of all CRUD operations for auditing purposes.</li>
-        <li><strong>Security:</strong> Password hashing for user authentication.</li>
-        <li><strong>Responsive Design:</strong> Adaptable interface for different screen resolutions.</li>
-    </ul>
-    <h2>🚀 How to Run</h2>
-    <ol>
-        <li>Download and install the application on your desktop system.</li>
-        <li>Launch the application and log in as an administrator to configure users and inventory.</li>
-        <li>Switch to cashier mode for simplified sales operations.</li>
-        <li>Ensure proper database configuration and backup procedures are in place.</li>
-    </ol>
-    <h2>📈 Future Improvements</h2>
-    <ul>
-        <li>Integration with barcode scanners for faster checkout.</li>
-        <li>Real-time sales and stock tracking.</li>
-        <li>Cloud-based data synchronization for multiple store locations.</li>
-        <li>Enhanced reporting and analytics for administrators.</li>
-    </ul>
-    <h2>💻 Contributions</h2>
-    <p>
-        Contributions are welcome! Feel free to submit issues or pull requests to improve the functionality or design of this application.
-    </p>
-</body>
-</html>
+<div align="center">
+
+# 🖥️ Store Management System
+
+![C#](https://img.shields.io/badge/C%23-Language-239120?logo=csharp&logoColor=white)
+![.NET](https://img.shields.io/badge/.NET-Framework-512BD4?logo=dotnet&logoColor=white)
+![WinForms](https://img.shields.io/badge/WinForms-Desktop_UI-0078D4?logo=windows&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-Database-005C84?logo=mysql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Infrastructure-2496ED?logo=docker&logoColor=white)
+
+<picture>
+    <source srcset="readme_assets/demo.gif" type="image/gif">
+    <img src="readme_assets/demo.png" alt="Store Management System demo" width="700">
+</picture>
+
+</div>
+
+---
+
+## 📌 Project Overview
+
+**Store Management System** is a desktop application for managing retail store operations with role-based access for administrators and cashiers. Features full CRUD operations for users and inventory, password hashing, and audit logging of all operations.
+
+---
+
+## ✨ Features
+
+### 👤 Administrator
+- Manage users — add, update, delete, and view all accounts
+- Manage full product inventory with categories, pricing, and stock
+- View audit logs of all operations
+- Manage suppliers and purchases
+
+### 🛒 Cashier
+- Browse and search product inventory
+- Process sales and generate receipts
+- View and filter products by category, price, and availability
+
+### 🔒 Security
+- BCrypt password hashing for all user accounts
+- Role-based access control — administrators and cashiers have separate panels
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Usage |
+|------------|-------|
+| C# / .NET | Core application language and framework |
+| WinForms | Desktop GUI |
+| MySQL | Relational database for users and inventory |
+| Docker | MySQL containerization |
+| BCrypt | Password hashing |
+
+---
+
+## 🚀 Setup & Run
+
+### Prerequisites
+- .NET 7+ SDK
+- Docker and Docker Compose
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/pero-grubac/Store-Management-System.git
+cd Store-Management-System
+```
+
+### 2. Start the database
+```bash
+docker compose up -d
+```
+
+MySQL will automatically initialize with the schema from `Model/DDL.sql`.
+
+### 3. Configure connection string
+
+Copy `Util/appsettings.example.json` to `Util/appsettings.json` and update if needed:
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost; Port=3306; Database=prodavnica; User Id=root; Password=root"
+  }
+}
+```
+
+
+
+### Default credentials
+
+| Role | Username | Password |
+|------|----------|----------|
+| Administrator | admin | admin123 |
+
+---
+
+## 📂 Project Structure
+
+```
+Store-Management-System/
+├── Model/              # Database models and DDL.sql
+├── Prodavnica/         # Main project
+│   ├── Database/       # Repository pattern and DAO implementations
+│   ├── Forms/          # WinForms UI screens
+│   ├── Language/       # Localization files
+│   ├── Resources/      # Images and assets
+│   └── Util/           # DBUtil, appsettings.json
+├── readme_assets/      # README images and GIF
+├── docker-compose.yml
+└── README.md
+```
