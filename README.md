@@ -14,16 +14,13 @@
 
 **A desktop point-of-sale and inventory app for a small shop: a till with bar code scanning, stock and expiry tracking, purchasing, staff accounts and an activity log.**
 
-<table>
-  <tr>
-    <th>🛡️ Administrator</th>
-    <th>🧾 Cashier</th>
-  </tr>
-  <tr>
-    <td><img src="readme_assets/demo-admin.gif" alt="Administrator demo: dashboard with the sales chart, product cards, search and table view, editing a product with validation, a procurement from a supplier, the staff list, the activity log and changing the accent colour" width="440"></td>
-    <td><img src="readme_assets/demo-cashier.gif" alt="Cashier demo: scanning a bar code at the till, adding products by clicking cards, charging the bill and seeing the receipt, opening the bill from the history and returning to the dashboard" width="440"></td>
-  </tr>
-</table>
+### 🛡️ Administrator
+
+<img src="readme_assets/demo-admin.gif" alt="Administrator demo: dashboard with the sales chart, product cards, search and table view, editing a product with validation, a procurement from a supplier, the staff list, the activity log and changing the accent colour" width="900">
+
+### 🧾 Cashier
+
+<img src="readme_assets/demo-cashier.gif" alt="Cashier demo: scanning a bar code at the till, adding products by clicking cards, charging the bill and seeing the receipt, opening the bill from the history and returning to the dashboard" width="900">
 
 </div>
 
