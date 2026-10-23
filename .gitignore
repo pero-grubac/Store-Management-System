@@ -362,5 +362,25 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
+# --- Store Management System ---
 
-appsettings.json 
+# Local configuration with the database password (copy Util/appsettings.example.json)
+appsettings.json
+!appsettings.example.json
+.env
+
+# Test output and coverage
+TestResults/
+*.trx
+coverage*.xml
+coverage*.json
+
+# Release builds made with dotnet publish
+publish/
+*.zip
+
+# Editors
+.idea/
+.vscode/
+*.swp
+.DS_Store

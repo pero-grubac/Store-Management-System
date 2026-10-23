@@ -6,6 +6,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: prodavnica
+      TZ: Europe/Sarajevo
     ports:
       - "3306:3306"
     volumes:

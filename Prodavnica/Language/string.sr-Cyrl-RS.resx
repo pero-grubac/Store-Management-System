@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,190 +117,792 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="amount" xml:space="preserve">
-    <value>Количина</value>
-  </data>
-  <data name="barcode" xml:space="preserve">
-    <value>Бар код</value>
-  </data>
-  <data name="btnAdd" xml:space="preserve">
-    <value>Додај</value>
-  </data>
-  <data name="btnBuy" xml:space="preserve">
-    <value>Купи</value>
-  </data>
-  <data name="btnCancel" xml:space="preserve">
-    <value>Откажи</value>
-  </data>
-  <data name="btnCategory" xml:space="preserve">
-    <value>  Категорија</value>
-  </data>
-  <data name="btnChangePass" xml:space="preserve">
-    <value>Сачувај</value>
-  </data>
-  <data name="btnColor" xml:space="preserve">
-    <value>Боја</value>
-  </data>
-  <data name="btnDelete" xml:space="preserve">
-    <value>Обриши</value>
-  </data>
-  <data name="btnDeleteItem" xml:space="preserve">
-    <value>Обриши ставку</value>
-  </data>
-  <data name="btnFont" xml:space="preserve">
-    <value>Фонт</value>
-  </data>
-  <data name="btnLogOut" xml:space="preserve">
-    <value>   Одјава</value>
-  </data>
-  <data name="btnProducer" xml:space="preserve">
-    <value>   Произвођач</value>
-  </data>
-  <data name="btnSave" xml:space="preserve">
-    <value>Сачувај</value>
-  </data>
-  <data name="btnSaveProfile" xml:space="preserve">
-    <value>Сачувај</value>
-  </data>
-  <data name="btnSaveTheme" xml:space="preserve">
-    <value>Сачувај</value>
-  </data>
-  <data name="btnSettings" xml:space="preserve">
-    <value>   Подешавања</value>
-  </data>
-  <data name="btnStaff" xml:space="preserve">
-    <value>   Запослени</value>
-  </data>
-  <data name="btnStore" xml:space="preserve">
-    <value>   Продавница</value>
-  </data>
-  <data name="btnSupplier" xml:space="preserve">
-    <value>   Добављач</value>
-  </data>
-  <data name="btnUpdate" xml:space="preserve">
-    <value>Ажурирај</value>
-  </data>
-  <data name="buying" xml:space="preserve">
-    <value>Куповина</value>
-  </data>
-  <data name="category" xml:space="preserve">
-    <value>Категорија</value>
-  </data>
-  <data name="categoryExists" xml:space="preserve">
-    <value>Категорија са тим именом већ постоји.</value>
-  </data>
-  <data name="confirmation" xml:space="preserve">
-    <value>Потврда</value>
-  </data>
-  <data name="create" xml:space="preserve">
-    <value>Креирај</value>
-  </data>
-  <data name="deleteConfirmation" xml:space="preserve">
-    <value>Да ли сте сигурни да желите да обришете ово?</value>
-  </data>
-  <data name="description" xml:space="preserve">
-    <value>Опис</value>
-  </data>
-  <data name="expirationDate" xml:space="preserve">
-    <value>Рок трајања</value>
-  </data>
-  <data name="gbColor" xml:space="preserve">
-    <value>Боја</value>
-  </data>
-  <data name="gbLanguage" xml:space="preserve">
-    <value>Јeзик</value>
-  </data>
-  <data name="gbPassword" xml:space="preserve">
-    <value>Промјена лозинке</value>
-  </data>
-  <data name="gbProfile" xml:space="preserve">
-    <value>Инфо о профилу</value>
-  </data>
-  <data name="invalidBarcode" xml:space="preserve">
-    <value>Баркод већ постоји. Измјените га.</value>
-  </data>
-  <data name="invalidNumber" xml:space="preserve">
-    <value>Селектујте исправан број.</value>
-  </data>
-  <data name="lbl" xml:space="preserve">
+  <data name="app.name" xml:space="preserve">
     <value>Продавница</value>
   </data>
-  <data name="lblAmount" xml:space="preserve">
-    <value>Количина</value>
+  <data name="app.tagline" xml:space="preserve">
+    <value>Управљање продавницом</value>
   </data>
-  <data name="lblEmail" xml:space="preserve">
-    <value>Емаил</value>
+  <data name="login.title" xml:space="preserve">
+    <value>Добро дошли назад</value>
   </data>
-  <data name="lblLastName" xml:space="preserve">
-    <value>Презиме</value>
+  <data name="login.subtitle" xml:space="preserve">
+    <value>Пријавите се својим корисничким налогом.</value>
   </data>
-  <data name="lblName" xml:space="preserve">
-    <value>Име</value>
-  </data>
-  <data name="lblNewPass" xml:space="preserve">
-    <value>Нова лозинка   </value>
-  </data>
-  <data name="lblNewTheme" xml:space="preserve">
-    <value>Нова тема</value>
-  </data>
-  <data name="lblOldPass" xml:space="preserve">
-    <value>Стара лозинка   </value>
-  </data>
-  <data name="lblOldTheme" xml:space="preserve">
-    <value>Тренутна тема</value>
-  </data>
-  <data name="lblPhone" xml:space="preserve">
-    <value>Број телефона</value>
-  </data>
-  <data name="lblSearch" xml:space="preserve">
-    <value>Претрага</value>
-  </data>
-  <data name="lblSupplier" xml:space="preserve">
-    <value>Добављач</value>
-  </data>
-  <data name="lblTitle" xml:space="preserve">
-    <value>  ПОЧЕТНА</value>
-  </data>
-  <data name="lblUsername" xml:space="preserve">
+  <data name="login.userName" xml:space="preserve">
     <value>Корисничко име</value>
   </data>
-  <data name="manufacturer" xml:space="preserve">
-    <value>Произвођач</value>
-  </data>
-  <data name="manufacturerExists" xml:space="preserve">
-    <value>Произвођач већ постоји.</value>
-  </data>
-  <data name="name" xml:space="preserve">
-    <value>Име</value>
-  </data>
-  <data name="noMoreSupplies" xml:space="preserve">
-    <value>Нема више залиха.</value>
-  </data>
-  <data name="noSupplier" xml:space="preserve">
-    <value>Изаберите добављача.</value>
-  </data>
-  <data name="password" xml:space="preserve">
+  <data name="login.password" xml:space="preserve">
     <value>Лозинка</value>
   </data>
-  <data name="price" xml:space="preserve">
-    <value>Цијена</value>
+  <data name="login.userPlaceholder" xml:space="preserve">
+    <value>Ваше корисничко име</value>
   </data>
-  <data name="supplierExists" xml:space="preserve">
-    <value>Добављач веч постоји.</value>
+  <data name="login.passwordPlaceholder" xml:space="preserve">
+    <value>Ваша лозинка</value>
   </data>
-  <data name="supplies" xml:space="preserve">
-    <value>Залихе</value>
+  <data name="login.signIn" xml:space="preserve">
+    <value>Пријава</value>
   </data>
-  <data name="tbBills" xml:space="preserve">
-    <value>Рачуни</value>
+  <data name="login.signingIn" xml:space="preserve">
+    <value>Пријава у току…</value>
   </data>
-  <data name="tbProcurement" xml:space="preserve">
-    <value>Набавка</value>
+  <data name="login.missing" xml:space="preserve">
+    <value>Унесите корисничко име и лозинку.</value>
   </data>
-  <data name="tpProducts" xml:space="preserve">
+  <data name="login.wrong" xml:space="preserve">
+    <value>Погрешно корисничко име или лозинка.</value>
+  </data>
+  <data name="login.headline" xml:space="preserve">
+    <value>Продаја, залихе и набавка на једном мјесту.</value>
+  </data>
+  <data name="login.feature1" xml:space="preserve">
+    <value>Брза каса са скенирањем бар кодова</value>
+  </data>
+  <data name="login.feature2" xml:space="preserve">
+    <value>Залихе и рокови трајања под контролом</value>
+  </data>
+  <data name="login.feature3" xml:space="preserve">
+    <value>Набавка, добављачи и извјештаји</value>
+  </data>
+  <data name="nav.section.store" xml:space="preserve">
+    <value>Продавница</value>
+  </data>
+  <data name="nav.section.admin" xml:space="preserve">
+    <value>Администрација</value>
+  </data>
+  <data name="nav.section.account" xml:space="preserve">
+    <value>Налог</value>
+  </data>
+  <data name="nav.dashboard" xml:space="preserve">
+    <value>Почетна</value>
+  </data>
+  <data name="nav.sale" xml:space="preserve">
+    <value>Продаја</value>
+  </data>
+  <data name="nav.products" xml:space="preserve">
     <value>Производи</value>
   </data>
-  <data name="userExists" xml:space="preserve">
-    <value>Корисник са тим корисничким именом већ постоји !</value>
+  <data name="nav.procurement" xml:space="preserve">
+    <value>Набавка</value>
+  </data>
+  <data name="nav.documents" xml:space="preserve">
+    <value>Рачуни и набавке</value>
+  </data>
+  <data name="nav.bills" xml:space="preserve">
+    <value>Рачуни</value>
+  </data>
+  <data name="nav.employees" xml:space="preserve">
+    <value>Запослени</value>
+  </data>
+  <data name="nav.manufacturers" xml:space="preserve">
+    <value>Произвођачи</value>
+  </data>
+  <data name="nav.suppliers" xml:space="preserve">
+    <value>Добављачи</value>
+  </data>
+  <data name="nav.categories" xml:space="preserve">
+    <value>Категорије</value>
+  </data>
+  <data name="nav.activity" xml:space="preserve">
+    <value>Активности</value>
+  </data>
+  <data name="nav.settings" xml:space="preserve">
+    <value>Подешавања</value>
+  </data>
+  <data name="nav.signOut" xml:space="preserve">
+    <value>Одјава</value>
+  </data>
+  <data name="signOut.title" xml:space="preserve">
+    <value>Одјава</value>
+  </data>
+  <data name="signOut.message" xml:space="preserve">
+    <value>Желите ли се одјавити?</value>
+  </data>
+  <data name="role.admin" xml:space="preserve">
+    <value>Администратор</value>
+  </data>
+  <data name="role.cashier" xml:space="preserve">
+    <value>Касир</value>
+  </data>
+  <data name="common.save" xml:space="preserve">
+    <value>Сачувај</value>
+  </data>
+  <data name="common.cancel" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="common.close" xml:space="preserve">
+    <value>Затвори</value>
+  </data>
+  <data name="common.delete" xml:space="preserve">
+    <value>Обриши</value>
+  </data>
+  <data name="common.edit" xml:space="preserve">
+    <value>Уреди</value>
+  </data>
+  <data name="common.details" xml:space="preserve">
+    <value>Детаљи</value>
+  </data>
+  <data name="common.ok" xml:space="preserve">
+    <value>У реду</value>
+  </data>
+  <data name="common.error" xml:space="preserve">
+    <value>Грешка</value>
+  </data>
+  <data name="common.search" xml:space="preserve">
+    <value>Претражи…</value>
+  </data>
+  <data name="common.noResults" xml:space="preserve">
+    <value>Нема резултата за задану претрагу.</value>
+  </data>
+  <data name="common.name" xml:space="preserve">
+    <value>Назив</value>
+  </data>
+  <data name="common.namePlaceholder" xml:space="preserve">
+    <value>Унесите назив</value>
+  </data>
+  <data name="common.saved" xml:space="preserve">
+    <value>Измјене су сачуване.</value>
+  </data>
+  <data name="common.deleted" xml:space="preserve">
+    <value>Обрисано.</value>
+  </data>
+  <data name="common.deleteTitle" xml:space="preserve">
+    <value>Брисање</value>
+  </data>
+  <data name="common.deleteMessage" xml:space="preserve">
+    <value>Обрисати „{0}“? Ова радња се не може поништити.</value>
+  </data>
+  <data name="pager.summary" xml:space="preserve">
+    <value>Приказано {0}–{1} од {2}</value>
+  </data>
+  <data name="pager.position" xml:space="preserve">
+    <value>Страна {0} од {1}</value>
+  </data>
+  <data name="pager.empty" xml:space="preserve">
+    <value>Нема ставки</value>
+  </data>
+  <data name="dashboard.welcome" xml:space="preserve">
+    <value>Добро дошли, {0} · {1}</value>
+  </data>
+  <data name="dashboard.newSale" xml:space="preserve">
+    <value>Нова продаја</value>
+  </data>
+  <data name="dashboard.salesToday" xml:space="preserve">
+    <value>Продаја данас</value>
+  </data>
+  <data name="dashboard.billsToday" xml:space="preserve">
+    <value>{0} рачуна · 30 дана: {1}</value>
+  </data>
+  <data name="dashboard.products" xml:space="preserve">
+    <value>Производи</value>
+  </data>
+  <data name="dashboard.stockValue" xml:space="preserve">
+    <value>Вриједност залиха {0}</value>
+  </data>
+  <data name="dashboard.lowStock" xml:space="preserve">
+    <value>Ниске залихе</value>
+  </data>
+  <data name="dashboard.outOfStock" xml:space="preserve">
+    <value>{0} нема на стању</value>
+  </data>
+  <data name="dashboard.expired" xml:space="preserve">
+    <value>Истекао рок</value>
+  </data>
+  <data name="dashboard.expiringSoon" xml:space="preserve">
+    <value>{0} истиче у наредних 30 дана</value>
+  </data>
+  <data name="dashboard.salesChart" xml:space="preserve">
+    <value>Продаја по данима</value>
+  </data>
+  <data name="dashboard.salesChartSubtitle" xml:space="preserve">
+    <value>Посљедњих 14 дана, у КМ</value>
+  </data>
+  <data name="dashboard.recent" xml:space="preserve">
+    <value>Посљедњи рачуни</value>
+  </data>
+  <data name="dashboard.recentSubtitle" xml:space="preserve">
+    <value>Двоклик отвара рачун</value>
+  </data>
+  <data name="dashboard.attention" xml:space="preserve">
+    <value>Захтијева пажњу</value>
+  </data>
+  <data name="dashboard.attentionSubtitle" xml:space="preserve">
+    <value>Производи којима истиче рок или нестаје залиха</value>
+  </data>
+  <data name="dashboard.allGood" xml:space="preserve">
+    <value>Све је у реду: ништа не истиче и ништа не недостаје.</value>
+  </data>
+  <data name="dashboard.problem" xml:space="preserve">
+    <value>Проблем</value>
+  </data>
+  <data name="stock.in" xml:space="preserve">
+    <value>{0} на стању</value>
+  </data>
+  <data name="stock.low" xml:space="preserve">
+    <value>Још {0}</value>
+  </data>
+  <data name="stock.out" xml:space="preserve">
+    <value>Нема на стању</value>
+  </data>
+  <data name="stock.expired" xml:space="preserve">
+    <value>Истекао рок</value>
+  </data>
+  <data name="stock.expiringSoon" xml:space="preserve">
+    <value>Ускоро истиче</value>
+  </data>
+  <data name="product.bestBefore" xml:space="preserve">
+    <value>Рок трајања {0}</value>
+  </data>
+  <data name="products.subtitle" xml:space="preserve">
+    <value>Преглед асортимана, залиха и рокова трајања</value>
+  </data>
+  <data name="products.subtitleAdmin" xml:space="preserve">
+    <value>Асортиман, цијене, залихе и рокови трајања</value>
+  </data>
+  <data name="products.searchPlaceholder" xml:space="preserve">
+    <value>Назив, бар код, категорија или произвођач…</value>
+  </data>
+  <data name="products.allCategories" xml:space="preserve">
+    <value>Све категорије</value>
+  </data>
+  <data name="products.cards" xml:space="preserve">
+    <value>Картице</value>
+  </data>
+  <data name="products.table" xml:space="preserve">
+    <value>Табела</value>
+  </data>
+  <data name="products.add" xml:space="preserve">
+    <value>Нови производ</value>
+  </data>
+  <data name="products.addSubtitle" xml:space="preserve">
+    <value>Унесите податке о производу</value>
+  </data>
+  <data name="products.edit" xml:space="preserve">
+    <value>Уреди производ</value>
+  </data>
+  <data name="products.details" xml:space="preserve">
+    <value>Детаљи производа</value>
+  </data>
+  <data name="products.product" xml:space="preserve">
+    <value>Производ</value>
+  </data>
+  <data name="products.name" xml:space="preserve">
+    <value>Назив производа</value>
+  </data>
+  <data name="products.barCode" xml:space="preserve">
+    <value>Бар код</value>
+  </data>
+  <data name="products.category" xml:space="preserve">
+    <value>Категорија</value>
+  </data>
+  <data name="products.manufacturer" xml:space="preserve">
+    <value>Произвођач</value>
+  </data>
+  <data name="products.price" xml:space="preserve">
+    <value>Цијена</value>
+  </data>
+  <data name="products.priceKm" xml:space="preserve">
+    <value>Цијена (КМ)</value>
+  </data>
+  <data name="products.stock" xml:space="preserve">
+    <value>Залихе</value>
+  </data>
+  <data name="products.expires" xml:space="preserve">
+    <value>Рок трајања</value>
+  </data>
+  <data name="products.description" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="products.chooseCategory" xml:space="preserve">
+    <value>Изаберите категорију</value>
+  </data>
+  <data name="products.chooseManufacturer" xml:space="preserve">
+    <value>Изаберите произвођача</value>
+  </data>
+  <data name="products.deleteTitle" xml:space="preserve">
+    <value>Брисање производа</value>
+  </data>
+  <data name="products.deleteMessage" xml:space="preserve">
+    <value>Обрисати производ „{0}“? Производ који се већ продавао не може се обрисати.</value>
+  </data>
+  <data name="pos.subtitle" xml:space="preserve">
+    <value>Скенирајте бар код или кликните на производ да га додате на рачун</value>
+  </data>
+  <data name="pos.scanPlaceholder" xml:space="preserve">
+    <value>Скенирајте или упишите бар код и притисните Ентер</value>
+  </data>
+  <data name="pos.bill" xml:space="preserve">
+    <value>Рачун</value>
+  </data>
+  <data name="pos.items" xml:space="preserve">
+    <value>Ставки: {0}</value>
+  </data>
+  <data name="pos.empty" xml:space="preserve">
+    <value>Рачун је празан.
+Додајте производе с лијеве стране.</value>
+  </data>
+  <data name="pos.total" xml:space="preserve">
+    <value>Укупно</value>
+  </data>
+  <data name="pos.checkout" xml:space="preserve">
+    <value>Наплати</value>
+  </data>
+  <data name="pos.clear" xml:space="preserve">
+    <value>Поништи</value>
+  </data>
+  <data name="pos.notFound" xml:space="preserve">
+    <value>Производ с бар кодом {0} не постоји.</value>
+  </data>
+  <data name="pos.unavailable" xml:space="preserve">
+    <value>„{0}“ није могуће продати (нема на стању или је истекао рок).</value>
+  </data>
+  <data name="pos.noMoreStock" xml:space="preserve">
+    <value>Нема више залиха за „{0}“.</value>
+  </data>
+  <data name="pos.saved" xml:space="preserve">
+    <value>Рачун {0} је сачуван.</value>
+  </data>
+  <data name="pos.newSale" xml:space="preserve">
+    <value>Нова продаја</value>
+  </data>
+  <data name="procurement.subtitle" xml:space="preserve">
+    <value>Наручите робу од добављача; залихе се одмах повећавају</value>
+  </data>
+  <data name="procurement.order" xml:space="preserve">
+    <value>Наруџба</value>
+  </data>
+  <data name="procurement.supplier" xml:space="preserve">
+    <value>Добављач</value>
+  </data>
+  <data name="procurement.chooseSupplier" xml:space="preserve">
+    <value>Изаберите добављача</value>
+  </data>
+  <data name="procurement.empty" xml:space="preserve">
+    <value>Наруџба је празна.
+Кликните на производе које наручујете.</value>
+  </data>
+  <data name="procurement.confirm" xml:space="preserve">
+    <value>Потврди набавку</value>
+  </data>
+  <data name="procurement.quantity" xml:space="preserve">
+    <value>Количина</value>
+  </data>
+  <data name="procurement.unitPrice" xml:space="preserve">
+    <value>Набавна цијена</value>
+  </data>
+  <data name="procurement.pricePlaceholder" xml:space="preserve">
+    <value>0,00</value>
+  </data>
+  <data name="procurement.saved" xml:space="preserve">
+    <value>Набавка {0} је сачувана.</value>
+  </data>
+  <data name="documents.subtitle" xml:space="preserve">
+    <value>Историја рачуна по датуму; двоклик отвара детаље и штампу</value>
+  </data>
+  <data name="documents.sales" xml:space="preserve">
+    <value>Продаја</value>
+  </data>
+  <data name="documents.procurements" xml:space="preserve">
+    <value>Набавке</value>
+  </data>
+  <data name="documents.today" xml:space="preserve">
+    <value>Данас</value>
+  </data>
+  <data name="documents.week" xml:space="preserve">
+    <value>7 дана</value>
+  </data>
+  <data name="documents.month" xml:space="preserve">
+    <value>30 дана</value>
+  </data>
+  <data name="documents.quarter" xml:space="preserve">
+    <value>90 дана</value>
+  </data>
+  <data name="documents.searchPlaceholder" xml:space="preserve">
+    <value>Број, касир или добављач…</value>
+  </data>
+  <data name="documents.empty" xml:space="preserve">
+    <value>Нема докумената у изабраном периоду.</value>
+  </data>
+  <data name="documents.number" xml:space="preserve">
+    <value>Број</value>
+  </data>
+  <data name="documents.date" xml:space="preserve">
+    <value>Датум и вријеме</value>
+  </data>
+  <data name="documents.cashier" xml:space="preserve">
+    <value>Касир</value>
+  </data>
+  <data name="documents.supplier" xml:space="preserve">
+    <value>Добављач</value>
+  </data>
+  <data name="documents.items" xml:space="preserve">
+    <value>Ставки</value>
+  </data>
+  <data name="documents.total" xml:space="preserve">
+    <value>Укупно</value>
+  </data>
+  <data name="documents.quantity" xml:space="preserve">
+    <value>Количина</value>
+  </data>
+  <data name="documents.unitPrice" xml:space="preserve">
+    <value>Цијена</value>
+  </data>
+  <data name="documents.amount" xml:space="preserve">
+    <value>Износ</value>
+  </data>
+  <data name="documents.print" xml:space="preserve">
+    <value>Штампај</value>
+  </data>
+  <data name="documents.billTitle" xml:space="preserve">
+    <value>Рачун {0}</value>
+  </data>
+  <data name="documents.procurementTitle" xml:space="preserve">
+    <value>Набавка {0}</value>
+  </data>
+  <data name="receipt.bill" xml:space="preserve">
+    <value>Фискални рачун</value>
+  </data>
+  <data name="receipt.procurement" xml:space="preserve">
+    <value>Набавка</value>
+  </data>
+  <data name="receipt.thanks" xml:space="preserve">
+    <value>Хвала на куповини!</value>
+  </data>
+  <data name="employees.subtitle" xml:space="preserve">
+    <value>Налози запослених, улоге и приступ</value>
+  </data>
+  <data name="employees.add" xml:space="preserve">
+    <value>Нови запослени</value>
+  </data>
+  <data name="employees.edit" xml:space="preserve">
+    <value>Уреди запосленог</value>
+  </data>
+  <data name="employees.addSubtitle" xml:space="preserve">
+    <value>Нови налог за пријаву у апликацију</value>
+  </data>
+  <data name="employees.editSubtitle" xml:space="preserve">
+    <value>Подаци, улога и лозинка</value>
+  </data>
+  <data name="employees.name" xml:space="preserve">
+    <value>Запослени</value>
+  </data>
+  <data name="employees.firstName" xml:space="preserve">
+    <value>Име</value>
+  </data>
+  <data name="employees.lastName" xml:space="preserve">
+    <value>Презиме</value>
+  </data>
+  <data name="employees.userName" xml:space="preserve">
+    <value>Корисничко име</value>
+  </data>
+  <data name="employees.email" xml:space="preserve">
+    <value>Е-маил</value>
+  </data>
+  <data name="employees.phone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="employees.role" xml:space="preserve">
+    <value>Улога</value>
+  </data>
+  <data name="employees.password" xml:space="preserve">
+    <value>Лозинка</value>
+  </data>
+  <data name="employees.confirmPassword" xml:space="preserve">
+    <value>Поновите лозинку</value>
+  </data>
+  <data name="employees.passwordHint" xml:space="preserve">
+    <value>Оставите празно да задржите постојећу</value>
+  </data>
+  <data name="employees.created" xml:space="preserve">
+    <value>Налог за {0} је креиран.</value>
+  </data>
+  <data name="employees.deleteTitle" xml:space="preserve">
+    <value>Брисање запосленог</value>
+  </data>
+  <data name="employees.deleteMessage" xml:space="preserve">
+    <value>Обрисати налог „{0}“? Његови рачуни остају сачувани.</value>
+  </data>
+  <data name="manufacturers.subtitle" xml:space="preserve">
+    <value>Произвођачи робе у асортиману</value>
+  </data>
+  <data name="manufacturers.add" xml:space="preserve">
+    <value>Нови произвођач</value>
+  </data>
+  <data name="manufacturers.edit" xml:space="preserve">
+    <value>Уреди произвођача</value>
+  </data>
+  <data name="manufacturers.usage" xml:space="preserve">
+    <value>Производа</value>
+  </data>
+  <data name="suppliers.subtitle" xml:space="preserve">
+    <value>Добављачи од којих се наручује роба</value>
+  </data>
+  <data name="suppliers.add" xml:space="preserve">
+    <value>Нови добављач</value>
+  </data>
+  <data name="suppliers.edit" xml:space="preserve">
+    <value>Уреди добављача</value>
+  </data>
+  <data name="suppliers.usage" xml:space="preserve">
+    <value>Набавки</value>
+  </data>
+  <data name="categories.subtitle" xml:space="preserve">
+    <value>Груписање производа за лакшу претрагу</value>
+  </data>
+  <data name="categories.add" xml:space="preserve">
+    <value>Нова категорија</value>
+  </data>
+  <data name="categories.edit" xml:space="preserve">
+    <value>Уреди категорију</value>
+  </data>
+  <data name="categories.products" xml:space="preserve">
+    <value>Производа</value>
+  </data>
+  <data name="activity.subtitle" xml:space="preserve">
+    <value>Ко је шта урадио и када</value>
+  </data>
+  <data name="activity.time" xml:space="preserve">
+    <value>Вријеме</value>
+  </data>
+  <data name="activity.user" xml:space="preserve">
+    <value>Корисник</value>
+  </data>
+  <data name="activity.action" xml:space="preserve">
+    <value>Радња</value>
+  </data>
+  <data name="activity.details" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="auditText.login" xml:space="preserve">
+    <value>Пријава у апликацију</value>
+  </data>
+  <data name="auditText.logout" xml:space="preserve">
+    <value>Одјава из апликације</value>
+  </data>
+  <data name="auditText.sale" xml:space="preserve">
+    <value>Рачун {0}, укупно {1}</value>
+  </data>
+  <data name="auditText.procurement" xml:space="preserve">
+    <value>Набавка {0} од {1}, укупно {2}</value>
+  </data>
+  <data name="action.LOGIN" xml:space="preserve">
+    <value>Пријава</value>
+  </data>
+  <data name="action.LOGOUT" xml:space="preserve">
+    <value>Одјава</value>
+  </data>
+  <data name="action.SALE" xml:space="preserve">
+    <value>Продаја</value>
+  </data>
+  <data name="action.PROCUREMENT" xml:space="preserve">
+    <value>Набавка</value>
+  </data>
+  <data name="action.PRODUCT_CREATE" xml:space="preserve">
+    <value>Нови производ</value>
+  </data>
+  <data name="action.PRODUCT_UPDATE" xml:space="preserve">
+    <value>Измјена производа</value>
+  </data>
+  <data name="action.PRODUCT_DELETE" xml:space="preserve">
+    <value>Брисање производа</value>
+  </data>
+  <data name="action.USER_CREATE" xml:space="preserve">
+    <value>Нови запослени</value>
+  </data>
+  <data name="action.USER_UPDATE" xml:space="preserve">
+    <value>Измјена запосленог</value>
+  </data>
+  <data name="action.USER_DELETE" xml:space="preserve">
+    <value>Брисање запосленог</value>
+  </data>
+  <data name="action.COMPANY_CREATE" xml:space="preserve">
+    <value>Нова фирма</value>
+  </data>
+  <data name="action.COMPANY_UPDATE" xml:space="preserve">
+    <value>Измјена фирме</value>
+  </data>
+  <data name="action.COMPANY_DELETE" xml:space="preserve">
+    <value>Брисање фирме</value>
+  </data>
+  <data name="action.CATEGORY_CREATE" xml:space="preserve">
+    <value>Нова категорија</value>
+  </data>
+  <data name="action.CATEGORY_UPDATE" xml:space="preserve">
+    <value>Измјена категорије</value>
+  </data>
+  <data name="action.CATEGORY_DELETE" xml:space="preserve">
+    <value>Брисање категорије</value>
+  </data>
+  <data name="action.PROFILE_UPDATE" xml:space="preserve">
+    <value>Измјена профила</value>
+  </data>
+  <data name="action.PASSWORD_CHANGE" xml:space="preserve">
+    <value>Промјена лозинке</value>
+  </data>
+  <data name="settings.subtitle" xml:space="preserve">
+    <value>Ваш профил, сигурност, изглед и језик</value>
+  </data>
+  <data name="settings.profile" xml:space="preserve">
+    <value>Профил</value>
+  </data>
+  <data name="settings.profileSubtitle" xml:space="preserve">
+    <value>Лични подаци и слика која се приказује у апликацији</value>
+  </data>
+  <data name="settings.saveProfile" xml:space="preserve">
+    <value>Сачувај профил</value>
+  </data>
+  <data name="settings.profileSaved" xml:space="preserve">
+    <value>Профил је сачуван.</value>
+  </data>
+  <data name="settings.security" xml:space="preserve">
+    <value>Лозинка</value>
+  </data>
+  <data name="settings.securitySubtitle" xml:space="preserve">
+    <value>Најмање 6 знакова; потребна је тренутна лозинка</value>
+  </data>
+  <data name="settings.currentPassword" xml:space="preserve">
+    <value>Тренутна лозинка</value>
+  </data>
+  <data name="settings.newPassword" xml:space="preserve">
+    <value>Нова лозинка</value>
+  </data>
+  <data name="settings.changePassword" xml:space="preserve">
+    <value>Промијени лозинку</value>
+  </data>
+  <data name="settings.passwordChanged" xml:space="preserve">
+    <value>Лозинка је промијењена.</value>
+  </data>
+  <data name="settings.wrongPassword" xml:space="preserve">
+    <value>Тренутна лозинка није тачна.</value>
+  </data>
+  <data name="settings.appearance" xml:space="preserve">
+    <value>Изглед</value>
+  </data>
+  <data name="settings.appearanceSubtitle" xml:space="preserve">
+    <value>Боја акцента, фонт и величина текста; примјењује се одмах</value>
+  </data>
+  <data name="settings.accent" xml:space="preserve">
+    <value>Боја акцента</value>
+  </data>
+  <data name="settings.font" xml:space="preserve">
+    <value>Фонт</value>
+  </data>
+  <data name="settings.textSize" xml:space="preserve">
+    <value>Величина текста</value>
+  </data>
+  <data name="settings.sizeSmall" xml:space="preserve">
+    <value>Мања</value>
+  </data>
+  <data name="settings.sizeNormal" xml:space="preserve">
+    <value>Нормална</value>
+  </data>
+  <data name="settings.sizeLarge" xml:space="preserve">
+    <value>Већа</value>
+  </data>
+  <data name="settings.language" xml:space="preserve">
+    <value>Језик</value>
+  </data>
+  <data name="settings.languageSubtitle" xml:space="preserve">
+    <value>Језик интерфејса за ваш налог</value>
+  </data>
+  <data name="image.choose" xml:space="preserve">
+    <value>Изабери слику</value>
+  </data>
+  <data name="image.remove" xml:space="preserve">
+    <value>Уклони</value>
+  </data>
+  <data name="image.filter" xml:space="preserve">
+    <value>Слике</value>
+  </data>
+  <data name="image.invalid" xml:space="preserve">
+    <value>Изабрани фајл није исправна слика.</value>
+  </data>
+  <data name="val.required" xml:space="preserve">
+    <value>Обавезно поље.</value>
+  </data>
+  <data name="val.tooLong" xml:space="preserve">
+    <value>Текст је предуг.</value>
+  </data>
+  <data name="val.email" xml:space="preserve">
+    <value>Унесите исправну е-маил адресу.</value>
+  </data>
+  <data name="val.user.Required" xml:space="preserve">
+    <value>Обавезно поље.</value>
+  </data>
+  <data name="val.user.TooLong" xml:space="preserve">
+    <value>Текст је предуг.</value>
+  </data>
+  <data name="val.user.InvalidUserName" xml:space="preserve">
+    <value>3–45 знакова: слова, цифре, тачка, цртица.</value>
+  </data>
+  <data name="val.user.InvalidEmail" xml:space="preserve">
+    <value>Унесите исправну е-маил адресу.</value>
+  </data>
+  <data name="val.user.PasswordTooShort" xml:space="preserve">
+    <value>Лозинка мора имати најмање 6 знакова.</value>
+  </data>
+  <data name="val.user.PasswordsDoNotMatch" xml:space="preserve">
+    <value>Лозинке се не подударају.</value>
+  </data>
+  <data name="val.user.DuplicateUserName" xml:space="preserve">
+    <value>Корисничко име је заузето.</value>
+  </data>
+  <data name="val.product.Required" xml:space="preserve">
+    <value>Обавезно поље.</value>
+  </data>
+  <data name="val.product.TooLong" xml:space="preserve">
+    <value>Текст је предуг.</value>
+  </data>
+  <data name="val.product.InvalidNumber" xml:space="preserve">
+    <value>Унесите исправан број.</value>
+  </data>
+  <data name="val.product.MustBePositive" xml:space="preserve">
+    <value>Вриједност мора бити већа од нуле.</value>
+  </data>
+  <data name="val.product.CannotBeNegative" xml:space="preserve">
+    <value>Вриједност не може бити негативна.</value>
+  </data>
+  <data name="val.product.InvalidBarCode" xml:space="preserve">
+    <value>Бар код смије садржати само цифре (до 45).</value>
+  </data>
+  <data name="val.product.DuplicateBarCode" xml:space="preserve">
+    <value>Други производ већ има овај бар код.</value>
+  </data>
+  <data name="err.DUPLICATE_VALUE" xml:space="preserve">
+    <value>Та вриједност већ постоји (назив, бар код или корисничко име мора бити јединствен).</value>
+  </data>
+  <data name="err.IN_USE" xml:space="preserve">
+    <value>Ставка се користи на другим мјестима (нпр. на рачунима или производима) и не може се обрисати.</value>
+  </data>
+  <data name="err.INSUFFICIENT_STOCK" xml:space="preserve">
+    <value>Нема довољно залиха за једну од ставки. Рачун није сачуван.</value>
+  </data>
+  <data name="err.PRODUCT_EXPIRED" xml:space="preserve">
+    <value>Једном од производа је истекао рок трајања. Рачун није сачуван.</value>
+  </data>
+  <data name="err.PRODUCT_NOT_FOUND" xml:space="preserve">
+    <value>Производ више не постоји.</value>
+  </data>
+  <data name="err.EMPTY_DOCUMENT" xml:space="preserve">
+    <value>Документ нема ставки.</value>
+  </data>
+  <data name="err.INVALID_AMOUNT" xml:space="preserve">
+    <value>Количина и цијена морају бити веће од нуле.</value>
+  </data>
+  <data name="err.INVALID_VALUE" xml:space="preserve">
+    <value>Неисправна вриједност (нпр. негативне залихе или цијена).</value>
+  </data>
+  <data name="err.CANNOT_DELETE_SELF" xml:space="preserve">
+    <value>Не можете обрисати властити налог.</value>
+  </data>
+  <data name="err.LAST_ADMIN" xml:space="preserve">
+    <value>Мора остати барем један администратор.</value>
+  </data>
+  <data name="err.CONNECTION" xml:space="preserve">
+    <value>База података није доступна. Провјерите да ли је покренута (docker compose up -d).</value>
+  </data>
+  <data name="err.UNEXPECTED" xml:space="preserve">
+    <value>Дошло је до грешке: {0}</value>
   </data>
 </root>

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Prodavnica.Services;
 using System.Globalization;
-using System.Linq;
 using System.Reflection;
 using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Prodavnica.Language
 {
@@ -21,6 +17,10 @@ namespace Prodavnica.Language
         {
             return manager.GetString(name);
         }
+        public static string Format(string name, params object[] args)
+        {
+            return string.Format(CultureInfo.CurrentCulture, manager.GetString(name) ?? name, args);
+        }
         public static void ChngLang(string abbreviation)
         {
             var cultureInfo = new CultureInfo(abbreviation);
@@ -29,25 +29,7 @@ namespace Prodavnica.Language
         }
         public static void ChangeLanguage(string language)
         {
-            string abbreviation = GetLangugaeCode(language);
-            var cultureInfo = new CultureInfo(abbreviation);
-            CultureInfo.CurrentCulture = cultureInfo;
-            CultureInfo.CurrentUICulture = cultureInfo;
-        }
-
-        private static Dictionary<String, String> languageMap = new Dictionary<String, String>
-        {
-            {"English","en" },
-            {"Srpski(Latinica)","sr" },
-            {"Српски(Ћирилица)","sr-Cyrl-RS" }
-        };
-        private static string GetLangugaeCode(string language)
-        {
-            if (languageMap.TryGetValue(language, out string languageCode))
-            {
-                return languageCode;
-            }
-            return "en";
+            ChngLang(LanguageCodes.FromName(language));
         }
     }
 }

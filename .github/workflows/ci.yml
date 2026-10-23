@@ -1,0 +1,138 @@
+name: CI
+
+# Runs only when code, the schema or the build changes. Documentation, screenshots,
+# the user manual and other non-code files do not start a build.
+on:
+  push:
+    branches: [master]
+    tags: ['v*']
+    paths-ignore:
+      - '**/*.md'
+      - 'readme_assets/**'
+      - '*.docx'
+      - '*.pdf'
+      - 'LICENSE.txt'
+      - 'Model/*.mwb'
+      - '.gitignore'
+      - '.gitattributes'
+  pull_request:
+    branches: [master]
+    paths-ignore:
+      - '**/*.md'
+      - 'readme_assets/**'
+      - '*.docx'
+      - '*.pdf'
+      - 'LICENSE.txt'
+      - 'Model/*.mwb'
+      - '.gitignore'
+      - '.gitattributes'
+  workflow_dispatch:
+
+# A newer push to the same branch or PR cancels the run that is still going.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+jobs:
+  test:
+    name: Tests (unit + MySQL integration)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore Prodavnica.Tests/Prodavnica.Tests.csproj
+
+      - name: Build
+        run: dotnet build Prodavnica.Tests/Prodavnica.Tests.csproj -c Release --no-restore
+
+      # Integration tests start MySQL 8 with Testcontainers and load Model/DDL.sql.
+      - name: Test
+        run: >
+          dotnet test Prodavnica.Tests/Prodavnica.Tests.csproj -c Release --no-build
+          --logger "trx;LogFileName=results.trx"
+          --results-directory TestResults
+          --collect "XPlat Code Coverage"
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: TestResults
+          retention-days: 14
+
+  desktop:
+    name: Desktop build (Windows)
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore Prodavnica.sln
+
+      - name: Build
+        run: dotnet build Prodavnica.sln -c Release --no-restore
+
+      - name: Check for vulnerable packages
+        shell: pwsh
+        run: |
+          $report = dotnet list Prodavnica.sln package --vulnerable --include-transitive 2>&1 | Out-String
+          Write-Output $report
+          if ($report -match 'has the following vulnerable packages') {
+            Write-Error 'Vulnerable NuGet packages found.'
+            exit 1
+          }
+
+  release:
+    name: Release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [test, desktop]
+    runs-on: windows-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Publish self-contained win-x64
+        run: >
+          dotnet publish Prodavnica/Prodavnica.csproj -c Release -r win-x64 --self-contained true
+          -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
+          -o publish/StoreManagementSystem
+
+      - name: Package
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force publish/StoreManagementSystem/Util | Out-Null
+          Copy-Item Prodavnica/Util/appsettings.example.json publish/StoreManagementSystem/Util/
+          Copy-Item Model/DDL.sql publish/StoreManagementSystem/
+          Compress-Archive -Path publish/StoreManagementSystem/* -DestinationPath "StoreManagementSystem-${{ github.ref_name }}-win-x64.zip"
+
+      - name: Create GitHub release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${{ github.ref_name }}" "StoreManagementSystem-${{ github.ref_name }}-win-x64.zip" --generate-notes --verify-tag

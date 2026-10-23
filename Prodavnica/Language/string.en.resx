@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,190 +117,792 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="amount" xml:space="preserve">
-    <value>Amount</value>
+  <data name="app.name" xml:space="preserve">
+    <value>Store Manager</value>
   </data>
-  <data name="barcode" xml:space="preserve">
-    <value>Bar code</value>
+  <data name="app.tagline" xml:space="preserve">
+    <value>Retail management</value>
   </data>
-  <data name="btnAdd" xml:space="preserve">
-    <value>Add</value>
+  <data name="login.title" xml:space="preserve">
+    <value>Welcome back</value>
   </data>
-  <data name="btnBuy" xml:space="preserve">
-    <value>Buy</value>
+  <data name="login.subtitle" xml:space="preserve">
+    <value>Sign in with your staff account.</value>
   </data>
-  <data name="btnCancel" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="login.userName" xml:space="preserve">
+    <value>User name</value>
   </data>
-  <data name="btnCategory" xml:space="preserve">
-    <value>   Category</value>
-  </data>
-  <data name="btnChangePass" xml:space="preserve">
-    <value>Change password</value>
-  </data>
-  <data name="btnColor" xml:space="preserve">
-    <value>Change color</value>
-  </data>
-  <data name="btnDelete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="btnDeleteItem" xml:space="preserve">
-    <value>Delete item</value>
-  </data>
-  <data name="btnFont" xml:space="preserve">
-    <value>Change font</value>
-  </data>
-  <data name="btnLogOut" xml:space="preserve">
-    <value>   Log out</value>
-  </data>
-  <data name="btnProducer" xml:space="preserve">
-    <value>   Producer</value>
-  </data>
-  <data name="btnSave" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="btnSaveProfile" xml:space="preserve">
-    <value>Save profile</value>
-  </data>
-  <data name="btnSaveTheme" xml:space="preserve">
-    <value>Save Theme</value>
-  </data>
-  <data name="btnSettings" xml:space="preserve">
-    <value>   Settings</value>
-  </data>
-  <data name="btnStaff" xml:space="preserve">
-    <value>   Employee</value>
-  </data>
-  <data name="btnStore" xml:space="preserve">
-    <value>   Shop</value>
-  </data>
-  <data name="btnSupplier" xml:space="preserve">
-    <value>   Supplier</value>
-  </data>
-  <data name="btnUpdate" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="buying" xml:space="preserve">
-    <value>Buying</value>
-  </data>
-  <data name="category" xml:space="preserve">
-    <value>Category</value>
-  </data>
-  <data name="categoryExists" xml:space="preserve">
-    <value>Category with that name exists.</value>
-  </data>
-  <data name="confirmation" xml:space="preserve">
-    <value>Confirmation</value>
-  </data>
-  <data name="create" xml:space="preserve">
-    <value>Create</value>
-  </data>
-  <data name="deleteConfirmation" xml:space="preserve">
-    <value>Are you sre that you want to delete this?</value>
-  </data>
-  <data name="description" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="expirationDate" xml:space="preserve">
-    <value>Expiration date</value>
-  </data>
-  <data name="gbColor" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="gbLanguage" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="gbPassword" xml:space="preserve">
-    <value>Change password</value>
-  </data>
-  <data name="gbProfile" xml:space="preserve">
-    <value>Profile info</value>
-  </data>
-  <data name="invalidBarcode" xml:space="preserve">
-    <value>Barcode already exists. Please change it.</value>
-  </data>
-  <data name="invalidNumber" xml:space="preserve">
-    <value>Please select a valid number!</value>
-  </data>
-  <data name="lbl" xml:space="preserve">
-    <value>Shop</value>
-  </data>
-  <data name="lblAmount" xml:space="preserve">
-    <value>Amount</value>
-  </data>
-  <data name="lblEmail" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="lblLastName" xml:space="preserve">
-    <value>Last name</value>
-  </data>
-  <data name="lblName" xml:space="preserve">
-    <value>First name</value>
-  </data>
-  <data name="lblNewPass" xml:space="preserve">
-    <value>New password   </value>
-  </data>
-  <data name="lblNewTheme" xml:space="preserve">
-    <value>New theme</value>
-  </data>
-  <data name="lblOldPass" xml:space="preserve">
-    <value>Old password   </value>
-  </data>
-  <data name="lblOldTheme" xml:space="preserve">
-    <value>Current theme</value>
-  </data>
-  <data name="lblPhone" xml:space="preserve">
-    <value>Phone number</value>
-  </data>
-  <data name="lblSearch" xml:space="preserve">
-    <value>Search</value>
-  </data>
-  <data name="lblSupplier" xml:space="preserve">
-    <value>Supplier</value>
-  </data>
-  <data name="lblTitle" xml:space="preserve">
-    <value>  HOME</value>
-  </data>
-  <data name="lblUsername" xml:space="preserve">
-    <value>Username</value>
-  </data>
-  <data name="manufacturer" xml:space="preserve">
-    <value>Manufacturer</value>
-  </data>
-  <data name="manufacturerExists" xml:space="preserve">
-    <value>Manufacturer exists.</value>
-  </data>
-  <data name="name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="noMoreSupplies" xml:space="preserve">
-    <value>No more supplies.</value>
-  </data>
-  <data name="noSupplier" xml:space="preserve">
-    <value>Please selecte supplier.</value>
-  </data>
-  <data name="password" xml:space="preserve">
+  <data name="login.password" xml:space="preserve">
     <value>Password</value>
   </data>
-  <data name="price" xml:space="preserve">
-    <value>Price</value>
+  <data name="login.userPlaceholder" xml:space="preserve">
+    <value>Your user name</value>
   </data>
-  <data name="supplierExists" xml:space="preserve">
-    <value>Supplier exists.</value>
+  <data name="login.passwordPlaceholder" xml:space="preserve">
+    <value>Your password</value>
   </data>
-  <data name="supplies" xml:space="preserve">
-    <value>Supplies</value>
+  <data name="login.signIn" xml:space="preserve">
+    <value>Sign in</value>
   </data>
-  <data name="tbBills" xml:space="preserve">
-    <value>Bills</value>
+  <data name="login.signingIn" xml:space="preserve">
+    <value>Signing in…</value>
   </data>
-  <data name="tbProcurement" xml:space="preserve">
-    <value>Procurement</value>
+  <data name="login.missing" xml:space="preserve">
+    <value>Enter your user name and password.</value>
   </data>
-  <data name="tpProducts" xml:space="preserve">
+  <data name="login.wrong" xml:space="preserve">
+    <value>Wrong user name or password.</value>
+  </data>
+  <data name="login.headline" xml:space="preserve">
+    <value>Sales, stock and purchasing in one place.</value>
+  </data>
+  <data name="login.feature1" xml:space="preserve">
+    <value>Fast till with bar code scanning</value>
+  </data>
+  <data name="login.feature2" xml:space="preserve">
+    <value>Stock and expiry dates under control</value>
+  </data>
+  <data name="login.feature3" xml:space="preserve">
+    <value>Purchasing, suppliers and reports</value>
+  </data>
+  <data name="nav.section.store" xml:space="preserve">
+    <value>Store</value>
+  </data>
+  <data name="nav.section.admin" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="nav.section.account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="nav.dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="nav.sale" xml:space="preserve">
+    <value>Sale</value>
+  </data>
+  <data name="nav.products" xml:space="preserve">
     <value>Products</value>
   </data>
-  <data name="userExists" xml:space="preserve">
-    <value>User with that username already exists !</value>
+  <data name="nav.procurement" xml:space="preserve">
+    <value>Procurement</value>
+  </data>
+  <data name="nav.documents" xml:space="preserve">
+    <value>Bills and procurements</value>
+  </data>
+  <data name="nav.bills" xml:space="preserve">
+    <value>Bills</value>
+  </data>
+  <data name="nav.employees" xml:space="preserve">
+    <value>Employees</value>
+  </data>
+  <data name="nav.manufacturers" xml:space="preserve">
+    <value>Manufacturers</value>
+  </data>
+  <data name="nav.suppliers" xml:space="preserve">
+    <value>Suppliers</value>
+  </data>
+  <data name="nav.categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="nav.activity" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="nav.settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="nav.signOut" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="signOut.title" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="signOut.message" xml:space="preserve">
+    <value>Do you want to sign out?</value>
+  </data>
+  <data name="role.admin" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="role.cashier" xml:space="preserve">
+    <value>Cashier</value>
+  </data>
+  <data name="common.save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="common.cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="common.close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="common.delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="common.edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="common.details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="common.ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="common.error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="common.search" xml:space="preserve">
+    <value>Search…</value>
+  </data>
+  <data name="common.noResults" xml:space="preserve">
+    <value>Nothing matches your search.</value>
+  </data>
+  <data name="common.name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="common.namePlaceholder" xml:space="preserve">
+    <value>Enter a name</value>
+  </data>
+  <data name="common.saved" xml:space="preserve">
+    <value>Changes saved.</value>
+  </data>
+  <data name="common.deleted" xml:space="preserve">
+    <value>Deleted.</value>
+  </data>
+  <data name="common.deleteTitle" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="common.deleteMessage" xml:space="preserve">
+    <value>Delete "{0}"? This cannot be undone.</value>
+  </data>
+  <data name="pager.summary" xml:space="preserve">
+    <value>Showing {0}–{1} of {2}</value>
+  </data>
+  <data name="pager.position" xml:space="preserve">
+    <value>Page {0} of {1}</value>
+  </data>
+  <data name="pager.empty" xml:space="preserve">
+    <value>No items</value>
+  </data>
+  <data name="dashboard.welcome" xml:space="preserve">
+    <value>Welcome back, {0} · {1}</value>
+  </data>
+  <data name="dashboard.newSale" xml:space="preserve">
+    <value>New sale</value>
+  </data>
+  <data name="dashboard.salesToday" xml:space="preserve">
+    <value>Sales today</value>
+  </data>
+  <data name="dashboard.billsToday" xml:space="preserve">
+    <value>{0} bills · 30 days: {1}</value>
+  </data>
+  <data name="dashboard.products" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="dashboard.stockValue" xml:space="preserve">
+    <value>Stock value {0}</value>
+  </data>
+  <data name="dashboard.lowStock" xml:space="preserve">
+    <value>Low stock</value>
+  </data>
+  <data name="dashboard.outOfStock" xml:space="preserve">
+    <value>{0} out of stock</value>
+  </data>
+  <data name="dashboard.expired" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="dashboard.expiringSoon" xml:space="preserve">
+    <value>{0} expire within 30 days</value>
+  </data>
+  <data name="dashboard.salesChart" xml:space="preserve">
+    <value>Daily sales</value>
+  </data>
+  <data name="dashboard.salesChartSubtitle" xml:space="preserve">
+    <value>Last 14 days, in KM</value>
+  </data>
+  <data name="dashboard.recent" xml:space="preserve">
+    <value>Recent bills</value>
+  </data>
+  <data name="dashboard.recentSubtitle" xml:space="preserve">
+    <value>Double-click to open a bill</value>
+  </data>
+  <data name="dashboard.attention" xml:space="preserve">
+    <value>Needs attention</value>
+  </data>
+  <data name="dashboard.attentionSubtitle" xml:space="preserve">
+    <value>Products that are expiring or running out</value>
+  </data>
+  <data name="dashboard.allGood" xml:space="preserve">
+    <value>All good: nothing is expiring or running out.</value>
+  </data>
+  <data name="dashboard.problem" xml:space="preserve">
+    <value>Issue</value>
+  </data>
+  <data name="stock.in" xml:space="preserve">
+    <value>{0} in stock</value>
+  </data>
+  <data name="stock.low" xml:space="preserve">
+    <value>Only {0} left</value>
+  </data>
+  <data name="stock.out" xml:space="preserve">
+    <value>Out of stock</value>
+  </data>
+  <data name="stock.expired" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="stock.expiringSoon" xml:space="preserve">
+    <value>Expires soon</value>
+  </data>
+  <data name="product.bestBefore" xml:space="preserve">
+    <value>Best before {0}</value>
+  </data>
+  <data name="products.subtitle" xml:space="preserve">
+    <value>Browse the range, stock and expiry dates</value>
+  </data>
+  <data name="products.subtitleAdmin" xml:space="preserve">
+    <value>Range, prices, stock and expiry dates</value>
+  </data>
+  <data name="products.searchPlaceholder" xml:space="preserve">
+    <value>Name, bar code, category or manufacturer…</value>
+  </data>
+  <data name="products.allCategories" xml:space="preserve">
+    <value>All categories</value>
+  </data>
+  <data name="products.cards" xml:space="preserve">
+    <value>Cards</value>
+  </data>
+  <data name="products.table" xml:space="preserve">
+    <value>Table</value>
+  </data>
+  <data name="products.add" xml:space="preserve">
+    <value>New product</value>
+  </data>
+  <data name="products.addSubtitle" xml:space="preserve">
+    <value>Enter the product details</value>
+  </data>
+  <data name="products.edit" xml:space="preserve">
+    <value>Edit product</value>
+  </data>
+  <data name="products.details" xml:space="preserve">
+    <value>Product details</value>
+  </data>
+  <data name="products.product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="products.name" xml:space="preserve">
+    <value>Product name</value>
+  </data>
+  <data name="products.barCode" xml:space="preserve">
+    <value>Bar code</value>
+  </data>
+  <data name="products.category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="products.manufacturer" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="products.price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="products.priceKm" xml:space="preserve">
+    <value>Price (KM)</value>
+  </data>
+  <data name="products.stock" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="products.expires" xml:space="preserve">
+    <value>Best before</value>
+  </data>
+  <data name="products.description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="products.chooseCategory" xml:space="preserve">
+    <value>Choose a category</value>
+  </data>
+  <data name="products.chooseManufacturer" xml:space="preserve">
+    <value>Choose a manufacturer</value>
+  </data>
+  <data name="products.deleteTitle" xml:space="preserve">
+    <value>Delete product</value>
+  </data>
+  <data name="products.deleteMessage" xml:space="preserve">
+    <value>Delete "{0}"? A product that has already been sold cannot be deleted.</value>
+  </data>
+  <data name="pos.subtitle" xml:space="preserve">
+    <value>Scan a bar code or click a product to add it to the bill</value>
+  </data>
+  <data name="pos.scanPlaceholder" xml:space="preserve">
+    <value>Scan or type a bar code and press Enter</value>
+  </data>
+  <data name="pos.bill" xml:space="preserve">
+    <value>Bill</value>
+  </data>
+  <data name="pos.items" xml:space="preserve">
+    <value>Items: {0}</value>
+  </data>
+  <data name="pos.empty" xml:space="preserve">
+    <value>The bill is empty.
+Add products from the left.</value>
+  </data>
+  <data name="pos.total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="pos.checkout" xml:space="preserve">
+    <value>Charge</value>
+  </data>
+  <data name="pos.clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="pos.notFound" xml:space="preserve">
+    <value>No product with bar code {0}.</value>
+  </data>
+  <data name="pos.unavailable" xml:space="preserve">
+    <value>"{0}" cannot be sold (out of stock or expired).</value>
+  </data>
+  <data name="pos.noMoreStock" xml:space="preserve">
+    <value>No more stock of "{0}".</value>
+  </data>
+  <data name="pos.saved" xml:space="preserve">
+    <value>Bill {0} saved.</value>
+  </data>
+  <data name="pos.newSale" xml:space="preserve">
+    <value>New sale</value>
+  </data>
+  <data name="procurement.subtitle" xml:space="preserve">
+    <value>Order goods from a supplier; stock goes up straight away</value>
+  </data>
+  <data name="procurement.order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="procurement.supplier" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="procurement.chooseSupplier" xml:space="preserve">
+    <value>Choose a supplier</value>
+  </data>
+  <data name="procurement.empty" xml:space="preserve">
+    <value>The order is empty.
+Click the products you are ordering.</value>
+  </data>
+  <data name="procurement.confirm" xml:space="preserve">
+    <value>Confirm order</value>
+  </data>
+  <data name="procurement.quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="procurement.unitPrice" xml:space="preserve">
+    <value>Purchase price</value>
+  </data>
+  <data name="procurement.pricePlaceholder" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="procurement.saved" xml:space="preserve">
+    <value>Procurement {0} saved.</value>
+  </data>
+  <data name="documents.subtitle" xml:space="preserve">
+    <value>History by date; double-click for details and printing</value>
+  </data>
+  <data name="documents.sales" xml:space="preserve">
+    <value>Sales</value>
+  </data>
+  <data name="documents.procurements" xml:space="preserve">
+    <value>Procurements</value>
+  </data>
+  <data name="documents.today" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="documents.week" xml:space="preserve">
+    <value>7 days</value>
+  </data>
+  <data name="documents.month" xml:space="preserve">
+    <value>30 days</value>
+  </data>
+  <data name="documents.quarter" xml:space="preserve">
+    <value>90 days</value>
+  </data>
+  <data name="documents.searchPlaceholder" xml:space="preserve">
+    <value>Number, cashier or supplier…</value>
+  </data>
+  <data name="documents.empty" xml:space="preserve">
+    <value>No documents in this period.</value>
+  </data>
+  <data name="documents.number" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="documents.date" xml:space="preserve">
+    <value>Date and time</value>
+  </data>
+  <data name="documents.cashier" xml:space="preserve">
+    <value>Cashier</value>
+  </data>
+  <data name="documents.supplier" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="documents.items" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="documents.total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="documents.quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="documents.unitPrice" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="documents.amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="documents.print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="documents.billTitle" xml:space="preserve">
+    <value>Bill {0}</value>
+  </data>
+  <data name="documents.procurementTitle" xml:space="preserve">
+    <value>Procurement {0}</value>
+  </data>
+  <data name="receipt.bill" xml:space="preserve">
+    <value>Receipt</value>
+  </data>
+  <data name="receipt.procurement" xml:space="preserve">
+    <value>Procurement</value>
+  </data>
+  <data name="receipt.thanks" xml:space="preserve">
+    <value>Thank you for shopping with us!</value>
+  </data>
+  <data name="employees.subtitle" xml:space="preserve">
+    <value>Staff accounts, roles and access</value>
+  </data>
+  <data name="employees.add" xml:space="preserve">
+    <value>New employee</value>
+  </data>
+  <data name="employees.edit" xml:space="preserve">
+    <value>Edit employee</value>
+  </data>
+  <data name="employees.addSubtitle" xml:space="preserve">
+    <value>A new account for signing in</value>
+  </data>
+  <data name="employees.editSubtitle" xml:space="preserve">
+    <value>Details, role and password</value>
+  </data>
+  <data name="employees.name" xml:space="preserve">
+    <value>Employee</value>
+  </data>
+  <data name="employees.firstName" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="employees.lastName" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="employees.userName" xml:space="preserve">
+    <value>User name</value>
+  </data>
+  <data name="employees.email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="employees.phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="employees.role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="employees.password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="employees.confirmPassword" xml:space="preserve">
+    <value>Repeat password</value>
+  </data>
+  <data name="employees.passwordHint" xml:space="preserve">
+    <value>Leave empty to keep the current one</value>
+  </data>
+  <data name="employees.created" xml:space="preserve">
+    <value>Account for {0} created.</value>
+  </data>
+  <data name="employees.deleteTitle" xml:space="preserve">
+    <value>Delete employee</value>
+  </data>
+  <data name="employees.deleteMessage" xml:space="preserve">
+    <value>Delete the account of "{0}"? Their bills are kept.</value>
+  </data>
+  <data name="manufacturers.subtitle" xml:space="preserve">
+    <value>Makers of the goods you sell</value>
+  </data>
+  <data name="manufacturers.add" xml:space="preserve">
+    <value>New manufacturer</value>
+  </data>
+  <data name="manufacturers.edit" xml:space="preserve">
+    <value>Edit manufacturer</value>
+  </data>
+  <data name="manufacturers.usage" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="suppliers.subtitle" xml:space="preserve">
+    <value>Companies you order goods from</value>
+  </data>
+  <data name="suppliers.add" xml:space="preserve">
+    <value>New supplier</value>
+  </data>
+  <data name="suppliers.edit" xml:space="preserve">
+    <value>Edit supplier</value>
+  </data>
+  <data name="suppliers.usage" xml:space="preserve">
+    <value>Procurements</value>
+  </data>
+  <data name="categories.subtitle" xml:space="preserve">
+    <value>Group products for easier browsing</value>
+  </data>
+  <data name="categories.add" xml:space="preserve">
+    <value>New category</value>
+  </data>
+  <data name="categories.edit" xml:space="preserve">
+    <value>Edit category</value>
+  </data>
+  <data name="categories.products" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="activity.subtitle" xml:space="preserve">
+    <value>Who did what, and when</value>
+  </data>
+  <data name="activity.time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="activity.user" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="activity.action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="activity.details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="auditText.login" xml:space="preserve">
+    <value>Signed in</value>
+  </data>
+  <data name="auditText.logout" xml:space="preserve">
+    <value>Signed out</value>
+  </data>
+  <data name="auditText.sale" xml:space="preserve">
+    <value>Bill {0}, total {1}</value>
+  </data>
+  <data name="auditText.procurement" xml:space="preserve">
+    <value>Procurement {0} from {1}, total {2}</value>
+  </data>
+  <data name="action.LOGIN" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="action.LOGOUT" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="action.SALE" xml:space="preserve">
+    <value>Sale</value>
+  </data>
+  <data name="action.PROCUREMENT" xml:space="preserve">
+    <value>Procurement</value>
+  </data>
+  <data name="action.PRODUCT_CREATE" xml:space="preserve">
+    <value>Product added</value>
+  </data>
+  <data name="action.PRODUCT_UPDATE" xml:space="preserve">
+    <value>Product changed</value>
+  </data>
+  <data name="action.PRODUCT_DELETE" xml:space="preserve">
+    <value>Product deleted</value>
+  </data>
+  <data name="action.USER_CREATE" xml:space="preserve">
+    <value>Employee added</value>
+  </data>
+  <data name="action.USER_UPDATE" xml:space="preserve">
+    <value>Employee changed</value>
+  </data>
+  <data name="action.USER_DELETE" xml:space="preserve">
+    <value>Employee deleted</value>
+  </data>
+  <data name="action.COMPANY_CREATE" xml:space="preserve">
+    <value>Company added</value>
+  </data>
+  <data name="action.COMPANY_UPDATE" xml:space="preserve">
+    <value>Company changed</value>
+  </data>
+  <data name="action.COMPANY_DELETE" xml:space="preserve">
+    <value>Company deleted</value>
+  </data>
+  <data name="action.CATEGORY_CREATE" xml:space="preserve">
+    <value>Category added</value>
+  </data>
+  <data name="action.CATEGORY_UPDATE" xml:space="preserve">
+    <value>Category changed</value>
+  </data>
+  <data name="action.CATEGORY_DELETE" xml:space="preserve">
+    <value>Category deleted</value>
+  </data>
+  <data name="action.PROFILE_UPDATE" xml:space="preserve">
+    <value>Profile changed</value>
+  </data>
+  <data name="action.PASSWORD_CHANGE" xml:space="preserve">
+    <value>Password changed</value>
+  </data>
+  <data name="settings.subtitle" xml:space="preserve">
+    <value>Your profile, security, appearance and language</value>
+  </data>
+  <data name="settings.profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="settings.profileSubtitle" xml:space="preserve">
+    <value>Your details and the picture shown in the app</value>
+  </data>
+  <data name="settings.saveProfile" xml:space="preserve">
+    <value>Save profile</value>
+  </data>
+  <data name="settings.profileSaved" xml:space="preserve">
+    <value>Profile saved.</value>
+  </data>
+  <data name="settings.security" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="settings.securitySubtitle" xml:space="preserve">
+    <value>At least 6 characters; your current password is required</value>
+  </data>
+  <data name="settings.currentPassword" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="settings.newPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="settings.changePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="settings.passwordChanged" xml:space="preserve">
+    <value>Password changed.</value>
+  </data>
+  <data name="settings.wrongPassword" xml:space="preserve">
+    <value>The current password is wrong.</value>
+  </data>
+  <data name="settings.appearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="settings.appearanceSubtitle" xml:space="preserve">
+    <value>Accent colour, font and text size; applied straight away</value>
+  </data>
+  <data name="settings.accent" xml:space="preserve">
+    <value>Accent colour</value>
+  </data>
+  <data name="settings.font" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="settings.textSize" xml:space="preserve">
+    <value>Text size</value>
+  </data>
+  <data name="settings.sizeSmall" xml:space="preserve">
+    <value>Smaller</value>
+  </data>
+  <data name="settings.sizeNormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="settings.sizeLarge" xml:space="preserve">
+    <value>Larger</value>
+  </data>
+  <data name="settings.language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="settings.languageSubtitle" xml:space="preserve">
+    <value>Interface language for your account</value>
+  </data>
+  <data name="image.choose" xml:space="preserve">
+    <value>Choose picture</value>
+  </data>
+  <data name="image.remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="image.filter" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="image.invalid" xml:space="preserve">
+    <value>The chosen file is not a valid picture.</value>
+  </data>
+  <data name="val.required" xml:space="preserve">
+    <value>This field is required.</value>
+  </data>
+  <data name="val.tooLong" xml:space="preserve">
+    <value>The text is too long.</value>
+  </data>
+  <data name="val.email" xml:space="preserve">
+    <value>Enter a valid e-mail address.</value>
+  </data>
+  <data name="val.user.Required" xml:space="preserve">
+    <value>This field is required.</value>
+  </data>
+  <data name="val.user.TooLong" xml:space="preserve">
+    <value>The text is too long.</value>
+  </data>
+  <data name="val.user.InvalidUserName" xml:space="preserve">
+    <value>3–45 characters: letters, digits, dot, dash.</value>
+  </data>
+  <data name="val.user.InvalidEmail" xml:space="preserve">
+    <value>Enter a valid e-mail address.</value>
+  </data>
+  <data name="val.user.PasswordTooShort" xml:space="preserve">
+    <value>The password needs at least 6 characters.</value>
+  </data>
+  <data name="val.user.PasswordsDoNotMatch" xml:space="preserve">
+    <value>The passwords do not match.</value>
+  </data>
+  <data name="val.user.DuplicateUserName" xml:space="preserve">
+    <value>This user name is taken.</value>
+  </data>
+  <data name="val.product.Required" xml:space="preserve">
+    <value>This field is required.</value>
+  </data>
+  <data name="val.product.TooLong" xml:space="preserve">
+    <value>The text is too long.</value>
+  </data>
+  <data name="val.product.InvalidNumber" xml:space="preserve">
+    <value>Enter a valid number.</value>
+  </data>
+  <data name="val.product.MustBePositive" xml:space="preserve">
+    <value>The value must be greater than zero.</value>
+  </data>
+  <data name="val.product.CannotBeNegative" xml:space="preserve">
+    <value>The value cannot be negative.</value>
+  </data>
+  <data name="val.product.InvalidBarCode" xml:space="preserve">
+    <value>A bar code may contain digits only (up to 45).</value>
+  </data>
+  <data name="val.product.DuplicateBarCode" xml:space="preserve">
+    <value>Another product already has this bar code.</value>
+  </data>
+  <data name="err.DUPLICATE_VALUE" xml:space="preserve">
+    <value>That value already exists (names, bar codes and user names must be unique).</value>
+  </data>
+  <data name="err.IN_USE" xml:space="preserve">
+    <value>This item is used elsewhere (e.g. on bills or products) and cannot be deleted.</value>
+  </data>
+  <data name="err.INSUFFICIENT_STOCK" xml:space="preserve">
+    <value>Not enough stock for one of the lines. The bill was not saved.</value>
+  </data>
+  <data name="err.PRODUCT_EXPIRED" xml:space="preserve">
+    <value>One of the products is past its expiry date. The bill was not saved.</value>
+  </data>
+  <data name="err.PRODUCT_NOT_FOUND" xml:space="preserve">
+    <value>The product no longer exists.</value>
+  </data>
+  <data name="err.EMPTY_DOCUMENT" xml:space="preserve">
+    <value>The document has no lines.</value>
+  </data>
+  <data name="err.INVALID_AMOUNT" xml:space="preserve">
+    <value>Quantity and price must be greater than zero.</value>
+  </data>
+  <data name="err.INVALID_VALUE" xml:space="preserve">
+    <value>Invalid value (e.g. negative stock or price).</value>
+  </data>
+  <data name="err.CANNOT_DELETE_SELF" xml:space="preserve">
+    <value>You cannot delete your own account.</value>
+  </data>
+  <data name="err.LAST_ADMIN" xml:space="preserve">
+    <value>At least one administrator must remain.</value>
+  </data>
+  <data name="err.CONNECTION" xml:space="preserve">
+    <value>The database is not reachable. Check that it is running (docker compose up -d).</value>
+  </data>
+  <data name="err.UNEXPECTED" xml:space="preserve">
+    <value>Something went wrong: {0}</value>
   </data>
 </root>
