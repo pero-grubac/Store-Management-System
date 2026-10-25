@@ -14,6 +14,8 @@
 
 **A desktop point-of-sale and inventory app for a small shop: a till with bar code scanning, stock and expiry tracking, purchasing, staff accounts and an activity log.**
 
+<img src="readme_assets/demo.gif" alt="Store Management System demo: the dashboard, a sale at the till with two scanned bar codes and two product cards, charging the bill, and the dashboard with the new day total" width="900">
+
 ### 🛡️ Administrator
 
 <img src="readme_assets/demo-admin.gif" alt="Administrator demo: dashboard with the sales chart, product cards, search and table view, editing a product with validation, a procurement from a supplier, the staff list, the activity log and changing the accent colour" width="900">
